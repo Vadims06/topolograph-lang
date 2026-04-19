@@ -17,10 +17,6 @@ Community-contributed translations for Topolograph public UI and SEO strings liv
 
 English (`en/`) is the reference catalog. Other locales should keep the same key structure.
 
-## Regenerating generated page JSON
-
-`build_public_i18n.py` in this directory writes `en|ru|zh/pages/about.json` from the embedded string tables (run from repo root: `python lang/build_public_i18n.py`, or `cd lang && python build_public_i18n.py`). Commit the resulting JSON when you change the generator or translations there.
-
 ## Cross-referencing UI labels in prose strings
 
 Some prose strings quote the name of a UI element (button, tab, dropdown label) inline — for example, a description that says *"open the «Network reaction on failure» tab"*. When translating such a string, use the **translated form of that UI label**, not the English one.
