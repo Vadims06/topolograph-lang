@@ -5,5 +5,21 @@
     "og_title": "Crear topología basada en YAML o editar OSPF/IS-IS existente",
     "og_description": "Construye un grafo de red desde cero, edita la topología OSPF/IS-IS en línea o mediante REST API.",
     "meta_keywords": "topolograph, construir topología en línea, diagrama de red YAML, diseño OSPF"
-  }
+  },
+  "heading_yaml_panel": "Archivo YAML del diagrama/topología de red",
+  "heading_graph": "Grafo",
+  "network_reaction_label": "Reacción de la red a los cambios aplicados",
+  "saved_graphs_pick_before": "Elija uno de ",
+  "saved_graphs_pick_after": " grafos guardados",
+  "btn_load_diagram": "Cargar diagrama",
+  "textarea_placeholder": "Pegue el YAML aquí:\nnodes:\n    10.10.10.2:\n    10.10.10.3:\nedges:\n    - dst: 10.10.10.2\n      src: 10.10.10.3\no edite la topología OSPF/IS-IS ya cargada\n…más ejemplos abajo",
+  "btn_show_graph": "Mostrar grafo",
+  "btn_save_graph": "Guardar grafo",
+  "acc_node_attributes": "Atributos del nodo",
+  "acc_edge_attributes": "Atributos del enlace",
+  "acc_examples_basic": "Ejemplos. Topología YAML básica",
+  "acc_examples_with_attrs": "Ejemplos. Topología YAML con atributos de nodo y enlace",
+  "acc_examples_query_node": "Ejemplos. Consulta de nodo vía Python (REST API y SDK).",
+  "acc_examples_query_edge": "Ejemplos. Consulta de enlace vía Python (REST API y SDK).",
+  "copy_paste_hint": "Copie y pegue esta topología de prueba en el campo de entrada superior"
 }

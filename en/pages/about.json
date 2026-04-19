@@ -32,7 +32,7 @@
   "feat_focus": "Browse your network with `Focus on the Node` option",
   "feat_compare": "Compare the network state at different times",
   "feat_asymmetric": "Discover asymmetric paths",
-  "feat_te": "Traffic Engineering (TE) link attributes for IS-IS and OSPF (FRR opaque-area) — filter and analyze links by bandwidth, TE metric, and admin group",
+  "feat_te": "Traffic Engineering (TE) link attributes for IS-IS and OSPF (FRR opaque-area) - filter and analyze links by bandwidth, TE metric, and admin group",
   "demo_heading": "Demo",
   "demo_img_alt": "Build OSPF shortest paths in Topolograph. Get Backup paths in Topolograph.",
   "features_heading": "Features",

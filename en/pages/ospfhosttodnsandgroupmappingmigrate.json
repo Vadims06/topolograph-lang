@@ -7,7 +7,7 @@
     "meta_keywords": "topolograph, OSPF, IS-IS, hostname, group migration, graph snapshot"
   },
   "heading_main": "Hostname and Group Membership Migration",
-  "intro_footer": "Once you have set hostnames and assigned each router to its group — copy these values to the latest uploaded graph.",
+  "intro_footer": "Once you have set hostnames and assigned each router to its group - copy these values to the latest uploaded graph.",
   "th_migrate_from": "Migrate hostnames and group membership from graph",
   "th_action": "Action",
   "th_to_hosts": "to hosts",

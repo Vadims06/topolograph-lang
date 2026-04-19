@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "title": "Migrer les noms d'hôtes et l'appartenance aux groupes entre les graphes",
+    "description": "Copier les noms d'hôtes et les assignments de groupes depuis un ancien graphe OSPF/IS-IS sauvegardé vers le dernier chargement.",
+    "og_title": "Migration des noms d'hôtes et de l'appartenance aux groupes",
+    "og_description": "Après avoir configuré les noms d'hôtes et les groupes sur un instantané de graphe, migrez-les vers le dernier chargement en une seule étape.",
+    "meta_keywords": "topolograph, OSPF, IS-IS, nom d'hôte, migration de groupe, instantané de graphe"
+  },
+  "heading_main": "Migration des noms d'hôtes et de l'appartenance aux groupes",
+  "intro_footer": "Une fois que vous avez défini les noms d'hôtes et assigné chaque routeur à son groupe, copiez ces valeurs vers le dernier graphe chargé.",
+  "th_migrate_from": "Migrer les noms d'hôtes et l'appartenance aux groupes depuis le graphe",
+  "th_action": "Action",
+  "th_to_hosts": "vers les hôtes",
+  "btn_migrate": "Migrer",
+  "empty_graphs_message": "Aucun graphe précédemment chargé"
+}

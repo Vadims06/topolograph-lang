@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "title": "Noms d'hôtes de routeurs OSPF - Correspondance IP vers nom sur le graphe",
+    "description": "Définissez les noms d'hôtes des routeurs pour les graphes OSPF sauvegardés, utilisez optionnellement le DNS Docker, migrez les noms entre les chargements et mettez à jour les étiquettes du graphe.",
+    "og_title": "Noms d'hôtes de routeurs - Étiquettes du graphe OSPF",
+    "og_description": "Associez les identifiants de routeurs OSPF aux noms d'hôtes sur la topologie, synchronisez depuis CSV ou NetBox et migrez les noms entre les graphes sauvegardés.",
+    "meta_keywords": "topolograph, OSPF, nom d'hôte, DNS, identifiant de routeur, étiquettes de graphe, NetBox"
+  },
+  "heading_main": "Noms d'hôtes de routeurs",
+  "intro_footer": "La version Docker du site dispose d'un serveur DNS en option (indiquez l'IP DNS dans docker-compose.override.yml). Cependant, tous les RID OSPF ne sont pas forcément enregistrés dans le DNS, il y a donc ici une option pour remplacer l'étiquette IP du nœud sur le graphe par son nom d'hôte.",
+  "saved_graphs_pick_before": "Choisissez un parmi ",
+  "saved_graphs_pick_after": " graphes sauvegardés",
+  "btn_load_hosts": "Charger les hôtes",
+  "copy_section_heading": "Copier les noms d'hôtes",
+  "migrate_footer": "Définissez les noms d'hôtes une fois, puis obtenez une nouvelle copie de la topologie OSPF et copiez/migrez les noms d'hôtes des nœuds réseau depuis le graphe où ils sont configurés vers le dernier graphe chargé.",
+  "th_hosts_from_graph": "Hôtes du graphe",
+  "th_action": "Action",
+  "th_to_hosts": "vers les hôtes",
+  "btn_migrate": "Migrer",
+  "empty_graphs_message": "Aucun graphe précédemment chargé",
+  "btn_update_hostnames": "Mettre à jour les noms d'hôtes sur le graphe",
+  "link_netbox_sync": "Synchroniser avec Netbox",
+  "link_csv_import": "Importer des hôtes depuis CSV",
+  "th_host": "Hôte",
+  "th_hostname": "Nom d'hôte"
+}

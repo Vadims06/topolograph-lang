@@ -5,5 +5,21 @@
     "og_title": "基于 YAML 创建拓扑或编辑现有 OSPF/IS-IS",
     "og_description": "从零构建网络图，或在线/通过 REST API 编辑 OSPF/IS-IS 拓扑。",
     "meta_keywords": "topolograph, 在线构建拓扑, YAML 网络图, OSPF 设计"
-  }
+  },
+  "heading_yaml_panel": "网络图 / 拓扑 YAML 文件",
+  "heading_graph": "图",
+  "network_reaction_label": "应用变更后的网络反应",
+  "saved_graphs_pick_before": "从 ",
+  "saved_graphs_pick_after": " 个已保存图中选择一个",
+  "btn_load_diagram": "加载示意图",
+  "textarea_placeholder": "在此粘贴 YAML：\nnodes:\n    10.10.10.2:\n    10.10.10.3:\nedges:\n    - dst: 10.10.10.2\n      src: 10.10.10.3\n或编辑已上传的 OSPF/IS-IS 拓扑\n…更多示例见下方",
+  "btn_show_graph": "显示图",
+  "btn_save_graph": "保存图",
+  "acc_node_attributes": "节点属性",
+  "acc_edge_attributes": "边属性",
+  "acc_examples_basic": "示例：基础 YAML 拓扑",
+  "acc_examples_with_attrs": "示例：含节点与边属性的 YAML 拓扑",
+  "acc_examples_query_node": "示例：用 Python 查询节点（REST API 与 SDK）",
+  "acc_examples_query_edge": "示例：用 Python 查询边（REST API 与 SDK）",
+  "copy_paste_hint": "将以下测试拓扑复制到上方输入框"
 }

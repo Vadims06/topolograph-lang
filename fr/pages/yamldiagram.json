@@ -1,0 +1,25 @@
+{
+  "_meta": {
+    "title": "Créer une topologie basée sur YAML ou modifier un OSPF/IS-IS existant",
+    "description": "Construisez une topologie réseau à partir d'un fichier YAML en ligne, ou modifiez un graphe OSPF/IS-IS existant et générez des rapports basés sur les modifications.",
+    "og_title": "Créer une topologie basée sur YAML ou modifier un OSPF/IS-IS existant",
+    "og_description": "Construisez un graphe réseau de zéro, modifiez la topologie OSPF/IS-IS en ligne ou via REST API.",
+    "meta_keywords": "topolograph, construire une topologie en ligne, diagramme réseau YAML, conception OSPF"
+  },
+  "heading_yaml_panel": "Fichier YAML du diagramme/topologie réseau",
+  "heading_graph": "Graphe",
+  "network_reaction_label": "Réaction du réseau aux modifications appliquées",
+  "saved_graphs_pick_before": "Choisissez un parmi ",
+  "saved_graphs_pick_after": " graphes sauvegardés",
+  "btn_load_diagram": "Charger le diagramme",
+  "textarea_placeholder": "Collez le fichier Yaml ici :\nnodes:\n    10.10.10.2:\n    10.10.10.3:\nedges:\n    - dst: 10.10.10.2\n      src: 10.10.10.3\nou modifiez une topologie OSPF/IS-IS déjà chargée \n...plus d'exemples ci-dessous",
+  "btn_show_graph": "Afficher le graphe",
+  "btn_save_graph": "Sauvegarder le graphe",
+  "acc_node_attributes": "Attributs de nœud",
+  "acc_edge_attributes": "Attributs de lien",
+  "acc_examples_basic": "Exemples. Topologie de base basée sur YAML",
+  "acc_examples_with_attrs": "Exemples. Topologie YAML avec attributs de nœud et de lien",
+  "acc_examples_query_node": "Exemples. Requête sur un nœud via Python (REST API & SDK).",
+  "acc_examples_query_edge": "Exemples. Requête sur un lien via Python (REST API & SDK).",
+  "copy_paste_hint": "Copiez/collez cette topologie de test dans la fenêtre de saisie ci-dessus"
+}

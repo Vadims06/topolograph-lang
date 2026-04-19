@@ -2,7 +2,7 @@
   "_meta": {
     "title": "Назначение хостов OSPF/IS-IS в группы или VRF",
     "description": "Сопоставление экземпляров VRF OSPF/IS-IS",
-    "og_title": "Членство хостов в группах — Topolograph",
+    "og_title": "Членство хостов в группах - Topolograph",
     "og_description": "Сопоставляйте маршрутизаторы с группами или VRF для каждого снимка графа, переносите членство между загрузками и импортируйте из CSV или NetBox.",
     "meta_keywords": "topolograph, OSPF, IS-IS, VRF, группа"
   },

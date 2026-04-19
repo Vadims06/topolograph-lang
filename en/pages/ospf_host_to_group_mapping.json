@@ -2,7 +2,7 @@
   "_meta": {
     "title": "Assign OSPF/IS-IS Hosts to Groups or VRF",
     "description": "Mapping OSPF/IS-IS VRF instances",
-    "og_title": "Host Group Membership — Topolograph",
+    "og_title": "Host Group Membership - Topolograph",
     "og_description": "Map routers to groups or VRFs for each graph snapshot, migrate membership between uploads, and import from CSV or NetBox.",
     "meta_keywords": "topolograph, OSPF, IS-IS, VRF, group"
   },

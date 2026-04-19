@@ -5,5 +5,21 @@
     "og_title": "Criar topologia baseada em YAML ou editar OSPF/IS-IS existente",
     "og_description": "Construa um grafo de rede do zero, edite a topologia OSPF/IS-IS online ou via REST API.",
     "meta_keywords": "topolograph, construir topologia online, diagrama de rede YAML, design OSPF"
-  }
+  },
+  "heading_yaml_panel": "Arquivo YAML do diagrama/topo de rede",
+  "heading_graph": "Grafo",
+  "network_reaction_label": "Reação da rede às alterações aplicadas",
+  "saved_graphs_pick_before": "Escolha um entre ",
+  "saved_graphs_pick_after": " grafos salvos",
+  "btn_load_diagram": "Carregar diagrama",
+  "textarea_placeholder": "Cole o YAML aqui:\nnodes:\n    10.10.10.2:\n    10.10.10.3:\nedges:\n    - dst: 10.10.10.2\n      src: 10.10.10.3\nou edite a topologia OSPF/IS-IS já carregada\n…mais exemplos abaixo",
+  "btn_show_graph": "Mostrar grafo",
+  "btn_save_graph": "Salvar grafo",
+  "acc_node_attributes": "Atributos do nó",
+  "acc_edge_attributes": "Atributos da aresta",
+  "acc_examples_basic": "Exemplos. Topologia YAML básica",
+  "acc_examples_with_attrs": "Exemplos. Topologia YAML com atributos de nó e aresta",
+  "acc_examples_query_node": "Exemplos. Consulta ao nó via Python (REST API e SDK).",
+  "acc_examples_query_edge": "Exemplos. Consulta à aresta via Python (REST API e SDK).",
+  "copy_paste_hint": "Copie/cole esta topologia de teste na janela de entrada acima"
 }

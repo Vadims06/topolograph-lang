@@ -2,7 +2,7 @@
   "_meta": {
     "title": "已保存拓扑图上的 OSPF/IS-IS 组与 VRF",
     "description": "拓扑图上的 OSPF/IS-IS VRF 实例",
-    "og_title": "组与 VRF 集合 — Topolograph",
+    "og_title": "组与 VRF 集合 - Topolograph",
     "og_description": "为图快照创建组或 VRF，导入主机映射，并将路由器分配到组中。",
     "meta_keywords": "topolograph, OSPF, IS-IS, VRF 实例, 组"
   },

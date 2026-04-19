@@ -8,6 +8,7 @@
     "API", "REST", "SDK", "Python", "LSA1", "LSA2", "LSA3", "LSA4", "LSA5", "LSA6", "LSA7", "LSA8", "LSA9", "LSA10", "Opaque-area", "verizon",
     "src", "dst", "cost", "color", "dashes", "directed", "label",
     "ha_role", "primary", "dc1", "lsdb_samples",
-    "Cisco_ospf.txt", "Juniper_ospf.txt"
+    "Cisco_ospf.txt", "Juniper_ospf.txt",
+    "Docker-compose"
   ]
 }

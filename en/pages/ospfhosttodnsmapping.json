@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "title": "OSPF Router Hostnames — IP to Name Mapping on Graph",
+    "title": "OSPF Router Hostnames - IP to Name Mapping on Graph",
     "description": "Set router hostnames for saved OSPF graphs, optionally use Docker DNS, migrate names between uploads, and update graph labels.",
-    "og_title": "Router Hostnames — OSPF Graph Labels",
+    "og_title": "Router Hostnames - OSPF Graph Labels",
     "og_description": "Map OSPF router IDs to hostnames on the topology, sync from CSV or NetBox, and migrate names between saved graphs.",
     "meta_keywords": "topolograph, OSPF, hostname, DNS, router ID, graph labels, NetBox"
   },

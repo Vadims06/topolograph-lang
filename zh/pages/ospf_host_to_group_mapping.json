@@ -2,7 +2,7 @@
   "_meta": {
     "title": "将 OSPF/IS-IS 主机分配到组或 VRF",
     "description": "OSPF/IS-IS VRF 实例映射",
-    "og_title": "主机到组成员关系 — Topolograph",
+    "og_title": "主机到组成员关系 - Topolograph",
     "og_description": "为每个图快照将路由器映射到组或 VRF，在上传间迁移成员关系，并从 CSV 或 NetBox 导入。",
     "meta_keywords": "topolograph, OSPF, IS-IS, VRF 实例, 组"
   },

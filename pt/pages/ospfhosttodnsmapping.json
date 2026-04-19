@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "title": "Nomes de host de roteadores OSPF — mapeamento de IP para nome no grafo",
+    "title": "Nomes de host de roteadores OSPF - mapeamento de IP para nome no grafo",
     "description": "Defina nomes de host para roteadores em grafos OSPF salvos, use opcionalmente DNS do Docker, migre nomes entre uploads e atualize rótulos do grafo.",
-    "og_title": "Nomes de host de roteadores — Rótulos do grafo OSPF",
+    "og_title": "Nomes de host de roteadores - Rótulos do grafo OSPF",
     "og_description": "Mapeie IDs de roteadores OSPF para nomes de host na topologia, sincronize a partir de CSV ou NetBox e migre nomes entre grafos salvos.",
     "meta_keywords": "topolograph, OSPF, nome de host, DNS, ID de roteador, rótulos de grafo, NetBox"
   },

@@ -102,7 +102,7 @@
   "alt_backup": "Topolograph: caminho de backup OSPF",
 
   "h5_cost_on_fly": "Reconstrução do caminho mais curto alterando o custo OSPF dinamicamente",
-  "p_cost_1": "É possível alterar o custo OSPF de qualquer link. Clique com o botão direito sobre uma aresta e um formulário aparecerá. Digite o novo custo. Imagine que precisamos redirecionar o fluxo de tráfego do link 123.10.10.10 — 123.30.30.30 para outro link.",
+  "p_cost_1": "É possível alterar o custo OSPF de qualquer link. Clique com o botão direito sobre uma aresta e um formulário aparecerá. Digite o novo custo. Imagine que precisamos redirecionar o fluxo de tráfego do link 123.10.10.10 - 123.30.30.30 para outro link.",
   "alt_cost_prepare": "Topolograph: preparação para alteração do custo OSPF",
   "p_cost_2": "Clique com o botão direito na aresta destacada e defina 12. Obteremos um novo fluxo de tráfego com o novo custo OSPF.",
   "alt_cost_result": "Topolograph: resultado da alteração do custo OSPF",
@@ -253,7 +253,7 @@
   "p_api_credentials": "É necessário criar uma conta com email e senha na página Login/Registro, além de adicionar seu IP/rede de origem à lista de redes autorizadas na aba API.",
 
   "h5_api_upload": "Enviar topologia OSPF via API",
-  "p_api_upload_intro": "Salve a saída dos comandos com LSA1, LSA2, LSA5 em um único arquivo — cisco_lsdb_output.txt",
+  "p_api_upload_intro": "Salve a saída dos comandos com LSA1, LSA2, LSA5 em um único arquivo - cisco_lsdb_output.txt",
   "p_api_upload_python": "Com Python lemos o conteúdo do arquivo e o enviamos (requisição POST) para o Topolograph.",
   "p_api_upload_returns": "A resposta contém:",
   "li_api_diff": "diferença em relação aos grafos enviados anteriormente",

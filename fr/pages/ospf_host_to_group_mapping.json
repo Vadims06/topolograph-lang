@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "title": "Assigner des hôtes OSPF/IS-IS aux groupes ou VRF",
+    "description": "Correspondance des instances VRF OSPF/IS-IS",
+    "og_title": "Appartenance au groupe d'hôtes - Topolograph",
+    "og_description": "Associez des routeurs à des groupes ou des VRF pour chaque instantané de graphe, migrez l'appartenance entre les chargements et importez depuis CSV ou NetBox.",
+    "meta_keywords": "topolograph, OSPF, IS-IS, VRF, groupe"
+  },
+  "saved_graphs_pick_before": "Choisissez un parmi ",
+  "saved_graphs_pick_after": " graphes sauvegardés",
+  "btn_load_hosts": "Charger les hôtes",
+  "th_membership_from_graph": "Appartenance au groupe d'hôtes depuis le graphe",
+  "th_action": "Action",
+  "th_to_hosts": "vers les hôtes",
+  "btn_migrate": "Migrer",
+  "empty_graphs_message": "Aucun graphe précédemment chargé",
+  "link_all_vrfs": "Tous les VRF",
+  "link_all_groups": "Tous les groupes",
+  "link_csv_import_hosts": "Importer des hôtes depuis CSV",
+  "link_netbox_sync": "Synchroniser avec Netbox",
+  "th_host": "Hôte",
+  "th_hostname": "Nom d'hôte",
+  "th_vrf": "VRF",
+  "th_master_device_id": "Identifiant de l'équipement maître",
+  "th_group": "Groupe"
+}

@@ -32,7 +32,7 @@
   "feat_focus": "使用「聚焦节点」浏览网络",
   "feat_compare": "比较不同时间的网络状态",
   "feat_asymmetric": "发现非对称路径",
-  "feat_te": "IS-IS 与 OSPF（FRR opaque-area）的流量工程链路属性——按带宽、TE 度量与管理组筛选分析",
+  "feat_te": "IS-IS 与 OSPF（FRR opaque-area）的流量工程链路属性-按带宽、TE 度量与管理组筛选分析",
   "demo_heading": "演示",
   "demo_img_alt": "在 Topolograph 中构建 OSPF 最短路径与备份路径。",
   "features_heading": "功能",

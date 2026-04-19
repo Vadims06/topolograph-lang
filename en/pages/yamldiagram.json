@@ -5,5 +5,21 @@
     "og_title": "Create YAML-based topology or edit existing OSPF/IS-IS",
     "og_description": "Build a network graph from scratch, edit OSPF/IS-IS topology online or via REST API.",
     "meta_keywords": "topolograph, build topology online, YAML network diagram, OSPF design"
-  }
+  },
+  "heading_yaml_panel": "Network diagram/topology YAML file",
+  "heading_graph": "Graph",
+  "network_reaction_label": "Network reaction on applied changes",
+  "saved_graphs_pick_before": "Choose one out of ",
+  "saved_graphs_pick_after": " saved graphs",
+  "btn_load_diagram": "Load diagram",
+  "textarea_placeholder": "Put Yaml file here:\nnodes:\n    10.10.10.2:\n    10.10.10.3:\nedges:\n    - dst: 10.10.10.2\n      src: 10.10.10.3\nor edit already uploaded OSPF/IS-IS topology earlier \n...more examples you can find below",
+  "btn_show_graph": "Show graph",
+  "btn_save_graph": "Save graph",
+  "acc_node_attributes": "Node attributes",
+  "acc_edge_attributes": "Edge attributes",
+  "acc_examples_basic": "Examples. Basic Yaml based topology",
+  "acc_examples_with_attrs": "Examples. Yaml based topology with Node and Edge attributes",
+  "acc_examples_query_node": "Examples. Query over node via Python (REST API & SDK).",
+  "acc_examples_query_edge": "Examples. Query over edge via Python (REST API & SDK).",
+  "copy_paste_hint": "Copy/paste this test topology to the input window above"
 }

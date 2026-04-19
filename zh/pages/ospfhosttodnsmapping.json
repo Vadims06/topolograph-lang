@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "title": "OSPF 路由器主机名 — 将 IP 映射到图中的名称",
+    "title": "OSPF 路由器主机名 - 将 IP 映射到图中的名称",
     "description": "为已保存的 OSPF 图设置路由器主机名，可选使用 Docker DNS，在上传间迁移主机名，并更新图标签。",
-    "og_title": "路由器主机名 — OSPF 拓扑图标签",
+    "og_title": "路由器主机名 - OSPF 拓扑图标签",
     "og_description": "将 OSPF 路由器 ID 映射到拓扑中的主机名，从 CSV 或 NetBox 同步，并在已保存的图之间迁移名称。",
     "meta_keywords": "topolograph, OSPF, 主机名, DNS, 路由器 ID, 图标签, NetBox"
   },

@@ -2,7 +2,7 @@
   "_meta": {
     "title": "Grupos OSPF/IS-IS e VRF em grafos salvos",
     "description": "Instâncias VRF de OSPF/IS-IS no grafo",
-    "og_title": "Grupos e conjuntos VRF — Topolograph",
+    "og_title": "Grupos e conjuntos VRF - Topolograph",
     "og_description": "Crie grupos ou VRFs para snapshots do grafo, importe mapeamentos de hosts e atribua roteadores a grupos.",
     "meta_keywords": "topolograph, OSPF, IS-IS, VRF, grupo"
   },

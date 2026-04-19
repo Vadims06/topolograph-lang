@@ -2,7 +2,7 @@
   "_meta": {
     "title": "Atribuir hosts OSPF/IS-IS a grupos ou VRF",
     "description": "Mapeamento de instâncias VRF de OSPF/IS-IS",
-    "og_title": "Associação de hosts a grupos — Topolograph",
+    "og_title": "Associação de hosts a grupos - Topolograph",
     "og_description": "Mapeie roteadores para grupos ou VRFs em cada snapshot do grafo, migre associações entre uploads e importe de CSV ou NetBox.",
     "meta_keywords": "topolograph, OSPF, IS-IS, VRF, grupo"
   },

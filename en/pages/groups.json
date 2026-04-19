@@ -2,7 +2,7 @@
   "_meta": {
     "title": "OSPF/IS-IS Groups and VRF on Saved Graphs",
     "description": "OSPF/IS-IS VRF instances on the graph",
-    "og_title": "Groups and VRF Sets — Topolograph",
+    "og_title": "Groups and VRF Sets - Topolograph",
     "og_description": "Create groups or VRFs for graph snapshots, import host mappings, and assign routers to groups.",
     "meta_keywords": "topolograph, OSPF, IS-IS, VRF, group"
   },

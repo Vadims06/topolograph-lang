@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "title": "Visualisation LSDB OSPF/OSPFv3/IS-IS en ligne pour la construction de graphes réseau",
+    "description": "Visualisation OSPF/IS-IS en ligne pour Arista, Cisco, Fortinet, Juniper, Nokia, Quagga, Bird, MikroTik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus",
+    "og_title": "Visualisation LSDB OSPF/OSPFv3/IS-IS en ligne",
+    "og_description": "Chargez le LSDB OSPF/IS-IS depuis Arista, Cisco, Juniper, Nokia, Huawei, FRR et plus pour construire un graphe réseau interactif, trouver les chemins les plus courts et analyser les chemins de secours hors ligne.",
+    "meta_keywords": "topolograph, OSPF, OSPFv3, IS-IS, LSDB, En ligne, Arista, Cisco, Fortinet, Juniper, Quagga, Bird, Nokia, Mikrotik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus"
+  },
+  "hero_h1": "Chargez votre LSDB OSPF/ISIS",
+  "hero_lead_p1": "Analysez la topologie OSPF/ISIS hors ligne. Enregistrez le LSDB depuis la sortie du routeur et chargez-le en fichier TXT, ou utilisez l'API pour le faire de manière programmatique. Les commandes pour les fournisseurs pris en charge sont ",
+  "hero_lead_here": "ici",
+  "hero_lead_p2": ". Les LSDB de plusieurs équipements ne peuvent être chargés que via l'API ",
+  "hero_lead_example": "exemple",
+  "hero_lead_p3": ".",
+  "another_vendor_label": "Autre fournisseur.",
+  "another_vendor_hint": "Écrivez-moi via n'importe quel Contact que vous préférez ou suivez simplement ce ",
+  "another_vendor_github": "lien GitHub",
+  "compare_heading": "Comparer l'état de votre réseau",
+  "compare_footer": "Chargez votre réseau avant la fenêtre de maintenance et juste après - découvrez la différence dans votre réseau.",
+  "saved_graphs_pick_before": "Choisissez un parmi ",
+  "saved_graphs_pick_after": " graphes sauvegardés",
+  "graph_description_placeholder": "avant la mise à niveau de R123",
+  "graph_description_aria": "Nom ou description du graphe",
+  "include_all_title": "Inclure tous les graphes promiscueux",
+  "include_all_label": "Inclure tout",
+  "compare_graphs_submit": "Comparer les graphes",
+  "scale_density_button_title": "Densité de mise en page du graphe"
+}

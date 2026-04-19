@@ -5,5 +5,21 @@
     "og_title": "Создание топологии на основе YAML или редактирование OSPF/IS-IS",
     "og_description": "Постройте граф сети с нуля, редактируйте топологию OSPF/IS-IS онлайн или через REST API.",
     "meta_keywords": "topolograph, построение топологии онлайн, YAML-схема сети, проектирование OSPF"
-  }
+  },
+  "heading_yaml_panel": "YAML-файл схемы сети / топологии",
+  "heading_graph": "Граф",
+  "network_reaction_label": "Реакция сети на применённые изменения",
+  "saved_graphs_pick_before": "Выберите один из ",
+  "saved_graphs_pick_after": " сохранённых графов",
+  "btn_load_diagram": "Загрузить схему",
+  "textarea_placeholder": "Вставьте YAML сюда:\nnodes:\n    10.10.10.2:\n    10.10.10.3:\nedges:\n    - dst: 10.10.10.2\n      src: 10.10.10.3\nили отредактируйте уже загруженную топологию OSPF/IS-IS\n…другие примеры ниже",
+  "btn_show_graph": "Показать граф",
+  "btn_save_graph": "Сохранить граф",
+  "acc_node_attributes": "Атрибуты узла",
+  "acc_edge_attributes": "Атрибуты ребра",
+  "acc_examples_basic": "Примеры. Базовая топология на YAML",
+  "acc_examples_with_attrs": "Примеры. YAML-топология с атрибутами узлов и рёбер",
+  "acc_examples_query_node": "Примеры. Запрос узла через Python (REST API и SDK).",
+  "acc_examples_query_edge": "Примеры. Запрос ребра через Python (REST API и SDK).",
+  "copy_paste_hint": "Скопируйте тестовую топологию в поле ввода выше"
 }

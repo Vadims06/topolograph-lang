@@ -46,7 +46,7 @@
   "notify_not_fault_tolerant": "A rede não é tolerante a falhas",
   "notify_physics_disabled": "A física foi desativada. Mova os nós um a um sem afetar os outros.",
   "notify_check_passed": "A verificação foi aprovada!",
-  "notify_ecmp_failed": "Existem {0} links ECMP que não passaram nesta verificação. Se um dos links ECMP com menor custo cair — o caminho de backup será redirecionado por outros hosts, não por este ECMP",
+  "notify_ecmp_failed": "Existem {0} links ECMP que não passaram nesta verificação. Se um dos links ECMP com menor custo cair - o caminho de backup será redirecionado por outros hosts, não por este ECMP",
   "notify_create_groups": "Por favor, crie grupos na aba Dispositivos e atribua dispositivos a eles!",
   "notify_interarea_failed": "Existem {0} caminhos de backup que passam por terceiros locais se o link principal entre dois locais cair.",
   "notify_no_asymmetric": "O grafo não possui arestas/caminhos assimétricos.",
