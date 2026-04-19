@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "title": "Criar topologia baseada em YAML ou editar OSPF/IS-IS existente",
+    "description": "Construa uma topologia de rede a partir de um arquivo YAML online, ou modifique um grafo OSPF/IS-IS existente e gere relatórios com base nas alterações.",
+    "og_title": "Criar topologia baseada em YAML ou editar OSPF/IS-IS existente",
+    "og_description": "Construa um grafo de rede do zero, edite a topologia OSPF/IS-IS online ou via REST API.",
+    "meta_keywords": "topolograph, construir topologia online, diagrama de rede YAML, design OSPF"
+  }
+}

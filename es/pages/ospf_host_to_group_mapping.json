@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "title": "Asignar hosts OSPF/IS-IS a grupos o VRF",
+    "description": "Mapeo de instancias VRF de OSPF/IS-IS",
+    "og_title": "Membresía de hosts en grupos — Topolograph",
+    "og_description": "Asigne routers a grupos o VRF para cada instantánea del grafo, migre membresías entre cargas e importe desde CSV o NetBox.",
+    "meta_keywords": "topolograph, OSPF, IS-IS, VRF, grupo"
+  },
+  "saved_graphs_pick_before": "Elija uno de ",
+  "saved_graphs_pick_after": " grafos guardados",
+  "btn_load_hosts": "Cargar hosts",
+  "th_membership_from_graph": "Membresía de hosts en grupos del grafo",
+  "th_action": "Acción",
+  "th_to_hosts": "a hosts",
+  "btn_migrate": "Migrar",
+  "empty_graphs_message": "No hay grafos cargados anteriormente",
+  "link_all_vrfs": "Todos los VRF",
+  "link_all_groups": "Todos los grupos",
+  "link_csv_import_hosts": "Importar hosts desde CSV",
+  "link_netbox_sync": "Sincronizar con Netbox",
+  "th_host": "Host",
+  "th_hostname": "Nombre de host",
+  "th_vrf": "VRF",
+  "th_master_device_id": "ID de dispositivo maestro",
+  "th_group": "Grupo"
+}

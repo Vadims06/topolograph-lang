@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "title": "Visualización en línea de LSDB OSPF/OSPFv3/IS-IS para construcción de grafo de red",
+    "description": "Visualización en línea de OSPF/IS-IS para Arista, Cisco, Fortinet, Juniper, Nokia, Quagga, Bird, MikroTik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus",
+    "og_title": "Visualización en línea de LSDB OSPF/OSPFv3/IS-IS",
+    "og_description": "Sube LSDB OSPF/IS-IS de Arista, Cisco, Juniper, Nokia, Huawei, FRR y más para construir un grafo de red interactivo, encontrar caminos más cortos y analizar caminos de respaldo sin conexión.",
+    "meta_keywords": "topolograph, OSPF, OSPFv3, IS-IS, LSDB, Online, Arista, Cisco, Fortinet, Juniper, Quagga, Bird, Nokia, Mikrotik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus"
+  },
+  "hero_h1": "Sube tu LSDB OSPF/ISIS",
+  "hero_lead_p1": "Analiza la topología OSPF/ISIS sin conexión. Guarda el LSDB de la salida del router y súbelo como archivo TXT, o usa la API para hacerlo programáticamente. Los comandos para los proveedores compatibles están ",
+  "hero_lead_here": "aquí",
+  "hero_lead_p2": ". Los LSDBs de múltiples dispositivos solo pueden subirse mediante la API ",
+  "hero_lead_example": "ejemplo",
+  "hero_lead_p3": ".",
+  "another_vendor_label": "Otro proveedor.",
+  "another_vendor_hint": "Escríbeme usando cualquier contacto que prefieras o sigue este ",
+  "another_vendor_github": "enlace de GitHub",
+  "compare_heading": "Compara el estado de tu red",
+  "compare_footer": "Sube tu red antes de la ventana de mantenimiento y justo después — descubre la diferencia en tu red.",
+  "saved_graphs_pick_before": "Elige uno de los ",
+  "saved_graphs_pick_after": " grafos guardados",
+  "graph_description_placeholder": "antes de la actualización del R123",
+  "graph_description_aria": "Nombre o descripción del grafo",
+  "include_all_title": "Incluir todos los grafos promiscuos",
+  "include_all_label": "Incluir todos",
+  "compare_graphs_submit": "Comparar grafos",
+  "scale_density_button_title": "Densidad del diseño del grafo"
+}

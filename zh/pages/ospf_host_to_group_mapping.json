@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "title": "将 OSPF/IS-IS 主机分配到组或 VRF",
+    "description": "OSPF/IS-IS VRF 实例映射",
+    "og_title": "主机到组成员关系 — Topolograph",
+    "og_description": "为每个图快照将路由器映射到组或 VRF，在上传间迁移成员关系，并从 CSV 或 NetBox 导入。",
+    "meta_keywords": "topolograph, OSPF, IS-IS, VRF 实例, 组"
+  },
+  "saved_graphs_pick_before": "从 ",
+  "saved_graphs_pick_after": " 个已保存的拓扑图中选择一个",
+  "btn_load_hosts": "加载主机",
+  "th_membership_from_graph": "图中的主机到组成员关系",
+  "th_action": "操作",
+  "th_to_hosts": "到主机",
+  "btn_migrate": "迁移",
+  "empty_graphs_message": "没有之前上传的拓扑图",
+  "link_all_vrfs": "所有 VRF",
+  "link_all_groups": "所有组",
+  "link_csv_import_hosts": "CSV 导入主机",
+  "link_netbox_sync": "Netbox 同步",
+  "th_host": "主机",
+  "th_hostname": "主机名",
+  "th_vrf": "VRF",
+  "th_master_device_id": "主设备 ID",
+  "th_group": "组"
+}

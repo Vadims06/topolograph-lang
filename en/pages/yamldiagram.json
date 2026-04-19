@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "title": "Create YAML-based topology or edit existing OSPF/IS-IS",
+    "description": "Build a network topology from a YAML file online, or modify an existing OSPF/IS-IS graph and generate reports based on the changes.",
+    "og_title": "Create YAML-based topology or edit existing OSPF/IS-IS",
+    "og_description": "Build a network graph from scratch, edit OSPF/IS-IS topology online or via REST API.",
+    "meta_keywords": "topolograph, build topology online, YAML network diagram, OSPF design"
+  }
+}

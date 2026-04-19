@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "title": "Migrar nombres de host y membresía en grupos entre grafos",
+    "description": "Copie nombres de host y asignaciones de grupos de un grafo OSPF/IS-IS guardado antiguo a la última carga.",
+    "og_title": "Migración de nombres de host y membresía en grupos",
+    "og_description": "Después de configurar nombres de host y grupos en una instantánea del grafo, mígrelos a la última carga en un solo paso.",
+    "meta_keywords": "topolograph, OSPF, IS-IS, nombre de host, migración de grupos, instantánea de grafo"
+  },
+  "heading_main": "Migración de nombres de host y membresía en grupos",
+  "intro_footer": "Una vez que haya definido los nombres de host y asignado cada router a su grupo, copie estos valores al último grafo cargado.",
+  "th_migrate_from": "Migrar nombres de host y membresía en grupos desde el grafo",
+  "th_action": "Acción",
+  "th_to_hosts": "a hosts",
+  "btn_migrate": "Migrar",
+  "empty_graphs_message": "No hay grafos cargados anteriormente"
+}

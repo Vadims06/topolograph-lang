@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "title": "OSPF/IS-IS Real-Time Monitoring",
+    "description": "Track OSPF/IS-IS topology changes in real-time: neighbor adjacency up/down, link cost changes, networks appeared or disappeared.",
+    "og_title": "OSPF/IS-IS Real-Time Monitoring",
+    "og_description": "Topolograph tracks OSPF/IS-IS topology changes: neighbor adjacency up/down, link cost changes, networks appeared/disappeared from the topology. BGP-LS for OSPF supported since v2.59.",
+    "meta_keywords": "topolograph, OSPF monitoring, IS-IS monitoring, OSPF topology, OSPF BGP-LS topology, IS-IS BGP-LS topology, IS-IS BGP-LS graph"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "title": "OSPF Router Hostnames — IP to Name Mapping on Graph",
+    "description": "Set router hostnames for saved OSPF graphs, optionally use Docker DNS, migrate names between uploads, and update graph labels.",
+    "og_title": "Router Hostnames — OSPF Graph Labels",
+    "og_description": "Map OSPF router IDs to hostnames on the topology, sync from CSV or NetBox, and migrate names between saved graphs.",
+    "meta_keywords": "topolograph, OSPF, hostname, DNS, router ID, graph labels, NetBox"
+  },
+  "heading_main": "Router Hostnames",
+  "intro_footer": "The Docker version of the site has a DNS server as an option (specify the DNS IP in docker-compose.override.yml). However, not all OSPF RIDs may be registered in DNS, so there is an option here to replace the IP node label on the graph with its hostname.",
+  "saved_graphs_pick_before": "Choose one of ",
+  "saved_graphs_pick_after": " saved graphs",
+  "btn_load_hosts": "Load Hosts",
+  "copy_section_heading": "Copy Hostnames",
+  "migrate_footer": "Set hostnames once, then get a fresh copy of the OSPF topology and copy/migrate the network node hostnames from the graph where they are configured to the latest uploaded graph.",
+  "th_hosts_from_graph": "Hosts from graph",
+  "th_action": "Action",
+  "th_to_hosts": "to hosts",
+  "btn_migrate": "Migrate",
+  "empty_graphs_message": "No previously uploaded graphs",
+  "btn_update_hostnames": "Update hostnames on graph",
+  "link_netbox_sync": "Sync with Netbox",
+  "link_csv_import": "Import hosts from CSV",
+  "th_host": "Host",
+  "th_hostname": "Hostname"
+}

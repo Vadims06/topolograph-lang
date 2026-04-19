@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "title": "OSPF/IS-IS Groups and VRF on Saved Graphs",
+    "description": "OSPF/IS-IS VRF instances on the graph",
+    "og_title": "Groups and VRF Sets — Topolograph",
+    "og_description": "Create groups or VRFs for graph snapshots, import host mappings, and assign routers to groups.",
+    "meta_keywords": "topolograph, OSPF, IS-IS, VRF, group"
+  },
+  "saved_graphs_pick_before": "Choose one of ",
+  "saved_graphs_pick_after": " saved graphs",
+  "btn_load_groups": "Load Groups",
+  "btn_load_vrf": "Load VRF",
+  "btn_create_group": "Create Group",
+  "btn_create_vrf": "Create VRF",
+  "link_import": "Import",
+  "btn_delete": "Delete",
+  "link_assign_hosts": "Assign hosts to their groups",
+  "th_group_name": "Group Name",
+  "th_device_num": "Number of Devices"
+}

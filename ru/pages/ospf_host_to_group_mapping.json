@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "title": "Назначение хостов OSPF/IS-IS в группы или VRF",
+    "description": "Сопоставление экземпляров VRF OSPF/IS-IS",
+    "og_title": "Членство хостов в группах — Topolograph",
+    "og_description": "Сопоставляйте маршрутизаторы с группами или VRF для каждого снимка графа, переносите членство между загрузками и импортируйте из CSV или NetBox.",
+    "meta_keywords": "topolograph, OSPF, IS-IS, VRF, группа"
+  },
+  "saved_graphs_pick_before": "Выберите один из ",
+  "saved_graphs_pick_after": " сохранённых графов",
+  "btn_load_hosts": "Загрузить хосты",
+  "th_membership_from_graph": "Членство хостов в группах из графа",
+  "th_action": "Действие",
+  "th_to_hosts": "в хосты",
+  "btn_migrate": "Перенести",
+  "empty_graphs_message": "Нет ранее загруженных графов",
+  "link_all_vrfs": "Все VRF",
+  "link_all_groups": "Все группы",
+  "link_csv_import_hosts": "Импорт хостов из CSV",
+  "link_netbox_sync": "Синхронизация с Netbox",
+  "th_host": "Хост",
+  "th_hostname": "Имя хоста",
+  "th_vrf": "VRF",
+  "th_master_device_id": "ID главного устройства",
+  "th_group": "Группа"
+}

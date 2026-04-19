@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "title": "已保存拓扑图上的 OSPF/IS-IS 组与 VRF",
+    "description": "拓扑图上的 OSPF/IS-IS VRF 实例",
+    "og_title": "组与 VRF 集合 — Topolograph",
+    "og_description": "为图快照创建组或 VRF，导入主机映射，并将路由器分配到组中。",
+    "meta_keywords": "topolograph, OSPF, IS-IS, VRF 实例, 组"
+  },
+  "saved_graphs_pick_before": "从 ",
+  "saved_graphs_pick_after": " 个已保存的拓扑图中选择一个",
+  "btn_load_groups": "加载组",
+  "btn_load_vrf": "加载 VRF",
+  "btn_create_group": "创建组",
+  "btn_create_vrf": "创建 VRF",
+  "link_import": "导入",
+  "btn_delete": "删除",
+  "link_assign_hosts": "将主机分配到对应组",
+  "th_group_name": "组名称",
+  "th_device_num": "设备数量"
+}

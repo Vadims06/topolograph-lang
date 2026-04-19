@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "title": "在图之间迁移主机名与组成员关系",
+    "description": "将主机名和组分配从旧的已保存 OSPF/IS-IS 图复制到最新上传的图。",
+    "og_title": "主机名与组成员关系迁移",
+    "og_description": "在一个图快照上设置主机名和组后，一步将其迁移到最新上传的图。",
+    "meta_keywords": "topolograph, OSPF, IS-IS, 主机名, 组迁移, 图快照"
+  },
+  "heading_main": "主机名与组成员关系迁移",
+  "intro_footer": "设置主机名并将每台路由器分配到其组后，将这些值复制到最新上传的拓扑图中。",
+  "th_migrate_from": "从以下拓扑图迁移主机名与组成员关系",
+  "th_action": "操作",
+  "th_to_hosts": "到主机",
+  "btn_migrate": "迁移",
+  "empty_graphs_message": "没有之前上传的拓扑图"
+}

@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "title": "Monitoreo en tiempo real OSPF/IS-IS",
+    "description": "Sigue los cambios de topología OSPF/IS-IS en tiempo real: adyacencia de vecinos activa/inactiva, cambios de coste de enlace, redes que aparecieron o desaparecieron.",
+    "og_title": "Monitoreo en tiempo real OSPF/IS-IS",
+    "og_description": "Topolograph sigue los cambios de topología OSPF/IS-IS: adyacencia de vecinos activa/inactiva, cambios de coste de enlace, redes que aparecieron/desaparecieron de la topología. BGP-LS para OSPF compatible desde la versión v2.59.",
+    "meta_keywords": "topolograph, monitoreo OSPF, monitoreo IS-IS, topología OSPF, topología OSPF BGP-LS, topología IS-IS BGP-LS, grafo IS-IS BGP-LS"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "title": "Визуализация LSDB OSPF/OSPFv3/IS-IS онлайн для построения графа сети",
+    "description": "Онлайн-визуализация OSPF/IS-IS для Arista, Cisco, Fortinet, Juniper, Nokia, Quagga, Bird, MikroTik, Huawei, Palo Alto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus",
+    "og_title": "Онлайн-визуализация LSDB OSPF/OSPFv3/IS-IS",
+    "og_description": "Загрузите LSDB OSPF/IS-IS с устройств Arista, Cisco, Juniper, Nokia, Huawei, FRR и других для построения интерактивного графа сети, поиска кратчайших и резервных путей офлайн.",
+    "meta_keywords": "topolograph, OSPF, OSPFv3, IS-IS, LSDB, онлайн, Arista, Cisco, Fortinet, Juniper, Quagga, Bird, Nokia, Mikrotik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus"
+  },
+  "hero_h1": "Загрузите LSDB OSPF/IS-IS",
+  "hero_lead_p1": "Анализируйте топологию OSPF/IS-IS офлайн. Сохраните LSDB из вывода маршрутизатора и загрузите его как TXT или используйте API. Команды для поддерживаемых вендоров — ",
+  "hero_lead_here": "здесь",
+  "hero_lead_p2": ". LSDB с нескольких устройств можно загрузить только через API — ",
+  "hero_lead_example": "пример",
+  "hero_lead_p3": ".",
+  "another_vendor_label": "Другой вендор.",
+  "another_vendor_hint": "Напишите через любой удобный контакт из раздела «Контакты» или перейдите по ",
+  "another_vendor_github": "ссылке на GitHub",
+  "compare_heading": "Сравнивайте состояние сети",
+  "compare_footer": "Загрузите снимок сети перед началом и после окончания обслуживания — посмотрите, что изменилось в вашей сети.",
+  "saved_graphs_pick_before": "Выберите один из ",
+  "saved_graphs_pick_after": " сохранённых графов",
+  "graph_description_placeholder": "до обновления R123",
+  "graph_description_aria": "Имя или описание графа",
+  "include_all_title": "Учитывать все promiscuous-графы",
+  "include_all_label": "Включить все",
+  "compare_graphs_submit": "Сравнить графы",
+  "scale_density_button_title": "Плотность раскладки графа"
+}

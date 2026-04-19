@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "title": "在线构建网络图：OSPF/OSPFv3/IS-IS LSDB 可视化",
+    "description": "面向 Arista、Cisco、Fortinet、Juniper、Nokia、Quagga、Bird、MikroTik、Huawei、Palo Alto、Ubiquiti、Extreme、Ericsson、FRR、Ruckus 等设备的 OSPF/IS-IS 在线可视化",
+    "og_title": "OSPF/OSPFv3/IS-IS LSDB 在线可视化",
+    "og_description": "上传来自 Arista、Cisco、Juniper、Nokia、Huawei、FRR 等设备的 OSPF/IS-IS LSDB，构建交互式网络图，离线查找最短路径与备份路径。",
+    "meta_keywords": "topolograph, OSPF, OSPFv3, IS-IS, LSDB, 在线, Arista, Cisco, Fortinet, Juniper, Quagga, Bird, Nokia, Mikrotik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus"
+  },
+  "hero_h1": "上传您的 OSPF/IS-IS LSDB",
+  "hero_lead_p1": "离线分析 OSPF/IS-IS 拓扑。将路由器上的 LSDB 输出保存为 TXT 并上传，或通过 API 自动化上传。各厂商支持的命令见 ",
+  "hero_lead_here": "此处",
+  "hero_lead_p2": "。多设备的 LSDB 仅可通过 API 上传，参见 ",
+  "hero_lead_example": "示例",
+  "hero_lead_p3": "。",
+  "another_vendor_label": "其他厂商。",
+  "another_vendor_hint": "请通过任意「联系方式」与我联系，或访问 ",
+  "another_vendor_github": "GitHub 链接",
+  "compare_heading": "对比网络状态",
+  "compare_footer": "在维护窗口前后分别上传网络快照，查看网络中的变化。",
+  "saved_graphs_pick_before": "从已保存的 ",
+  "saved_graphs_pick_after": " 个图中选择一个",
+  "graph_description_placeholder": "例如 R123 升级前",
+  "graph_description_aria": "图名称或说明",
+  "include_all_title": "包含所有 promiscuous 图",
+  "include_all_label": "全部包含",
+  "compare_graphs_submit": "对比图",
+  "scale_density_button_title": "图布局密度"
+}

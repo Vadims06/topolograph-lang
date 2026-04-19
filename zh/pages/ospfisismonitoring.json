@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "title": "OSPF/IS-IS 实时监控",
+    "description": "实时追踪 OSPF/IS-IS 拓扑变化：邻居关系变化、链路开销变更、网络出现或消失。",
+    "og_title": "OSPF/IS-IS 实时监控",
+    "og_description": "Topolograph 追踪 OSPF/IS-IS 拓扑变化：邻居关系变化、链路开销变更、网络出现或消失。自 v2.59 起支持 OSPF 的 BGP-LS。",
+    "meta_keywords": "topolograph, OSPF 监控, IS-IS 监控, OSPF 拓扑, OSPF BGP-LS, IS-IS BGP-LS"
+  }
+}

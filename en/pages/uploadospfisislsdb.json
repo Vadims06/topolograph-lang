@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "title": "OSPF/OSPFv3/IS-IS LSDB visualization online for building Network Graph",
+    "description": "OSPF/IS-IS visualization online for Arista, Cisco, Fortinet, Juniper, Nokia, Quagga, Bird, MikroTik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus",
+    "og_title": "OSPF/OSPFv3/IS-IS LSDB visualization online",
+    "og_description": "Upload OSPF/IS-IS LSDB from Arista, Cisco, Juniper, Nokia, Huawei, FRR and more to build an interactive network graph, find shortest paths, and analyze backup paths offline.",
+    "meta_keywords": "topolograph, OSPF, OSPFv3, IS-IS, LSDB, Online, Arista, Cisco, Fortinet, Juniper, Quagga, Bird, Nokia, Mikrotik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus"
+  },
+  "hero_h1": "Upload your OSPF/ISIS LSDB",
+  "hero_lead_p1": "Analyze OSPF/ISIS topology offline. Save LSDB from router's output and upload it as TXT file, or use API to do it programmatically. Commands for supported vendors are ",
+  "hero_lead_here": "here",
+  "hero_lead_p2": ". LSDBs from multiple devices can be uploaded via API only ",
+  "hero_lead_example": "example",
+  "hero_lead_p3": ".",
+  "another_vendor_label": "Another vendor.",
+  "another_vendor_hint": "Write me using any Contacts you prefer or just follow this ",
+  "another_vendor_github": "GitHub link",
+  "compare_heading": "Compare state of your network",
+  "compare_footer": "Upload your network before maintenance window and right after it - found out the difference in your network.",
+  "saved_graphs_pick_before": "Choose one out of ",
+  "saved_graphs_pick_after": " saved graphs",
+  "graph_description_placeholder": "before R123 upgrade",
+  "graph_description_aria": "Graph name or description",
+  "include_all_title": "Include all promiscuous graphs",
+  "include_all_label": "Include all",
+  "compare_graphs_submit": "Compare graphs",
+  "scale_density_button_title": "Graph layout density"
+}

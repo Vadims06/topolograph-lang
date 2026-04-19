@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "title": "基于 YAML 创建拓扑或编辑现有 OSPF/IS-IS",
+    "description": "在线从 YAML 文件构建网络拓扑，或修改现有 OSPF/IS-IS 图并根据变更生成报告。",
+    "og_title": "基于 YAML 创建拓扑或编辑现有 OSPF/IS-IS",
+    "og_description": "从零构建网络图，或在线/通过 REST API 编辑 OSPF/IS-IS 拓扑。",
+    "meta_keywords": "topolograph, 在线构建拓扑, YAML 网络图, OSPF 设计"
+  }
+}

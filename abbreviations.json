@@ -1,0 +1,13 @@
+{
+  "protected": [
+    "OSPF", "OSPFv3", "IS-IS", "BGP-LS", "LSA", "LSP", "PDU",
+    "LSDB", "SPT", "SPTs", "SPF", "TE", "Topolograph", "MCP", "FIB", "YAML",
+    "NetBox", "TextFSM", "IPv4", "IPv6", "ECMP", "LFA", "TI-LFA",
+    "MPLS", "VRF", "ABR", "ASBR", "DR", "BDR", "MTU", "RID", "FRR", "Huawei", "Juniper", "Cisco", "Arista", "Nokia", "Mikrotik", "Ericsson", "ZTE", "Ruckus",
+    "MST", "SDK", "topolograph-docker", "topolograph-mcp-server", "RID/System ID", "Watcher", "ID",
+    "API", "REST", "SDK", "Python", "LSA1", "LSA2", "LSA3", "LSA4", "LSA5", "LSA6", "LSA7", "LSA8", "LSA9", "LSA10", "Opaque-area", "verizon",
+    "src", "dst", "cost", "color", "dashes", "directed", "label",
+    "ha_role", "primary", "dc1", "lsdb_samples",
+    "Cisco_ospf.txt", "Juniper_ospf.txt"
+  ]
+}

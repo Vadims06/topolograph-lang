@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "title": "Visualização online de LSDB OSPF/OSPFv3/IS-IS para construção de grafo de rede",
+    "description": "Visualização online de OSPF/IS-IS para Arista, Cisco, Fortinet, Juniper, Nokia, Quagga, Bird, MikroTik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus",
+    "og_title": "Visualização online de LSDB OSPF/OSPFv3/IS-IS",
+    "og_description": "Carregue LSDB OSPF/IS-IS de Arista, Cisco, Juniper, Nokia, Huawei, FRR e mais para construir um grafo de rede interativo, encontrar caminhos mais curtos e analisar caminhos de backup offline.",
+    "meta_keywords": "topolograph, OSPF, OSPFv3, IS-IS, LSDB, Online, Arista, Cisco, Fortinet, Juniper, Quagga, Bird, Nokia, Mikrotik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus"
+  },
+  "hero_h1": "Carregue seu LSDB OSPF/ISIS",
+  "hero_lead_p1": "Analise a topologia OSPF/ISIS offline. Salve o LSDB da saída do roteador e carregue-o como arquivo TXT, ou use a API para fazer isso programaticamente. Os comandos para fornecedores suportados estão ",
+  "hero_lead_here": "aqui",
+  "hero_lead_p2": ". LSDbs de múltiplos dispositivos podem ser carregados apenas via API ",
+  "hero_lead_example": "exemplo",
+  "hero_lead_p3": ".",
+  "another_vendor_label": "Outro fornecedor.",
+  "another_vendor_hint": "Escreva-me usando qualquer contato de sua preferência ou siga este ",
+  "another_vendor_github": "link do GitHub",
+  "compare_heading": "Compare o estado da sua rede",
+  "compare_footer": "Carregue sua rede antes da janela de manutenção e logo após — descubra a diferença na sua rede.",
+  "saved_graphs_pick_before": "Escolha um dos ",
+  "saved_graphs_pick_after": " grafos salvos",
+  "graph_description_placeholder": "antes da atualização do R123",
+  "graph_description_aria": "Nome ou descrição do grafo",
+  "include_all_title": "Incluir todos os grafos promíscuos",
+  "include_all_label": "Incluir todos",
+  "compare_graphs_submit": "Comparar grafos",
+  "scale_density_button_title": "Densidade do layout do grafo"
+}

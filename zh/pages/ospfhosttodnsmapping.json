@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "title": "OSPF 路由器主机名 — 将 IP 映射到图中的名称",
+    "description": "为已保存的 OSPF 图设置路由器主机名，可选使用 Docker DNS，在上传间迁移主机名，并更新图标签。",
+    "og_title": "路由器主机名 — OSPF 拓扑图标签",
+    "og_description": "将 OSPF 路由器 ID 映射到拓扑中的主机名，从 CSV 或 NetBox 同步，并在已保存的图之间迁移名称。",
+    "meta_keywords": "topolograph, OSPF, 主机名, DNS, 路由器 ID, 图标签, NetBox"
+  },
+  "heading_main": "路由器主机名",
+  "intro_footer": "Docker 版本的站点提供 DNS 服务器选项（在 docker-compose.override.yml 中设置 DNS IP）。但并非所有 OSPF RID 都能在 DNS 中注册，因此这里提供将图中 IP 节点标签替换为主机名的功能。",
+  "saved_graphs_pick_before": "从 ",
+  "saved_graphs_pick_after": " 个已保存的拓扑图中选择一个",
+  "btn_load_hosts": "加载主机",
+  "copy_section_heading": "复制主机名",
+  "migrate_footer": "一次性设置主机名，然后获取最新的 OSPF 拓扑副本，并将主机名从已正确配置主机名的图迁移到最新上传的图。",
+  "th_hosts_from_graph": "图中的主机",
+  "th_action": "操作",
+  "th_to_hosts": "到主机",
+  "btn_migrate": "迁移",
+  "empty_graphs_message": "没有之前上传的拓扑图",
+  "btn_update_hostnames": "更新图中的主机名",
+  "link_netbox_sync": "Netbox 同步",
+  "link_csv_import": "CSV 导入主机",
+  "th_host": "主机",
+  "th_hostname": "主机名"
+}

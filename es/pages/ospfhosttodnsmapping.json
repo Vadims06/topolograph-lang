@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "title": "Nombres de host de routers OSPF — mapeo de IP a nombre en el grafo",
+    "description": "Defina nombres de host para routers en grafos OSPF guardados, use opcionalmente DNS de Docker, migre nombres entre cargas y actualice etiquetas del grafo.",
+    "og_title": "Nombres de host de routers — Etiquetas del grafo OSPF",
+    "og_description": "Asigne IDs de routers OSPF a nombres de host en la topología, sincronice desde CSV o NetBox y migre nombres entre grafos guardados.",
+    "meta_keywords": "topolograph, OSPF, nombre de host, DNS, ID de router, etiquetas de grafo, NetBox"
+  },
+  "heading_main": "Nombres de host de routers",
+  "intro_footer": "La versión Docker del sitio incluye un servidor DNS como opción (especifique la IP del DNS en docker-compose.override.yml). Sin embargo, no todos los RID de OSPF pueden estar registrados en el DNS, por lo que aquí existe la opción de reemplazar la etiqueta IP del nodo en el grafo por su nombre de host.",
+  "saved_graphs_pick_before": "Elija uno de ",
+  "saved_graphs_pick_after": " grafos guardados",
+  "btn_load_hosts": "Cargar hosts",
+  "copy_section_heading": "Copiar nombres de host",
+  "migrate_footer": "Configure los nombres de host una vez, luego obtenga una copia actualizada de la topología OSPF y copie/migre los nombres de host de los nodos de red del grafo donde están configurados al último grafo cargado.",
+  "th_hosts_from_graph": "Hosts del grafo",
+  "th_action": "Acción",
+  "th_to_hosts": "a hosts",
+  "btn_migrate": "Migrar",
+  "empty_graphs_message": "No hay grafos cargados anteriormente",
+  "btn_update_hostnames": "Actualizar nombres de host en el grafo",
+  "link_netbox_sync": "Sincronizar con Netbox",
+  "link_csv_import": "Importar hosts desde CSV",
+  "th_host": "Host",
+  "th_hostname": "Nombre de host"
+}
