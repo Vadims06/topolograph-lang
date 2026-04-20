@@ -9,8 +9,6 @@
   "alert_choose_graph_load": "Por favor, escolha um grafo dos previamente carregados e carregue-o",
   "alert_node_not_chosen": "Nenhum nó foi selecionado",
   "btn_delete": "Excluir",
-  "btn_freeze_network": "Congelar rede",
-  "btn_unfreeze_network": "Descongelar rede",
   "btn_hide_table": "Ocultar tabela",
   "btn_show_report": "Mostrar resultado do relatório",
   "btn_build_path": "Construir caminho",

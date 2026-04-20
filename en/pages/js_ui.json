@@ -9,8 +9,6 @@
   "alert_choose_graph_load": "Please, choose a graph from previously uploaded and Load it",
   "alert_node_not_chosen": "Node was not chosen",
   "btn_delete": "Delete",
-  "btn_freeze_network": "Freeze network",
-  "btn_unfreeze_network": "Unfreeze network",
   "btn_hide_table": "Hide the table",
   "btn_show_report": "Show report result",
   "btn_build_path": "Build a path",

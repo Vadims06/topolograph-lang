@@ -9,8 +9,6 @@
   "alert_choose_graph_load": "Veuillez choisir un graphe parmi les graphes précédemment chargés et le charger",
   "alert_node_not_chosen": "Aucun nœud n'a été choisi",
   "btn_delete": "Supprimer",
-  "btn_freeze_network": "Figer le réseau",
-  "btn_unfreeze_network": "Dégeler le réseau",
   "btn_hide_table": "Masquer le tableau",
   "btn_show_report": "Afficher le résultat du rapport",
   "btn_build_path": "Construire un chemin",

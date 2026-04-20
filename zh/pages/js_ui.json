@@ -9,8 +9,6 @@
   "alert_choose_graph_load": "请先从已上传的图中选择一张并加载",
   "alert_node_not_chosen": "未选择节点",
   "btn_delete": "删除",
-  "btn_freeze_network": "冻结网络",
-  "btn_unfreeze_network": "解冻网络",
   "btn_hide_table": "隐藏表格",
   "btn_show_report": "显示报告结果",
   "btn_build_path": "构建路径",
