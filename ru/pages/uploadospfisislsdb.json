@@ -21,7 +21,7 @@
   "saved_graphs_pick_after": " сохранённых графов",
   "graph_description_placeholder": "до обновления R123",
   "graph_description_aria": "Имя или описание графа",
-  "include_all_title": "Учитывать все promiscuous-графы",
+  "include_all_title": "Учитывать все промежуточные-графы",
   "include_all_label": "Включить все",
   "compare_graphs_submit": "Сравнить графы",
   "scale_density_button_title": "Плотность раскладки графа"
