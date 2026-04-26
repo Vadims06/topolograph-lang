@@ -29,6 +29,7 @@
   "js_paused_after_count": " 条排队）",
   "queue_full_title": "队列已满！正在丢弃最早的消息。",
   "queue_warning_title": "队列将满，建议尽快恢复显示。",
+  "filter_events_placeholder": "过滤事件 — IP、watcher 名称、关键词...",
   "close_all_popups_confirm": "确定要关闭所有弹窗吗？",
   "flash_docker_only_lead": "实时监控数据采集仅适用于基于 Docker 的部署。请参阅 ",
   "flash_docker_only_ospf_link": "OSPF Watcher",

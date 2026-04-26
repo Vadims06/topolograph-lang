@@ -29,6 +29,7 @@
   "js_paused_after_count": " en cola)",
   "queue_full_title": "¡Cola llena! Se descartan los mensajes más antiguos.",
   "queue_warning_title": "La cola está casi llena. Considere reanudar pronto.",
+  "filter_events_placeholder": "Filtrar eventos — IP, nombre del watcher, palabra clave...",
   "close_all_popups_confirm": "¿Cerrar todas las ventanas emergentes?",
   "flash_docker_only_lead": "La ingesta de monitoreo en tiempo real está destinada a la implementación basada en Docker. Vea ",
   "flash_docker_only_ospf_link": "OSPF Watcher",

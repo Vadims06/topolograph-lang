@@ -29,6 +29,7 @@
   "js_paused_after_count": " na fila)",
   "queue_full_title": "Fila cheia! As mensagens mais antigas estão sendo descartadas.",
   "queue_warning_title": "A fila está quase cheia. Considere retomar em breve.",
+  "filter_events_placeholder": "Filtrar eventos — IP, nome do watcher, palavra-chave...",
   "close_all_popups_confirm": "Fechar todos os pop-ups?",
   "flash_docker_only_lead": "A ingestão de monitoramento em tempo real é destinada à implantação baseada em Docker. Veja ",
   "flash_docker_only_ospf_link": "OSPF Watcher",

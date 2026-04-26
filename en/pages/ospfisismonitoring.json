@@ -29,6 +29,7 @@
   "js_paused_after_count": " queued)",
   "queue_full_title": "Queue full! Oldest messages are being dropped.",
   "queue_warning_title": "Queue is getting full. Consider resuming soon.",
+  "filter_events_placeholder": "Filter events — IP, watcher name, keyword...",
   "close_all_popups_confirm": "Are you sure you want to close all popups?",
   "flash_docker_only_lead": "Real-time monitoring ingestion is intended for the Docker-based deployment. See ",
   "flash_docker_only_ospf_link": "OSPF Watcher",

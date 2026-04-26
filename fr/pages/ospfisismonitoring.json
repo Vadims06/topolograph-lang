@@ -29,6 +29,7 @@
   "js_paused_after_count": " en file)",
   "queue_full_title": "File pleine ! Les messages les plus anciens sont supprimés.",
   "queue_warning_title": "La file se remplit. Pensez à reprendre bientôt.",
+  "filter_events_placeholder": "Filtrer les événements — IP, nom du watcher, mot-clé...",
   "close_all_popups_confirm": "Êtes-vous sûr de vouloir fermer toutes les fenêtres contextuelles ?",
   "flash_docker_only_lead": "L'ingestion de supervision en temps réel est destinée au déploiement Docker. Voir ",
   "flash_docker_only_ospf_link": "OSPF Watcher",

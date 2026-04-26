@@ -29,6 +29,7 @@
   "js_paused_after_count": " в очереди)",
   "queue_full_title": "Очередь заполнена! Самые старые сообщения отбрасываются.",
   "queue_warning_title": "Очередь почти заполнена. Рекомендуется продолжить показ.",
+  "filter_events_placeholder": "Фильтр событий — IP, имя наблюдателя, ключевое слово...",
   "close_all_popups_confirm": "Закрыть все всплывающие окна?",
   "flash_docker_only_lead": "Приём данных мониторинга в реальном времени предназначен для развёртывания на основе Docker. Смотрите ",
   "flash_docker_only_ospf_link": "OSPF Watcher",
