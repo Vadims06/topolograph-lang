@@ -24,6 +24,7 @@
   "nav_logout": "Sair",
   "nav_admin_panel": "Painel de administração",
   "bottom_join_community": "Junte-se à comunidade!",
+  "bottom_share_feedback": "Compartilhar feedback",
   "default_page_title": "Visualização e análise de OSPF offline para engenheiros de rede",
   "og_default_title": "Visualização e análise de topologia OSPF/IS-IS offline para engenheiros de rede"
 }

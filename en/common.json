@@ -24,6 +24,7 @@
   "nav_logout": "Logout",
   "nav_admin_panel": "Admin Panel",
   "bottom_join_community": "Join to the community!",
+  "bottom_share_feedback": "Share feedback",
   "default_page_title": "OSPF visualization and analysis offline for network engineers",
   "og_default_title": "OSPF/IS-IS topology visualization and analysis offline for network engineers"
 }

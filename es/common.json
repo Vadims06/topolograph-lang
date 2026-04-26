@@ -24,6 +24,7 @@
   "nav_logout": "Cerrar sesión",
   "nav_admin_panel": "Panel de administración",
   "bottom_join_community": "¡Únete a la comunidad!",
+  "bottom_share_feedback": "Compartir opinión",
   "default_page_title": "Visualización y análisis de OSPF sin conexión para ingenieros de red",
   "og_default_title": "Visualización y análisis de topología OSPF/IS-IS sin conexión para ingenieros de red"
 }

@@ -24,6 +24,7 @@
   "nav_logout": "Déconnexion",
   "nav_admin_panel": "Panneau d'administration",
   "bottom_join_community": "Rejoignez la communauté !",
+  "bottom_share_feedback": "Partager votre avis",
   "default_page_title": "Visualisation et analyse OSPF hors ligne pour les ingénieurs réseau",
   "og_default_title": "Visualisation et analyse de topologie OSPF/IS-IS hors ligne pour les ingénieurs réseau"
 }

@@ -24,6 +24,7 @@
   "nav_logout": "Выход",
   "nav_admin_panel": "Панель администратора",
   "bottom_join_community": "Присоединиться к сообществу!",
+  "bottom_share_feedback": "Оставить отзыв",
   "default_page_title": "Визуализация и анализ OSPF офлайн для сетевых инженеров",
   "og_default_title": "Визуализация и анализ топологии OSPF/IS-IS офлайн для сетевых инженеров"
 }

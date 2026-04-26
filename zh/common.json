@@ -24,6 +24,7 @@
   "nav_logout": "退出",
   "nav_admin_panel": "管理面板",
   "bottom_join_community": "加入社区！",
+  "bottom_share_feedback": "分享反馈",
   "default_page_title": "面向网络工程师的 OSPF 离线可视化与分析",
   "og_default_title": "面向网络工程师的 OSPF/IS-IS 拓扑离线可视化与分析"
 }
