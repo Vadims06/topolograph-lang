@@ -9,7 +9,7 @@
   "hero_h1": "Carregue seu LSDB OSPF/ISIS",
   "hero_lead_p1": "Analise a topologia OSPF/ISIS offline. Salve o LSDB da saída do roteador e carregue-o como arquivo TXT, ou use a API para fazer isso programaticamente. Os comandos para fornecedores suportados estão ",
   "hero_lead_here": "aqui",
-  "hero_lead_p2": ". LSDbs de múltiplos dispositivos podem ser carregados apenas via API ",
+  "hero_lead_p2": ". LSDBs de múltiplos dispositivos podem ser carregados nesta página ou via API ",
   "hero_lead_example": "exemplo",
   "hero_lead_p3": ".",
   "another_vendor_label": "Outro fornecedor.",
@@ -24,5 +24,17 @@
   "include_all_title": "Incluir todos os grafos promíscuos",
   "include_all_label": "Incluir todos",
   "compare_graphs_submit": "Comparar grafos",
-  "scale_density_button_title": "Densidade do layout do grafo"
+  "scale_density_button_title": "Densidade do layout do grafo",
+  "toggle_single_lsdb": "LSDB único",
+  "toggle_multiple_lsdbs": "Vários LSDB",
+  "multi_card_title": "Arquivos LSDB",
+  "multi_col_vendor": "Fabricante",
+  "multi_col_protocol": "Protocolo",
+  "multi_col_file": "Arquivo",
+  "multi_add_row": "+ Adicionar LSDB",
+  "multi_load_btn": "Carregar",
+  "flash_multi_lsdb_success": "Grafo multi-LSDB carregado com sucesso.",
+  "multi_delete_row": "Remover linha",
+  "protocol_ospf": "OSPF",
+  "protocol_isis": "IS-IS"
 }

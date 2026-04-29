@@ -9,7 +9,7 @@
   "hero_h1": "Загрузите LSDB OSPF/IS-IS",
   "hero_lead_p1": "Анализируйте топологию OSPF/IS-IS офлайн. Сохраните LSDB из вывода маршрутизатора и загрузите его как TXT или используйте API. Команды для поддерживаемых вендоров - ",
   "hero_lead_here": "здесь",
-  "hero_lead_p2": ". LSDB с нескольких устройств можно загрузить только через API - ",
+  "hero_lead_p2": ". LSDB с нескольких устройств можно загрузить на этой странице или через API - ",
   "hero_lead_example": "пример",
   "hero_lead_p3": ".",
   "another_vendor_label": "Другой вендор.",
@@ -24,5 +24,17 @@
   "include_all_title": "Учитывать все промежуточные-графы",
   "include_all_label": "Включить все",
   "compare_graphs_submit": "Сравнить графы",
-  "scale_density_button_title": "Плотность раскладки графа"
+  "scale_density_button_title": "Плотность раскладки графа",
+  "toggle_single_lsdb": "Один LSDB",
+  "toggle_multiple_lsdbs": "Несколько LSDB",
+  "multi_card_title": "Файлы LSDB",
+  "multi_col_vendor": "Вендор",
+  "multi_col_protocol": "Протокол",
+  "multi_col_file": "Файл",
+  "multi_add_row": "+ Добавить LSDB",
+  "multi_load_btn": "Загрузить",
+  "flash_multi_lsdb_success": "Граф из нескольких LSDB успешно загружен.",
+  "multi_delete_row": "Удалить строку",
+  "protocol_ospf": "OSPF",
+  "protocol_isis": "IS-IS"
 }

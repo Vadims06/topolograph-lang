@@ -9,7 +9,7 @@
   "hero_h1": "上传您的 OSPF/IS-IS LSDB",
   "hero_lead_p1": "离线分析 OSPF/IS-IS 拓扑。将路由器上的 LSDB 输出保存为 TXT 并上传，或通过 API 自动化上传。各厂商支持的命令见 ",
   "hero_lead_here": "此处",
-  "hero_lead_p2": "。多设备的 LSDB 仅可通过 API 上传，参见 ",
+  "hero_lead_p2": "。多设备的 LSDB 可在本页或通过 API 上传，参见 ",
   "hero_lead_example": "示例",
   "hero_lead_p3": "。",
   "another_vendor_label": "其他厂商。",
@@ -24,5 +24,17 @@
   "include_all_title": "包含所有 promiscuous 图",
   "include_all_label": "全部包含",
   "compare_graphs_submit": "对比图",
-  "scale_density_button_title": "图布局密度"
+  "scale_density_button_title": "图布局密度",
+  "toggle_single_lsdb": "单 LSDB",
+  "toggle_multiple_lsdbs": "多个 LSDB",
+  "multi_card_title": "LSDB 文件",
+  "multi_col_vendor": "厂商",
+  "multi_col_protocol": "协议",
+  "multi_col_file": "文件",
+  "multi_add_row": "+ 添加 LSDB",
+  "multi_load_btn": "加载",
+  "flash_multi_lsdb_success": "已成功加载多 LSDB 拓扑图。",
+  "multi_delete_row": "删除行",
+  "protocol_ospf": "OSPF",
+  "protocol_isis": "IS-IS"
 }
