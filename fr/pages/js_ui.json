@@ -139,5 +139,7 @@
   "spt_warn_note": "La taille du graphe pour le calcul ECMP est limitée ; voir la documentation pour augmenter la limite.",
   "spt_label_shortest_cost": "Coût du plus court chemin :",
   "spt_label_path": "chemin :",
-  "backup_label_cost": "Coût du chemin de secours :"
+  "backup_label_cost": "Coût du chemin de secours :",
+  "overload_unreachable": "Destination injoignable : le trafic s'arrête au nœud de transit en surcharge",
+  "overload_last_resort": "Acheminé via un routeur en surcharge (stub)"
 }

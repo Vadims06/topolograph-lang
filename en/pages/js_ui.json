@@ -139,5 +139,7 @@
   "spt_warn_note": "Note, there is a limit on graph size for ECMP calculation, check doc to increase it.",
   "spt_label_shortest_cost": "The shortest path cost:",
   "spt_label_path": "path:",
-  "backup_label_cost": "Backup path cost:"
+  "backup_label_cost": "Backup path cost:",
+  "overload_unreachable": "Destination unreachable: traffic stops at the overloaded transit node",
+  "overload_last_resort": "Forwarded via overloaded (stub) router"
 }

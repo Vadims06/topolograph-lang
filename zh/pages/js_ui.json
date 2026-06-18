@@ -139,5 +139,7 @@
   "spt_warn_note": "ECMP 计算对图规模有限制，详见文档如何调高。",
   "spt_label_shortest_cost": "最短路径开销：",
   "spt_label_path": "路径：",
-  "backup_label_cost": "备份路径开销："
+  "backup_label_cost": "备份路径开销：",
+  "overload_unreachable": "目标不可达：流量在过载的中转节点处停止",
+  "overload_last_resort": "通过过载（stub）路由器转发"
 }
