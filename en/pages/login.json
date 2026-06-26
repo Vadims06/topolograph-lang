@@ -1,0 +1,12 @@
+{
+  "heading": "Login",
+  "via_google": "Login via Google",
+  "via_github": "Login via GitHub",
+  "via_yandex": "Login via Yandex",
+  "or_local": "or use local account",
+  "email_label": "Email",
+  "email_placeholder": "name@example.com",
+  "password_label": "Password",
+  "submit": "Login",
+  "create_account": "Create local account"
+}

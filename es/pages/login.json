@@ -1,0 +1,12 @@
+{
+  "heading": "Iniciar sesión",
+  "via_google": "Iniciar sesión con Google",
+  "via_github": "Iniciar sesión con GitHub",
+  "via_yandex": "Iniciar sesión con Yandex",
+  "or_local": "o usar una cuenta local",
+  "email_label": "Correo electrónico",
+  "email_placeholder": "name@example.com",
+  "password_label": "Contraseña",
+  "submit": "Iniciar sesión",
+  "create_account": "Crear cuenta local"
+}

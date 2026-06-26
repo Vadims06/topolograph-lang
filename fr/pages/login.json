@@ -1,0 +1,12 @@
+{
+  "heading": "Connexion",
+  "via_google": "Se connecter avec Google",
+  "via_github": "Se connecter avec GitHub",
+  "via_yandex": "Se connecter avec Yandex",
+  "or_local": "ou utiliser un compte local",
+  "email_label": "E-mail",
+  "email_placeholder": "name@example.com",
+  "password_label": "Mot de passe",
+  "submit": "Se connecter",
+  "create_account": "Créer un compte local"
+}
