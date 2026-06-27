@@ -1,0 +1,12 @@
+{
+  "heading": "Entrar",
+  "via_google": "Entrar com o Google",
+  "via_github": "Entrar com o GitHub",
+  "via_yandex": "Entrar com o Yandex",
+  "or_local": "ou usar uma conta local",
+  "email_label": "E-mail",
+  "email_placeholder": "name@example.com",
+  "password_label": "Senha",
+  "submit": "Entrar",
+  "create_account": "Criar conta local"
+}

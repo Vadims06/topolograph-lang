@@ -1,0 +1,12 @@
+{
+  "heading": "登录",
+  "via_google": "通过 Google 登录",
+  "via_github": "通过 GitHub 登录",
+  "via_yandex": "通过 Yandex 登录",
+  "or_local": "或使用本地账户",
+  "email_label": "电子邮箱",
+  "email_placeholder": "name@example.com",
+  "password_label": "密码",
+  "submit": "登录",
+  "create_account": "创建本地账户"
+}

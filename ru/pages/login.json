@@ -1,0 +1,12 @@
+{
+  "heading": "Вход",
+  "via_google": "Войти через Google",
+  "via_github": "Войти через GitHub",
+  "via_yandex": "Войти через Яндекс",
+  "or_local": "или использовать локальный аккаунт",
+  "email_label": "Эл. почта",
+  "email_placeholder": "name@example.com",
+  "password_label": "Пароль",
+  "submit": "Войти",
+  "create_account": "Создать локальный аккаунт"
+}
