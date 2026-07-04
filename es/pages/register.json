@@ -1,0 +1,10 @@
+{
+  "heading": "Registro",
+  "email_label": "Correo electrónico",
+  "email_placeholder": "Correo electrónico",
+  "email_help": "En realidad no verificamos el correo indicado, pero en la práctica es mejor usar uno real por si olvidas una dirección inventada.",
+  "valid_feedback": "¡Un placer conocerte!",
+  "invalid_feedback": "Por favor, indica un correo electrónico.",
+  "password_label": "Contraseña",
+  "submit": "Registrarse"
+}

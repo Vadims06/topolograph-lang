@@ -1,0 +1,10 @@
+{
+  "heading": "Registration",
+  "email_label": "Email",
+  "email_placeholder": "Email",
+  "email_help": "Actually, we do not check specified email, but in practise, it's better to use your existing email in case of forgetting non-real email account name.",
+  "valid_feedback": "Nice to meet you!",
+  "invalid_feedback": "Please provide an email.",
+  "password_label": "Password",
+  "submit": "Sign up"
+}

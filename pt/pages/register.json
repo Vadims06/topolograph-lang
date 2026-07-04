@@ -1,0 +1,10 @@
+{
+  "heading": "Cadastro",
+  "email_label": "E-mail",
+  "email_placeholder": "E-mail",
+  "email_help": "Na verdade, não verificamos o e-mail informado, mas na prática é melhor usar um e-mail existente, caso você esqueça um endereço inventado.",
+  "valid_feedback": "Prazer em conhecê-lo!",
+  "invalid_feedback": "Por favor, informe um e-mail.",
+  "password_label": "Senha",
+  "submit": "Cadastrar"
+}

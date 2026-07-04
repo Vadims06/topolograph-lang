@@ -1,0 +1,10 @@
+{
+  "heading": "Inscription",
+  "email_label": "E-mail",
+  "email_placeholder": "E-mail",
+  "email_help": "En réalité, nous ne vérifions pas l'adresse indiquée, mais il est préférable d'utiliser une adresse existante au cas où vous oublieriez une adresse fictive.",
+  "valid_feedback": "Ravi de vous rencontrer !",
+  "invalid_feedback": "Veuillez indiquer une adresse e-mail.",
+  "password_label": "Mot de passe",
+  "submit": "S'inscrire"
+}

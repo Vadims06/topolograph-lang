@@ -1,0 +1,10 @@
+{
+  "heading": "注册",
+  "email_label": "电子邮箱",
+  "email_placeholder": "电子邮箱",
+  "email_help": "实际上我们不会验证所填邮箱，但建议使用真实邮箱，以免忘记虚构的地址。",
+  "valid_feedback": "很高兴认识你！",
+  "invalid_feedback": "请填写电子邮箱。",
+  "password_label": "密码",
+  "submit": "注册"
+}
