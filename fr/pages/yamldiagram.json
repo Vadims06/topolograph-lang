@@ -9,6 +9,7 @@
   "heading_yaml_panel": "Fichier YAML du diagramme/topologie réseau",
   "heading_graph": "Graphe",
   "network_reaction_label": "Réaction du réseau aux modifications appliquées",
+  "network_reaction_note": "Modifiez les liens YAML et voyez la réaction du réseau sur le graphe.",
   "saved_graphs_pick_before": "Choisissez un parmi ",
   "saved_graphs_pick_after": " graphes sauvegardés",
   "btn_load_diagram": "Charger le diagramme",

@@ -9,6 +9,7 @@
   "heading_yaml_panel": "YAML-файл схемы сети / топологии",
   "heading_graph": "Граф",
   "network_reaction_label": "Реакция сети на применённые изменения",
+  "network_reaction_note": "Изменяйте линки в YAML - реакция сети сразу видна на графе.",
   "saved_graphs_pick_before": "Выберите один из ",
   "saved_graphs_pick_after": " сохранённых графов",
   "btn_load_diagram": "Загрузить схему",

@@ -9,6 +9,7 @@
   "heading_yaml_panel": "网络图 / 拓扑 YAML 文件",
   "heading_graph": "图",
   "network_reaction_label": "应用变更后的网络反应",
+  "network_reaction_note": "编辑 YAML 链路，即可在图上立即查看网络反应。",
   "saved_graphs_pick_before": "从 ",
   "saved_graphs_pick_after": " 个已保存图中选择一个",
   "btn_load_diagram": "加载示意图",

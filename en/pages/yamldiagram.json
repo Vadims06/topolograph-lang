@@ -9,6 +9,7 @@
   "heading_yaml_panel": "Network diagram/topology YAML file",
   "heading_graph": "Graph",
   "network_reaction_label": "Network reaction on applied changes",
+  "network_reaction_note": "Edit YAML links and see instant graph reactions.",
   "saved_graphs_pick_before": "Choose one out of ",
   "saved_graphs_pick_after": " saved graphs",
   "btn_load_diagram": "Load diagram",
