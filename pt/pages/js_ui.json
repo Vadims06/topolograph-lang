@@ -169,6 +169,7 @@
   "graph_table_full": "Abrir tabela em ecrã inteiro",
   "graph_table_entities": "Dados da tabela",
   "graph_table_links": "Enlaces",
+  "graph_table_edges": "Arestas",
   "graph_table_nodes": "Nós",
   "graph_table_subnets": "Sub-redes",
   "graph_table_lsps": "Túneis LSP",

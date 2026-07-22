@@ -171,6 +171,7 @@
   "graph_table_full": "Open table full screen",
   "graph_table_entities": "Table data",
   "graph_table_links": "Links",
+  "graph_table_edges": "Edges",
   "graph_table_nodes": "Nodes",
   "graph_table_subnets": "Subnets",
   "graph_table_lsps": "LSP tunnels",

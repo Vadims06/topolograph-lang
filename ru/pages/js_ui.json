@@ -169,6 +169,7 @@
   "graph_table_full": "Открыть таблицу на весь экран",
   "graph_table_entities": "Данные таблицы",
   "graph_table_links": "Линки",
+  "graph_table_edges": "Рёбра",
   "graph_table_nodes": "Ноды",
   "graph_table_subnets": "Сабнеты",
   "graph_table_lsps": "LSP-туннели",

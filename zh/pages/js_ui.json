@@ -169,6 +169,7 @@
   "graph_table_full": "全屏打开表格",
   "graph_table_entities": "表格数据",
   "graph_table_links": "链路",
+  "graph_table_edges": "边",
   "graph_table_nodes": "节点",
   "graph_table_subnets": "子网",
   "graph_table_lsps": "LSP 隧道",
