@@ -22,5 +22,6 @@
   "link_netbox_sync": "Синхронизация с Netbox",
   "link_csv_import": "Импорт хостов из CSV",
   "th_host": "Хост",
-  "th_hostname": "Имя хоста"
+  "th_hostname": "Имя хоста",
+  "th_router_id": "Router ID"
 }

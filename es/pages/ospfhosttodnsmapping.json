@@ -22,5 +22,6 @@
   "link_netbox_sync": "Sincronizar con Netbox",
   "link_csv_import": "Importar hosts desde CSV",
   "th_host": "Host",
-  "th_hostname": "Nombre de host"
+  "th_hostname": "Nombre de host",
+  "th_router_id": "Router ID"
 }

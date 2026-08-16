@@ -22,5 +22,6 @@
   "link_netbox_sync": "Netbox 同步",
   "link_csv_import": "CSV 导入主机",
   "th_host": "主机",
-  "th_hostname": "主机名"
+  "th_hostname": "主机名",
+  "th_router_id": "Router ID"
 }
