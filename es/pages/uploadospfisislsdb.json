@@ -36,5 +36,8 @@
   "flash_multi_lsdb_success": "Grafo multi-LSDB cargado correctamente.",
   "multi_delete_row": "Eliminar fila",
   "protocol_ospf": "OSPF",
-  "protocol_isis": "IS-IS"
+  "protocol_isis": "IS-IS",
+  "bgp_node_card_sessions_label": "Sesiones BGP",
+  "bgp_node_card_routes_label": "Rutas",
+  "bgp_node_card_lsp_label": "Túneles LSP"
 }
