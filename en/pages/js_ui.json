@@ -73,6 +73,8 @@
   "desc_simulate_router_failure": "Simulate a router failure through right-click menu",
   "desc_cost_changes": "Network reaction on ospf edge cost changes on the fly (right-clicked edge menu).",
   "desc_build_shortest_paths": "Build the shortest paths, find backup paths.",
+  "tip_show_help": "How to use the graph",
+  "tip_dismiss": "Don't show again",
   "desc_spt_from_source": "Build the shortest path from source node (router) to the destination (right-clicked node menu).",
   "desc_simulate_along_spt": "Simulate a link failure along the shortest paths and find backup paths (click on colored edge).",
   "desc_find_node": "Find a node on the network graph by selecting the node in \"Find node by RID/IP\" dropdown list.",

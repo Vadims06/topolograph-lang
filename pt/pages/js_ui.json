@@ -73,6 +73,8 @@
   "desc_simulate_router_failure": "Simular uma falha de roteador pelo menu de clique com o botão direito",
   "desc_cost_changes": "Reação da rede a alterações de custo de aresta OSPF dinamicamente (menu de clique com o botão direito na aresta).",
   "desc_build_shortest_paths": "Construir os caminhos mais curtos, encontrar caminhos de backup.",
+  "tip_show_help": "Como usar o grafo",
+  "tip_dismiss": "Não mostrar novamente",
   "desc_spt_from_source": "Construir o caminho mais curto do nó de origem (roteador) ao destino (menu de clique com o botão direito no nó).",
   "desc_simulate_along_spt": "Simular uma falha de link ao longo dos caminhos mais curtos e encontrar caminhos de backup (clicar na aresta colorida).",
   "desc_find_node": "Encontrar um nó no grafo de rede selecionando o nó na lista suspensa \"Encontrar nó por RID/IP\".",

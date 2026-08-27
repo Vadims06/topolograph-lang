@@ -73,6 +73,8 @@
   "desc_simulate_router_failure": "通过右键菜单模拟路由器故障",
   "desc_cost_changes": "实时更改 OSPF 链路开销时的网络反应（右键链路菜单）。",
   "desc_build_shortest_paths": "构建最短路径，查找备份路径。",
+  "tip_show_help": "如何使用图",
+  "tip_dismiss": "不再显示",
   "desc_spt_from_source": "从源节点（路由器）到目标节点（右键节点菜单）构建最短路径。",
   "desc_simulate_along_spt": "沿最短路径模拟链路故障并查找备份路径（点击彩色边）。",
   "desc_find_node": "在「按 RID/IP 查找节点」下拉列表中选择以定位节点。",

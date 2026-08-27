@@ -73,6 +73,8 @@
   "desc_simulate_router_failure": "Simular una interrupción de router mediante el menú del botón derecho",
   "desc_cost_changes": "Reacción de la red a los cambios de coste de arista OSPF de forma dinámica (menú del botón derecho en la arista).",
   "desc_build_shortest_paths": "Construir los caminos más cortos, encontrar caminos de respaldo.",
+  "tip_show_help": "Cómo usar el grafo",
+  "tip_dismiss": "No mostrar de nuevo",
   "desc_spt_from_source": "Construir el camino más corto desde el nodo origen (router) al destino (menú del botón derecho en el nodo).",
   "desc_simulate_along_spt": "Simular una interrupción de enlace a lo largo de los caminos más cortos y encontrar caminos de respaldo (hacer clic en la arista coloreada).",
   "desc_find_node": "Encontrar un nodo en el grafo de red seleccionando el nodo en la lista desplegable \"Buscar nodo por RID/IP\".",

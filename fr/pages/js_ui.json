@@ -73,6 +73,8 @@
   "desc_simulate_router_failure": "Simuler une panne de routeur via le menu contextuel",
   "desc_cost_changes": "Réaction du réseau aux changements de coût de lien OSPF à la volée (menu du lien, clic droit).",
   "desc_build_shortest_paths": "Construire les chemins les plus courts, trouver les chemins de secours.",
+  "tip_show_help": "Utiliser le graphe",
+  "tip_dismiss": "Ne plus afficher",
   "desc_spt_from_source": "Construire le chemin le plus court depuis le nœud source vers la destination (menu contextuel du nœud).",
   "desc_simulate_along_spt": "Simuler une panne de lien le long des chemins les plus courts et trouver les chemins de secours (cliquer sur un lien coloré).",
   "desc_find_node": "Trouver un nœud sur le graphe réseau en sélectionnant le nœud dans la liste déroulante \"Trouver un nœud par RID/IP\".",
