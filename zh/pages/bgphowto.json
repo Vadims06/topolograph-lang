@@ -1,0 +1,279 @@
+{
+  "_meta": {
+    "title": "BGP 路由可见性与路径分析手册 - Topolograph",
+    "description": "在 Topolograph 中加载 BGP 演示，查看 BMP 会话与路由，理解 RIB 可见性，并验证 BGP 最佳路径决策与下一跳解析。",
+    "meta_keywords": "BGP 可视化, BMP RFC 7854, BMP RFC 8671, BMP RFC 9069, BGP 最佳路径, BGP route reflector",
+    "og_title": "BGP 路由可见性与路径分析手册",
+    "og_description": "关于 BGP 会话、RIB 可见性、最佳路径决策以及基于 OSPF 的 BGP 下一跳解析的 Topolograph 实用手册。"
+  },
+  "page_title": "BGP 路由可见性与路径分析",
+  "page_intro": "使用内置演示查看 Topolograph 能够证实的路由视图，验证最佳路径决策，比较不同时刻的路由状态，并跟踪 BGP 下一跳如何经过 OSPF。",
+  "start_button": "查看演示",
+  "visibility_button": "理解 RIB 可见性",
+  "sidebar_title": "BGP 手册",
+  "nav_demo": "查看演示",
+  "nav_sessions": "检查会话",
+  "nav_visibility": "RIB 可见性",
+  "nav_all_routes": "全部 BGP 路由",
+  "nav_node_card": "阅读路由卡片",
+  "nav_routes": "检查路由",
+  "nav_best_path": "最佳路径决策",
+  "nav_compare": "比较路由状态",
+  "nav_resolution": "BGP 经 OSPF",
+  "nav_limits": "已知限制",
+  "demo_title": "1. 查看 BGP 演示",
+  "demo_intro": "生成的 BGP 演示会自动加载。其中包含 13 台路由器、22 个 BGP 会话，以及两台 BMP 能力刻意不同的 route reflector。",
+  "demo_steps": [
+    "确认生成的演示拓扑已存在；无需上传或手动加载演示。",
+    "打开 General View 并确认 BGP 叠加层可见。叠加层默认启用；控件可以隐藏并恢复它。",
+    "找到 RR1 (7854) 与 RR2 (7854+9069+8671)。它们的标签标明了每台 reflector 导出的 BMP 信息。"
+  ],
+  "demo_result": "IGP 拓扑仍是基础图。BGP 叠加层在不替换 OSPF 连通性的前提下增加会话。",
+  "sessions_title": "2. 检查 BGP 会话",
+  "sessions_intro": "同时使用两种表示：表格便于精确过滤，叠加层则确认所选会话在拓扑中的位置。",
+  "sessions_steps": [
+    "打开 BGP Sessions 并按对等体 123.123.31.31 过滤。",
+    "确认该 PE 只有一个会话（到 RR1），且没有到 RR2 的会话。",
+    "返回 General View，在 BGP 叠加层中定位同一条 PE 到 RR1 的邻接。"
+  ],
+  "sessions_visual": "下方过滤后的 BGP Sessions 表格使 RFC 7854 限制场景变得具体：PE31 只有一个可观测会话，到 RR1。",
+  "sessions_alt": "按 PE31 过滤的 BGP Sessions 表格，显示其唯一到 RR1 的会话",
+  "sessions_result": "这台单归属 PE 是手册后文使用的刻意 RFC 7854 限制场景。",
+  "visibility_title": "3. 明确你正在使用哪个 RIB 视图",
+  "visibility_intro": "与 route reflector 建立的 BMP 会话不会自动暴露每个对等体已安装的表。Topolograph 记录可用数据流所支持的最强视图，并说明计算路径所需的任何推断。",
+  "rfc_table_title": "BMP 各 RFC 覆盖范围及其对路径计算的含义",
+  "rfc_headers": [
+    "BMP 来源",
+    "可观测信息",
+    "Topolograph 视图",
+    "能否从该节点计算？",
+    "所需假设"
+  ],
+  "rfc_rows": [
+    [
+      "RFC 7854 策略前/后 Adj-RIB-In",
+      "BMP speaker 收到的路由",
+      "发送方对等体的 adj_rib_out",
+      "否",
+      "无 - 该节点已安装的路由未知"
+    ],
+    [
+      "RFC 9069 Loc-RIB",
+      "BMP speaker 已安装的优选路由",
+      "speaker 的 loc_rib",
+      "是",
+      "无"
+    ],
+    [
+      "RFC 9069 Loc-RIB",
+      "用作对等体视图的优选反射路由",
+      "loc_rib_reflected",
+      "是",
+      "反射与对等体导入为推断"
+    ],
+    [
+      "RFC 8671 策略后 Adj-RIB-Out",
+      "speaker 向某个对等体通告的路由",
+      "该对等体的 adj_rib_in",
+      "是",
+      "对等体导入结果不可观测"
+    ]
+  ],
+  "router_table_title": "演示路由器、数据流与最终视图",
+  "router_headers": [
+    "路由器或分组",
+    "Topolograph 中可用的 BMP 数据",
+    "显示的视图",
+    "路径计算",
+    "假设"
+  ],
+  "router_rows": [
+    [
+      "RR2, 123.123.101.101",
+      "来自 RR2 的 RFC 9069 Loc-RIB",
+      "loc_rib",
+      "可用",
+      "无"
+    ],
+    [
+      "PE30, 123.123.30.30; PE14, 123.14.14.14",
+      "RR2 针对每个对等体的策略后 Adj-RIB-Out",
+      "adj_rib_in",
+      "可用",
+      "对等体导入不可观测"
+    ],
+    [
+      "Core10, 123.10.10.10; Core110, 123.123.110.110",
+      "RR2 针对每个对等体的策略后 Adj-RIB-Out",
+      "adj_rib_in",
+      "可用",
+      "对等体导入不可观测"
+    ],
+    [
+      "PE15, 123.15.15.15",
+      "RR2 Loc-RIB；该对等体无 Adj-RIB-Out 导出",
+      "loc_rib_reflected",
+      "可用",
+      "反射与对等体导入为推断"
+    ],
+    [
+      "Core11, Core13, Core111, Core30, Core31",
+      "RR2 Loc-RIB；这些对等体无 Adj-RIB-Out 导出",
+      "loc_rib_reflected",
+      "可用",
+      "反射与对等体导入为推断"
+    ],
+    [
+      "RR1, 123.123.100.100",
+      "来自 RR1 的 RFC 7854，加上经 RR 会话的 RR2 Loc-RIB",
+      "loc_rib_reflected",
+      "可用",
+      "反射与对等体导入为推断"
+    ],
+    [
+      "PE31, 123.123.31.31",
+      "仅来自 RR1 的 RFC 7854 策略前/后；无 RR2 会话",
+      "adj_rib_out",
+      "不可用",
+      "无 - 收到的路由不能证明该 PE 已安装的路由"
+    ]
+  ],
+  "selective_export_note": "RR2 仅对选定的对等体导出策略后 Adj-RIB-Out。这是合规的：BMP Adj-RIB-Out 监控按对等体和地址族分别配置，尽管 BGP 本身会为每个已建立的对等体维护 Adj-RIB-Out。",
+  "all_routes_title": "4. 定位全部 BGP 路由",
+  "all_routes_intro": "在收窄到单台路由器之前，先从图级别的 BGP Routes 表格开始。这里用于查看和过滤整个演示收集到的路由数据。",
+  "all_routes_steps": [
+    "打开 Graph table 并选择 BGP Routes。让表格保持 Live 模式。",
+    "确认未显示任何节点范围。这是图级别的路由集合，而不是某个路由器卡片解析后的视图。",
+    "使用前缀、BMP 来源、RIB、对等体或路径属性列，找到你要调查的路由集合。"
+  ],
+  "all_routes_visual": "下方的全屏 Live 表格是图级别的 BGP Routes 视图。它是节点卡片或路由过滤器收窄范围之前的起点。",
+  "all_routes_alt": "Live 模式下的全屏图级别 BGP Routes 表格",
+  "all_routes_result": "通过：BGP Routes 作为图级别入口打开。只有在问题需要时，后续章节才会刻意把该视图收窄到某台路由器。",
+  "node_card_title": "5. 阅读节点卡片上的路由视图",
+  "node_card_intro": "节点上的路由计数现在遵循该路由器解析后的 RIB 视图。它不再把所有恰好提到该路由器的已存 BMP 行相加。",
+  "node_card_steps": [
+    "在图上点击 PE14 (123.14.14.14)，找到其节点卡片的 BGP 部分。",
+    "确认 Routes 为 4，并阅读说明：这些路由由 RR2 (123.123.101.101) 通过 RFC 8671 向该路由器通告。",
+    "阅读 RIB 明细。Adj-RIB-Out（策略后）描述 RR2 导出的 RIB；从 PE14 的角度看，这四条通告是其推断出的 Adj-RIB-In。",
+    "不要把单独的“已通告”计数加到 Routes 上。已通告指所选路由器发送给对等体的内容，而非其自身解析后的路由视图所包含的内容。"
+  ],
+  "node_card_alt": "PE14 节点卡片，显示由 RR2 通告的四条路由以及策略后 Adj-RIB-Out 明细",
+  "node_card_visual": "该卡片是 PE14 的解析视图：由 RR2 的策略后 Adj-RIB-Out 导出推断出的四条路由。",
+  "node_card_result": "通过：PE14 显示四条路由、一份单向 RIB 明细以及明确的观测来源。计数不包含 route reflector 收到的 PE14 通告，也不包含无关的 reflector Loc-RIB 行。",
+  "routes_title": "6. 过滤、排序并分页浏览单个节点的路由",
+  "routes_intro": "从节点卡片打开路由抽屉，使表格以相同的解析后 RIB 范围开始，而不是一个无关的图级别集合。",
+  "routes_steps": [
+    "在 PE14 上点击 Routes 4。确认抽屉中恰好包含 100.30.0.0/24、10.100.31.0/24、2001:db8:123:123:30:30::/96 和 2001:db8:100:31::/64。",
+    "按 100.30.0.0/24 过滤前缀。匹配行和表格计数都必须从 4 降到 1。",
+    "清除过滤器并确认 PE14 的四条路由全部返回。清除表格过滤器不得移除卡片确立的节点范围。",
+    "点击可排序的表头，例如前缀、next hop、Local Preference 或 MED。反复点击在升序、降序和不排序之间循环；地址列使用地址顺序，而非文本顺序。",
+    "对较大的路由表使用 Rows per page。在这个节点范围示例中演示只有一页，因此“上一页”和“下一页”控件正确地保持禁用。"
+  ],
+  "routes_alt": "PE14 路由表从四条路由过滤到前缀 100.30.0.0/24",
+  "routes_visual": "下方表格保留 PE14 范围并加上前缀过滤，仅留下一条匹配路由。",
+  "routes_result": "通过：过滤后的行将 RR2 标为 BMP 来源，将 Adj-RIB-Out（策略后）标为观测方向。过滤在服务器端进行，因此匹配行数描述整个范围的结果，而不仅是当前页。",
+  "best_path_title": "7. 验证某条路径为何胜出",
+  "best_path_intro": "演示为每个前缀隔离出单一决策步骤。从 AS_PATH 开始：查看相互竞争的属性，然后从 RR2 构建路由，以证明路径引擎选择哪个出口。",
+  "as_path_title": "试点示例：AS_PATH 胜出",
+  "as_path_steps": [
+    "按 198.18.2.0/24 过滤 BGP Routes。",
+    "比较两个候选：两者的 Local Preference 均为 100、origin 为 IGP、MED 为 10。PE30 通告 AS_PATH 65010 65011 65012；PE14 通告 AS_PATH 65010。",
+    "切换到 BGP / VPN 路径模式。将 Router 设为 RR2 (123.123.101.101)，将 VPN 或全局表设为 global，将 To 设为 198.18.2.0/24；然后选择 Build a path。",
+    "在 Route resolution 中确认第一行是 RR2 上的 BGP，next hop 为 PE14 (123.14.14.14)。其余行通过 IGP 解析该选定的 next hop。"
+  ],
+  "as_path_candidates_alt": "BGP 路由过滤器以及 198.18.2.0/24 的两个 AS_PATH 候选",
+  "as_path_candidates_visual": "下方过滤后的 BGP Routes 表格在构建路由前显示这两个候选。",
+  "as_path_builder_alt": "BGP VPN 路径构建器设为 RR2、全局表和 198.18.2.0/24",
+  "as_path_builder_visual": "接下来，将 BGP / VPN 路径构建器设为 RR2、全局表和该前缀。",
+  "as_path_result_alt": "Route resolution 显示 RR2 的 BGP 决策，选定 PE14 作为 next hop",
+  "as_path_resolution_visual": "生成的 Route resolution 表格以 RR2 上 BGP 选定 PE14 开始；后续行只是 IGP 底层的遍历。",
+  "as_path_result": "通过：策略后的候选在 AS_PATH 长度上不同，而 Local Preference、Origin 和 MED 相等。从 RR2 构建路由会选定 PE14 (123.14.14.14) 作为 BGP next hop；随后的 IGP 行只解析到该出口的可达性。",
+  "decision_table_title": "其他隔离的决策示例",
+  "decision_headers": [
+    "决策",
+    "前缀",
+    "预期出口",
+    "区别所在"
+  ],
+  "decision_rows": [
+    [
+      "LOCAL_PREF",
+      "198.18.1.0/24",
+      "PE30, 123.123.30.30",
+      "更高的 Local Preference"
+    ],
+    [
+      "AS_PATH",
+      "198.18.2.0/24",
+      "PE14, 123.14.14.14",
+      "更短的 AS_PATH"
+    ],
+    [
+      "ORIGIN",
+      "198.18.3.0/24",
+      "PE30, 123.123.30.30",
+      "origin 为 IGP 优于 incomplete"
+    ],
+    [
+      "MED 参与比较",
+      "198.18.4.0/24",
+      "PE14, 123.14.14.14",
+      "来自同一相邻 AS 的更低 MED"
+    ],
+    [
+      "MED 不参与比较",
+      "198.18.5.0/24",
+      "PE14, 123.14.14.14",
+      "相邻 AS 值不同使 MED 不符合比较条件"
+    ],
+    [
+      "Originator ID",
+      "198.18.6.0/24",
+      "PE14, 123.14.14.14",
+      "在此前多项相等后，更低的 originator ID"
+    ]
+  ],
+  "advanced_title": "进阶决胜条件",
+  "advanced_text": "演示刻意证实六个早期决策步骤。后续的决胜条件，例如 eBGP 优于 iBGP、到 next hop 的 IGP 开销、路由存续时间、cluster-list 长度以及对等体地址，仍属参考场景，而非本快照所证明的结论。",
+  "compare_title": "8. 比较两个时刻之间的路由状态",
+  "compare_intro": "Live 显示当前路由表。Compare 重建 T0 和 T1 时刻的表，并只报告这两个时刻之间的净差异。",
+  "compare_steps": [
+    "打开图级别的 BGP Routes 表格，并从 Live 切换到 Compare。",
+    "保留演示加载时创建的默认一小时 T0 到 T1 窗口，然后按 Run。",
+    "确认有一条新增路由：100.14.210.0/24。changed-at 值标明最后触及该路由的事件。",
+    "把 added、withdrawn 和 changed 理解为端点结果。回到相同状态的中间抖动不算净差异。",
+    "切回 Live 以恢复服务器分页的当前表。"
+  ],
+  "compare_alt": "BGP 路由 Compare 模式，在默认一小时窗口中把 100.14.210.0/24 显示为新增",
+  "compare_visual": "下方比较是默认演示窗口的端点差异，而非按时间排列的事件日志。",
+  "compare_result": "通过：默认演示窗口从不为空，并把 100.14.210.0/24 报告为新增，其在 T1 状态下的 MED 为 80。Compare 不替换 Live；它是一个临时的、未分页的结果。",
+  "events_title": "查看单个 BGP 事件",
+  "events_intro": "Events 使用相同的 BGP Routes 抽屉和时间范围，但保留每一次路由和对等体的观测，而不是把它们缩减为 T0 到 T1 的差异。",
+  "events_steps": [
+    "从 Compare 切换到 Events，并保留覆盖演示变更爆发期的时间窗口。",
+    "按 Run，验证有一条路由 add、一个 peer down 事件，以及针对 100.14.210.0/24 的一条路由 change。",
+    "使用事件、类型、前缀、对等体和时间戳列来区分路由抖动与会话状态。"
+  ],
+  "events_visual": "下方 Events 视图按时间列出观测：新增的路由、peer down 事件，然后是 MED 为 80 的变更路由。",
+  "events_alt": "BGP Routes Events 模式，显示一条路由 add、一个 peer down 事件和一条路由 change",
+  "events_result": "通过：Events 按顺序显示全部三次观测。与 Compare 不同，即使最终路由状态未变，它也保留中间事件。",
+  "resolution_title": "9. 跟踪 BGP 下一跳如何经 OSPF 解析",
+  "resolution_intro": "BGP 选择路由；OSPF 为选定的 BGP next hop 提供可达性。路径视图明确展示这次交接。",
+  "resolution_steps": [
+    "在 Standard / IGP 路径模式下，用 PE30 (123.123.30.30) 作为源，用 100.14.0.0/24 作为目的。",
+    "查看选定的 BGP 行，确认 PE14 (123.14.14.14) 为出口 next hop。",
+    "打开 Route resolution，从左到右阅读结果：第一行是 BGP，管理距离 200，next hop 为 PE14。",
+    "继续查看管理距离为 110 的五个 IGP 行，它们在物理上解析从 PE30 到 PE14 的可达性。"
+  ],
+  "resolution_alt": "Route resolution 表格：一个 BGP 决策，后面是五个 IGP 下一跳解析行",
+  "resolution_visual": "下方表格把单一的 BGP 路由选择与使其 next hop 可达的 IGP 跳分开。",
+  "resolution_result": "通过：BGP 选定 PE14 作为出口一次；随后 OSPF 提供物理底层遍历。表格不得把该底层折叠成一行汇总。",
+  "limits_title": "10. 识别无法构建的视图",
+  "limits_intro": "按 PE31 (123.123.31.31) 过滤。Topolograph 能显示 RR1 从该 PE 收到的路由，但仅凭 RFC 7854 无法揭示 PE31 安装了哪条路由，或 RR1 又向它通告了什么。",
+  "limits_steps": [
+    "打开该路由器的 RIB 摘要，确认视图为 adj_rib_out 且路径计算不可用。",
+    "尝试可构建场景中使用的同一目的地，验证没有任何路由可供路径构建。",
+    "将 PE31 与 PE15 对比：PE15 同样缺少按对等体的 Adj-RIB-Out，但 RR2 Loc-RIB 允许一个带明确假设的反射视图。"
+  ],
+  "limits_result": "没有路径优于基于错误 RIB 构建的路径。要消除此限制，请通过 RFC 9069 提供该节点的 Loc-RIB，或通过 RFC 8671 提供其按对等体的策略后 Adj-RIB-Out。"
+}

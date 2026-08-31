@@ -36,6 +36,8 @@
     "Confirm that the PE has one session, to RR1, and no session to RR2.",
     "Return to General View and locate the same PE-to-RR1 adjacency in the BGP overlay."
   ],
+  "sessions_visual": "The filtered BGP Sessions table below makes the RFC 7854 limitation case concrete: PE31 has one observed session, to RR1.",
+  "sessions_alt": "BGP Sessions table filtered for PE31, showing its only session to RR1",
   "sessions_result": "This single-homed PE is the deliberate RFC 7854 limitation case used later in the runbook.",
   "visibility_title": "3. Know which RIB view you are using",
   "visibility_intro": "A BMP session with a route reflector does not automatically expose every peer's installed table. Topolograph records the strongest view supported by the available feed and states any inference needed to calculate a path.",
@@ -43,8 +45,8 @@
   "rfc_headers": ["BMP source", "Observed information", "Topolograph view", "Can calculate from subject?", "Required assumption"],
   "rfc_rows": [
     ["RFC 7854 pre/post-policy Adj-RIB-In", "Routes received by the BMP speaker", "adj_rib_out for the sending peer", "No", "None - the subject's installed route is unknown"],
-    ["RFC 9069 Loc-RIB at the BMP speaker", "Selected routes installed by the BMP speaker", "loc_rib for the speaker", "Yes", "None"],
-    ["RFC 9069 Loc-RIB at the reflector, used to infer a peer view", "Selected reflected routes used as a peer view", "loc_rib_reflected", "Yes", "Reflection and peer import are inferred"],
+    ["RFC 9069 Loc-RIB", "Selected routes installed by the BMP speaker", "loc_rib for the speaker", "Yes", "None"],
+    ["RFC 9069 Loc-RIB", "Selected reflected routes used as a peer view", "loc_rib_reflected", "Yes", "Reflection and peer import are inferred"],
     ["RFC 8671 post-policy Adj-RIB-Out", "Routes advertised by the speaker to one peer", "adj_rib_in for that peer", "Yes", "The peer import result is not observed"]
   ],
   "router_table_title": "Demo routers, feeds, and resulting views",

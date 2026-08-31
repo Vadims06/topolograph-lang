@@ -39,5 +39,6 @@
   "scale_density_button_title": "Graph layout density",
   "bgp_node_card_sessions_label": "BGP sessions",
   "bgp_node_card_routes_label": "Routes",
-  "bgp_node_card_lsp_label": "LSP tunnels"
+  "bgp_node_card_lsp_label": "LSP tunnels",
+  "bgp_node_card_advertised_label": "Advertised (Adj-RIB-Out)"
 }

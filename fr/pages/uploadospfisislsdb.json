@@ -39,5 +39,6 @@
   "protocol_isis": "IS-IS",
   "bgp_node_card_sessions_label": "Sessions BGP",
   "bgp_node_card_routes_label": "Routes",
-  "bgp_node_card_lsp_label": "Tunnels LSP"
+  "bgp_node_card_lsp_label": "Tunnels LSP",
+  "bgp_node_card_advertised_label": "Annoncé (Adj-RIB-Out)"
 }

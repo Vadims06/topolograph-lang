@@ -39,5 +39,6 @@
   "protocol_isis": "IS-IS",
   "bgp_node_card_sessions_label": "BGP会话",
   "bgp_node_card_routes_label": "路由",
-  "bgp_node_card_lsp_label": "LSP隧道"
+  "bgp_node_card_lsp_label": "LSP隧道",
+  "bgp_node_card_advertised_label": "已通告 (Adj-RIB-Out)"
 }

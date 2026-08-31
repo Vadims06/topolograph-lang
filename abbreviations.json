@@ -2,6 +2,9 @@
   "protected": [
     "OSPF", "OSPFv3", "IS-IS", "BGP", "BGP-LS", "VPN", "CSPF", "LSA", "LSP", "PDU",
     "LSDB", "SPT", "SPTs", "SPF", "TE", "Topolograph", "MCP", "FIB", "YAML",
+    "RFC", "RIB", "loc-rib", "Loc-RIB", "BMP", "Adj-RIB-In", "Adj-RIB-Out",
+    "loc_rib", "loc_rib_reflected", "adj_rib_in", "adj_rib_out",
+    "AS_PATH", "LOCAL_PREF", "ORIGIN", "MED", "Originator ID",
     "NetBox", "TextFSM", "IPv4", "IPv6", "ECMP", "LFA", "TI-LFA",
     "MPLS", "VRF", "ABR", "ASBR", "DR", "BDR", "MTU", "RID", "FRR", "Huawei", "Juniper", "Cisco", "Arista", "Nokia", "Mikrotik", "Ericsson", "ZTE", "Ruckus",
     "MST", "SDK", "topolograph-docker", "topolograph-mcp-server", "RID/System ID", "Router ID", "Watcher", "ID",
