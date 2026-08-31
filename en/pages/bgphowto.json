@@ -75,7 +75,7 @@
     "Click 123.14.14.14 (PE14) on the graph and find the BGP section in the device form.",
     "Confirm Routes is 4 and read the explanation: the routes were advertised by 123.123.101.101 (RR2) to this router through RFC 8671.",
     "Read the RIB breakdown. Adj-RIB-Out post-policy describes 123.123.101.101 (RR2)'s exported RIB; from 123.14.14.14 (PE14)'s perspective these four advertisements are its inferred Adj-RIB-In.",
-    "The Adj-RIB-Out (post) 4 row is included in Routes: it is 123.123.101.101 (RR2)'s Adj-RIB-Out toward 123.14.14.14 (PE14), used as 123.14.14.14 (PE14)'s inferred Adj-RIB-In. A separate Advertised (Adj-RIB-Out) counter, when shown, refers to routes that 123.14.14.14 (PE14) itself sent to BGP neighbors and is not included in Routes."
+    "The Adj-RIB-Out (post) 4 row is included in Routes: it is 123.123.101.101 (RR2)'s Adj-RIB-Out toward 123.14.14.14 (PE14), used as 123.14.14.14 (PE14)'s inferred Adj-RIB-In."
   ],
   "node_card_alt": "123.14.14.14 (PE14) device form showing four routes advertised by 123.123.101.101 (RR2) and Adj-RIB-Out post-policy data",
   "node_card_visual": "This form shows the RIB view for 123.14.14.14 (PE14): four routes from Adj-RIB-Out post-policy received through BMP from 123.123.101.101 (RR2).",

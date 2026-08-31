@@ -135,7 +135,7 @@
     "在图上点击 123.14.14.14 (PE14)，找到设备表单中的 BGP 部分。",
     "确认 Routes 为 4，并阅读说明：这些路由由 123.123.101.101 (RR2) 通过 RFC 8671 向该路由器通告。",
     "阅读 RIB 明细。Adj-RIB-Out post-policy 描述 123.123.101.101 (RR2) 导出的 RIB；从 123.14.14.14 (PE14) 的角度看，这四条通告是其推断出的 Adj-RIB-In。",
-    "Adj-RIB-Out (post) 4 这一行计入 Routes：它表示 123.123.101.101 (RR2) 面向 123.14.14.14 (PE14) 的 Adj-RIB-Out，并作为 123.14.14.14 (PE14) 的推断 Adj-RIB-In。单独的已通告 (Adj-RIB-Out) 计数器仅在有相应数据时显示，表示 123.14.14.14 (PE14) 自身向 BGP 邻居发送的路由，不计入 Routes。"
+    "Adj-RIB-Out (post) 4 这一行计入 Routes：它表示 123.123.101.101 (RR2) 面向 123.14.14.14 (PE14) 的 Adj-RIB-Out，并作为 123.14.14.14 (PE14) 的推断 Adj-RIB-In。"
   ],
   "node_card_alt": "123.14.14.14 (PE14) 设备表单，显示 123.123.101.101 (RR2) 通告的四条路由以及 Adj-RIB-Out post-policy 数据",
   "node_card_visual": "该表单显示 123.14.14.14 (PE14) 的 RIB 视图：通过 BMP 从 123.123.101.101 (RR2) 获取的 Adj-RIB-Out post-policy 中的四条路由。",
