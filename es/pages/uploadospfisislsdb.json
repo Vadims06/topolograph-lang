@@ -40,5 +40,8 @@
   "bgp_node_card_sessions_label": "Sesiones BGP",
   "bgp_node_card_routes_label": "Rutas",
   "bgp_node_card_lsp_label": "Túneles LSP",
-  "bgp_node_card_advertised_label": "Anunciado (Adj-RIB-Out)"
+  "bgp_node_card_advertised_label": "Anunciado (Adj-RIB-Out)",
+  "bgp_node_card_networks_label": "Redes",
+  "bgp_node_card_backuped_label": "Con redundancia",
+  "bgp_node_card_non_backuped_label": "Sin redundancia"
 }

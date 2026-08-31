@@ -182,6 +182,7 @@
   "graph_table_links": "Enlaces",
   "graph_table_edges": "Aristas",
   "graph_table_bgp_routes": "Rutas BGP",
+  "graph_table_bgp_sessions": "Sesiones BGP",
   "graph_table_bgp_peers": "Pares BGP",
   "bgp_route_mode_live": "En vivo",
   "bgp_route_mode_compare": "Comparar",
@@ -289,5 +290,8 @@
   "bgp_node_card_behalf_adj_rib_out": "solo lo que {s} recibió de este router; su tabla instalada es desconocida",
   "bgp_node_card_behalf_reflector_fallback": "el route reflector",
   "bgp_node_card_behalf_speaker_fallback": "el speaker que observa",
-  "bgp_node_card_no_rib_tag": "(sin etiqueta RIB)"
+  "bgp_node_card_no_rib_tag": "(sin etiqueta RIB)",
+  "bgp_evidence_not_observed_directly": "No observado directamente",
+  "bgp_evidence_import_not_observed": "se desconoce el resultado de la política de entrada",
+  "bgp_evidence_reflection_assumed": "se supone la reflexión mediante un route reflector"
 }
