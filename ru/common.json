@@ -8,6 +8,8 @@
   "nav_group_membership": "Членство в группах и VRF",
   "nav_host_group_migration": "Миграция хостов и групп",
   "nav_how_to": "Инструкция",
+  "nav_runbook": "Инструкция",
+  "nav_runbook_bgp": "Инструкция по BGP",
   "nav_api": "API",
   "nav_rest_schema": "Rest Schema",
   "nav_auth_source_ip": "Диапазоны авторизованных IP",
