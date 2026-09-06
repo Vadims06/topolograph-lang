@@ -10,6 +10,7 @@
   "nav_how_to": "Инструкция",
   "nav_runbook": "Инструкция",
   "nav_runbook_bgp": "Инструкция по BGP",
+  "nav_runbook_ospf": "Инструкция по OSPF",
   "nav_api": "API",
   "nav_rest_schema": "Rest Schema",
   "nav_auth_source_ip": "Диапазоны авторизованных IP",

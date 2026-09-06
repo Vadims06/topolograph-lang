@@ -10,6 +10,7 @@
   "nav_how_to": "GUIDE",
   "nav_runbook": "Runbook",
   "nav_runbook_bgp": "Runbook BGP",
+  "nav_runbook_ospf": "Runbook OSPF",
   "nav_api": "API",
   "nav_rest_schema": "Schéma REST",
   "nav_auth_source_ip": "Plages IP sources autorisées",

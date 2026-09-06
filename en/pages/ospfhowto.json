@@ -1,0 +1,271 @@
+{
+  "_meta": {
+    "title": "OSPF Watcher bootcamp runbook - Topolograph",
+    "description": "Run controlled OSPF changes in the six-router ospf01 lab and verify each one from the Watcher CSV through Topolograph Monitoring, the SDK, and the agent."
+  },
+  "eyebrow": "Hands-on OSPF operations",
+  "page_title": "OSPF Watcher bootcamp runbook",
+  "page_intro": "Make one controlled change at a time, predict its effect, then verify the same fact from the Watcher event through Topolograph.",
+  "start_button": "Start the runbook",
+  "sidebar_aria_label": "OSPF runbook sections",
+  "sidebar_title": "OSPF bootcamp",
+  "command_label": "Command",
+  "copy_command_label": "Copy command",
+  "observations_label": "Required observations",
+  "observations_preview": "Facts to confirm before continuing",
+  "rollback_label": "Rollback:",
+  "evidence_status_title": "Evidence captured 2026-09-06.",
+  "evidence_status_body": "Every command below was run by hand against a freshly deployed ospf01 lab. The Watcher CSV lines, SDK output and agent answers are literal captures from that run (graph 06Sep2026_12h31m41s).",
+  "event_log_label": "Watcher CSV",
+  "sdk_output_label": "SDK output",
+  "sdk_request_label": "SDK request",
+  "copy_event_log_label": "Copy log",
+  "copy_sdk_output_label": "Copy output",
+  "verify_label": "Verify the change.",
+  "verify_intro": "Open each source available in your environment and compare its evidence.",
+  "verify_channels": {
+    "watcher": "Watcher log",
+    "monitoring": "Monitoring",
+    "sdk": "SDK verification",
+    "agent": "Ask the agent"
+  },
+  "agent_prompt_label": "Prompt:",
+  "agent_answer_label": "Captured answer (Qwen; wording varies between runs)",
+  "sections": [
+    {
+      "id": "orientation",
+      "nav": "Orientation",
+      "title": "Understand the verification contract",
+      "paragraphs": [
+        "For each exercise: make one change, predict the OSPF result, observe the Watcher event, then find the same fact in Topolograph Monitoring, in the SDK, and - for two of the exercises - in the agent's answer. Restore the lab before the next independent exercise."
+      ],
+      "steps": [
+        "The Watcher CSV line is the deterministic source event.",
+        "Monitoring and the SDK prove the event was ingested and is queryable.",
+        "The agent is used only to correlate several events into one incident, never as a replacement for the source line."
+      ],
+      "command": "",
+      "observations": [],
+      "rollback": ""
+    },
+    {
+      "id": "start-lab",
+      "nav": "Start the lab",
+      "title": "Start and validate the six-router lab",
+      "paragraphs": [
+        "Run the public GRE-based ospf01 topology from the OSPF Watcher repository."
+      ],
+      "steps": [],
+      "command": "cd containerlab/ospf01\nsudo ./prepare.sh\nsudo clab deploy --topo ospf01.clab.yml\nsudo docker logs clab-ospf01-ospf-watcher\nsudo tail -f watcher/logs/watcher1.ospf.log",
+      "observations": [
+        "Six router containers and clab-ospf01-ospf-watcher are running.",
+        "The watcher reports that the OSPF LSDB was received and that packet capture started on eth1.",
+        "OSPF neighbors are established and the initial graph contains six routers."
+      ],
+      "rollback": "If a stale copy exists, destroy only ospf01 before deploying it again."
+    },
+    {
+      "id": "event-record",
+      "nav": "Event record",
+      "title": "Learn the event record once",
+      "paragraphs": [
+        "The runbook uses three event families: host, metric, and network. Read event_object as the changed object, event_status as the transition, and event_detected_by as the advertising or detecting router. graph_time is the watcher's own label for the run and selects the Topolograph graph."
+      ],
+      "steps": [
+        "Fields in order: watcher_time, watcher_name, event_name, event_object, event_status, [cost fields], event_detected_by, graph_time, area_num, asn, [type fields], sesid, srcid.",
+        "area_num 0.0.0.0 and asn 12345 identify the routing domain; sesid is the watcher session, srcid the source router id."
+      ],
+      "command": "",
+      "rollback": "",
+      "observations": [],
+      "event_log": "host: 2026-09-06T13:04:25.256Z,ospfwatcher-demo,host,10.10.10.2,down,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\nmetric: 2026-09-06T13:11:04.205Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:10,new_cost:222,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.1,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\nnetwork: 2026-09-06T13:11:04.207Z,ospfwatcher-demo,network,192.168.23.0/24,changed,old_cost:10,new_cost:222,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+    },
+    {
+      "id": "verify-sources",
+      "nav": "Verification sources",
+      "title": "Where the evidence comes from",
+      "paragraphs": [
+        "One OSPF change produces one Watcher CSV line. Fluent Bit forwards it to Topolograph, which stores it and exposes it through the Monitoring page, the event API, and the SDK. Each exercise below checks the same fact at every level available to you."
+      ],
+      "steps": [
+        "ospf01 Watcher log  ->  Fluent Bit CSV parser  ->  Topolograph ingestion  ->  Monitoring page + event API  ->  Topolograph SDK",
+        "Monitoring page: OSPF/IS-IS Real-Time Monitoring. Choose the graph by its timestamp, set a time window, click Find logs; toggles filter subnet / link / metric events.",
+        "The graph selector on that page lists every snapshot the watcher reported, newest first - that is the topology the watcher sent."
+      ],
+      "image": "monitoring.png",
+      "image_alt": "Topolograph OSPF/IS-IS Real-Time Monitoring page: graph selector, Find logs, and the New/Old Subnets, Up/Down Links and Changed metric toggles.",
+      "command": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\",\n                   username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.get(latest=True)\nprint(graph.graph_time, graph.protocol, graph.hosts)",
+      "observations": [],
+      "rollback": ""
+    },
+    {
+      "id": "directed-cost",
+      "nav": "Directed cost",
+      "title": "Change a directed point-to-point cost",
+      "paragraphs": [
+        "Change router2 eth1 toward router3. OSPF costs are directed, so the reverse router3-to-router2 cost must not be described as the same scalar."
+      ],
+      "steps": [],
+      "command": "conf t\ninterface eth1\nip ospf cost 222",
+      "rollback": "Run no ip ospf cost 222 and confirm the inverse 222 -> 10 metric and network events.",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "The metric and network lines for the change and its rollback",
+          "badge": "4 lines",
+          "code": "2026-09-06T13:11:04.205Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:10,new_cost:222,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.1,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:11:04.207Z,ospfwatcher-demo,network,192.168.23.0/24,changed,old_cost:10,new_cost:222,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# rollback (no ip ospf cost 222):\n2026-09-06T13:11:18.365Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:222,new_cost:10,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.1,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:11:18.367Z,ospfwatcher-demo,network,192.168.23.0/24,changed,old_cost:222,new_cost:10,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "The 10 -> 222 metric change on the event feed",
+          "path": "To see this change in the UI: open OSPF/IS-IS Real-Time Monitoring, pick this graph in Choose the graph, set the From/To time window and click Find logs. The event appears in the feed; the New/Old Subnets, Up/Down Links and Changed metric toggles filter what is listed. With Changed metric on, the router2 -> router3 cost change is listed; the reverse direction is not."
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_adjacency_events and get_network_events return the same object and costs",
+          "badge": "2 events",
+          "request": "graph = topo.graphs.get(latest=True)\nadj = graph.events.get_adjacency_events(last_minutes=15)\nnet = graph.events.get_network_events(last_minutes=15)",
+          "output": "adj['adjacency_cost_change_events'][0]:\n  event_name='metric' event_object='10.10.10.3' event_detected_by='10.10.10.2'\n  old_cost='10' new_cost='222' local_ip_address='192.168.23.1'\n\nnet['network_cost_change_events'][0]:\n  event_name='network' event_object='192.168.23.0/24' event_detected_by='10.10.10.2'\n  old_cost='10' new_cost='222' subnet_type='internal'",
+          "note": "Changed: router2 -> router3, cost 10 -> 222. 192.168.23.0/24 follows. Reverse direction unchanged."
+        },
+        {
+          "channel": "agent",
+          "summary": "A generic incident question about router2",
+          "prompt": "What happened with router2 in the last 10 minutes?",
+          "answer": null,
+          "note": "Accept only when the answer names the direction router2 -> router3 and both values 10 and 222, without the question naming cost or metric."
+        }
+      ]
+    },
+    {
+      "id": "prefix-lifecycle",
+      "nav": "Prefix lifecycle",
+      "title": "Observe internal and external prefix lifecycle",
+      "paragraphs": [
+        "Run each prefix experiment independently. An OSPF loopback configured with a /24 mask is advertised as a /32 host route by this lab."
+      ],
+      "steps": [
+        "6a. Add 192.168.123.1/24 to router2 loopback; observe 192.168.123.1/32 up and cost -1 -> 0 (internal).",
+        "6b. Add 10.10.136.6/24 to router6 loopback; observe 10.10.136.6/32 up and cost -1 -> 0 (internal).",
+        "6c. Remove static route 6.6.6.6/32 on router6; observe 6.6.6.6/32 down and cost 11 -> -1 (external, type 2)."
+      ],
+      "command": "conf t\ninterface lo\nip address 192.168.123.1/24",
+      "rollback": "After each sub-exercise: remove the loopback address, or re-add ip route 6.6.6.6/32 192.168.36.3, and confirm the inverse event.",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "One up/down and one changed line per sub-exercise",
+          "badge": "6 lines",
+          "code": "# 6a router2: ip address 192.168.123.1/24 on interface lo\n2026-09-06T13:12:06.600Z,ospfwatcher-demo,network,192.168.123.1/32,up,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:12:06.601Z,ospfwatcher-demo,network,192.168.123.1/32,changed,old_cost:-1,new_cost:0,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# 6b router6: ip address 10.10.136.6/24 on interface lo\n2026-09-06T13:12:28.916Z,ospfwatcher-demo,network,10.10.136.6/32,up,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:12:28.917Z,ospfwatcher-demo,network,10.10.136.6/32,changed,old_cost:-1,new_cost:0,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# 6c router6: no ip route 6.6.6.6/32 192.168.36.3\n2026-09-06T13:12:51.315Z,ospfwatcher-demo,network,6.6.6.6/32,down,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:12:51.315Z,ospfwatcher-demo,network,6.6.6.6/32,changed,old_cost:11,new_cost:-1,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,external,2,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "The new and withdrawn prefixes on the feed",
+          "path": "To see this change in the UI: open OSPF/IS-IS Real-Time Monitoring, pick this graph in Choose the graph, set the From/To time window and click Find logs. The event appears in the feed; the New/Old Subnets, Up/Down Links and Changed metric toggles filter what is listed. With New/Old Subnets on, 192.168.123.1/32 and 10.10.136.6/32 appear as added and 6.6.6.6/32 as withdrawn."
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_network_events, filtered by the literal prefix",
+          "badge": "3 events",
+          "request": "net = graph.events.get_network_events(last_minutes=20)\n[e for e in net['network_up_down_events']\n if e.__dict__['event_object'] in\n    ('192.168.123.1/32', '10.10.136.6/32', '6.6.6.6/32')]",
+          "output": "192.168.123.1/32  status=changed  detected_by=10.10.10.2  -1 -> 0   internal / 0\n10.10.136.6/32    status=changed  detected_by=10.10.10.6  -1 -> 0   internal / 0\n6.6.6.6/32        status=changed  detected_by=10.10.10.6  11 -> -1  external / 2",
+          "note": "A /24 on the loopback is advertised as a /32. Availability is an up/down event; the cost move is a changed event. The withdrawn route is external / type 2, the two loopbacks internal / 0."
+        }
+      ]
+    },
+    {
+      "id": "adjacency-outage",
+      "nav": "Adjacency outage",
+      "title": "Correlate an adjacency outage and recovery",
+      "paragraphs": [
+        "Shut router2 eth1, inspect the correlated event set, then restore the interface with no shutdown."
+      ],
+      "steps": [],
+      "command": "conf t\ninterface eth1\nshutdown\n! recovery\nno shutdown",
+      "rollback": "no shutdown restores the interface; wait for the host, network and metric recovery events.",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "The down set and the recovery set for the router2-router3 link",
+          "badge": "down + up",
+          "code": "# router2: interface eth1 / shutdown\n2026-09-06T13:04:25.256Z,ospfwatcher-demo,host,10.10.10.2,down,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:25.256Z,ospfwatcher-demo,metric,10.10.10.2,changed,old_cost:10,new_cost:-1,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.2,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:25.257Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:10,new_cost:-1,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.1,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:25.259Z,ospfwatcher-demo,network,192.168.23.0/24,down,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# router2: interface eth1 / no shutdown\n2026-09-06T13:04:40.438Z,ospfwatcher-demo,network,192.168.23.0/24,up,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:40.458Z,ospfwatcher-demo,host,10.10.10.2,up,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:40.459Z,ospfwatcher-demo,metric,10.10.10.2,changed,old_cost:-1,new_cost:10,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.2,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:45.557Z,ospfwatcher-demo,host,10.10.10.3,up,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "The outage as one wave on the feed",
+          "path": "To see this change in the UI: open OSPF/IS-IS Real-Time Monitoring, pick this graph in Choose the graph, set the From/To time window and click Find logs. The event appears in the feed; the New/Old Subnets, Up/Down Links and Changed metric toggles filter what is listed. With Up/Down Links on, 10.10.10.2 shows down then up, both directed metrics move to -1 and back, and 192.168.23.0/24 goes unreachable and returns."
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_adjacency_events returns the paired down/up moves",
+          "badge": "4 moves",
+          "request": "adj = graph.events.get_adjacency_events(last_minutes=20)",
+          "output": "adj['all_host_up_down_events'] (paired moves):\n  metric 10.10.10.2  detected_by 10.10.10.3   10 -> -1   @13:04:25\n  metric 10.10.10.3  detected_by 10.10.10.2   10 -> -1   @13:04:25\n  metric 10.10.10.2  detected_by 10.10.10.3   -1 -> 10   @13:04:40\n  metric 10.10.10.3  detected_by 10.10.10.2   -1 -> 10   @13:04:45",
+          "note": "host 10.10.10.2 down detected by 10.10.10.3, both directed metrics to -1, 192.168.23.0/24 down; then the mirror recovery."
+        },
+        {
+          "channel": "agent",
+          "summary": "A generic incident question about the network",
+          "prompt": "What happened in the network in the last 30 minutes?",
+          "answer": [
+            "There was 1 wave of activity, starting at 13:04:25 UTC and involving 2 devices - a brief link flap between 10.10.10.2 and 10.10.10.3 that fully recovered (converged) within ~21 seconds.",
+            "13:04:25 - device 10.10.10.2 lost adjacency (link down, cost 10 -> -1).",
+            "13:04:25 - device 10.10.10.3 lost adjacency (link down, cost 10 -> -1).",
+            "13:04:41 - device 10.10.10.2 restored adjacency (link up, cost -1 -> 10).",
+            "13:04:46 - device 10.10.10.3 restored adjacency (link up, cost -1 -> 10).",
+            "Pattern: flap - all devices recovered within the wave, so the network re-converged."
+          ],
+          "note": "Accept only when the answer names which adjacency failed (10.10.10.2 - 10.10.10.3), that it was detected by 10.10.10.3, both metrics at -1, and that it recovered - checked against the CSV lines above. The question must not name 'adjacency' or 'failure'."
+        }
+      ]
+    },
+    {
+      "id": "transit-segment",
+      "nav": "Transit segment",
+      "title": "Compare a broadcast transit segment",
+      "paragraphs": [
+        "Use router6 eth1 to compare transit-segment reporting with the point-to-point case."
+      ],
+      "steps": [],
+      "command": "conf t\ninterface eth1\nip ospf cost 66\n! then, separately\nshutdown\n! then\nno shutdown",
+      "rollback": "ip ospf cost 6 restores the baseline; no shutdown restores the adjacency. Confirm the inverse metric events.",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "The cost change names the far router id, and the shutdown/recovery pair",
+          "badge": "cost + up/down",
+          "code": "# router6: interface eth1 / ip ospf cost 66   (and rollback ip ospf cost 6)\n2026-09-06T13:13:13.841Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:6,new_cost:66,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.36.6,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:13:25.028Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:66,new_cost:6,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.36.6,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# router6: interface eth1 / shutdown\n2026-09-06T13:13:36.241Z,ospfwatcher-demo,host,10.10.10.6,down,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:13:36.241Z,ospfwatcher-demo,metric,10.10.10.6,changed,old_cost:10,new_cost:-1,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.36.3,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# router6: interface eth1 / no shutdown\n2026-09-06T13:14:30.447Z,ospfwatcher-demo,host,10.10.10.6,up,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:14:30.447Z,ospfwatcher-demo,metric,10.10.10.6,changed,old_cost:-1,new_cost:10,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.36.3,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "The transit cost change and the router6 outage",
+          "path": "To see this change in the UI: open OSPF/IS-IS Real-Time Monitoring, pick this graph in Choose the graph, set the From/To time window and click Find logs. The event appears in the feed; the New/Old Subnets, Up/Down Links and Changed metric toggles filter what is listed. The metric event object is 10.10.10.3 (the far router id) with event_detected_by 10.10.10.6 - unlike a point-to-point link, where the object is the neighbour."
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_adjacency_events for the transit cost and the shutdown/recovery",
+          "badge": "3 rows",
+          "request": "adj = graph.events.get_adjacency_events(last_minutes=20)",
+          "output": "adj['adjacency_cost_change_events']:\n  event_object='10.10.10.3' event_detected_by='10.10.10.6'  6 -> 66  then  66 -> 6\n\nadj['all_host_up_down_events']:\n  metric 10.10.10.6  detected_by 10.10.10.3   10 -> -1   @13:13:36\n  metric 10.10.10.6  detected_by 10.10.10.3   -1 -> 10   @13:14:30",
+          "note": "On a transit segment the metric event names the far router id (10.10.10.3), detected by router6; the shutdown is host 10.10.10.6 down, then recovery."
+        }
+      ]
+    },
+    {
+      "id": "collection-parity",
+      "nav": "Collection parity",
+      "title": "Understand GRE and BGP-LS parity",
+      "paragraphs": [
+        "The hands-on path uses the public GRE lab. The same P2P and transit metric/up/down event model is also validated internally over BGP-LS, without publishing the private generator."
+      ],
+      "steps": [],
+      "command": "",
+      "observations": [
+        "P2P metric / up / down: hands-on here, and covered by test_bgpls_ospf_p2p.yaml.",
+        "Transit metric / up / down: hands-on here, and covered by test_bgpls_ospf_transit.yaml.",
+        "TE attributes and node roles: validated over BGP-LS (test_bgpls_ospf_p2p.yaml, test_bgpls_ospf_node_flags.yaml). Their GRE hands-on exercises are not part of this runbook."
+      ],
+      "rollback": ""
+    }
+  ]
+}

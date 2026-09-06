@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "title": "Практикум по OSPF Watcher — Topolograph",
+    "description": "Контролируемые изменения OSPF в лаборатории из шести маршрутизаторов ospf01 и сверка каждого от строки Watcher CSV до страницы мониторинга Topolograph, SDK и агента."
+  },
+  "eyebrow": "Практическая работа с OSPF",
+  "page_title": "Практикум по OSPF Watcher",
+  "page_intro": "Вносите по одному изменению за раз, предсказывайте результат и сверяйте один и тот же факт от события Watcher до Topolograph.",
+  "start_button": "Начать практикум",
+  "sidebar_aria_label": "Разделы практикума по OSPF",
+  "sidebar_title": "Практикум по OSPF",
+  "command_label": "Команда",
+  "copy_command_label": "Скопировать команду",
+  "observations_label": "Что проверить",
+  "observations_preview": "Факты для подтверждения перед продолжением",
+  "rollback_label": "Откат:",
+  "evidence_status_title": "Данные собраны 2026-09-06.",
+  "evidence_status_body": "Каждая команда ниже выполнена вручную на свежеразвёрнутой лаборатории ospf01. Строки Watcher CSV, вывод SDK и ответы агента — дословные снимки того запуска (граф 06Sep2026_12h31m41s).",
+  "event_log_label": "Журнал Watcher (CSV)",
+  "sdk_output_label": "Вывод SDK",
+  "sdk_request_label": "Запрос SDK",
+  "copy_event_log_label": "Скопировать журнал",
+  "copy_sdk_output_label": "Скопировать вывод",
+  "verify_label": "Проверьте изменение.",
+  "verify_intro": "Откройте каждый доступный источник и сверьте его свидетельство.",
+  "verify_channels": {
+    "watcher": "Журнал Watcher",
+    "monitoring": "Мониторинг",
+    "sdk": "Проверка через SDK",
+    "agent": "Спросить агента"
+  },
+  "agent_prompt_label": "Запрос:",
+  "agent_answer_label": "Записанный ответ (Qwen; формулировка меняется от запуска к запуску)"
+}
