@@ -1,0 +1,275 @@
+{
+  "_meta": {
+    "title": "Manual practico de IS-IS Watcher - Topolograph",
+    "description": "Aplica cambios IS-IS controlados en el laboratorio isis01 de seis routers y verifica cada uno desde el CSV del Watcher hasta Topolograph Monitoring, el SDK y el agente."
+  },
+  "eyebrow": "Operacion practica de IS-IS",
+  "page_title": "Manual practico de IS-IS Watcher",
+  "page_intro": "Haz un solo cambio controlado cada vez, predice su efecto y verifica el mismo hecho desde el evento del Watcher hasta Topolograph.",
+  "start_button": "Iniciar el manual",
+  "resources_label": "Enlaces utiles: ",
+  "resources": [
+    {
+      "label": "IS-IS Watcher - repositorio y guia de despliegue",
+      "url": "https://github.com/Vadims06/isiswatcher"
+    },
+    {
+      "label": "Topolograph",
+      "url": "https://topolograph.com"
+    }
+  ],
+  "sidebar_aria_label": "Secciones del manual IS-IS",
+  "sidebar_title": "Practica IS-IS",
+  "command_label": "Comando",
+  "copy_command_label": "Copiar comando",
+  "observations_label": "Observaciones requeridas",
+  "observations_preview": "Hechos a confirmar antes de continuar",
+  "rollback_label": "Reversion:",
+  "evidence_status_title": "Evidencia capturada el 2026-09-07.",
+  "evidence_status_body": "Cada comando de abajo se ejecuto a mano contra un laboratorio isis01 recien desplegado. Las lineas CSV del Watcher y la salida del SDK son capturas literales de esa ejecucion (grafo 07Sep2026_06h49m43s_6_hosts); la respuesta del agente es una respuesta real de Qwen.",
+  "event_log_label": "CSV de Watcher",
+  "sdk_output_label": "Salida del SDK",
+  "sdk_request_label": "Peticion del SDK",
+  "copy_event_log_label": "Copiar registro",
+  "copy_sdk_output_label": "Copiar salida",
+  "verify_label": "Verifica el cambio.",
+  "verify_intro": "Abre cada fuente disponible en tu entorno y contrástala con los ejemplos de abajo.",
+  "verify_channels": {
+    "watcher": "Registro del Watcher",
+    "monitoring": "Monitoreo",
+    "sdk": "Verificacion con SDK",
+    "agent": "Pregunta al agente"
+  },
+  "agent_prompt_label": "Prompt:",
+  "agent_answer_label": "Respuesta capturada (Qwen; la redaccion varia entre ejecuciones)",
+  "sections": [
+    {
+      "id": "orientation",
+      "nav": "Orientacion",
+      "title": "Cómo funciona este manual",
+      "paragraphs": [
+        "Para cada ejercicio: haz un cambio, predice el resultado IS-IS, observa el evento del Watcher y luego encuentra el mismo hecho en Topolograph Monitoring, en el SDK y - en el ejercicio de correlacion - en la respuesta del agente. Restaura el laboratorio antes del siguiente ejercicio independiente.",
+        "isis01 es un dominio FRR de seis routers en un area (`49.0001`, AS `65100`). `router2`-`router3` usa Level-1-2; `router3` hacia `router6` y el tramo de `router3` hacia la LAN `router4`/`router5` son solo Level-2. El Watcher usa una adyacencia Level-2 en `router1` y resuelve cada System ID a su hostname mediante el TLV de hostname dinamico de IS-IS, por lo que los eventos nombran `router2`, `router3`, `router6` en vez de `0100.1001.000x`."
+      ],
+      "steps": [
+        "La linea CSV del Watcher es el evento de origen determinista.",
+        "Monitoring y el SDK demuestran que el evento se ingirio y se puede consultar.",
+        "El agente se usa solo para correlacionar varios eventos en un incidente, nunca como sustituto de la linea de origen."
+      ],
+      "command": "",
+      "observations": [],
+      "rollback": ""
+    },
+    {
+      "id": "start-lab",
+      "nav": "Iniciar el laboratorio",
+      "title": "Puesta en marcha y validación del laboratorio de seis routers",
+      "paragraphs": [
+        "Ejecuta la topologia publica isis01 basada en GRE del repositorio de IS-IS Watcher. `prepare.sh` tambien crea el puente `isis-br-dr` y carga los modulos de kernel MPLS que IS-IS TE necesita.",
+        "Primero comprueba si ya hay un laboratorio en marcha con `sudo clab inspect --all`. Si aparece un isis01 obsoleto, desmontalo con `sudo clab destroy --topo isis01.clab.yml --cleanup` desde `containerlab/isis01/` antes de volver a desplegar; nombra el archivo de topologia para no tocar ningun otro laboratorio."
+      ],
+      "steps": [],
+      "command": "cd containerlab/isis01\nsudo clab inspect --all\nsudo clab destroy --topo isis01.clab.yml --cleanup   # only if a stale isis01 is listed\nsudo ./prepare.sh\nsudo clab deploy --topo isis01.clab.yml\nsudo docker logs clab-isis01-isis-watcher\nsudo tail -f watcher/logs/watcher1.isis.log",
+      "observations": [
+        "Seis contenedores de router mas el watcher estan activos: `docker ps --filter name=clab-isis01` lista `clab-isis01-router1..6` y `clab-isis01-isis-watcher`, todos con `State=Up`.",
+        "El watcher tiene la LSDB y esta capturando: `docker logs clab-isis01-isis-watcher` muestra `ISIS LSDB has been received` y `Sniffing packets on interface: eth1`.",
+        "Las adyacencias estan Up: `docker exec clab-isis01-router1 vtysh -c 'show isis neighbor'` lista `router3` en estado `Up`; el primer grafo de Topolograph contiene entonces seis routers."
+      ],
+      "rollback": "Cuando termines el manual, elimina el laboratorio con `sudo clab destroy --topo isis01.clab.yml --cleanup` desde `containerlab/isis01/`."
+    },
+    {
+      "id": "event-record",
+      "nav": "Registro de evento de red",
+      "title": "Formato del registro de evento de red",
+      "paragraphs": [
+        "El manual usa tres familias de eventos: `host`, `metric` y `network`. Lee `event_object` como el objeto modificado, `event_status` como la transicion y `event_detected_by` como el router que anuncia o detecta. `graph_time` es la etiqueta propia del watcher para la ejecucion y selecciona el grafo de Topolograph.",
+        "Las lineas IS-IS llevan un campo `level` (`1` o `2`) que las lineas OSPF no tienen: es el tercer campo, justo despues de `watcher_name`. Lee la linea `metric` de arriba como una frase: a las `2026-09-07T06:55:14Z` el watcher `lab-isis01` vio a `router3` reanunciar su enlace Level-1 hacia `router2` con la metrica cambiada de `10` a `-1` (adyacencia perdida), en la interfaz con direccion `192.168.23.2` en el area `49.0001` / AS `65100`. La identidad detras de `router2` es su NET / System ID `49.0001.0100.1001.0002.00`; el watcher imprime el hostname porque cada router anuncia el TLV de hostname dinamico.",
+        "Una linea `host` o `network` up/down simple no lleva campos de coste, asi que Fluent Bit reenvia solo la linea `changed` emparejada. Topolograph deduce que una adyacencia cae por la linea `metric` cuyo `new_cost` es `-1`, y que vuelve por aquella cuyo `old_cost` es `-1`."
+      ],
+      "steps": [
+        "Campos en orden: `watcher_time`, `watcher_name`, `level`, `event_name`, `event_object`, `event_status`, [campos de coste], `event_detected_by`, `graph_time`, `area_num`, `asn`, [`local_ip`, `remote_ip` | `subnet_type`, `int_ext_subtype`], `sesid`, `srcid`.",
+        "`area_num` `49.0001` y `asn` `65100` identifican el dominio de enrutamiento; `sesid` es la sesion del watcher, `srcid` el System ID del router de origen (`router1`, `0100.1001.0001`)."
+      ],
+      "command": "",
+      "rollback": "",
+      "observations": [],
+      "event_log": "host:    2026-09-07T06:55:14.754Z,lab-isis01,1,host,router2,down,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.23.2,192.168.23.1,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\nmetric:  2026-09-07T06:55:14.756Z,lab-isis01,1,metric,router2,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.23.2,192.168.23.1,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\nnetwork: 2026-09-07T06:55:14.761Z,lab-isis01,1,network,192.168.23.0/24,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001"
+    },
+    {
+      "id": "verify-sources",
+      "nav": "Fuentes de verificacion",
+      "title": "De dónde vienen los eventos",
+      "paragraphs": [
+        "Un cambio IS-IS produce una linea CSV del Watcher por nivel. Fluent Bit la reenvia a Topolograph, que la almacena y la expone en la pagina de Monitoring, la API de eventos y el SDK. Cada ejercicio de abajo comprueba el mismo hecho en cada nivel disponible para ti."
+      ],
+      "steps": [
+        "Registro del Watcher isis01  ->  parser CSV de Fluent Bit  ->  ingesta de Topolograph  ->  pagina de Monitoring + API de eventos  ->  SDK de Topolograph",
+        "Pagina de Monitoring: OSPF/IS-IS Real-Time Monitoring. Elige el grafo por su marca de tiempo en `Choose the graph`, define la ventana `From`/`To` en UTC, activa los interruptores `L1` y `L2`, pulsa `Find logs`; los interruptores `New/Old Subnets`, `Up/Down Links` y `Changed metric` filtran lo que se lista.",
+        "El selector de grafo lista cada instantánea de topología que el watcher reportó: esa es la topología que el watcher envió."
+      ],
+      "image": "monitoring.png",
+      "image_alt": "Controles de Topolograph OSPF/IS-IS Real-Time Monitoring para el grafo 07Sep2026_06h49m43s_6_hosts: el selector de grafo, la ventana de tiempo From/To, los interruptores de nivel L1 y L2 ambos activados, los interruptores New/Old Subnets, Up/Down Links y Changed metric, y Find logs. El panel Watchers Status muestra \"No watchers registered yet\" porque el watcher de containerlab envia topologia pero no heartbeats.",
+      "sdk_request": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\",\n                   username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.get(latest=True)\nprint(graph.graph_time, graph.protocol, graph.hosts)",
+      "sdk_output": "07Sep2026_06h49m43s_6_hosts isis {'count': 6}",
+      "observations": [],
+      "rollback": ""
+    },
+    {
+      "id": "directed-cost",
+      "nav": "Enlace punto a punto",
+      "title": "Cambio de coste en un enlace punto a punto",
+      "paragraphs": [
+        "Cambia `router2` `eth1` hacia `router3`. Las metricas IS-IS son dirigidas, asi que la metrica inversa de `router3` a `router2` no debe describirse como el mismo escalar. `router2` `eth1` no tiene un `isis metric` explicito, asi que parte del valor por defecto de wide-metric, `10`. `router2`-`router3` es un circuito Level-1-2, asi que el cambio se anuncia en ambos niveles."
+      ],
+      "steps": [],
+      "command": "sudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'isis metric 222'",
+      "rollback": "Ejecuta `isis metric 10` (o `no isis metric`) en `router2` `eth1` y confirma los eventos inversos `222` -> `10` `metric` y `network`.",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "Las lineas metric y network del cambio y su reversion, en L1 y L2",
+          "badge": "L1 + L2",
+          "code": "# router2: interface eth1 / isis metric 222\n2026-09-07T06:52:15.035Z,lab-isis01,1,metric,router3,changed,old_cost:10,new_cost:222,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:52:15.037Z,lab-isis01,1,network,192.168.23.0/24,changed,old_cost:10,new_cost:222,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:52:15.045Z,lab-isis01,2,metric,router3,changed,old_cost:10,new_cost:222,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# rollback (isis metric 10):\n2026-09-07T06:52:37.514Z,lab-isis01,1,metric,router3,changed,old_cost:222,new_cost:10,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:52:37.526Z,lab-isis01,2,metric,router3,changed,old_cost:222,new_cost:10,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "El cambio de metrica 10 -> 222 en el flujo de eventos",
+          "path": "En OSPF/IS-IS Real-Time Monitoring, elige `07Sep2026_06h49m43s_6_hosts` en `Choose the graph`, define la ventana `From`/`To` en torno a las 06:52 UTC, activa `L1` y `L2` y pulsa `Find logs`. Con `Changed metric` activado, el flujo muestra `object` `router3`, `detected by` `router2`, `10` -> `222` - solo la direccion `router2` -> `router3`, una vez para L1 y otra para L2. La direccion inversa no aparece."
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_adjacency_events y get_network_events devuelven el mismo objeto y los mismos costes",
+          "badge": "2 eventos",
+          "request": "adj = graph.events.get_adjacency_events(\n    start_time=\"2026-09-07T06:52:14Z\", end_time=\"2026-09-07T06:52:20Z\")\nnet = graph.events.get_network_events(\n    start_time=\"2026-09-07T06:52:14Z\", end_time=\"2026-09-07T06:52:20Z\")\nfor e in adj[\"adjacency_cost_change_events\"]:\n    print(e.event_object, e.event_detected_by, e.old_cost, \"->\", e.new_cost, \"L\" + str(e.level_number))\nfor e in net[\"network_cost_change_events\"]:\n    print(e.event_object, e.old_cost, \"->\", e.new_cost, \"L\" + str(e.level_number))",
+          "output": "router3 router2 10 -> 222 L1\nrouter3 router2 10 -> 222 L2\n3ffe::192:168:23:2/127 10 -> 222 L1\n192.168.23.0/24 10 -> 222 L1\n3ffe::192:168:23:2/127 10 -> 222 L2\n192.168.23.0/24 10 -> 222 L2",
+          "note": "El evento `metric` nombra la direccion `router2` -> `router3` (`event_object` `router3`, `event_detected_by` `router2`), `10` -> `222`, en ambos niveles; las subredes conectadas IPv4 e IPv6 llevan el mismo cambio. La direccion inversa no aparece."
+        },
+        {
+          "channel": "agent",
+          "summary": "Una pregunta generica de incidente sobre router2",
+          "prompt": "What happened with router2 in the last 10 minutes?",
+          "note": "Una respuesta valida nombra la direccion `router2` -> `router3` y ambos valores de metrica (`10` y `222`) sin que la pregunta mencione coste o metrica, y no afirma que la direccion inversa `router3` -> `router2` cambio."
+        }
+      ]
+    },
+    {
+      "id": "prefix-lifecycle",
+      "nav": "Ciclo de vida de prefijos",
+      "title": "Detección de eventos de prefijos internos y externos",
+      "paragraphs": [
+        "Ejecuta cada experimento de prefijo por separado. A diferencia de OSPF, IS-IS anuncia un loopback con la mascara con que esta configurado y lo cuesta con la metrica de la interfaz: un `/24` sigue siendo `/24` con coste `10`, no se colapsa a una ruta host `/32`. `router6` es solo Level-2, asi que sus prefijos aparecen solo en L2."
+      ],
+      "steps": [
+        "6a. En `router2`, `interface lo` / `ip address 192.168.123.1/24`; observa `192.168.123.0/24` up y coste `-1` -> `10` en L1 y L2.",
+        "6b. En `router6`, `interface lo` / `ip address 10.10.36.6/24`; observa `10.10.36.0/24` up y coste `-1` -> `10` en L2.",
+        "6c. En `router6`, `no ip route 6.6.6.6/32 192.168.36.3`; observa `6.6.6.6/32` down y coste `11` -> `-1` en L2. FRR la redistribuye en IS-IS sin el bit external, asi que el watcher la marca como `internal`."
+      ],
+      "command": "sudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface lo' -c 'ip address 192.168.123.1/24'",
+      "rollback": "6a: `no ip address 192.168.123.1/24` en `router2` `interface lo`. 6b: `no ip address 10.10.36.6/24` en `router6` `interface lo`. 6c: `ip route 6.6.6.6/32 192.168.36.3` en `router6`. Confirma el evento inverso despues de cada uno.",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "Una linea up/down y una changed por sub-ejercicio",
+          "badge": "3 prefijos",
+          "code": "# 6a router2: interface lo / ip address 192.168.123.1/24\n2026-09-07T06:52:52.074Z,lab-isis01,1,network,192.168.123.0/24,up,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:52:52.075Z,lab-isis01,1,network,192.168.123.0/24,changed,old_cost:-1,new_cost:10,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# 6b router6: interface lo / ip address 10.10.36.6/24\n2026-09-07T06:53:39.099Z,lab-isis01,2,network,10.10.36.0/24,up,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:53:39.099Z,lab-isis01,2,network,10.10.36.0/24,changed,old_cost:-1,new_cost:10,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# 6c router6: no ip route 6.6.6.6/32 192.168.36.3\n2026-09-07T06:54:14.533Z,lab-isis01,2,network,6.6.6.6/32,down,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:54:14.533Z,lab-isis01,2,network,6.6.6.6/32,changed,old_cost:11,new_cost:-1,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "Los prefijos nuevos y retirados en el flujo",
+          "path": "En OSPF/IS-IS Real-Time Monitoring, elige este grafo, define la ventana en torno a 06:52-06:55 UTC, activa `L1` y `L2` y pulsa `Find logs`. Con `New/Old Subnets` activado, `192.168.123.0/24` y `10.10.36.0/24` aparecen como anadidos y `6.6.6.6/32` como retirado."
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_network_events, un evento changed por sub-ejercicio",
+          "badge": "3 eventos",
+          "request": "for start, end in [(\"2026-09-07T06:52:50Z\", \"2026-09-07T06:52:55Z\"),\n                   (\"2026-09-07T06:53:37Z\", \"2026-09-07T06:53:42Z\"),\n                   (\"2026-09-07T06:54:12Z\", \"2026-09-07T06:54:17Z\")]:\n    net = graph.events.get_network_events(start_time=start, end_time=end)\n    for e in net[\"network_up_down_events\"]:\n        print(e.event_object, e.event_status, e.event_detected_by,\n              f\"{e.old_cost} -> {e.new_cost}\", \"L\" + str(e.level_number), e.subnet_type)",
+          "output": "192.168.123.0/24 changed router2 -1 -> 10 L1 internal\n192.168.123.0/24 changed router2 -1 -> 10 L2 internal\n10.10.36.0/24 changed router6 -1 -> 10 L2 internal\n6.6.6.6/32 changed router6 11 -> -1 L2 internal",
+          "note": "El `/24` conserva su mascara: no hay colapso a `/32`. La disponibilidad es una linea up/down que el forwarder descarta; el cambio de coste es el evento `changed` que devuelve el SDK. El loopback de `router2` se ve en L1 y L2, el de `router6` solo en L2, y el `6.6.6.6/32` redistribuido se marca como `internal`."
+        }
+      ]
+    },
+    {
+      "id": "adjacency-outage",
+      "nav": "Caida de adyacencia",
+      "title": "Detección de una pérdida de conectividad y su recuperación",
+      "paragraphs": [
+        "Deshabilita `router2` `eth1`, inspecciona el conjunto de eventos correlacionados y luego restaura la interfaz con `no shutdown`. Como `router2`-`router3` es Level-1-2, cada linea aparece una vez para L1 y otra para L2."
+      ],
+      "steps": [],
+      "command": "# down\nsudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\n# recovery\nsudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "rollback": "`no shutdown` en `router2` `eth1` restaura la interfaz; espera los eventos de recuperacion `host`, `network` y `metric` en ambos niveles.",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "El conjunto down de L1 y el conjunto de recuperacion de L1 para el enlace router2-router3",
+          "badge": "down + up",
+          "code": "# router2: interface eth1 / shutdown\n2026-09-07T06:55:14.754Z,lab-isis01,1,host,router2,down,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.23.2,192.168.23.1,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:55:14.756Z,lab-isis01,1,metric,router2,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.23.2,192.168.23.1,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:55:14.760Z,lab-isis01,1,metric,router3,changed,old_cost:10,new_cost:-1,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:55:14.761Z,lab-isis01,1,network,192.168.23.0/24,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# router2: interface eth1 / no shutdown\n2026-09-07T06:55:39.545Z,lab-isis01,1,metric,router3,changed,old_cost:-1,new_cost:10,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:55:39.607Z,lab-isis01,1,metric,router2,changed,old_cost:-1,new_cost:10,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.23.2,192.168.23.1,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "La caida como una sola oleada en el flujo",
+          "path": "En OSPF/IS-IS Real-Time Monitoring, elige este grafo, define la ventana en torno a 06:55 UTC, activa `L1` y `L2` y pulsa `Find logs`. Con `Up/Down Links` activado, `router2` y `router3` muestran cada uno su lado del enlace yendo a `-1` y volviendo, y `192.168.23.0/24` queda inalcanzable y regresa - dos veces, una por nivel."
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_adjacency_events devuelve los movimientos down/up emparejados",
+          "badge": "4 movimientos",
+          "request": "down = graph.events.get_adjacency_events(\n    start_time=\"2026-09-07T06:55:14Z\", end_time=\"2026-09-07T06:55:16Z\")\nfor e in down[\"all_host_up_down_events\"]:\n    print(e.event_object, \"detected_by\", e.event_detected_by,\n          f\"{e.old_cost} -> {e.new_cost}\", \"L\" + str(e.level_number))",
+          "output": "router2 detected_by router3 10 -> -1 L1\nrouter3 detected_by router2 10 -> -1 L1\nrouter2 detected_by router3 10 -> -1 L2\nrouter3 detected_by router2 10 -> -1 L2",
+          "note": "`host` `router2` down detectado por `router3`, ambas metricas dirigidas a `-1`, `192.168.23.0/24` down - en L1 y L2; luego la recuperacion espejo. En la recuperacion el watcher tambien registra un flap `node` `attr:attached` en `router2`, que Topolograph aun no ingiere."
+        },
+        {
+          "channel": "agent",
+          "summary": "Una pregunta generica de incidente sobre la red",
+          "prompt": "What happened in the network in the last 30 minutes?",
+          "answer": [
+            "In the last 30 minutes the IS-IS domain (area 49.0001, AS 65100) had 7 event waves detected by watcher lab-isis01, starting at 06:55:15 UTC. Every device that went down recovered within the window.",
+            "06:55:15 - router2 and router3 each lost the adjacency between them, at L1 and L2 (router2 detected by router3, router3 detected by router2).",
+            "06:55:40 - both routers restored that adjacency at L1 and L2, followed by a few repeated up notifications through 06:56:33.",
+            "06:57:23 - router6 lost its L2 adjacency to router3; 06:57:56 - router6 and router3 restored it.",
+            "In short: the router2-router3 link dropped at 06:55:15 and came back at 06:55:40; the router3-router6 link dropped at 06:57:23 and recovered at 06:57:56 - both fully converged."
+          ],
+          "note": "La respuesta nombra la adyacencia caida (`router2` - `router3`), que `router3` detecto la perdida de `router2` y viceversa, ambas metricas en `-1` y la recuperacion - los mismos hechos que las lineas CSV de arriba, a partir de una pregunta que nunca dice \"adjacency\" ni \"failure\". Las lineas de `router6` son el ejercicio de transito de mas abajo, capturado por la misma ventana de 30 minutos."
+        }
+      ]
+    },
+    {
+      "id": "transit-segment",
+      "nav": "Segmento de transito",
+      "title": "Informe de un segmento de tránsito de difusión",
+      "paragraphs": [
+        "`router6` `eth1` se enfrenta a `router3` en un circuito de difusion (LAN). `router6` lleva `isis priority 100` frente a `64` de `router3`, asi que `router6` es el DIS y origina el LSP de pseudonodo. El circuito es solo Level-2, asi que cada linea es L2. `router6` `eth1` no tiene un `isis metric` explicito, asi que la base es el valor por defecto `10`."
+      ],
+      "steps": [],
+      "command": "# cost\nsudo docker exec clab-isis01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'isis metric 66'\n# then, separately: shutdown, then no shutdown\nsudo docker exec clab-isis01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\nsudo docker exec clab-isis01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "rollback": "`isis metric 10` (o `no isis metric`) en `router6` `eth1` restaura la base `10`; `no shutdown` restaura la adyacencia. Confirma los eventos `metric` inversos.",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "El cambio de coste L2 con sus efectos secundarios en network, mas el par shutdown/recuperacion",
+          "badge": "coste + up/down",
+          "code": "# router6: interface eth1 / isis metric 66   (rollback: isis metric 10)\n2026-09-07T06:56:47.139Z,lab-isis01,2,network,192.168.36.0/24,changed,old_cost:10,new_cost:66,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:56:47.140Z,lab-isis01,2,metric,router3,changed,old_cost:10,new_cost:66,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:57:04.561Z,lab-isis01,2,metric,router3,changed,old_cost:66,new_cost:10,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# router6: interface eth1 / shutdown\n2026-09-07T06:57:22.037Z,lab-isis01,2,network,192.168.36.0/24,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:57:22.055Z,lab-isis01,2,host,router6,down,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.36.3,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:57:22.055Z,lab-isis01,2,metric,router6,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.36.3,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# router6: interface eth1 / no shutdown\n2026-09-07T06:57:55.962Z,lab-isis01,2,host,router6,up,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.36.3,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:57:55.973Z,lab-isis01,2,metric,router3,changed,old_cost:-1,new_cost:66,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "El cambio de coste de transito y la caida de router6, solo L2",
+          "path": "En OSPF/IS-IS Real-Time Monitoring, elige este grafo, define la ventana en torno a 06:56-06:58 UTC, activa `L2` y pulsa `Find logs`. El `object` del evento `metric` es `router3` con `event_detected_by` `router6`, y el cambio es solo L2 - el circuito es level-2-only. En el shutdown el flujo muestra `host` `router6` down y `192.168.36.0/24` inalcanzable, luego la recuperacion."
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_adjacency_events para el coste de transito y el shutdown/recuperacion",
+          "badge": "solo L2",
+          "request": "cost = graph.events.get_adjacency_events(\n    start_time=\"2026-09-07T06:56:46Z\", end_time=\"2026-09-07T06:56:49Z\")\nfor e in cost[\"adjacency_cost_change_events\"]:\n    print(\"cost\", e.event_object, e.event_detected_by, f\"{e.old_cost} -> {e.new_cost}\", \"L\" + str(e.level_number))\nflap = graph.events.get_adjacency_events(\n    start_time=\"2026-09-07T06:57:21Z\", end_time=\"2026-09-07T06:58:00Z\")\nfor e in flap[\"all_host_up_down_events\"]:\n    print(\"updown\", e.event_object, e.event_detected_by, f\"{e.old_cost} -> {e.new_cost}\", \"L\" + str(e.level_number))",
+          "output": "cost router3 router6 10 -> 66 L2\nupdown router6 router3 10 -> -1 L2\nupdown router6 router3 -1 -> 10 L2\nupdown router3 router6 -1 -> 10 L2",
+          "note": "En el segmento de difusion el evento `metric` sigue nombrando al vecino (`router3`), detectado por `router6`, y solo en L2; el cambio de metrica tambien mueve `192.168.36.0/24` y las dos `/127` IPv6. El shutdown es `host` `router6` down en L2, luego la recuperacion."
+        },
+        {
+          "channel": "agent",
+          "summary": "Una pregunta generica de incidente sobre router6",
+          "prompt": "What happened on router6 in the last 20 minutes?",
+          "note": "Una respuesta valida nombra la metrica de transito `router6` -> `router3` moviendose `10` -> `66` y de vuelta, luego la conexion de `router6` cayendo (metrica `-1` en L2) y recuperandose, sin que la pregunta mencione coste, DIS ni shutdown."
+        }
+      ]
+    }
+  ]
+}

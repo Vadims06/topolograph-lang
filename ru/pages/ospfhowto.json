@@ -9,8 +9,14 @@
   "start_button": "Начать практикум",
   "resources_label": "Полезные ссылки: ",
   "resources": [
-    { "label": "OSPF Watcher - репозиторий и инструкция по развёртыванию", "url": "https://github.com/Vadims06/ospfwatcher" },
-    { "label": "Topolograph", "url": "https://topolograph.com" }
+    {
+      "label": "OSPF Watcher - репозиторий и инструкция по развёртыванию",
+      "url": "https://github.com/Vadims06/ospfwatcher"
+    },
+    {
+      "label": "Topolograph",
+      "url": "https://topolograph.com"
+    }
   ],
   "sidebar_aria_label": "Разделы практикума по OSPF",
   "sidebar_title": "Практикум по OSPF",
@@ -27,7 +33,7 @@
   "copy_event_log_label": "Скопировать журнал",
   "copy_sdk_output_label": "Скопировать вывод",
   "verify_label": "Проверьте изменение.",
-  "verify_intro": "Откройте каждый доступный источник и сверьте его свидетельство.",
+  "verify_intro": "Откройте каждый доступный в вашей среде источник и сверьтесь с примерами ниже.",
   "verify_channels": {
     "watcher": "Журнал Watcher",
     "monitoring": "Мониторинг",
@@ -40,7 +46,7 @@
     {
       "id": "orientation",
       "nav": "Обзор",
-      "title": "Разберитесь в контракте проверки",
+      "title": "Принцип работы с практикумом",
       "paragraphs": [
         "В каждом упражнении: внесите одно изменение, предскажите результат OSPF, увидьте событие Watcher, затем найдите тот же факт в мониторинге Topolograph, в SDK и - для упражнений на корреляцию - в ответе агента. Перед следующим независимым упражнением восстановите лабораторию."
       ],
@@ -56,30 +62,30 @@
     {
       "id": "start-lab",
       "nav": "Запуск лаборатории",
-      "title": "Запустите и проверьте лабораторию из шести маршрутизаторов",
+      "title": "Запуск и проверка лаборатории из шести маршрутизаторов",
       "paragraphs": [
         "Запустите публичную топологию ospf01 на базе GRE из репозитория OSPF Watcher."
       ],
       "steps": [],
-      "command": "cd containerlab/ospf01\nsudo ./prepare.sh\nsudo clab deploy --topo ospf01.clab.yml\nsudo docker logs clab-ospf01-ospf-watcher\nsudo tail -f watcher/logs/watcher1.ospf.log",
+      "command": "cd containerlab/ospf01\nsudo clab inspect --all\nsudo clab destroy --topo ospf01.clab.yml --cleanup   # only if a stale ospf01 is listed\nsudo ./prepare.sh\nsudo clab deploy --topo ospf01.clab.yml\nsudo docker logs clab-ospf01-ospf-watcher\nsudo tail -f watcher/logs/watcher1.ospf.log",
       "observations": [
         "Запущены шесть контейнеров-маршрутизаторов и watcher: `docker ps --filter name=clab-ospf01` показывает clab-ospf01-router1..6 и clab-ospf01-ospf-watcher, у всех State=Up.",
         "Watcher получил LSDB и ведёт перехват: `docker logs clab-ospf01-ospf-watcher` содержит строку \"OSPF LSDB received\" и \"Start sniffing on interface: eth1\".",
         "Соседства в состоянии Full: `docker exec clab-ospf01-router1 vtysh -c 'show ip ospf neighbor'` показывает каждого соседа в состоянии Full; первый граф Topolograph при этом содержит шесть маршрутизаторов."
       ],
-      "rollback": "Если осталась старая копия, перед повторным развёртыванием удалите только ospf01."
+      "rollback": "Когда закончите практикум, удалите лабораторию командой `sudo clab destroy --topo ospf01.clab.yml --cleanup` из `containerlab/ospf01/`."
     },
     {
       "id": "event-record",
-      "nav": "Формат записи события",
-      "title": "Разберитесь в формате записи события",
+      "nav": "Запись сетевого события",
+      "title": "Формат записи сетевого события",
       "paragraphs": [
-        "Практикум использует три семейства событий: host, metric и network. Читайте event_object как изменившийся объект, event_status как переход, event_detected_by как маршрутизатор, который анонсировал или обнаружил изменение. graph_time - собственная метка watcher для этого запуска, она выбирает граф Topolograph.",
+        "Практикум использует три семейства событий: host, metric и network. Читайте `event_object` как изменившийся объект, `event_status` как переход, `event_detected_by` как маршрутизатор, который анонсировал или обнаружил изменение. `graph_time` - собственная метка watcher для этого запуска, она выбирает граф Topolograph.",
         "Прочитайте строку metric выше как одно предложение: в 2026-09-06T13:11:04Z watcher ospfwatcher-demo увидел, как маршрутизатор 10.10.10.2 переанонсировал свою связь к 10.10.10.3 с изменением стоимости с 10 на 222, на локальном интерфейсе 192.168.23.1, в зоне 0.0.0.0 / AS 12345. Следующая за ней строка network несёт тот же переход 10 -> 222 для подсети 192.168.23.0/24 на этой связи."
       ],
       "steps": [
-        "Поля по порядку: watcher_time, watcher_name, event_name, event_object, event_status, [поля стоимости], event_detected_by, graph_time, area_num, asn, [поля типа], sesid, srcid.",
-        "area_num 0.0.0.0 и asn 12345 определяют домен маршрутизации; sesid - сессия watcher, srcid - id исходного маршрутизатора."
+        "Поля по порядку: `watcher_time`, `watcher_name`, `event_name`, `event_object`, `event_status`, [поля стоимости], `event_detected_by`, `graph_time`, `area_num`, `asn`, [поля типа], `sesid`, `srcid`.",
+        "`area_num` 0.0.0.0 и `asn` 12345 определяют домен маршрутизации; `sesid` - сессия watcher, `srcid` - id исходного маршрутизатора."
       ],
       "command": "",
       "rollback": "",
@@ -89,32 +95,32 @@
     {
       "id": "verify-sources",
       "nav": "Источники данных",
-      "title": "Откуда берутся данные для проверки",
+      "title": "Откуда берутся события",
       "paragraphs": [
         "Одно изменение OSPF порождает одну строку Watcher CSV. Fluent Bit пересылает её в Topolograph, который сохраняет её и предоставляет через страницу мониторинга, event API и SDK. Каждое упражнение ниже проверяет один и тот же факт на всех доступных вам уровнях."
       ],
       "steps": [
         "Журнал Watcher ospf01  ->  парсер CSV Fluent Bit  ->  приём в Topolograph  ->  страница мониторинга + event API  ->  Topolograph SDK",
         "Страница мониторинга: OSPF/IS-IS Real-Time Monitoring. Выберите граф по его метке времени, задайте временное окно, нажмите Find logs; переключатели фильтруют события подсетей / связей / метрик.",
-        "Селектор графов на этой странице перечисляет каждый снимок, о котором сообщил watcher, начиная с новейшего - это топология, которую отправил watcher."
+        "Селектор графов на этой странице перечисляет каждый snapshot топологии, о котором сообщил Watcher, начиная с новейшего - это топология, которую отправил Watcher."
       ],
       "image": "monitoring.png",
       "image_alt": "Страница Topolograph OSPF/IS-IS Real-Time Monitoring для графа 06Sep2026_12h31m41s: селектор графов и Find logs, лента событий с метками metric 10 -> 222 и 222 -> 10 и 192.168.23.0/24, и ниже граф топологии с шестью маршрутизаторами и весами связей.",
-      "command": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\",\n                   username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.get(latest=True)\nprint(graph.graph_time, graph.protocol, graph.hosts)",
+      "sdk_request": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\",\n                   username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.get(latest=True)\nprint(graph.graph_time, graph.protocol, graph.hosts)",
       "sdk_output": "06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo ospf {'count': 6}",
       "observations": [],
       "rollback": ""
     },
     {
       "id": "directed-cost",
-      "nav": "point-to-point линки",
-      "title": "Измените направленную стоимость на point-to-point линке",
+      "nav": "Линки точка-точка",
+      "title": "Изменение стоимости на линке точка-точка",
       "paragraphs": [
         "Измените router2 eth1 в сторону router3. Стоимости OSPF направленные, поэтому обратную стоимость router3 -> router2 нельзя считать тем же числом."
       ],
       "steps": [],
-      "command": "conf t\ninterface eth1\nip ospf cost 222",
-      "rollback": "Выполните no ip ospf cost 222 и подтвердите обратные события metric и network 222 -> 10.",
+      "command": "sudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'ip ospf cost 222'",
+      "rollback": "Выполните `no ip ospf cost 222` и подтвердите обратные события metric и network 222 -> 10.",
       "verify": [
         {
           "channel": "watcher",
@@ -133,7 +139,7 @@
           "badge": "2 события",
           "request": "adj = graph.events.get_adjacency_events(\n    start_time=\"2026-09-06T13:11:00Z\", end_time=\"2026-09-06T13:11:10Z\")\nnet = graph.events.get_network_events(\n    start_time=\"2026-09-06T13:11:00Z\", end_time=\"2026-09-06T13:11:10Z\")\nprint(adj[\"adjacency_cost_change_events\"])\nprint(net[\"network_cost_change_events\"])\ne = adj[\"adjacency_cost_change_events\"][0]\nprint(e.event_object, e.event_detected_by, e.old_cost, e.new_cost, e.local_ip_address)",
           "output": "[Event(name=metric, status=changed, object=10.10.10.3)]\n[Event(name=network, status=changed, object=192.168.23.0/24)]\n10.10.10.3 10.10.10.2 10 222 192.168.23.1",
-          "note": "Событие metric называет направление router2 -> router3 (event_object 10.10.10.3, event_detected_by 10.10.10.2), стоимость 10 -> 222; 192.168.23.0/24 несёт тот же переход. Обратное направление отсутствует в обоих списках."
+          "note": "Событие metric называет направление router2 -> router3 (`event_object` 10.10.10.3, `event_detected_by` 10.10.10.2), стоимость 10 -> 222; 192.168.23.0/24 несёт тот же переход. Обратное направление отсутствует в обоих списках."
         },
         {
           "channel": "agent",
@@ -152,7 +158,7 @@
     {
       "id": "prefix-lifecycle",
       "nav": "Жизненный цикл префикса",
-      "title": "Проследите жизненный цикл внутреннего и внешнего префикса",
+      "title": "Детектирование событий по внутренним и внешним префиксам",
       "paragraphs": [
         "Проводите каждый эксперимент с префиксом независимо. Loopback OSPF с маской /24 анонсируется этой лабораторией как хостовый маршрут /32."
       ],
@@ -161,8 +167,8 @@
         "6b. Добавьте 10.10.136.6/24 на loopback router6; увидьте 10.10.136.6/32 up и стоимость -1 -> 0 (internal).",
         "6c. Удалите статический маршрут 6.6.6.6/32 на router6; увидьте 6.6.6.6/32 down и стоимость 11 -> -1 (external, тип 2)."
       ],
-      "command": "conf t\ninterface lo\nip address 192.168.123.1/24",
-      "rollback": "После каждого подупражнения: удалите адрес loopback либо снова добавьте ip route 6.6.6.6/32 192.168.36.3 и подтвердите обратное событие.",
+      "command": "sudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface lo' -c 'ip address 192.168.123.1/24'",
+      "rollback": "6a: `no ip address 192.168.123.1/24` на `router2` `interface lo`. 6b: `no ip address 10.10.136.6/24` на `router6` `interface lo`. 6c: `ip route 6.6.6.6/32 192.168.36.3` на `router6`. После каждого подтвердите обратное событие.",
       "verify": [
         {
           "channel": "watcher",
@@ -201,13 +207,13 @@
     {
       "id": "adjacency-outage",
       "nav": "Отказ соседства",
-      "title": "Свяжите отказ соседства и его восстановление",
+      "title": "Детектирование потери связности и её восстановления",
       "paragraphs": [
-        "Выключите router2 eth1, изучите связанный набор событий, затем восстановите интерфейс командой no shutdown."
+        "Выключите router2 eth1, изучите связанный набор событий, затем восстановите интерфейс командой `no shutdown`."
       ],
       "steps": [],
-      "command": "conf t\ninterface eth1\nshutdown\n! recovery\nno shutdown",
-      "rollback": "no shutdown восстанавливает интерфейс; дождитесь событий восстановления host, network и metric.",
+      "command": "# down\nsudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\n# recovery\nsudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "rollback": "`no shutdown` восстанавливает интерфейс; дождитесь событий восстановления host, network и metric.",
       "verify": [
         {
           "channel": "watcher",
@@ -247,13 +253,13 @@
     {
       "id": "transit-segment",
       "nav": "Транзитный сегмент",
-      "title": "Сравните широковещательный транзитный сегмент",
+      "title": "Отчёт по широковещательному транзитному сегменту",
       "paragraphs": [
         "Используйте router6 eth1, чтобы сравнить отчётность по транзитному сегменту со случаем point-to-point."
       ],
       "steps": [],
-      "command": "conf t\ninterface eth1\nip ospf cost 66\n! then, separately\nshutdown\n! then\nno shutdown",
-      "rollback": "ip ospf cost 6 восстанавливает исходное значение; no shutdown восстанавливает соседство. Подтвердите обратные события metric.",
+      "command": "# cost\nsudo docker exec clab-ospf01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'ip ospf cost 66'\n# then, separately: shutdown, then no shutdown\nsudo docker exec clab-ospf01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\nsudo docker exec clab-ospf01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "rollback": "`ip ospf cost 6` восстанавливает исходное значение; `no shutdown` восстанавливает соседство. Подтвердите обратные события metric.",
       "verify": [
         {
           "channel": "watcher",
@@ -264,7 +270,7 @@
         {
           "channel": "monitoring",
           "summary": "Изменение транзитной стоимости и отказ router6",
-          "path": "На странице OSPF/IS-IS Real-Time Monitoring выберите этот граф, задайте окно From/To около 13:13-13:14 UTC и нажмите Find logs. object события metric - 10.10.10.3 (id дальнего маршрутизатора), event_detected_by - 10.10.10.6, в отличие от связи point-to-point, где object - это сосед. Граф топологии под лентой меняет вес, затем убирает и восстанавливает подключение router6."
+          "path": "На странице OSPF/IS-IS Real-Time Monitoring выберите этот граф, задайте окно From/To около 13:13-13:14 UTC и нажмите Find logs. object события metric - 10.10.10.3 (id дальнего маршрутизатора), `event_detected_by` - 10.10.10.6, в отличие от связи point-to-point, где object - это сосед. Граф топологии под лентой меняет вес, затем убирает и восстанавливает подключение router6."
         },
         {
           "channel": "sdk",

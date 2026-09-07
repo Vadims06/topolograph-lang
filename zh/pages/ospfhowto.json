@@ -9,8 +9,14 @@
   "start_button": "开始实战",
   "resources_label": "相关链接：",
   "resources": [
-    { "label": "OSPF Watcher - 仓库与部署指南", "url": "https://github.com/Vadims06/ospfwatcher" },
-    { "label": "Topolograph", "url": "https://topolograph.com" }
+    {
+      "label": "OSPF Watcher - 仓库与部署指南",
+      "url": "https://github.com/Vadims06/ospfwatcher"
+    },
+    {
+      "label": "Topolograph",
+      "url": "https://topolograph.com"
+    }
   ],
   "sidebar_aria_label": "OSPF 手册章节",
   "sidebar_title": "OSPF 实战",
@@ -27,7 +33,7 @@
   "copy_event_log_label": "复制日志",
   "copy_sdk_output_label": "复制输出",
   "verify_label": "核对此次变更。",
-  "verify_intro": "打开你环境中可用的每一个来源并比对其证据。",
+  "verify_intro": "打开你环境中每一个可用的来源，并与下面的示例逐一核对。",
   "verify_channels": {
     "watcher": "Watcher 日志",
     "monitoring": "监控",
@@ -40,7 +46,7 @@
     {
       "id": "orientation",
       "nav": "概览",
-      "title": "理解验证约定",
+      "title": "本手册的使用方式",
       "paragraphs": [
         "每个练习：做一处变更，预测 OSPF 结果，观察 Watcher 事件，然后在 Topolograph 监控、SDK 中，以及-对于关联练习-在 agent 的回答中找到同一事实。在下一个独立练习之前恢复实验环境。"
       ],
@@ -56,30 +62,30 @@
     {
       "id": "start-lab",
       "nav": "启动实验环境",
-      "title": "启动并验证六路由器实验环境",
+      "title": "六路由器实验环境的启动与验证",
       "paragraphs": [
         "运行 OSPF Watcher 仓库中基于 GRE 的公开 ospf01 拓扑。"
       ],
       "steps": [],
-      "command": "cd containerlab/ospf01\nsudo ./prepare.sh\nsudo clab deploy --topo ospf01.clab.yml\nsudo docker logs clab-ospf01-ospf-watcher\nsudo tail -f watcher/logs/watcher1.ospf.log",
+      "command": "cd containerlab/ospf01\nsudo clab inspect --all\nsudo clab destroy --topo ospf01.clab.yml --cleanup   # only if a stale ospf01 is listed\nsudo ./prepare.sh\nsudo clab deploy --topo ospf01.clab.yml\nsudo docker logs clab-ospf01-ospf-watcher\nsudo tail -f watcher/logs/watcher1.ospf.log",
       "observations": [
         "六个路由器容器加 watcher 均已运行：`docker ps --filter name=clab-ospf01` 列出 clab-ospf01-router1..6 和 clab-ospf01-ospf-watcher，State 均为 Up。",
         "watcher 已获得 LSDB 并正在抓包：`docker logs clab-ospf01-ospf-watcher` 显示 \"OSPF LSDB received\" 行和 \"Start sniffing on interface: eth1\"。",
         "邻接均为 Full：`docker exec clab-ospf01-router1 vtysh -c 'show ip ospf neighbor'` 列出每个邻居处于 Full 状态；此时第一个 Topolograph 图包含六个路由器。"
       ],
-      "rollback": "如果存在残留副本，重新部署前只销毁 ospf01。"
+      "rollback": "完成本手册后，在 `containerlab/ospf01/` 目录下用 `sudo clab destroy --topo ospf01.clab.yml --cleanup` 删除实验环境。"
     },
     {
       "id": "event-record",
-      "nav": "事件记录",
-      "title": "一次性搞懂事件记录",
+      "nav": "网络事件记录",
+      "title": "网络事件记录的格式",
       "paragraphs": [
-        "本手册使用三类事件：host、metric 和 network。把 event_object 理解为发生变化的对象，event_status 为状态转换，event_detected_by 为发布或检测到变化的路由器。graph_time 是 watcher 为本次运行所用的标签，用于选择 Topolograph 图。",
+        "本手册使用三类事件：host、metric 和 network。把 `event_object` 理解为发生变化的对象，`event_status` 为状态转换，`event_detected_by` 为发布或检测到变化的路由器。`graph_time` 是 watcher 为本次运行所用的标签，用于选择 Topolograph 图。",
         "把上面的 metric 行当作一句话来读：在 2026-09-06T13:11:04Z，watcher ospfwatcher-demo 看到路由器 10.10.10.2 重新发布它到 10.10.10.3 的链路，开销从 10 变为 222，本地接口为 192.168.23.1，区域 0.0.0.0 / AS 12345。紧随其后的 network 行对该链路上的子网 192.168.23.0/24 携带同样的 10 -> 222 变化。"
       ],
       "steps": [
-        "字段顺序：watcher_time、watcher_name、event_name、event_object、event_status、[开销字段]、event_detected_by、graph_time、area_num、asn、[类型字段]、sesid、srcid。",
-        "area_num 0.0.0.0 和 asn 12345 标识路由域；sesid 是 watcher 会话，srcid 是源路由器 id。"
+        "字段顺序：`watcher_time`、`watcher_name`、`event_name`、`event_object`、`event_status`、[开销字段]、`event_detected_by`、`graph_time`、`area_num`、`asn`、[类型字段]、`sesid`、`srcid`。",
+        "`area_num` 0.0.0.0 和 `asn` 12345 标识路由域；`sesid` 是 watcher 会话，`srcid` 是源路由器 id。"
       ],
       "command": "",
       "rollback": "",
@@ -89,32 +95,32 @@
     {
       "id": "verify-sources",
       "nav": "验证来源",
-      "title": "证据从何而来",
+      "title": "事件从何而来",
       "paragraphs": [
         "一次 OSPF 变更产生一行 Watcher CSV。Fluent Bit 将其转发到 Topolograph，Topolograph 存储它并通过监控页面、事件 API 和 SDK 暴露。下面每个练习都在你可用的每个层级上核对同一事实。"
       ],
       "steps": [
         "ospf01 Watcher 日志  ->  Fluent Bit CSV 解析器  ->  Topolograph 接收  ->  监控页面 + 事件 API  ->  Topolograph SDK",
         "监控页面：OSPF/IS-IS Real-Time Monitoring。按时间戳选择图，设置时间窗口，点击 Find logs；开关用于过滤子网 / 链路 / 开销事件。",
-        "该页面的图选择器按从新到旧列出 watcher 报告的每个快照-那就是 watcher 发送的拓扑。"
+        "该页面的图选择器按从新到旧列出 watcher 报告的每个拓扑快照-那就是 watcher 发送的拓扑。"
       ],
       "image": "monitoring.png",
       "image_alt": "graph 06Sep2026_12h31m41s 的 Topolograph OSPF/IS-IS Real-Time Monitoring 页面：图选择器和 Find logs，事件流显示 metric 10 -> 222 和 222 -> 10 以及 192.168.23.0/24 标签，下方是包含六个路由器和链路权重的拓扑图。",
-      "command": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\",\n                   username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.get(latest=True)\nprint(graph.graph_time, graph.protocol, graph.hosts)",
+      "sdk_request": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\",\n                   username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.get(latest=True)\nprint(graph.graph_time, graph.protocol, graph.hosts)",
       "sdk_output": "06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo ospf {'count': 6}",
       "observations": [],
       "rollback": ""
     },
     {
       "id": "directed-cost",
-      "nav": "有向开销",
-      "title": "更改有向的点到点开销",
+      "nav": "点到点链路",
+      "title": "点到点链路上的开销变化",
       "paragraphs": [
         "更改 router2 eth1 朝向 router3 的方向。OSPF 开销是有向的，因此反方向 router3 到 router2 的开销不能当作同一个标量。"
       ],
       "steps": [],
-      "command": "conf t\ninterface eth1\nip ospf cost 222",
-      "rollback": "执行 no ip ospf cost 222，并确认反向的 222 -> 10 metric 和 network 事件。",
+      "command": "sudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'ip ospf cost 222'",
+      "rollback": "执行 `no ip ospf cost 222`，并确认反向的 222 -> 10 metric 和 network 事件。",
       "verify": [
         {
           "channel": "watcher",
@@ -133,7 +139,7 @@
           "badge": "2 个事件",
           "request": "adj = graph.events.get_adjacency_events(\n    start_time=\"2026-09-06T13:11:00Z\", end_time=\"2026-09-06T13:11:10Z\")\nnet = graph.events.get_network_events(\n    start_time=\"2026-09-06T13:11:00Z\", end_time=\"2026-09-06T13:11:10Z\")\nprint(adj[\"adjacency_cost_change_events\"])\nprint(net[\"network_cost_change_events\"])\ne = adj[\"adjacency_cost_change_events\"][0]\nprint(e.event_object, e.event_detected_by, e.old_cost, e.new_cost, e.local_ip_address)",
           "output": "[Event(name=metric, status=changed, object=10.10.10.3)]\n[Event(name=network, status=changed, object=192.168.23.0/24)]\n10.10.10.3 10.10.10.2 10 222 192.168.23.1",
-          "note": "metric 事件指明 router2 -> router3 方向（event_object 10.10.10.3，event_detected_by 10.10.10.2），开销 10 -> 222；192.168.23.0/24 携带同样的变化。两个列表中都没有反方向。"
+          "note": "metric 事件指明 router2 -> router3 方向（`event_object` 10.10.10.3，`event_detected_by` 10.10.10.2），开销 10 -> 222；192.168.23.0/24 携带同样的变化。两个列表中都没有反方向。"
         },
         {
           "channel": "agent",
@@ -152,7 +158,7 @@
     {
       "id": "prefix-lifecycle",
       "nav": "前缀生命周期",
-      "title": "观察内部和外部前缀的生命周期",
+      "title": "检测内部与外部前缀事件",
       "paragraphs": [
         "每个前缀实验都独立进行。配置为 /24 掩码的 OSPF loopback 在本实验环境中以 /32 主机路由发布。"
       ],
@@ -161,8 +167,8 @@
         "6b. 在 router6 loopback 上添加 10.10.136.6/24；观察 10.10.136.6/32 up 且开销 -1 -> 0（internal）。",
         "6c. 在 router6 上删除静态路由 6.6.6.6/32；观察 6.6.6.6/32 down 且开销 11 -> -1（external，type 2）。"
       ],
-      "command": "conf t\ninterface lo\nip address 192.168.123.1/24",
-      "rollback": "每个子练习之后：删除 loopback 地址，或重新添加 ip route 6.6.6.6/32 192.168.36.3，并确认反向事件。",
+      "command": "sudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface lo' -c 'ip address 192.168.123.1/24'",
+      "rollback": "6a：在 `router2` `interface lo` 上 `no ip address 192.168.123.1/24`。6b：在 `router6` `interface lo` 上 `no ip address 10.10.136.6/24`。6c：在 `router6` 上 `ip route 6.6.6.6/32 192.168.36.3`。每一步之后确认反向事件。",
       "verify": [
         {
           "channel": "watcher",
@@ -201,13 +207,13 @@
     {
       "id": "adjacency-outage",
       "nav": "邻接中断",
-      "title": "关联一次邻接中断与恢复",
+      "title": "检测连通性丢失与恢复",
       "paragraphs": [
-        "关闭 router2 eth1，检查关联的事件集合，然后用 no shutdown 恢复接口。"
+        "关闭 router2 eth1，检查关联的事件集合，然后用 `no shutdown` 恢复接口。"
       ],
       "steps": [],
-      "command": "conf t\ninterface eth1\nshutdown\n! recovery\nno shutdown",
-      "rollback": "no shutdown 恢复接口；等待 host、network 和 metric 的恢复事件。",
+      "command": "# down\nsudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\n# recovery\nsudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "rollback": "`no shutdown` 恢复接口；等待 host、network 和 metric 的恢复事件。",
       "verify": [
         {
           "channel": "watcher",
@@ -247,13 +253,13 @@
     {
       "id": "transit-segment",
       "nav": "中转网段",
-      "title": "对比一个广播中转网段",
+      "title": "广播中转网段的事件呈现",
       "paragraphs": [
         "用 router6 eth1 将中转网段的上报与点到点情形作对比。"
       ],
       "steps": [],
-      "command": "conf t\ninterface eth1\nip ospf cost 66\n! then, separately\nshutdown\n! then\nno shutdown",
-      "rollback": "ip ospf cost 6 恢复基线；no shutdown 恢复邻接。确认反向的 metric 事件。",
+      "command": "# cost\nsudo docker exec clab-ospf01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'ip ospf cost 66'\n# then, separately: shutdown, then no shutdown\nsudo docker exec clab-ospf01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\nsudo docker exec clab-ospf01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "rollback": "`ip ospf cost 6` 恢复基线；`no shutdown` 恢复邻接。确认反向的 metric 事件。",
       "verify": [
         {
           "channel": "watcher",
@@ -264,7 +270,7 @@
         {
           "channel": "monitoring",
           "summary": "中转开销变化与 router6 中断",
-          "path": "在 OSPF/IS-IS Real-Time Monitoring 页面选择该图，将 From/To 窗口设为 13:13-13:14 UTC 左右并点击 Find logs。metric 事件的 object 是 10.10.10.3（远端路由器 id），event_detected_by 是 10.10.10.6-不同于点到点链路，那里的 object 是邻居。事件流下方的拓扑图重新赋权，然后移除并恢复 router6 的连接。"
+          "path": "在 OSPF/IS-IS Real-Time Monitoring 页面选择该图，将 From/To 窗口设为 13:13-13:14 UTC 左右并点击 Find logs。metric 事件的 object 是 10.10.10.3（远端路由器 id），`event_detected_by` 是 10.10.10.6-不同于点到点链路，那里的 object 是邻居。事件流下方的拓扑图重新赋权，然后移除并恢复 router6 的连接。"
         },
         {
           "channel": "sdk",

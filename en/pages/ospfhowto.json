@@ -9,8 +9,14 @@
   "start_button": "Start the runbook",
   "resources_label": "Useful links: ",
   "resources": [
-    { "label": "OSPF Watcher - repository and deploy guide", "url": "https://github.com/Vadims06/ospfwatcher" },
-    { "label": "Topolograph", "url": "https://topolograph.com" }
+    {
+      "label": "OSPF Watcher - repository and deploy guide",
+      "url": "https://github.com/Vadims06/ospfwatcher"
+    },
+    {
+      "label": "Topolograph",
+      "url": "https://topolograph.com"
+    }
   ],
   "sidebar_aria_label": "OSPF runbook sections",
   "sidebar_title": "OSPF bootcamp",
@@ -27,7 +33,7 @@
   "copy_event_log_label": "Copy log",
   "copy_sdk_output_label": "Copy output",
   "verify_label": "Verify the change.",
-  "verify_intro": "Open each source available in your environment and compare its evidence.",
+  "verify_intro": "Open each source available in your environment and check it against the examples below.",
   "verify_channels": {
     "watcher": "Watcher log",
     "monitoring": "Monitoring",
@@ -40,7 +46,7 @@
     {
       "id": "orientation",
       "nav": "Orientation",
-      "title": "Understand the verification contract",
+      "title": "How this runbook works",
       "paragraphs": [
         "For each exercise: make one change, predict the OSPF result, observe the Watcher event, then find the same fact in Topolograph Monitoring, in the SDK, and - for the correlation exercises - in the agent's answer. Restore the lab before the next independent exercise."
       ],
@@ -56,30 +62,30 @@
     {
       "id": "start-lab",
       "nav": "Start the lab",
-      "title": "Start and validate the six-router lab",
+      "title": "Bringing up the six-router lab",
       "paragraphs": [
         "Run the public GRE-based ospf01 topology from the OSPF Watcher repository."
       ],
       "steps": [],
-      "command": "cd containerlab/ospf01\nsudo ./prepare.sh\nsudo clab deploy --topo ospf01.clab.yml\nsudo docker logs clab-ospf01-ospf-watcher\nsudo tail -f watcher/logs/watcher1.ospf.log",
+      "command": "cd containerlab/ospf01\nsudo clab inspect --all\nsudo clab destroy --topo ospf01.clab.yml --cleanup   # only if a stale ospf01 is listed\nsudo ./prepare.sh\nsudo clab deploy --topo ospf01.clab.yml\nsudo docker logs clab-ospf01-ospf-watcher\nsudo tail -f watcher/logs/watcher1.ospf.log",
       "observations": [
         "Six router containers plus the watcher are up: `docker ps --filter name=clab-ospf01` lists clab-ospf01-router1..6 and clab-ospf01-ospf-watcher, all State=Up.",
         "The watcher has the LSDB and is sniffing: `docker logs clab-ospf01-ospf-watcher` shows an \"OSPF LSDB received\" line and \"Start sniffing on interface: eth1\".",
         "Adjacencies are Full: `docker exec clab-ospf01-router1 vtysh -c 'show ip ospf neighbor'` lists each neighbour in Full state; the first Topolograph graph then contains six routers."
       ],
-      "rollback": "If a stale copy exists, destroy only ospf01 before deploying it again."
+      "rollback": "When you finish the runbook, remove the lab with `sudo clab destroy --topo ospf01.clab.yml --cleanup` from `containerlab/ospf01/`."
     },
     {
       "id": "event-record",
-      "nav": "Event record",
-      "title": "Learn the event record once",
+      "nav": "Network event record",
+      "title": "Network event record format",
       "paragraphs": [
-        "The runbook uses three event families: host, metric, and network. Read event_object as the changed object, event_status as the transition, and event_detected_by as the advertising or detecting router. graph_time is the watcher's own label for the run and selects the Topolograph graph.",
+        "The runbook uses three event families: host, metric, and network. Read `event_object` as the changed object, `event_status` as the transition, and `event_detected_by` as the advertising or detecting router. `graph_time` is the watcher's own label for the run and selects the Topolograph graph.",
         "Read the metric line above as one sentence: at 2026-09-06T13:11:04Z the watcher ospfwatcher-demo saw router 10.10.10.2 re-advertise its link toward 10.10.10.3 with the cost changed from 10 to 222, on local interface 192.168.23.1, in area 0.0.0.0 / AS 12345. The network line right after it carries the same 10 -> 222 move for the subnet 192.168.23.0/24 on that link."
       ],
       "steps": [
-        "Fields in order: watcher_time, watcher_name, event_name, event_object, event_status, [cost fields], event_detected_by, graph_time, area_num, asn, [type fields], sesid, srcid.",
-        "area_num 0.0.0.0 and asn 12345 identify the routing domain; sesid is the watcher session, srcid the source router id."
+        "Fields in order: `watcher_time`, `watcher_name`, `event_name`, `event_object`, `event_status`, [cost fields], `event_detected_by`, `graph_time`, `area_num`, `asn`, [type fields], `sesid`, `srcid`.",
+        "`area_num` 0.0.0.0 and `asn` 12345 identify the routing domain; `sesid` is the watcher session, `srcid` the source router id."
       ],
       "command": "",
       "rollback": "",
@@ -89,32 +95,32 @@
     {
       "id": "verify-sources",
       "nav": "Verification sources",
-      "title": "Where the evidence comes from",
+      "title": "Where events come from",
       "paragraphs": [
         "One OSPF change produces one Watcher CSV line. Fluent Bit forwards it to Topolograph, which stores it and exposes it through the Monitoring page, the event API, and the SDK. Each exercise below checks the same fact at every level available to you."
       ],
       "steps": [
         "ospf01 Watcher log  ->  Fluent Bit CSV parser  ->  Topolograph ingestion  ->  Monitoring page + event API  ->  Topolograph SDK",
         "Monitoring page: OSPF/IS-IS Real-Time Monitoring. Choose the graph by its timestamp, set a time window, click Find logs; toggles filter subnet / link / metric events.",
-        "The graph selector on that page lists every snapshot the watcher reported, newest first - that is the topology the watcher sent."
+        "The graph selector on that page lists every topology snapshot the watcher reported, newest first - that is the topology the watcher sent."
       ],
       "image": "monitoring.png",
       "image_alt": "Topolograph OSPF/IS-IS Real-Time Monitoring page for graph 06Sep2026_12h31m41s: graph selector and Find logs, the event feed showing the 10 -> 222 and 222 -> 10 metric and 192.168.23.0/24 chips, and the topology graph below with the six routers and link weights.",
-      "command": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\",\n                   username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.get(latest=True)\nprint(graph.graph_time, graph.protocol, graph.hosts)",
+      "sdk_request": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\",\n                   username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.get(latest=True)\nprint(graph.graph_time, graph.protocol, graph.hosts)",
       "sdk_output": "06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo ospf {'count': 6}",
       "observations": [],
       "rollback": ""
     },
     {
       "id": "directed-cost",
-      "nav": "Directed cost",
-      "title": "Change a directed point-to-point cost",
+      "nav": "Point-to-point link",
+      "title": "Cost change on a point-to-point link",
       "paragraphs": [
         "Change router2 eth1 toward router3. OSPF costs are directed, so the reverse router3-to-router2 cost must not be described as the same scalar."
       ],
       "steps": [],
-      "command": "conf t\ninterface eth1\nip ospf cost 222",
-      "rollback": "Run no ip ospf cost 222 and confirm the inverse 222 -> 10 metric and network events.",
+      "command": "sudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'ip ospf cost 222'",
+      "rollback": "Run `no ip ospf cost 222` and confirm the inverse 222 -> 10 metric and network events.",
       "verify": [
         {
           "channel": "watcher",
@@ -133,7 +139,7 @@
           "badge": "2 events",
           "request": "adj = graph.events.get_adjacency_events(\n    start_time=\"2026-09-06T13:11:00Z\", end_time=\"2026-09-06T13:11:10Z\")\nnet = graph.events.get_network_events(\n    start_time=\"2026-09-06T13:11:00Z\", end_time=\"2026-09-06T13:11:10Z\")\nprint(adj[\"adjacency_cost_change_events\"])\nprint(net[\"network_cost_change_events\"])\ne = adj[\"adjacency_cost_change_events\"][0]\nprint(e.event_object, e.event_detected_by, e.old_cost, e.new_cost, e.local_ip_address)",
           "output": "[Event(name=metric, status=changed, object=10.10.10.3)]\n[Event(name=network, status=changed, object=192.168.23.0/24)]\n10.10.10.3 10.10.10.2 10 222 192.168.23.1",
-          "note": "The metric event names the router2 -> router3 direction (event_object 10.10.10.3, event_detected_by 10.10.10.2), cost 10 -> 222; 192.168.23.0/24 carries the same move. The reverse direction is absent from both lists."
+          "note": "The metric event names the router2 -> router3 direction (`event_object` 10.10.10.3, `event_detected_by` 10.10.10.2), cost 10 -> 222; 192.168.23.0/24 carries the same move. The reverse direction is absent from both lists."
         },
         {
           "channel": "agent",
@@ -152,7 +158,7 @@
     {
       "id": "prefix-lifecycle",
       "nav": "Prefix lifecycle",
-      "title": "Observe internal and external prefix lifecycle",
+      "title": "Detecting internal and external prefix events",
       "paragraphs": [
         "Run each prefix experiment independently. An OSPF loopback configured with a /24 mask is advertised as a /32 host route by this lab."
       ],
@@ -161,8 +167,8 @@
         "6b. Add 10.10.136.6/24 to router6 loopback; observe 10.10.136.6/32 up and cost -1 -> 0 (internal).",
         "6c. Remove static route 6.6.6.6/32 on router6; observe 6.6.6.6/32 down and cost 11 -> -1 (external, type 2)."
       ],
-      "command": "conf t\ninterface lo\nip address 192.168.123.1/24",
-      "rollback": "After each sub-exercise: remove the loopback address, or re-add ip route 6.6.6.6/32 192.168.36.3, and confirm the inverse event.",
+      "command": "sudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface lo' -c 'ip address 192.168.123.1/24'",
+      "rollback": "6a: `no ip address 192.168.123.1/24` on `router2` `interface lo`. 6b: `no ip address 10.10.136.6/24` on `router6` `interface lo`. 6c: `ip route 6.6.6.6/32 192.168.36.3` on `router6`. Confirm the inverse event after each.",
       "verify": [
         {
           "channel": "watcher",
@@ -201,13 +207,13 @@
     {
       "id": "adjacency-outage",
       "nav": "Adjacency outage",
-      "title": "Correlate an adjacency outage and recovery",
+      "title": "Detecting a connectivity loss and its recovery",
       "paragraphs": [
-        "Shut router2 eth1, inspect the correlated event set, then restore the interface with no shutdown."
+        "Shut router2 eth1, inspect the correlated event set, then restore the interface with `no shutdown`."
       ],
       "steps": [],
-      "command": "conf t\ninterface eth1\nshutdown\n! recovery\nno shutdown",
-      "rollback": "no shutdown restores the interface; wait for the host, network and metric recovery events.",
+      "command": "# down\nsudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\n# recovery\nsudo docker exec clab-ospf01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "rollback": "`no shutdown` restores the interface; wait for the host, network and metric recovery events.",
       "verify": [
         {
           "channel": "watcher",
@@ -247,13 +253,13 @@
     {
       "id": "transit-segment",
       "nav": "Transit segment",
-      "title": "Compare a broadcast transit segment",
+      "title": "Reporting on a broadcast transit segment",
       "paragraphs": [
         "Use router6 eth1 to compare transit-segment reporting with the point-to-point case."
       ],
       "steps": [],
-      "command": "conf t\ninterface eth1\nip ospf cost 66\n! then, separately\nshutdown\n! then\nno shutdown",
-      "rollback": "ip ospf cost 6 restores the baseline; no shutdown restores the adjacency. Confirm the inverse metric events.",
+      "command": "# cost\nsudo docker exec clab-ospf01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'ip ospf cost 66'\n# then, separately: shutdown, then no shutdown\nsudo docker exec clab-ospf01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\nsudo docker exec clab-ospf01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "rollback": "`ip ospf cost 6` restores the baseline; `no shutdown` restores the adjacency. Confirm the inverse metric events.",
       "verify": [
         {
           "channel": "watcher",
@@ -264,7 +270,7 @@
         {
           "channel": "monitoring",
           "summary": "The transit cost change and the router6 outage",
-          "path": "On OSPF/IS-IS Real-Time Monitoring, pick this graph, set the From/To window around 13:13-13:14 UTC and click Find logs. The metric event object is 10.10.10.3 (the far router id) with event_detected_by 10.10.10.6 - unlike a point-to-point link, where the object is the neighbour. The topology graph below the feed reweights, then drops and restores the router6 attachment."
+          "path": "On OSPF/IS-IS Real-Time Monitoring, pick this graph, set the From/To window around 13:13-13:14 UTC and click Find logs. The metric event object is 10.10.10.3 (the far router id) with `event_detected_by` 10.10.10.6 - unlike a point-to-point link, where the object is the neighbour. The topology graph below the feed reweights, then drops and restores the router6 attachment."
         },
         {
           "channel": "sdk",
