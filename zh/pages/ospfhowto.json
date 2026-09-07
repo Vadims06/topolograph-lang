@@ -1,12 +1,17 @@
 {
   "_meta": {
-    "title": "OSPF Watcher 实战手册 — Topolograph",
+    "title": "OSPF Watcher 实战手册 - Topolograph",
     "description": "在六路由器 ospf01 实验环境中执行受控的 OSPF 变更，并从 Watcher CSV 行到 Topolograph 监控页面、SDK 与 agent 逐层核对每一次变更。"
   },
   "eyebrow": "OSPF 运维实战",
   "page_title": "OSPF Watcher 实战手册",
   "page_intro": "每次只做一处变更，预测其结果，并从 Watcher 事件到 Topolograph 逐层核对同一事实。",
   "start_button": "开始实战",
+  "resources_label": "相关链接：",
+  "resources": [
+    { "label": "OSPF Watcher - 仓库与部署指南", "url": "https://github.com/Vadims06/ospfwatcher" },
+    { "label": "Topolograph", "url": "https://topolograph.com" }
+  ],
   "sidebar_aria_label": "OSPF 手册章节",
   "sidebar_title": "OSPF 实战",
   "command_label": "命令",
@@ -30,5 +35,260 @@
     "agent": "询问 agent"
   },
   "agent_prompt_label": "提问：",
-  "agent_answer_label": "已记录的回答（Qwen；每次运行措辞会变）"
+  "agent_answer_label": "已记录的回答（Qwen；每次运行措辞会变）",
+  "sections": [
+    {
+      "id": "orientation",
+      "nav": "概览",
+      "title": "理解验证约定",
+      "paragraphs": [
+        "每个练习：做一处变更，预测 OSPF 结果，观察 Watcher 事件，然后在 Topolograph 监控、SDK 中，以及-对于关联练习-在 agent 的回答中找到同一事实。在下一个独立练习之前恢复实验环境。"
+      ],
+      "steps": [
+        "Watcher CSV 行是确定性的源事件。",
+        "监控和 SDK 证明事件已被接收且可查询。",
+        "agent 仅用于把多个事件关联成一次事故，绝不替代源行。"
+      ],
+      "command": "",
+      "observations": [],
+      "rollback": ""
+    },
+    {
+      "id": "start-lab",
+      "nav": "启动实验环境",
+      "title": "启动并验证六路由器实验环境",
+      "paragraphs": [
+        "运行 OSPF Watcher 仓库中基于 GRE 的公开 ospf01 拓扑。"
+      ],
+      "steps": [],
+      "command": "cd containerlab/ospf01\nsudo ./prepare.sh\nsudo clab deploy --topo ospf01.clab.yml\nsudo docker logs clab-ospf01-ospf-watcher\nsudo tail -f watcher/logs/watcher1.ospf.log",
+      "observations": [
+        "六个路由器容器加 watcher 均已运行：`docker ps --filter name=clab-ospf01` 列出 clab-ospf01-router1..6 和 clab-ospf01-ospf-watcher，State 均为 Up。",
+        "watcher 已获得 LSDB 并正在抓包：`docker logs clab-ospf01-ospf-watcher` 显示 \"OSPF LSDB received\" 行和 \"Start sniffing on interface: eth1\"。",
+        "邻接均为 Full：`docker exec clab-ospf01-router1 vtysh -c 'show ip ospf neighbor'` 列出每个邻居处于 Full 状态；此时第一个 Topolograph 图包含六个路由器。"
+      ],
+      "rollback": "如果存在残留副本，重新部署前只销毁 ospf01。"
+    },
+    {
+      "id": "event-record",
+      "nav": "事件记录",
+      "title": "一次性搞懂事件记录",
+      "paragraphs": [
+        "本手册使用三类事件：host、metric 和 network。把 event_object 理解为发生变化的对象，event_status 为状态转换，event_detected_by 为发布或检测到变化的路由器。graph_time 是 watcher 为本次运行所用的标签，用于选择 Topolograph 图。",
+        "把上面的 metric 行当作一句话来读：在 2026-09-06T13:11:04Z，watcher ospfwatcher-demo 看到路由器 10.10.10.2 重新发布它到 10.10.10.3 的链路，开销从 10 变为 222，本地接口为 192.168.23.1，区域 0.0.0.0 / AS 12345。紧随其后的 network 行对该链路上的子网 192.168.23.0/24 携带同样的 10 -> 222 变化。"
+      ],
+      "steps": [
+        "字段顺序：watcher_time、watcher_name、event_name、event_object、event_status、[开销字段]、event_detected_by、graph_time、area_num、asn、[类型字段]、sesid、srcid。",
+        "area_num 0.0.0.0 和 asn 12345 标识路由域；sesid 是 watcher 会话，srcid 是源路由器 id。"
+      ],
+      "command": "",
+      "rollback": "",
+      "observations": [],
+      "event_log": "host: 2026-09-06T13:04:25.256Z,ospfwatcher-demo,host,10.10.10.2,down,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\nmetric: 2026-09-06T13:11:04.205Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:10,new_cost:222,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.1,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\nnetwork: 2026-09-06T13:11:04.207Z,ospfwatcher-demo,network,192.168.23.0/24,changed,old_cost:10,new_cost:222,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+    },
+    {
+      "id": "verify-sources",
+      "nav": "验证来源",
+      "title": "证据从何而来",
+      "paragraphs": [
+        "一次 OSPF 变更产生一行 Watcher CSV。Fluent Bit 将其转发到 Topolograph，Topolograph 存储它并通过监控页面、事件 API 和 SDK 暴露。下面每个练习都在你可用的每个层级上核对同一事实。"
+      ],
+      "steps": [
+        "ospf01 Watcher 日志  ->  Fluent Bit CSV 解析器  ->  Topolograph 接收  ->  监控页面 + 事件 API  ->  Topolograph SDK",
+        "监控页面：OSPF/IS-IS Real-Time Monitoring。按时间戳选择图，设置时间窗口，点击 Find logs；开关用于过滤子网 / 链路 / 开销事件。",
+        "该页面的图选择器按从新到旧列出 watcher 报告的每个快照-那就是 watcher 发送的拓扑。"
+      ],
+      "image": "monitoring.png",
+      "image_alt": "graph 06Sep2026_12h31m41s 的 Topolograph OSPF/IS-IS Real-Time Monitoring 页面：图选择器和 Find logs，事件流显示 metric 10 -> 222 和 222 -> 10 以及 192.168.23.0/24 标签，下方是包含六个路由器和链路权重的拓扑图。",
+      "command": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\",\n                   username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.get(latest=True)\nprint(graph.graph_time, graph.protocol, graph.hosts)",
+      "sdk_output": "06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo ospf {'count': 6}",
+      "observations": [],
+      "rollback": ""
+    },
+    {
+      "id": "directed-cost",
+      "nav": "有向开销",
+      "title": "更改有向的点到点开销",
+      "paragraphs": [
+        "更改 router2 eth1 朝向 router3 的方向。OSPF 开销是有向的，因此反方向 router3 到 router2 的开销不能当作同一个标量。"
+      ],
+      "steps": [],
+      "command": "conf t\ninterface eth1\nip ospf cost 222",
+      "rollback": "执行 no ip ospf cost 222，并确认反向的 222 -> 10 metric 和 network 事件。",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "变更及其回滚对应的 metric 和 network 行",
+          "badge": "4 行",
+          "code": "2026-09-06T13:11:04.205Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:10,new_cost:222,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.1,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:11:04.207Z,ospfwatcher-demo,network,192.168.23.0/24,changed,old_cost:10,new_cost:222,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# rollback (no ip ospf cost 222):\n2026-09-06T13:11:18.365Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:222,new_cost:10,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.1,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:11:18.367Z,ospfwatcher-demo,network,192.168.23.0/24,changed,old_cost:222,new_cost:10,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "事件流中的 10 -> 222 metric 变化",
+          "path": "在 OSPF/IS-IS Real-Time Monitoring 页面，于 Choose the graph 中选择该图，将 From/To 窗口设为 13:11 UTC 左右并点击 Find logs。开启 Changed metric 后，事件流显示一行：object 10.10.10.3，detected by 10.10.10.2，10 -> 222-仅 router2 -> router3 方向。反方向未列出。事件流下方的拓扑图以新权重重绘 router2-router3 链路。"
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_adjacency_events 和 get_network_events 返回相同的对象和开销",
+          "badge": "2 个事件",
+          "request": "adj = graph.events.get_adjacency_events(\n    start_time=\"2026-09-06T13:11:00Z\", end_time=\"2026-09-06T13:11:10Z\")\nnet = graph.events.get_network_events(\n    start_time=\"2026-09-06T13:11:00Z\", end_time=\"2026-09-06T13:11:10Z\")\nprint(adj[\"adjacency_cost_change_events\"])\nprint(net[\"network_cost_change_events\"])\ne = adj[\"adjacency_cost_change_events\"][0]\nprint(e.event_object, e.event_detected_by, e.old_cost, e.new_cost, e.local_ip_address)",
+          "output": "[Event(name=metric, status=changed, object=10.10.10.3)]\n[Event(name=network, status=changed, object=192.168.23.0/24)]\n10.10.10.3 10.10.10.2 10 222 192.168.23.1",
+          "note": "metric 事件指明 router2 -> router3 方向（event_object 10.10.10.3，event_detected_by 10.10.10.2），开销 10 -> 222；192.168.23.0/24 携带同样的变化。两个列表中都没有反方向。"
+        },
+        {
+          "channel": "agent",
+          "summary": "关于 router2 的通用事故问题",
+          "prompt": "What happened with router2 in the last 10 minutes?",
+          "answer": [
+            "In the 06Sep2026_12h31m41s snapshot, router2 (10.10.10.2) had one change in this window - an OSPF metric change on its link to 10.10.10.3, detected by router2 itself. No prefix, link, or node went down.",
+            "13:11:04 - router2 raised the cost of its link to 10.10.10.3 from 10 to 222 (192.168.23.0/24, area 0).",
+            "13:11:19 - router2 restored that cost from 222 back to 10.",
+            "Only the router2 -> 10.10.10.3 direction produced an event; the reverse 10.10.10.3 -> router2 direction did not change."
+          ],
+          "note": "本次运行观察到：router2 以开销 222（原为 10）重新发布它到 router3 的链路；反方向 router3 -> router2 未变化。"
+        }
+      ]
+    },
+    {
+      "id": "prefix-lifecycle",
+      "nav": "前缀生命周期",
+      "title": "观察内部和外部前缀的生命周期",
+      "paragraphs": [
+        "每个前缀实验都独立进行。配置为 /24 掩码的 OSPF loopback 在本实验环境中以 /32 主机路由发布。"
+      ],
+      "steps": [
+        "6a. 在 router2 loopback 上添加 192.168.123.1/24；观察 192.168.123.1/32 up 且开销 -1 -> 0（internal）。",
+        "6b. 在 router6 loopback 上添加 10.10.136.6/24；观察 10.10.136.6/32 up 且开销 -1 -> 0（internal）。",
+        "6c. 在 router6 上删除静态路由 6.6.6.6/32；观察 6.6.6.6/32 down 且开销 11 -> -1（external，type 2）。"
+      ],
+      "command": "conf t\ninterface lo\nip address 192.168.123.1/24",
+      "rollback": "每个子练习之后：删除 loopback 地址，或重新添加 ip route 6.6.6.6/32 192.168.36.3，并确认反向事件。",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "每个子练习一行 up/down 和一行 changed",
+          "badge": "6 行",
+          "code": "# 6a router2: ip address 192.168.123.1/24 on interface lo\n2026-09-06T13:12:06.600Z,ospfwatcher-demo,network,192.168.123.1/32,up,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:12:06.601Z,ospfwatcher-demo,network,192.168.123.1/32,changed,old_cost:-1,new_cost:0,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# 6b router6: ip address 10.10.136.6/24 on interface lo\n2026-09-06T13:12:28.916Z,ospfwatcher-demo,network,10.10.136.6/32,up,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:12:28.917Z,ospfwatcher-demo,network,10.10.136.6/32,changed,old_cost:-1,new_cost:0,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,internal,0,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# 6c router6: no ip route 6.6.6.6/32 192.168.36.3\n2026-09-06T13:12:51.315Z,ospfwatcher-demo,network,6.6.6.6/32,down,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:12:51.315Z,ospfwatcher-demo,network,6.6.6.6/32,changed,old_cost:11,new_cost:-1,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,external,2,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "事件流中新增和撤回的前缀",
+          "path": "在 OSPF/IS-IS Real-Time Monitoring 页面选择该图，将 From/To 窗口设为 13:12 UTC 左右并点击 Find logs。开启 New/Old Subnets 后，192.168.123.1/32 和 10.10.136.6/32 显示为新增，6.6.6.6/32 显示为撤回；事件流下方的拓扑图加入这两条主机路由并移除被撤回的一条。"
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_network_events，每个子练习一个 changed 事件",
+          "badge": "3 个事件",
+          "request": "for window in [(\"2026-09-06T13:12:05Z\", \"2026-09-06T13:12:08Z\"),\n               (\"2026-09-06T13:12:27Z\", \"2026-09-06T13:12:30Z\"),\n               (\"2026-09-06T13:12:50Z\", \"2026-09-06T13:12:53Z\")]:\n    net = graph.events.get_network_events(start_time=window[0], end_time=window[1])\n    for e in net[\"network_up_down_events\"]:\n        print(e.event_object, e.event_status, e.event_detected_by,\n              f\"{e.old_cost} -> {e.new_cost}\", e.subnet_type, e.int_ext_subtype)",
+          "output": "192.168.123.1/32 changed 10.10.10.2 -1 -> 0 internal 0\n10.10.136.6/32 changed 10.10.10.6 -1 -> 0 internal 0\n6.6.6.6/32 changed 10.10.10.6 11 -> -1 external 2",
+          "note": "loopback 上的 /24 以 /32 发布。可达性是 up/down 事件；开销变化是 changed 事件。被撤回的路由是 external / type 2，两个 loopback 是 internal / 0。"
+        },
+        {
+          "channel": "agent",
+          "summary": "关于前缀变化的通用问题",
+          "prompt": "Which prefixes changed in the last 15 minutes, and were they internal or external?",
+          "answer": [
+            "In the 06Sep2026_12h31m41s snapshot, three prefixes changed between 13:12 and 13:13 UTC - each advertised and then withdrawn within about ten seconds.",
+            "192.168.123.1/32 - internal, seen from 10.10.10.2 at 13:12:07 (cost 0), gone by 13:12:18.",
+            "10.10.136.6/32 - internal, seen from 10.10.10.6 at 13:12:29 (cost 0), gone by 13:12:40.",
+            "6.6.6.6/32 - external, withdrawn by 10.10.10.6 at 13:12:51 (was cost 11), back by 13:13:03.",
+            "192.168.123.1/32 and 10.10.136.6/32 are internal; 6.6.6.6/32 is the only external prefix."
+          ],
+          "note": "本次运行观察到：192.168.123.1/32 和 10.10.136.6/32 作为内部主机路由被加入；6.6.6.6/32（external，type 2）被撤回。"
+        }
+      ]
+    },
+    {
+      "id": "adjacency-outage",
+      "nav": "邻接中断",
+      "title": "关联一次邻接中断与恢复",
+      "paragraphs": [
+        "关闭 router2 eth1，检查关联的事件集合，然后用 no shutdown 恢复接口。"
+      ],
+      "steps": [],
+      "command": "conf t\ninterface eth1\nshutdown\n! recovery\nno shutdown",
+      "rollback": "no shutdown 恢复接口；等待 host、network 和 metric 的恢复事件。",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "router2-router3 链路的中断事件集与恢复事件集",
+          "badge": "down + up",
+          "code": "# router2: interface eth1 / shutdown\n2026-09-06T13:04:25.256Z,ospfwatcher-demo,host,10.10.10.2,down,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:25.256Z,ospfwatcher-demo,metric,10.10.10.2,changed,old_cost:10,new_cost:-1,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.2,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:25.257Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:10,new_cost:-1,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.1,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:25.259Z,ospfwatcher-demo,network,192.168.23.0/24,down,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# router2: interface eth1 / no shutdown\n2026-09-06T13:04:40.438Z,ospfwatcher-demo,network,192.168.23.0/24,up,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:40.458Z,ospfwatcher-demo,host,10.10.10.2,up,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:40.459Z,ospfwatcher-demo,metric,10.10.10.2,changed,old_cost:-1,new_cost:10,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.23.2,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:04:45.557Z,ospfwatcher-demo,host,10.10.10.3,up,10.10.10.2,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "事件流中作为一次波动的中断",
+          "path": "在 OSPF/IS-IS Real-Time Monitoring 页面选择该图，将 From/To 窗口设为 13:04 UTC 左右并点击 Find logs。开启 Up/Down Links 后，10.10.10.2 先 down 后 up，两个有向开销都变为 -1 再恢复，192.168.23.0/24 变为不可达再恢复；事件流下方的拓扑图移除 router2-router3 链路再恢复。"
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_adjacency_events 返回成对的 down/up 变化",
+          "badge": "4 次变化",
+          "request": "adj = graph.events.get_adjacency_events(\n    start_time=\"2026-09-06T13:04:20Z\", end_time=\"2026-09-06T13:04:50Z\")\nfor e in adj[\"all_host_up_down_events\"]:\n    print(e.event_name, e.event_object, \"detected_by\", e.event_detected_by,\n          f\"{e.old_cost} -> {e.new_cost}\", e.watcher_time[11:19])",
+          "output": "metric 10.10.10.2 detected_by 10.10.10.3 10 -> -1 13:04:25\nmetric 10.10.10.3 detected_by 10.10.10.2 10 -> -1 13:04:25\nmetric 10.10.10.2 detected_by 10.10.10.3 -1 -> 10 13:04:40\nmetric 10.10.10.3 detected_by 10.10.10.2 -1 -> 10 13:04:45",
+          "note": "host 10.10.10.2 down，由 10.10.10.3 检测到，两个有向开销均为 -1，192.168.23.0/24 down；随后是镜像的恢复。"
+        },
+        {
+          "channel": "agent",
+          "summary": "关于网络的通用事故问题",
+          "prompt": "What happened in the network in the last 30 minutes?",
+          "answer": [
+            "There was 1 wave of activity, starting at 13:04:25 UTC and involving 2 devices - a brief link flap between 10.10.10.2 and 10.10.10.3 that fully recovered (converged) within ~21 seconds.",
+            "13:04:25 - device 10.10.10.2 lost adjacency (link down, cost 10 -> -1).",
+            "13:04:25 - device 10.10.10.3 lost adjacency (link down, cost 10 -> -1).",
+            "13:04:41 - device 10.10.10.2 restored adjacency (link up, cost -1 -> 10).",
+            "13:04:46 - device 10.10.10.3 restored adjacency (link up, cost -1 -> 10).",
+            "Pattern: flap - all devices recovered within the wave, so the network re-converged."
+          ],
+          "note": "回答指出发生故障的邻接（10.10.10.2 - 10.10.10.3）由 10.10.10.3 检测到，两个开销均为 -1，以及恢复过程-与上面 CSV 行相同的事实，而问题从未提到 'adjacency' 或 'failure'。"
+        }
+      ]
+    },
+    {
+      "id": "transit-segment",
+      "nav": "中转网段",
+      "title": "对比一个广播中转网段",
+      "paragraphs": [
+        "用 router6 eth1 将中转网段的上报与点到点情形作对比。"
+      ],
+      "steps": [],
+      "command": "conf t\ninterface eth1\nip ospf cost 66\n! then, separately\nshutdown\n! then\nno shutdown",
+      "rollback": "ip ospf cost 6 恢复基线；no shutdown 恢复邻接。确认反向的 metric 事件。",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "开销变化指明远端路由器 id，以及一对 shutdown/恢复",
+          "badge": "cost + up/down",
+          "code": "# router6: interface eth1 / ip ospf cost 66   (and rollback ip ospf cost 6)\n2026-09-06T13:13:13.841Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:6,new_cost:66,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.36.6,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:13:25.028Z,ospfwatcher-demo,metric,10.10.10.3,changed,old_cost:66,new_cost:6,10.10.10.6,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.36.6,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# router6: interface eth1 / shutdown\n2026-09-06T13:13:36.241Z,ospfwatcher-demo,host,10.10.10.6,down,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:13:36.241Z,ospfwatcher-demo,metric,10.10.10.6,changed,old_cost:10,new_cost:-1,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.36.3,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n# router6: interface eth1 / no shutdown\n2026-09-06T13:14:30.447Z,ospfwatcher-demo,host,10.10.10.6,up,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1\n2026-09-06T13:14:30.447Z,ospfwatcher-demo,metric,10.10.10.6,changed,old_cost:-1,new_cost:10,10.10.10.3,06Sep2026_12h31m41s_6_hosts_bgpls_ospfwatcher-demo,0.0.0.0,12345,192.168.36.3,,e9a31bb2-a9ee-11f1-85b5-1e1be0e3c37d,10.10.10.1"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "中转开销变化与 router6 中断",
+          "path": "在 OSPF/IS-IS Real-Time Monitoring 页面选择该图，将 From/To 窗口设为 13:13-13:14 UTC 左右并点击 Find logs。metric 事件的 object 是 10.10.10.3（远端路由器 id），event_detected_by 是 10.10.10.6-不同于点到点链路，那里的 object 是邻居。事件流下方的拓扑图重新赋权，然后移除并恢复 router6 的连接。"
+        },
+        {
+          "channel": "sdk",
+          "summary": "针对中转开销和 shutdown/恢复 的 get_adjacency_events",
+          "badge": "4 次变化",
+          "request": "cost = graph.events.get_adjacency_events(\n    start_time=\"2026-09-06T13:13:10Z\", end_time=\"2026-09-06T13:13:30Z\")\nfor e in cost[\"adjacency_cost_change_events\"]:\n    print(\"cost\", e.event_object, e.event_detected_by, f\"{e.old_cost} -> {e.new_cost}\", e.watcher_time[11:19])\nflap = graph.events.get_adjacency_events(\n    start_time=\"2026-09-06T13:13:30Z\", end_time=\"2026-09-06T13:14:35Z\")\nfor e in flap[\"all_host_up_down_events\"]:\n    print(\"updown\", e.event_object, e.event_detected_by, f\"{e.old_cost} -> {e.new_cost}\", e.watcher_time[11:19])",
+          "output": "cost 10.10.10.3 10.10.10.6 6 -> 66 13:13:13\ncost 10.10.10.3 10.10.10.6 66 -> 6 13:13:25\nupdown 10.10.10.6 10.10.10.3 10 -> -1 13:13:36\nupdown 10.10.10.6 10.10.10.3 -1 -> 10 13:14:30",
+          "note": "在中转网段上，metric 事件指明远端路由器 id（10.10.10.3），由 router6 检测到；shutdown 表现为 host 10.10.10.6 down，随后恢复。"
+        },
+        {
+          "channel": "agent",
+          "summary": "关于 router6 的通用事故问题",
+          "prompt": "What happened on router6 in the last 20 minutes?",
+          "answer": [
+            "In the 06Sep2026_12h31m41s snapshot, router6 (10.10.10.6) first flapped the cost of its link to 10.10.10.3, then lost that adjacency and recovered - about a 55 second outage.",
+            "13:13:14 - router6 changed the cost of its link to 10.10.10.3 from 6 to 66.",
+            "13:13:25 - router6 restored that cost from 66 back to 6.",
+            "13:13:36 - neighbor 10.10.10.3 reported its adjacency to router6 down (metric 10 -> -1).",
+            "13:14:31 - 10.10.10.3 reported the adjacency back up (metric -1 -> 10); router6 re-advertised its side at cost 6 by 13:14:36.",
+            "Pattern: a brief metric flap on the router6 - 10.10.10.3 link, then a short outage that fully recovered."
+          ],
+          "note": "本次运行观察到：router6 -> router3 的中转开销从 6 -> 66 再变回，随后 router6 的连接中断（metric -1）并恢复。"
+        }
+      ]
+    }
+  ]
 }
