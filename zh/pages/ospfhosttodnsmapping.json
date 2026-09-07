@@ -19,7 +19,6 @@
   "btn_migrate": "迁移",
   "empty_graphs_message": "没有之前上传的拓扑图",
   "btn_update_hostnames": "更新图中的主机名",
-  "link_netbox_sync": "Netbox 同步",
   "link_csv_import": "CSV 导入主机",
   "th_host": "主机",
   "th_hostname": "主机名",

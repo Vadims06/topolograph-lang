@@ -17,7 +17,6 @@
   "link_all_vrfs": "Все VRF",
   "link_all_groups": "Все группы",
   "link_csv_import_hosts": "Импорт хостов из CSV",
-  "link_netbox_sync": "Синхронизация с Netbox",
   "th_host": "Хост",
   "th_hostname": "Имя хоста",
   "th_vrf": "VRF",

@@ -19,7 +19,6 @@
   "btn_migrate": "Migrate",
   "empty_graphs_message": "No previously uploaded graphs",
   "btn_update_hostnames": "Update hostnames on graph",
-  "link_netbox_sync": "Sync with Netbox",
   "link_csv_import": "Import hosts from CSV",
   "th_host": "Host",
   "th_hostname": "Hostname",

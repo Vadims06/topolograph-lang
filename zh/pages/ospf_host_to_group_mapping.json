@@ -17,7 +17,6 @@
   "link_all_vrfs": "所有 VRF",
   "link_all_groups": "所有组",
   "link_csv_import_hosts": "CSV 导入主机",
-  "link_netbox_sync": "Netbox 同步",
   "th_host": "主机",
   "th_hostname": "主机名",
   "th_vrf": "VRF",

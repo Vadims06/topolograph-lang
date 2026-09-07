@@ -17,7 +17,6 @@
   "link_all_vrfs": "Todos los VRF",
   "link_all_groups": "Todos los grupos",
   "link_csv_import_hosts": "Importar hosts desde CSV",
-  "link_netbox_sync": "Sincronizar con Netbox",
   "th_host": "Host",
   "th_hostname": "Nombre de host",
   "th_vrf": "VRF",
