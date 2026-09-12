@@ -270,6 +270,39 @@
           "note": "A passing answer names the `router6` -> `router3` transit metric moving `10` -> `66` and back, then the `router6` attachment going down (metric `-1` at L2) and recovering, without the question naming cost, DIS, or shutdown."
         }
       ]
+    },
+    {
+      "id": "isis-te",
+      "nav": "TE attributes",
+      "title": "Changing a link's TE attributes",
+      "paragraphs": [
+        "`router2` `eth1` toward `router3` already carries RFC 5305 TE sub-TLVs: `mpls-te on` plus per-interface `link-params` advertise Administrative Group, Maximum (Reservable) Bandwidth, and per-priority Unreserved Bandwidth alongside the ordinary metric. Changing one of those without touching the IGP metric still produces its own event family, `temetric`, distinct from `metric` -- and it fires once per level on this Level-1-2 circuit, same as `metric` does.",
+        "`admin-grp` is the field IS-IS/MPLS-TE uses for CSPF constraint-based routing (\"avoid links outside the gold class\"). `0x647a0001` sets bits `0,17,19,20,21,22,26,29,30`; the change below clears bit `0` and sets bit `1`, leaving every other bit untouched."
+      ],
+      "steps": [],
+      "command": "sudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'link-params' \\\n  -c 'admin-grp 0x647a0002'",
+      "rollback": "Run `admin-grp 0x647a0001` under `link-params` on `router2` `eth1` and confirm the inverse `temetric` events at L1 and L2.",
+      "verify": [
+        {
+          "channel": "watcher",
+          "summary": "The temetric events for the change and its rollback, at L1 and L2",
+          "badge": "L1 + L2",
+          "code": "# router2: interface eth1 / link-params / admin-grp 0x647a0002\n2026-09-12T19:26:19.170Z,lab-isis01,1,temetric,router3,changed,1_17_19_20_21_22_26_29_30,1410065408,1410065408,9600000_9680000_9760000_9840000_9920000_10000000_1410065408_1410065408,23,router2,12Sep2026_19h04m47s_6_hosts,49.0001,65100,192.168.23.1,,dabf99b6-aedc-11f1-a144-46ed252a638b,0100.1001.0001,\n2026-09-12T19:26:19.179Z,lab-isis01,2,temetric,router3,changed,1_17_19_20_21_22_26_29_30,1410065408,1410065408,9600000_9680000_9760000_9840000_9920000_10000000_1410065408_1410065408,23,router2,12Sep2026_19h04m47s_6_hosts,49.0001,65100,192.168.23.1,,dabf99b6-aedc-11f1-a144-46ed252a638b,0100.1001.0001,\n# rollback (admin-grp 0x647a0001):\n2026-09-12T19:30:54.362Z,lab-isis01,1,temetric,router3,changed,0_17_19_20_21_22_26_29_30,1410065408,1410065408,9600000_9680000_9760000_9840000_9920000_10000000_1410065408_1410065408,23,router2,12Sep2026_19h04m47s_6_hosts,49.0001,65100,192.168.23.1,,dabf99b6-aedc-11f1-a144-46ed252a638b,0100.1001.0001,\n2026-09-12T19:30:54.376Z,lab-isis01,2,temetric,router3,changed,0_17_19_20_21_22_26_29_30,1410065408,1410065408,9600000_9680000_9760000_9840000_9920000_10000000_1410065408_1410065408,23,router2,12Sep2026_19h04m47s_6_hosts,49.0001,65100,192.168.23.1,,dabf99b6-aedc-11f1-a144-46ed252a638b,0100.1001.0001,"
+        },
+        {
+          "channel": "monitoring",
+          "summary": "The temetric row on the event feed",
+          "path": "On OSPF/IS-IS Real-Time Monitoring, pick `12Sep2026_19h04m47s_6_hosts` in `Choose the graph`, set the `From`/`To` window around 19:26 UTC, turn on `L1` and `L2`, and click `Find logs`. The change appears as a `temetric` row for `router3` detected by `router2`, at both levels."
+        },
+        {
+          "channel": "sdk",
+          "summary": "get_adjacency_events returns the temetric change, correlated to the link and timestamp",
+          "badge": "L1 + L2",
+          "request": "adj = graph.events.get_adjacency_events(\n    start_time=\"2026-09-12T19:26:18Z\", end_time=\"2026-09-12T19:26:21Z\")\nfor e in adj[\"adjacency_cost_change_events\"]:\n    print(e.event_name, e.event_object, e.event_detected_by, \"L\" + str(e.level_number))",
+          "output": "temetric router3 router2 L1\ntemetric router3 router2 L2",
+          "note": "The SDK confirms a `temetric` change on this link at both levels, correlated to the same timestamp as the Watcher lines above -- but `get_adjacency_events` does not yet surface the changed admin-group, bandwidth or TE-metric values themselves; read those from the Watcher CSV or the `temetric_change` collection directly."
+        }
+      ]
     }
   ]
 }
