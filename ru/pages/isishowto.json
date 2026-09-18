@@ -270,6 +270,47 @@
           "note": "Правильный ответ называет транзитную метрику `router6` -> `router3`, меняющуюся `10` -> `66` и обратно, затем падение подключения `router6` (метрика `-1` на L2) и восстановление, при том что вопрос не упоминает стоимость, DIS или shutdown."
         }
       ]
+    },
+    {
+      "id": "isis-level-filter",
+      "nav": "Фильтр по уровню IS-IS",
+      "title": "Чтение TE-атрибутов и фильтрация рёбер по уровню IS-IS",
+      "paragraphs": [
+        "Каждое распарсенное ребро несёт метрику и TE sub-TLV из RFC 5305 (admin group, пулы пропускной способности, TE metric) вместе с `isis_level` -- `1` или `2` для линка, анонсированного только на одном уровне, `3` (L1L2) для анонсированного на обоих. `router3`-`router6` работает только на Level-2, поэтому это единственное ребро в графе с `isis_level: 2`; все остальные линки здесь -- `3`.",
+        "Этот граф (`18Sep2026_08h50m15s_6_hosts`) получен полным парсингом LSDB (`POST /graphs` с выводом `show isis database detail` на `router1`). Граф из Watcher хранит per-level TE снапшоты так же, поэтому на запрос с уровнем тоже отвечает реальными данными."
+      ],
+      "steps": [],
+      "command": "curl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/edges?isis_level=2\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/edges?admin_group=0x647a0001\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/edges?temetric__gt=25\"",
+      "rollback": "",
+      "image": "isis_te_link_tooltip_two_columns.png",
+      "image_alt": "Веб-тултип ребра router2-router3, теперь разбитый на две колонки рядом: 0100.1001.0003 в 0100.1001.0002 (Metric 10) слева и 0100.1001.0002 в 0100.1001.0003 (Metric 50) справа -- у каждой свои Local/Remote IP, TE Metric, Bandwidth и бейджи Unreserved BW, плюс разбивка по L1/L2 ниже. До фикса mpls-te router-address на router2 (см. rollback в разделе про point-to-point линк) направленные рёбра router2 попадали на два разных узла, и этот же линк показывал один столбец с отсутствующим вторым направлением.",
+      "observations": [
+        "`isis_level=2` -- ровно по одному ребру на направление для Level-2-only канала: `10.10.10.3 -> 10.10.10.6` и `10.10.10.6 -> 10.10.10.3`, оба `isis_level: 2` -- больше ни один линк в этом графе из шести маршрутизаторов так не помечен.",
+        "`admin_group=0x647a0001` -- 2 ребра: `10.10.10.1 -> 10.10.10.3` (cost 10) и `10.10.10.2 -> 10.10.10.3` (cost 50) -- два направления, которыми `router1`/`router2` анонсируют этот admin group в сторону `router3`, у каждого свои `admin_group`, `temetric` и `unreserved_bw_0`..`unreserved_bw_7`.",
+        "`temetric__gt=25` -- 2 ребра: `10.10.10.1 -> 10.10.10.3` (`temetric: 111111`) и `10.10.10.3 -> 10.10.10.2` (`temetric: 32`) -- оператор диапазона читает то же поле TE-метрики, что показывает бейдж `TE Metric` в веб-тултипе."
+      ],
+      "sdk_request": "edges = graph.edges_list(isis_level=2)\nfor e in edges[\"items\"]:\n    print(e[\"src\"], \"->\", e[\"dst\"], e[\"isis_level\"], e[\"cost\"])",
+      "sdk_output": "10.10.10.3 -> 10.10.10.6 2 10\n10.10.10.6 -> 10.10.10.3 2 10"
+    },
+    {
+      "id": "per-level-cspf",
+      "nav": "CSPF по уровню",
+      "title": "Расчёт CSPF для одного уровня IS-IS",
+      "paragraphs": [
+        "`GET /graph/{graph_time}/cspf-path/{node_a}/{node_b}?level=1|2` отвечает на вопрос, который недоступен комбинированному/дефолтному расчёту: какой путь (если он есть) существует, если использовать метрики и TE-данные строго одного уровня. `router3`-`router6` работает только на Level-2, поэтому `router6` вообще не входит в топологию Level-1 -- запрос Level-1 между `router1` и `router6` это не отказ из-за ограничений, а `src/dst not found`.",
+        "Явный запрос `level` к графу, который старше per-level хранения -- например загруженному до появления per-level снапшотов -- закрывается отказом: `422` и `code: isis_level_calculation_unavailable`, вместо того чтобы молча ответить из объединённого представления."
+      ],
+      "steps": [],
+      "command": "curl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/cspf-path/10.10.10.1/10.10.10.6\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/cspf-path/10.10.10.1/10.10.10.6?level=1\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/cspf-path/10.10.10.1/10.10.10.6?level=2\"",
+      "rollback": "",
+      "observations": [
+        "Без `level` (комбинированный/дефолтный вид): `\"path\": [\"10.10.10.1\", \"10.10.10.3\", \"10.10.10.6\"]`, `\"cost\": 20`.",
+        "`level=1`: `\"path\": []`, `\"reason\": \"src/dst not found\"` -- у `router6` вообще нет членства в Level-1, ни на этом, ни на любом другом графе, так как его единственный канал -- только Level-2.",
+        "`level=2`: совпадает с комбинированным видом (`\"cost\": 20`) -- единственный Level-1-2 хоп этого графа, `router1`-`router3`, тоже анонсирован на L2, поэтому путь только для L2 совпадает с дефолтным.",
+        "Тот же запрос к графу, снятому до появления per-level хранения, `12Sep2026_19h04m47s_6_hosts` (`?level=1`), возвращает `422` с `\"code\": \"isis_level_calculation_unavailable\"`, `\"action\": \"reupload_graph\"` -- чтобы получить настоящий per-level ответ, перезалейте LSDB под текущей версией Topolograph."
+      ],
+      "sdk_request": "for level in (None, 1, 2):\n    r = graph.cspf_path(\"10.10.10.1\", \"10.10.10.6\", level=level)\n    print(level, r)",
+      "sdk_output": "None {'cost': 20, 'path': ['10.10.10.1', '10.10.10.3', '10.10.10.6'], 'reason': ''}\n1 {'cost': None, 'path': [], 'reason': 'src/dst not found'}\n2 {'cost': 20, 'path': ['10.10.10.1', '10.10.10.3', '10.10.10.6'], 'reason': ''}"
     }
   ]
 }

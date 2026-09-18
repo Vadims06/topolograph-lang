@@ -303,6 +303,47 @@
           "note": "The SDK confirms a `temetric` change on this link at both levels, correlated to the same timestamp as the Watcher lines above -- but `get_adjacency_events` does not yet surface the changed admin-group, bandwidth or TE-metric values themselves; read those from the Watcher CSV or the `temetric_change` collection directly."
         }
       ]
+    },
+    {
+      "id": "isis-level-filter",
+      "nav": "IS-IS level filter",
+      "title": "Reading TE attributes and filtering edges by IS-IS level",
+      "paragraphs": [
+        "Every parsed link carries its metric and RFC 5305 TE sub-TLVs (admin group, bandwidth pools, TE metric) alongside `isis_level` -- `1` or `2` for a link advertised at one level only, `3` (L1L2) for one advertised at both. `router3`-`router6` is Level-2-only, so it is the one edge on this graph tagged `isis_level: 2`; every other link here is `3`.",
+        "This graph (`18Sep2026_08h50m15s_6_hosts`) came from a full LSDB parse (`POST /graphs` with `router1`'s `show isis database detail`). A Watcher-sourced graph stores per-level TE snapshots the same way, so it answers a level-aware request with real data too."
+      ],
+      "steps": [],
+      "command": "curl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/edges?isis_level=2\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/edges?admin_group=0x647a0001\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/edges?temetric__gt=25\"",
+      "rollback": "",
+      "image": "isis_te_link_tooltip_two_columns.png",
+      "image_alt": "The Web edge tooltip for router2-router3, now split into two side-by-side panels -- 0100.1001.0003 to 0100.1001.0002 (Metric 10) on the left and 0100.1001.0002 to 0100.1001.0003 (Metric 50) on the right -- each with its own Local/Remote IP, TE Metric, Bandwidth and Unreserved BW badges, plus the L1/L2 breakdown further down. Before the router2 mpls-te router-address fix (Point-to-point link section rollback note), router2's directed edges landed on two different vertices and this same link showed a single column with one direction missing.",
+      "observations": [
+        "`isis_level=2` lists exactly one edge per direction on the Level-2-only circuit: `10.10.10.3 -> 10.10.10.6` and `10.10.10.6 -> 10.10.10.3`, both `isis_level: 2` -- no other link in this six-router graph matches.",
+        "`admin_group=0x647a0001` lists 2 edges: `10.10.10.1 -> 10.10.10.3` (cost 10) and `10.10.10.2 -> 10.10.10.3` (cost 50) -- the two directions `router1`/`router2` advertise toward `router3` with that group, each carrying its own `admin_group`, `temetric` and `unreserved_bw_0`..`unreserved_bw_7` fields.",
+        "`temetric__gt=25` lists 2 edges: `10.10.10.1 -> 10.10.10.3` (`temetric: 111111`) and `10.10.10.3 -> 10.10.10.2` (`temetric: 32`) -- the range operator reads the same TE-metric field the Web tooltip's `TE Metric` badge shows."
+      ],
+      "sdk_request": "edges = graph.edges_list(isis_level=2)\nfor e in edges[\"items\"]:\n    print(e[\"src\"], \"->\", e[\"dst\"], e[\"isis_level\"], e[\"cost\"])",
+      "sdk_output": "10.10.10.3 -> 10.10.10.6 2 10\n10.10.10.6 -> 10.10.10.3 2 10"
+    },
+    {
+      "id": "per-level-cspf",
+      "nav": "Per-level CSPF",
+      "title": "Computing CSPF for one IS-IS level",
+      "paragraphs": [
+        "`GET /graph/{graph_time}/cspf-path/{node_a}/{node_b}?level=1|2` answers a question the combined/default calculation cannot: which path, if any, exists using strictly that level's own advertised metrics and TE data. `router3`-`router6` is Level-2-only, so `router6` is not even a member of the Level-1 topology -- a Level-1 request between `router1` and `router6` is not a strict-constraint failure, it is `src/dst not found`.",
+        "Requesting an explicit `level` against a graph that predates per-level storage -- such as one uploaded before per-level snapshots were introduced -- fails closed with `422` and `code: isis_level_calculation_unavailable` rather than silently answering from the merged view."
+      ],
+      "steps": [],
+      "command": "curl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/cspf-path/10.10.10.1/10.10.10.6\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/cspf-path/10.10.10.1/10.10.10.6?level=1\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/cspf-path/10.10.10.1/10.10.10.6?level=2\"",
+      "rollback": "",
+      "observations": [
+        "No `level` (combined/default view): `\"path\": [\"10.10.10.1\", \"10.10.10.3\", \"10.10.10.6\"]`, `\"cost\": 20`.",
+        "`level=1`: `\"path\": []`, `\"reason\": \"src/dst not found\"` -- `router6` has no Level-1 membership at all, on this or any graph, since its only circuit is Level-2-only.",
+        "`level=2`: identical to the combined view here (`\"cost\": 20`) -- this graph's one Level-1-2 hop, `router1`-`router3`, also advertises at L2, so the L2-only path matches the default one.",
+        "The same request against the pre-per-level graph `12Sep2026_19h04m47s_6_hosts` (`?level=1`) returns `422` with `\"code\": \"isis_level_calculation_unavailable\"`, `\"action\": \"reupload_graph\"` -- re-run the LSDB upload under the current Topolograph version to get a real per-level answer instead."
+      ],
+      "sdk_request": "for level in (None, 1, 2):\n    r = graph.cspf_path(\"10.10.10.1\", \"10.10.10.6\", level=level)\n    print(level, r)",
+      "sdk_output": "None {'cost': 20, 'path': ['10.10.10.1', '10.10.10.3', '10.10.10.6'], 'reason': ''}\n1 {'cost': None, 'path': [], 'reason': 'src/dst not found'}\n2 {'cost': 20, 'path': ['10.10.10.1', '10.10.10.3', '10.10.10.6'], 'reason': ''}"
     }
   ]
 }
