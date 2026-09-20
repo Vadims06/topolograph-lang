@@ -270,6 +270,81 @@
           "note": "合格的回答在提问未提及 cost、DIS 或 shutdown 的情况下，指出 `router6` -> `router3` 的中转度量在 `10` -> `66` 间往返，随后 `router6` 的接入中断（L2 上度量 `-1`）并恢复。"
         }
       ]
+    },
+    {
+      "id": "cspf-01-lab", "nav": "CSPF 1：实验室", "title": "加载 13 台路由器的 IS-IS 实验室",
+      "paragraphs": ["情况：六路由器实验室足以查看 Watcher 事件和 TE 字段，但没有可用于 CSPF 的备用路径。", "任务：部署 `13-hosts-demo-isis`，从 `r30` 获取 LSDB 并上传。路径计算需要备用路径，因此也使用公开的 [Topolograph](https://topolograph.com) demo 图和 [`13-hosts-demo-isis` 实验室](https://github.com/Vadims06/topolograph/tree/master/containerlab/13-hosts-demo-isis)。", "结果：图中有 13 个节点和 52 条有向边：12 条 Level 1、40 条 Level 2。50 条边是 TE 边，`r110-r111` 的两个方向不是 TE 边。"],
+      "command": "部署拓扑，在 `r30` 执行 `show isis database detail`，然后通过 SDK 上传 LSDB。", "observations": ["`hosts` 为 13，总边数为 52；`is_te_link=True` 返回 50，`False` 返回 2。"],
+      "sdk_request": "graph = topo.graphs.upload(open(\"demo_isis_LSDB.txt\").read(), vendor=\"FRR\", protocol=\"isis\")\nprint(graph.graph_time, graph.hosts)\nprint(graph.edges_list(per_page=200)[\"pagination\"][\"total\"])\nprint(graph.edges_list(is_te_link=True, per_page=200)[\"pagination\"][\"total\"])\nprint(graph.edges_list(is_te_link=False, per_page=200)[\"pagination\"][\"total\"])",
+      "sdk_output": "<new graph time> {'count': 13}\n52\n50\n2"
+    },
+    {
+      "id": "cspf-02-te-values", "nav": "CSPF 2：TE 值", "title": "计算路径前读取 TE 值",
+      "paragraphs": ["情况：当前没有约束；图中有 TE 属性，但普通路径计算无法说明哪些链路适合隧道。", "任务：找出 gold 和 red 管理组、高 TE metric、priority 7 的低带宽池、SRLG 以及非 TE 链路。", "结果：gold (`0x00000002`) 返回 10 条有向边，red (`0x00000004`) 返回 2 条，`temetric__gt=30` 返回 4 条，`unreserved_bw_7__lt=1000000` 返回 2 条，`is_te_link=False` 返回 2 条。"],
+      "command": "对第 1 步的图执行 SDK 过滤器。", "observations": ["`is_te_link='yes'` 被 HTTP 400 拒绝：`Wrong type, expected 'boolean'`。"],
+      "sdk_request": "for query in ({'admin_group': '0x00000002'}, {'admin_group': '0x00000004'}, {'temetric__gt': 30}, {'unreserved_bw_7__lt': 1_000_000}, {'is_te_link': False}):\n    print(query, graph.edges_list(per_page=200, **query)['pagination']['total'])",
+      "sdk_output": "{'admin_group': '0x00000002'} 10\n{'admin_group': '0x00000004'} 2\n{'temetric__gt': 30} 4\n{'unreserved_bw_7__lt': 1000000} 2\n{'is_te_link': False} 2"
+    },
+    {
+      "id": "cspf-03-reference", "nav": "CSPF 3：参考路径", "title": "记录无约束路径",
+      "paragraphs": ["情况：`r10` 到 `r14` 的当前路径是 `r10 r100 r110 r14`，成本为 30。", "任务：将它保存为后续练习的基线。", "结果：参考路径仍为 `r10 r100 r110 r14`，成本 30，使用 `r10` 与 `r100` 之间的并行 `eth2`。"],
+      "command": "不修改路由器，执行参考 CSPF 请求。", "observations": ["后续四步每次只增加一个约束，并观察路径变化。"],
+      "sdk_request": "print(graph.cspf_path('r10', 'r14'))", "sdk_output": "{'cost': 30, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-04-srlg", "nav": "CSPF 4：排除 SRLG", "title": "避开共享风险组",
+      "paragraphs": ["情况：当前路径为 `r10 r100 r110 r14`，成本 30；首跳属于 SRLG 300，两条并行首跳都属于 SRLG 100。", "任务：使用 `srlg_exclude` 绕开正在维护的链路或管道。", "结果：排除 300 后成本为 35；排除 100 得到 `r10 r11 r100 r110 r14`、40；排除 200 得到 `r10 r100 r101 r111 r14`、45；同时排除 100 和 200 得到 `r10 r11 r101 r111 r14`、50。"],
+      "command": "只修改 `srlg_exclude` 列表。", "observations": ["约束会移除链路，不会修改 IGP metric。"],
+      "sdk_request": "for groups in ([300], [100], [200], [100, 200]):\n    print(groups, graph.cspf_path('r10', 'r14', srlg_exclude=groups))",
+      "sdk_output": "[300] {'cost': 35, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}\n[100] {'cost': 40, 'path': ['r10', 'r11', 'r100', 'r110', 'r14'], 'reason': ''}\n[200] {'cost': 45, 'path': ['r10', 'r100', 'r101', 'r111', 'r14'], 'reason': ''}\n[100, 200] {'cost': 50, 'path': ['r10', 'r11', 'r101', 'r111', 'r14'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-05-bandwidth", "nav": "CSPF 5：带宽", "title": "按带宽和建立优先级选择路径",
+      "paragraphs": ["情况：当前路径成本 30，但 `r100-r110` 在 priority 7 只通告 4 Mbit，在 priorities 0-3 通告 10 Mbit。", "任务：使用不同的建立优先级放置 8 Mbit 隧道，然后测试 20 Mbit 请求。", "结果：priority 7 将路径改为 `r10 r100 r111 r14`、成本 40；priority 0 保留成本 30；20 Mbit 没有可用路径。"],
+      "command": "修改 CSPF 请求中的 `bandwidth` 和 `setup_priority`。", "observations": ["建立优先级选择用于放置的 unreserved bandwidth 池，但不改变 IGP cost。"],
+      "sdk_request": "for priority in (7, 0):\n    print(priority, graph.cspf_path('r10', 'r14', bandwidth='8M', setup_priority=priority))\nprint(graph.cspf_path('r10', 'r14', bandwidth='20M'))",
+      "sdk_output": "7 {'cost': 40, 'path': ['r10', 'r100', 'r111', 'r14'], 'reason': ''}\n0 {'cost': 30, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}\n{'cost': None, 'path': [], 'reason': 'no path satisfies the requested constraints'}"
+    },
+    {
+      "id": "cspf-06-te-metric", "nav": "CSPF 6：TE metric", "title": "使用 TE metric 计算",
+      "paragraphs": ["情况：IGP 路径是 `r10 r100 r110 r14`，成本 30；`r100-r110` 的 TE metric 为 100，`r100-r111` 为 10。", "任务：使用 `metric_type='te'` 重算，并确认候选路径上的每条链路都有 TE metric。", "结果：TE 路径为 `r10 r100 r111 r14`，TE cost 为 30；其 IGP cost 为 40。"],
+      "command": "使用 `metric_type='te'`，不要修改路由器。", "observations": ["链路缺少 TE metric 时，该链路会回退使用 IGP metric。"],
+      "sdk_request": "print(graph.cspf_path('r10', 'r14', metric_type='te'))", "sdk_output": "{'cost': 30, 'path': ['r10', 'r100', 'r111', 'r14'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-07-admin-groups", "nav": "CSPF 7：管理组", "title": "包含或排除 admin-group 位",
+      "paragraphs": ["情况：`r13` 到 `r15` 当前经由 `r13 r100 r110 r15`，成本 30；位 1 表示 gold，位 2 表示 red。", "任务：用 `admin_include_all=['1']` 要求 gold，再用 `admin_exclude_any=['2']` 排除 red。", "结果：仅 gold 得到 `r13 r101 r111 r15`、45；`r10` 到 `r14` 仅 gold 得到 `r10 r101 r111 r14`、55；排除 red 得到 `r13 r100 r111 r15`、40。"],
+      "command": "传递位编号，不要传十六进制掩码。", "observations": ["位 1 是 `0x00000002`，位 2 是 `0x00000004`；位 0 是最低有效位。"],
+      "sdk_request": "print(graph.cspf_path('r13', 'r15', admin_include_all=['1']))\nprint(graph.cspf_path('r10', 'r14', admin_include_all=['1']))\nprint(graph.cspf_path('r13', 'r15', admin_exclude_any=['2']))",
+      "sdk_output": "{'cost': 45, 'path': ['r13', 'r101', 'r111', 'r15'], 'reason': ''}\n{'cost': 55, 'path': ['r10', 'r101', 'r111', 'r14'], 'reason': ''}\n{'cost': 40, 'path': ['r13', 'r100', 'r111', 'r15'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-08-level", "nav": "CSPF 8：IS-IS 层级", "title": "将 CSPF 限制在一个 IS-IS 层级",
+      "paragraphs": ["情况：`r30` 到 `r31` 在 Level 1 成本为 10，而 Level 2 路径 `r30 r10 r11 r31` 成本为 40。", "任务：使用 `level=2` 仅在 Level 2 建立隧道，并检查每个独立拓扑中的 endpoint。", "结果：`r30`-`r31` 在 L1 为 10、L2 为 40；`r130`-`r131` 在 L1 为 10、L2 返回 `src/dst not found`；`r130`-`r15` 的合并成本为 50，但任何单一层级都没有路径。"],
+      "command": "在 CSPF 请求中加入 `level=1` 或 `level=2`。", "observations": ["没有 per-level 数据的旧图在显式 level 请求时返回 HTTP 422 和 `isis_level_calculation_unavailable`，需要重新上传。"],
+      "sdk_request": "for level in (None, 1, 2):\n    print(level, graph.cspf_path('r30', 'r31', level=level))\nprint(graph.cspf_path('r130', 'r131', level=2))",
+      "sdk_output": "None {'cost': 10, 'path': ['r30', 'r31'], 'reason': ''}\n1 {'cost': 10, 'path': ['r30', 'r31'], 'reason': ''}\n2 {'cost': 40, 'path': ['r30', 'r10', 'r11', 'r31'], 'reason': ''}\n{'cost': None, 'path': [], 'reason': 'src/dst not found'}"
+    },
+    {
+      "id": "cspf-09-refusal", "nav": "CSPF 9：拒绝", "title": "区分约束无法满足和 endpoint 不存在",
+      "paragraphs": ["情况：20 Mbit 请求的 endpoints 存在，但没有足够容量的链路；Level 1 的 `r130`-`r15` 不在同一层级拓扑中。", "任务：读取 `reason`，不要把所有空 `path` 都当成同一种失败。", "结果：带宽请求返回 `no path satisfies the requested constraints`；错误层级返回 `src/dst not found`。"],
+      "command": "重复第 5 步和第 8 步中失败的请求。", "observations": ["第一种结果要求放宽 bandwidth、affinity 或 SRLG；第二种表示 endpoint 不在所选拓扑中。"],
+      "sdk_request": "print(graph.cspf_path('r10', 'r14', bandwidth='20M'))\nprint(graph.cspf_path('r130', 'r15', level=1))",
+      "sdk_output": "{'cost': None, 'path': [], 'reason': 'no path satisfies the requested constraints'}\n{'cost': None, 'path': [], 'reason': 'src/dst not found'}"
+    },
+    {
+      "id": "cspf-10-what-if", "nav": "CSPF 10：what-if", "title": "编辑一条链路并重新计算",
+      "paragraphs": ["情况：`r10 r100 r110 r14` 成本 30。计划维护 `r100-r110`，但不应修改路由器。", "任务：在图的副本上用 `update_edge` 为 Level 2 链路加入 SRLG 999，排除它，再清除 SRLG。", "结果：排除 999 得到 `r10 r100 r111 r14`、40；清除 SRLG 恢复 `r10 r100 r110 r14`、30。"],
+      "command": "请使用一次性图：编辑会持久化。", "observations": ["`update_edge` 是部分更新；`replace_edge` 会重写全部属性并删除 per-level 数据。"],
+      "sdk_request": "edge = next(e for e in graph.edges_list(include=['edge_key'], per_page=200)['items'] if e['src'] == 'r100' and e['dst'] == 'r110')\nprint(graph.update_edge(edge['id'], isis_level=2, srlg=[999]))\nprint(graph.cspf_path('r10', 'r14', srlg_exclude=[999]))\nprint(graph.update_edge(edge['id'], isis_level=2, srlg=[]))\nprint(graph.cspf_path('r10', 'r14'))",
+      "sdk_output": "... srlg: [999] ...\n{'cost': 40, 'path': ['r10', 'r100', 'r111', 'r14'], 'reason': ''}\n... srlg: [] ...\n{'cost': 30, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-11-lsp-placement", "nav": "CSPF 11：LSP", "title": "放置 LSP 并检查剩余带宽",
+      "paragraphs": ["情况：没有已放置的隧道；参考路径成本 30，priority-7 的 4 Mbit 池可用。", "任务：从 `r10` 到 `r14` 逐个添加四个 4 Mbit 隧道，并观察每次放置后的路径。", "结果：`T1` 使用 `r10 r100 r110 r14`（30），`T2` 使用 `r10 r100 r111 r14`（40），`T3` 使用另一条 `r10-r100`（45），`T4` 使用 `r10 r11 r101 r110 r14`（55）。完成后删除 LSP。"],
+      "command": "用 SDK 创建四个 4 Mbit LSP，最后调用 `delete_lsps()`。", "observations": ["`edges_list(include=['lsp_left_bw', 'lsps'])` 显示剩余带宽池；放置会修改保存的图。"],
+      "sdk_request": "for name in ('T1', 'T2', 'T3', 'T4'):\n    lsp = graph.add_lsp({'name': name, 'src': 'r10', 'dst': 'r14', 'bandwidth': '4M', 'paths': {'primary': {'role': 'primary', 'bandwidth': '4M'}}})\n    print(name, lsp['paths']['primary']['path'], lsp['paths']['primary']['cost'])\ngraph.delete_lsps()",
+      "sdk_output": "T1 ['r10', 'r100', 'r110', 'r14'] 30\nT2 ['r10', 'r100', 'r111', 'r14'] 40\nT3 ['r10', 'r100', 'r110', 'r14'] 45\nT4 ['r10', 'r11', 'r101', 'r110', 'r14'] 55\n{'deleted': 4}"
     }
   ]
 }

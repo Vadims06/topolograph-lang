@@ -344,6 +344,185 @@
       ],
       "sdk_request": "for level in (None, 1, 2):\n    r = graph.cspf_path(\"10.10.10.1\", \"10.10.10.6\", level=level)\n    print(level, r)",
       "sdk_output": "None {'cost': 20, 'path': ['10.10.10.1', '10.10.10.3', '10.10.10.6'], 'reason': ''}\n1 {'cost': None, 'path': [], 'reason': 'src/dst not found'}\n2 {'cost': 20, 'path': ['10.10.10.1', '10.10.10.3', '10.10.10.6'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-01-lab",
+      "nav": "CSPF 1: Load the lab",
+      "title": "Load the 13-router IS-IS lab",
+      "paragraphs": [
+        "Situation: the six-router lab is enough to inspect Watcher events and TE fields, but it has no useful alternative routes for CSPF. There is no current 13-router CSPF route yet.",
+        "Task: deploy the `13-hosts-demo-isis` lab, capture the LSDB from `r30`, and upload it. Path computation needs alternative paths, so these steps use the same lab as the public Topolograph demo graph: [Topolograph](https://topolograph.com) and the [`13-hosts-demo-isis` lab](https://github.com/Vadims06/topolograph/tree/master/containerlab/13-hosts-demo-isis).",
+        "Result: the graph has 13 nodes and 52 directed edges: 12 Level-1 edges and 40 Level-2 edges. Fifty edges are TE links; the two directions of `r110-r111` are not TE links."
+      ],
+      "command": "cd /home/ubuntu/topolograph/containerlab/13-hosts-demo-isis\nsudo clab deploy --topo 13-hosts-demo-isis.clab.yml\nsudo docker exec clab-13-hosts-demo-isis-r30 vtysh -c 'show isis database detail'",
+      "observations": [
+        "The uploaded graph reports `{'count': 13}` hosts and 52 edges.",
+        "`edges_list(is_te_link=True)` returns 50 edges; `edges_list(is_te_link=False)` returns the two `r110`-`r111` directions."
+      ],
+      "sdk_request": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\", username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.upload(open(\"demo_isis_LSDB.txt\").read(), vendor=\"FRR\", protocol=\"isis\")\nprint(graph.graph_time, graph.hosts)\nprint(graph.edges_list(per_page=200)[\"pagination\"][\"total\"])\nprint(graph.edges_list(is_te_link=True, per_page=200)[\"pagination\"][\"total\"])\nprint(graph.edges_list(is_te_link=False, per_page=200)[\"pagination\"][\"total\"])",
+      "sdk_output": "<new graph time> {'count': 13}\n52\n50\n2"
+    },
+    {
+      "id": "cspf-02-te-values",
+      "nav": "CSPF 2: Read TE values",
+      "title": "Read TE values before computing a path",
+      "paragraphs": [
+        "Situation: the current route is not constrained yet; the graph exposes TE attributes but a plain path calculation would not tell you which links are safe for a tunnel.",
+        "Task: identify gold and red admin groups, high TE metrics, the low priority-7 bandwidth pool, SRLG-bearing links, and links that are not TE-enabled before choosing a constraint.",
+        "Result: gold (`0x00000002`) returns 10 directed edges, red (`0x00000004`) returns 2, `temetric__gt=30` returns 4, `unreserved_bw_7__lt=1000000` returns 2, and `is_te_link=False` returns the 2 `r110-r111` edges."
+      ],
+      "command": "# Run from the SDK against the graph uploaded in step 1",
+      "observations": [
+        "The 8 edges on `r10-r100` and `r100-r110`/`r100-r111` carry SRLG data; the two parallel `r10-r100` links keep their separate groups.",
+        "Passing `is_te_link='yes'` is rejected with HTTP 400: `Wrong type, expected 'boolean'`."
+      ],
+      "sdk_request": "for query in (\n    {'admin_group': '0x00000002'},\n    {'admin_group': '0x00000004'},\n    {'temetric__gt': 30},\n    {'unreserved_bw_7__lt': 1_000_000},\n    {'is_te_link': False},\n):\n    result = graph.edges_list(per_page=200, **query)\n    print(query, result['pagination']['total'])",
+      "sdk_output": "{'admin_group': '0x00000002'} 10\n{'admin_group': '0x00000004'} 2\n{'temetric__gt': 30} 4\n{'unreserved_bw_7__lt': 1000000} 2\n{'is_te_link': False} 2"
+    },
+    {
+      "id": "cspf-03-reference",
+      "nav": "CSPF 3: Reference route",
+      "title": "Record the unconstrained route",
+      "paragraphs": [
+        "Situation: `r10` to `r14` has no CSPF constraint, and the current shortest route is `r10 r100 r110 r14` with cost 30.",
+        "Task: save this route as the baseline so every following exercise can explain what changed and why.",
+        "Result: the reference route remains `r10 r100 r110 r14`, cost 30, using the `eth2` parallel link between `r10` and `r100`."
+      ],
+      "command": "# No router change: calculate the reference CSPF path",
+      "observations": [
+        "The baseline uses IGP metrics. The next four steps deliberately move it with one constraint at a time."
+      ],
+      "sdk_request": "print(graph.cspf_path('r10', 'r14'))",
+      "sdk_output": "{'cost': 30, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-04-srlg",
+      "nav": "CSPF 4: Exclude SRLGs",
+      "title": "Avoid shared-risk groups",
+      "paragraphs": [
+        "Situation: the current route is `r10 r100 r110 r14`, cost 30, and its first hop uses SRLG 300; both parallel first hops share SRLG 100.",
+        "Task: rebuild the route around the duct or link being serviced by applying `srlg_exclude`.",
+        "Result: excluding 300 keeps the routers but selects `eth1`, cost 35; excluding 100 gives `r10 r11 r100 r110 r14`, cost 40; excluding 200 gives `r10 r100 r101 r111 r14`, cost 45; excluding both 100 and 200 gives `r10 r11 r101 r111 r14`, cost 50."
+      ],
+      "command": "# No router change: change the excluded risk group in each request",
+      "observations": [
+        "The route changes because the constraint removes links, not because any IGP metric changed."
+      ],
+      "sdk_request": "for groups in ([300], [100], [200], [100, 200]):\n    print(groups, graph.cspf_path('r10', 'r14', srlg_exclude=groups))",
+      "sdk_output": "[300] {'cost': 35, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}\n[100] {'cost': 40, 'path': ['r10', 'r11', 'r100', 'r110', 'r14'], 'reason': ''}\n[200] {'cost': 45, 'path': ['r10', 'r100', 'r101', 'r111', 'r14'], 'reason': ''}\n[100, 200] {'cost': 50, 'path': ['r10', 'r11', 'r101', 'r111', 'r14'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-05-bandwidth",
+      "nav": "CSPF 5: Bandwidth",
+      "title": "Select a route by bandwidth and setup priority",
+      "paragraphs": [
+        "Situation: the current route is `r10 r100 r110 r14`, cost 30, but `r100-r110` advertises only 4 Mbit in its priority-7 pool and 10 Mbit in priorities 0-3.",
+        "Task: place an 8 Mbit tunnel at different setup priorities, then test a 20 Mbit request that cannot fit anywhere.",
+        "Result: priority 7 moves the tunnel to `r10 r100 r111 r14`, cost 40; priority 0 keeps `r10 r100 r110 r14`, cost 30; 20 Mbit returns no path and a constraint refusal."
+      ],
+      "command": "# No router change: vary bandwidth and setup_priority",
+      "observations": [
+        "Setup priority selects the advertised unreserved-bandwidth pool used for placement; it does not alter the route's IGP cost."
+      ],
+      "sdk_request": "for priority in (7, 0):\n    print(priority, graph.cspf_path('r10', 'r14', bandwidth='8M', setup_priority=priority))\nprint(graph.cspf_path('r10', 'r14', bandwidth='20M'))",
+      "sdk_output": "7 {'cost': 40, 'path': ['r10', 'r100', 'r111', 'r14'], 'reason': ''}\n0 {'cost': 30, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}\n{'cost': None, 'path': [], 'reason': 'no path satisfies the requested constraints'}"
+    },
+    {
+      "id": "cspf-06-te-metric",
+      "nav": "CSPF 6: TE metric",
+      "title": "Compute with the TE metric",
+      "paragraphs": [
+        "Situation: the IGP route is `r10 r100 r110 r14`, cost 30; `r100-r110` has TE metric 100 while `r100-r111` has TE metric 10.",
+        "Task: rebuild the route using `metric_type='te'`, and verify that every link on the candidate route carries a TE metric.",
+        "Result: the TE route is `r10 r100 r111 r14`, TE cost 30. Its IGP cost is 40, so the selected metric is visible in the result."
+      ],
+      "command": "# No router change: select TE cost instead of IGP cost",
+      "observations": [
+        "If a candidate link has no TE metric, CSPF falls back to IGP for that calculation; inspect the edge attributes first."
+      ],
+      "sdk_request": "print(graph.cspf_path('r10', 'r14', metric_type='te'))",
+      "sdk_output": "{'cost': 30, 'path': ['r10', 'r100', 'r111', 'r14'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-07-admin-groups",
+      "nav": "CSPF 7: Admin groups",
+      "title": "Include or exclude admin-group bits",
+      "paragraphs": [
+        "Situation: `r13` to `r15` currently costs 30 over `r13 r100 r110 r15`; admin-group bit 1 is gold and bit 2 is red.",
+        "Task: require gold links with `admin_include_all=['1']`, then avoid red links with `admin_exclude_any=['2']`.",
+        "Result: gold-only changes the route to `r13 r101 r111 r15`, cost 45; from `r10` to `r14`, gold-only gives `r10 r101 r111 r14`, cost 55; avoiding red gives `r13 r100 r111 r15`, cost 40."
+      ],
+      "command": "# No router change: admin groups are bit numbers, not hexadecimal mask values",
+      "observations": [
+        "Bit 1 means mask `0x00000002`; bit 2 means mask `0x00000004`. Bit 0 is the least significant bit."
+      ],
+      "sdk_request": "print(graph.cspf_path('r13', 'r15', admin_include_all=['1']))\nprint(graph.cspf_path('r10', 'r14', admin_include_all=['1']))\nprint(graph.cspf_path('r13', 'r15', admin_exclude_any=['2']))",
+      "sdk_output": "{'cost': 45, 'path': ['r13', 'r101', 'r111', 'r15'], 'reason': ''}\n{'cost': 55, 'path': ['r10', 'r101', 'r111', 'r14'], 'reason': ''}\n{'cost': 40, 'path': ['r13', 'r100', 'r111', 'r15'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-08-level",
+      "nav": "CSPF 8: IS-IS level",
+      "title": "Restrict CSPF to one IS-IS level",
+      "paragraphs": [
+        "Situation: `r30` to `r31` costs 10 on the direct Level-1 route, while the Level-2 route is `r30 r10 r11 r31`, cost 40.",
+        "Task: signal the tunnel in Level 2 with `level=2`, and check which endpoints exist in each independent topology.",
+        "Result: `r30` to `r31` is cost 10 at Level 1 and cost 40 at Level 2. `r130` to `r131` is cost 10 at Level 1 and `src/dst not found` at Level 2. `r130` to `r15` has combined cost 50 but no path at either single level because it would cross the level boundary."
+      ],
+      "command": "# No router change: constrain the request to Level 1 or Level 2",
+      "observations": [
+        "An explicit level request on a graph stored before per-level data returns HTTP 422 with `code: isis_level_calculation_unavailable`; it must be reuploaded."
+      ],
+      "sdk_request": "for level in (None, 1, 2):\n    print(level, graph.cspf_path('r30', 'r31', level=level))\nprint(graph.cspf_path('r130', 'r131', level=2))",
+      "sdk_output": "None {'cost': 10, 'path': ['r30', 'r31'], 'reason': ''}\n1 {'cost': 10, 'path': ['r30', 'r31'], 'reason': ''}\n2 {'cost': 40, 'path': ['r30', 'r10', 'r11', 'r31'], 'reason': ''}\n{'cost': None, 'path': [], 'reason': 'src/dst not found'}"
+    },
+    {
+      "id": "cspf-09-refusal",
+      "nav": "CSPF 9: Read a refusal",
+      "title": "Distinguish an unsatisfied constraint from a missing endpoint",
+      "paragraphs": [
+        "Situation: the 20 Mbit request from step 5 has known endpoints but no link with enough bandwidth; the Level-1 `r130` to `r15` request has no common level containing both endpoints.",
+        "Task: read `reason` instead of treating every empty path as the same failure.",
+        "Result: the bandwidth request says `no path satisfies the requested constraints`; the wrong-level request says `src/dst not found`."
+      ],
+      "command": "# Repeat the failed requests from steps 5 and 8",
+      "observations": [
+        "The first reason calls for relaxing bandwidth, affinity, or SRLG constraints; the second means the requested topology does not contain both endpoints."
+      ],
+      "sdk_request": "print(graph.cspf_path('r10', 'r14', bandwidth='20M'))\nprint(graph.cspf_path('r130', 'r15', level=1))",
+      "sdk_output": "{'cost': None, 'path': [], 'reason': 'no path satisfies the requested constraints'}\n{'cost': None, 'path': [], 'reason': 'src/dst not found'}"
+    },
+    {
+      "id": "cspf-10-what-if",
+      "nav": "CSPF 10: What-if edit",
+      "title": "Edit one edge and recompute",
+      "paragraphs": [
+        "Situation: the current route is `r10 r100 r110 r14`, cost 30. Maintenance is planned for `r100-r110`, but the router configuration must not change.",
+        "Task: use `update_edge` on a graph copy, add SRLG 999 to the Level-2 edge, recompute while excluding it, then clear the SRLG.",
+        "Result: excluding 999 changes the route to `r10 r100 r111 r14`, cost 40; clearing the SRLG restores `r10 r100 r110 r14`, cost 30. A Level-2-only edge rejects `isis_level=1`, and `replace_edge` removes per-level data so explicit-level CSPF returns 422."
+      ],
+      "command": "# Run this on a disposable graph: the edit is persistent\n# Find the edge id first with edges_list(include=['edge_key'])",
+      "observations": [
+        "`update_edge` is partial; `replace_edge` is a full rewrite. Do not use either on the reference graph you want to keep unchanged."
+      ],
+      "sdk_request": "edge = next(e for e in graph.edges_list(include=['edge_key'], per_page=200)['items']\n             if e['src'] == 'r100' and e['dst'] == 'r110')\nprint(graph.update_edge(edge['id'], isis_level=2, srlg=[999]))\nprint(graph.cspf_path('r10', 'r14', srlg_exclude=[999]))\nprint(graph.update_edge(edge['id'], isis_level=2, srlg=[]))\nprint(graph.cspf_path('r10', 'r14'))",
+      "sdk_output": "... srlg: [999] ...\n{'cost': 40, 'path': ['r10', 'r100', 'r111', 'r14'], 'reason': ''}\n... srlg: [] ...\n{'cost': 30, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}"
+    },
+    {
+      "id": "cspf-11-lsp-placement",
+      "nav": "CSPF 11: Place LSPs",
+      "title": "Place tunnels and inspect residual bandwidth",
+      "paragraphs": [
+        "Situation: no tunnel is placed, so the reference route is `r10 r100 r110 r14`, cost 30, and its 4 Mbit priority-7 pool is available.",
+        "Task: add four 4 Mbit tunnels from `r10` to `r14`, one at a time, and inspect residual bandwidth and the selected path after each placement.",
+        "Result: `T1` uses `r10 r100 r110 r14`, cost 30; `T2` uses `r10 r100 r111 r14`, cost 40; `T3` uses the other `r10-r100` link, cost 45; `T4` uses `r10 r11 r101 r110 r14`, cost 55. Delete all test LSPs afterwards."
+      ],
+      "command": "# No router change: create four 4 Mbit RSVP-TE tunnels through the SDK",
+      "observations": [
+        "Use `edges_list(include=['lsp_left_bw', 'lsps'])` after each placement to see which pool caused the next route move.",
+        "Always call `delete_lsps()` in cleanup; LSP placement changes the stored graph."
+      ],
+      "sdk_request": "for name in ('T1', 'T2', 'T3', 'T4'):\n    lsp = graph.add_lsp({\n        'name': name, 'src': 'r10', 'dst': 'r14', 'bandwidth': '4M',\n        'paths': {'primary': {'role': 'primary', 'bandwidth': '4M'}},\n    })\n    primary = lsp['paths']['primary']\n    print(name, primary['path'], primary['cost'])\nprint(graph.edges_list(include=['lsp_left_bw', 'lsps'], per_page=200)['items'])\ngraph.delete_lsps()",
+      "sdk_output": "T1 ['r10', 'r100', 'r110', 'r14'] 30\nT2 ['r10', 'r100', 'r111', 'r14'] 40\nT3 ['r10', 'r100', 'r110', 'r14'] 45\nT4 ['r10', 'r11', 'r101', 'r110', 'r14'] 55\n... lsp_left_bw_7 and lsps for each edge ...\n{'deleted': 4}"
     }
   ]
 }
