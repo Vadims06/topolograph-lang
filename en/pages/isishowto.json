@@ -350,9 +350,8 @@
       "nav": "CSPF 1: Load the lab",
       "title": "Load the 13-router IS-IS lab",
       "paragraphs": [
-        "Situation: the six-router lab is enough to inspect Watcher events and TE fields, but it has no useful alternative routes for CSPF. There is no current 13-router CSPF route yet.",
-        "Task: deploy the `13-hosts-demo-isis` lab, capture the LSDB from `r30`, and upload it. Path computation needs alternative paths, so these steps use the same lab as the public Topolograph demo graph: [Topolograph](https://topolograph.com) and the [`13-hosts-demo-isis` lab](https://github.com/Vadims06/topolograph/tree/master/containerlab/13-hosts-demo-isis).",
-        "Result: the graph has 13 nodes and 52 directed edges: 12 Level-1 edges and 40 Level-2 edges. Fifty edges are TE links; the two directions of `r110-r111` are not TE links."
+        "The six-router lab is useful for inspecting Watcher events and TE fields, but it does not provide enough alternative routes for meaningful CSPF exercises. Use the [`13-hosts-demo-isis` lab](https://github.com/Vadims06/topolograph/tree/master/containerlab/13-hosts-demo-isis): deploy it yourself, or skip the deployment and download the ready LSDB [`demo_isis_LSDB.txt`](https://github.com/Vadims06/topolograph/blob/master/demo_isis_LSDB.txt).",
+        "Upload the LSDB to Topolograph as an FRR IS-IS file: your capture from `r30`, or the downloaded `demo_isis_LSDB.txt`. The resulting graph has 13 nodes and 52 directed edges: 12 at Level 1 and 40 at Level 2. Fifty edges carry TE attributes; the two directions of `r110-r111` do not."
       ],
       "command": "cd containerlab/13-hosts-demo-isis\nsudo clab deploy --topo 13-hosts-demo-isis.clab.yml\nsudo docker exec clab-13-hosts-demo-isis-r30 vtysh -c 'show isis database detail'",
       "observations": [
@@ -367,9 +366,8 @@
       "nav": "CSPF 2: Read TE values",
       "title": "Read TE values before computing a path",
       "paragraphs": [
-        "Situation: the current route is not constrained yet; the graph exposes TE attributes but a plain path calculation would not tell you which links are safe for a tunnel.",
-        "Task: identify gold and red admin groups, high TE metrics, the low priority-7 bandwidth pool, SRLG-bearing links, and links that are not TE-enabled before choosing a constraint.",
-        "Result: gold (`0x00000002`) returns 10 directed edges, red (`0x00000004`) returns 2, `temetric__gt=30` returns 4, `unreserved_bw_7__lt=1000000` returns 2, and `is_te_link=False` returns the 2 `r110-r111` edges."
+        "Inspect the graph's TE attributes before applying a constraint. Identify the gold and red admin groups, high TE metrics, the small priority-7 bandwidth pool, SRLG-bearing links, and links that are not TE-enabled; a plain shortest-path calculation does not show whether a link is suitable for a tunnel.",
+        "On this graph, gold (`0x00000002`) matches 10 directed edges, red (`0x00000004`) matches 2, `temetric__gt=30` matches 4, `unreserved_bw_7__lt=1000000` matches 2, and `is_te_link=False` returns the two directions of `r110-r111`."
       ],
       "command": "# Run from the SDK against the graph uploaded in step 1",
       "observations": [
@@ -384,9 +382,8 @@
       "nav": "CSPF 3: Reference route",
       "title": "Record the unconstrained route",
       "paragraphs": [
-        "Situation: `r10` to `r14` has no CSPF constraint, and the current shortest route is `r10 r100 r110 r14` with cost 30.",
-        "Task: save this route as the baseline so every following exercise can explain what changed and why.",
-        "Result: the reference route remains `r10 r100 r110 r14`, cost 30, using the `eth2` parallel link between `r10` and `r100`."
+        "Calculate the unconstrained path from `r10` to `r14` and keep it as the baseline for the remaining exercises. Each following constraint can then be compared with a known route.",
+        "The reference path is `r10 r100 r110 r14`, with cost 30. It uses the `eth2` parallel link between `r10` and `r100`."
       ],
       "command": "# No router change: calculate the reference CSPF path",
       "observations": [
@@ -400,9 +397,8 @@
       "nav": "CSPF 4: Exclude SRLGs",
       "title": "Avoid shared-risk groups",
       "paragraphs": [
-        "Situation: the current route is `r10 r100 r110 r14`, cost 30, and its first hop uses SRLG 300; both parallel first hops share SRLG 100.",
-        "Task: rebuild the route around the duct or link being serviced by applying `srlg_exclude`.",
-        "Result: excluding 300 keeps the routers but selects `eth1`, cost 35; excluding 100 gives `r10 r11 r100 r110 r14`, cost 40; excluding 200 gives `r10 r100 r101 r111 r14`, cost 45; excluding both 100 and 200 gives `r10 r11 r101 r111 r14`, cost 50."
+        "Use `srlg_exclude` to route around a link or shared duct under maintenance. The reference path `r10 r100 r110 r14` costs 30: its first hop belongs to SRLG 300, while both parallel first hops share SRLG 100.",
+        "Excluding 300 keeps the same routers but selects `eth1`, raising the cost to 35. Excluding 100 gives `r10 r11 r100 r110 r14` at cost 40; excluding 200 gives `r10 r100 r101 r111 r14` at cost 45; excluding both 100 and 200 gives `r10 r11 r101 r111 r14` at cost 50."
       ],
       "command": "# No router change: change the excluded risk group in each request",
       "observations": [
@@ -416,9 +412,8 @@
       "nav": "CSPF 5: Bandwidth",
       "title": "Select a route by bandwidth and setup priority",
       "paragraphs": [
-        "Situation: the current route is `r10 r100 r110 r14`, cost 30, but `r100-r110` advertises only 4 Mbit in its priority-7 pool and 10 Mbit in priorities 0-3.",
-        "Task: place an 8 Mbit tunnel at different setup priorities, then test a 20 Mbit request that cannot fit anywhere.",
-        "Result: priority 7 moves the tunnel to `r10 r100 r111 r14`, cost 40; priority 0 keeps `r10 r100 r110 r14`, cost 30; 20 Mbit returns no path and a constraint refusal."
+        "Request an 8 Mbit tunnel at different setup priorities. The reference route `r10 r100 r110 r14` costs 30, but `r100-r110` advertises only 4 Mbit in its priority-7 pool and 10 Mbit at priorities 0-3.",
+        "At priority 7, CSPF moves the tunnel to `r10 r100 r111 r14`, cost 40. At priority 0, it keeps `r10 r100 r110 r14`, cost 30. A 20 Mbit request fits on no available path and returns a constraint refusal."
       ],
       "command": "# No router change: vary bandwidth and setup_priority",
       "observations": [
@@ -432,9 +427,8 @@
       "nav": "CSPF 6: TE metric",
       "title": "Compute with the TE metric",
       "paragraphs": [
-        "Situation: the IGP route is `r10 r100 r110 r14`, cost 30; `r100-r110` has TE metric 100 while `r100-r111` has TE metric 10.",
-        "Task: rebuild the route using `metric_type='te'`, and verify that every link on the candidate route carries a TE metric.",
-        "Result: the TE route is `r10 r100 r111 r14`, TE cost 30. Its IGP cost is 40, so the selected metric is visible in the result."
+        "Recalculate the path with `metric_type='te'` after checking that every candidate link carries a TE metric. The IGP path `r10 r100 r110 r14` costs 30, but `r100-r110` has TE metric 100 while `r100-r111` has TE metric 10.",
+        "CSPF selects `r10 r100 r111 r14` with TE cost 30. The same path has IGP cost 40, which makes the effect of the selected metric visible."
       ],
       "command": "# No router change: select TE cost instead of IGP cost",
       "observations": [
@@ -448,9 +442,8 @@
       "nav": "CSPF 7: Admin groups",
       "title": "Include or exclude admin-group bits",
       "paragraphs": [
-        "Situation: `r13` to `r15` currently costs 30 over `r13 r100 r110 r15`; admin-group bit 1 is gold and bit 2 is red.",
-        "Task: require gold links with `admin_include_all=['1']`, then avoid red links with `admin_exclude_any=['2']`.",
-        "Result: gold-only changes the route to `r13 r101 r111 r15`, cost 45; from `r10` to `r14`, gold-only gives `r10 r101 r111 r14`, cost 55; avoiding red gives `r13 r100 r111 r15`, cost 40."
+        "Use admin-group bits to require or avoid link classes. Bit 1 is gold and bit 2 is red. The unconstrained path from `r13` to `r15` is `r13 r100 r110 r15`, cost 30.",
+        "Requiring gold with `admin_include_all=['1']` changes that path to `r13 r101 r111 r15`, cost 45; from `r10` to `r14`, it gives `r10 r101 r111 r14`, cost 55. Avoiding red with `admin_exclude_any=['2']` gives `r13 r100 r111 r15`, cost 40."
       ],
       "command": "# No router change: admin groups are bit numbers, not hexadecimal mask values",
       "observations": [
@@ -464,9 +457,8 @@
       "nav": "CSPF 8: IS-IS level",
       "title": "Restrict CSPF to one IS-IS level",
       "paragraphs": [
-        "Situation: `r30` to `r31` costs 10 on the direct Level-1 route, while the Level-2 route is `r30 r10 r11 r31`, cost 40.",
-        "Task: signal the tunnel in Level 2 with `level=2`, and check which endpoints exist in each independent topology.",
-        "Result: `r30` to `r31` is cost 10 at Level 1 and cost 40 at Level 2. `r130` to `r131` is cost 10 at Level 1 and `src/dst not found` at Level 2. `r130` to `r15` has combined cost 50 but no path at either single level because it would cross the level boundary."
+        "Set `level=1` or `level=2` to calculate inside one IS-IS topology and verify that both endpoints belong to it. Between `r30` and `r31`, the direct Level-1 path costs 10, while the Level-2 path `r30 r10 r11 r31` costs 40.",
+        "The `r130`-`r131` path costs 10 at Level 1 but returns `src/dst not found` at Level 2. The combined topology has an `r130`-`r15` path of cost 50, but neither individual level has that path because it crosses the level boundary."
       ],
       "command": "# No router change: constrain the request to Level 1 or Level 2",
       "observations": [
@@ -480,9 +472,8 @@
       "nav": "CSPF 9: Read a refusal",
       "title": "Distinguish an unsatisfied constraint from a missing endpoint",
       "paragraphs": [
-        "Situation: the 20 Mbit request from step 5 has known endpoints but no link with enough bandwidth; the Level-1 `r130` to `r15` request has no common level containing both endpoints.",
-        "Task: read `reason` instead of treating every empty path as the same failure.",
-        "Result: the bandwidth request says `no path satisfies the requested constraints`; the wrong-level request says `src/dst not found`."
+        "Read `reason` whenever CSPF returns an empty `path`. The 20 Mbit request from step 5 has valid endpoints but no path with enough bandwidth, while a Level-1 request from `r130` to `r15` has no single-level topology containing both endpoints.",
+        "The bandwidth request returns `no path satisfies the requested constraints`; the wrong-level request returns `src/dst not found`. These failures require different corrective actions."
       ],
       "command": "# Repeat the failed requests from steps 5 and 8",
       "observations": [
@@ -496,9 +487,8 @@
       "nav": "CSPF 10: What-if edit",
       "title": "Edit one edge and recompute",
       "paragraphs": [
-        "Situation: the current route is `r10 r100 r110 r14`, cost 30. Maintenance is planned for `r100-r110`, but the router configuration must not change.",
-        "Task: use `update_edge` on a graph copy, add SRLG 999 to the Level-2 edge, recompute while excluding it, then clear the SRLG.",
-        "Result: excluding 999 changes the route to `r10 r100 r111 r14`, cost 40; clearing the SRLG restores `r10 r100 r110 r14`, cost 30. A Level-2-only edge rejects `isis_level=1`, and `replace_edge` removes per-level data so explicit-level CSPF returns 422."
+        "Model maintenance on `r100-r110` without changing the routers. On a disposable graph, use `update_edge` to add SRLG 999 to the Level-2 edge, recalculate while excluding that group, and then clear the SRLG.",
+        "Excluding 999 changes the path from `r10 r100 r110 r14`, cost 30, to `r10 r100 r111 r14`, cost 40; clearing the SRLG restores the reference path. A Level-2-only edge rejects `isis_level=1`. Because `replace_edge` removes per-level data, an explicit-level CSPF request returns HTTP 422 after a full replacement."
       ],
       "command": "# Run this on a disposable graph: the edit is persistent\n# Find the edge id first with edges_list(include=['edge_key'])",
       "observations": [
@@ -512,9 +502,8 @@
       "nav": "CSPF 11: Place LSPs",
       "title": "Place tunnels and inspect residual bandwidth",
       "paragraphs": [
-        "Situation: no tunnel is placed, so the reference route is `r10 r100 r110 r14`, cost 30, and its 4 Mbit priority-7 pool is available.",
-        "Task: add four 4 Mbit tunnels from `r10` to `r14`, one at a time, and inspect residual bandwidth and the selected path after each placement.",
-        "Result: `T1` uses `r10 r100 r110 r14`, cost 30; `T2` uses `r10 r100 r111 r14`, cost 40; `T3` uses the other `r10-r100` link, cost 45; `T4` uses `r10 r11 r101 r110 r14`, cost 55. Delete all test LSPs afterwards."
+        "Add four 4 Mbit tunnels from `r10` to `r14`, one at a time, and inspect the residual bandwidth and selected path after each placement. Before the first placement, the 4 Mbit priority-7 pool on the reference path `r10 r100 r110 r14` is available.",
+        "`T1` uses `r10 r100 r110 r14`, cost 30; `T2` uses `r10 r100 r111 r14`, cost 40; `T3` uses the other `r10-r100` link, cost 45; and `T4` uses `r10 r11 r101 r110 r14`, cost 55. Delete all test LSPs when the exercise is complete."
       ],
       "command": "# No router change: create four 4 Mbit RSVP-TE tunnels through the SDK",
       "observations": [

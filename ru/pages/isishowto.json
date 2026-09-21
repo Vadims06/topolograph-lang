@@ -1,7 +1,7 @@
 {
   "_meta": {
     "title": "Практикум по IS-IS Watcher - Topolograph",
-    "description": "Вносите контролируемые изменения IS-IS в лаборатории isis01 из шести маршрутизаторов и сверяйте каждое от CSV Watcher до страницы мониторинга Topolograph, SDK и агента."
+    "description": "Вносите контролируемые изменения IS-IS в лаборатории isis01 из шести маршрутизаторов и прослеживайте каждое изменение в журнале Watcher, на странице мониторинга Topolograph, через SDK и в ответах агента."
   },
   "eyebrow": "Практическая работа с IS-IS",
   "page_title": "Практикум по IS-IS Watcher",
@@ -26,7 +26,7 @@
   "observations_preview": "Факты для подтверждения перед продолжением",
   "rollback_label": "Откат:",
   "evidence_status_title": "Данные собраны 2026-09-07.",
-  "evidence_status_body": "Каждая команда ниже выполнена вручную на свежеразвёрнутой лаборатории isis01. Строки CSV Watcher и вывод SDK - дословные снимки того запуска (граф 07Sep2026_06h49m43s_6_hosts); ответ агента - один реальный ответ Qwen.",
+  "evidence_status_body": "Все приведённые ниже команды были выполнены вручную в заново развёрнутой лаборатории isis01. Строки CSV Watcher и вывод SDK дословно воспроизводят результаты того запуска (граф 07Sep2026_06h49m43s_6_hosts); ответ агента получен от Qwen в одном из реальных запусков.",
   "event_log_label": "Журнал Watcher (CSV)",
   "sdk_output_label": "Вывод SDK",
   "sdk_request_label": "Запрос SDK",
@@ -48,11 +48,11 @@
       "nav": "Общая схема",
       "title": "Принцип работы с практикумом",
       "paragraphs": [
-        "Для каждого упражнения: внесите одно изменение, предскажите результат IS-IS, посмотрите событие Watcher, затем найдите тот же факт в Topolograph Monitoring, в SDK и - для упражнения на корреляцию - в ответе агента. Восстановите лабораторию перед следующим независимым упражнением.",
-        "isis01 - это домен FRR из шести маршрутизаторов в одной зоне (`49.0001`, AS `65100`). `router2`-`router3` работает в Level-1-2; `router3` к `router6` и плечо `router3` к LAN `router4`/`router5` - только Level-2. Watcher использует соседство Level-2 на `router1` и разрешает каждый System ID в его hostname через TLV динамического имени IS-IS, поэтому события называют `router2`, `router3`, `router6`, а не `0100.1001.000x`."
+        "В каждом упражнении внесите одно изменение, заранее определите ожидаемое поведение IS-IS и проверьте событие в журнале Watcher. Затем найдите то же изменение на странице Monitoring в Topolograph, через SDK и, в упражнениях на сопоставление событий, в ответе агента. Перед следующим независимым упражнением верните лабораторию в исходное состояние.",
+        "isis01 - это домен FRR из шести маршрутизаторов в одной зоне (`49.0001`, AS `65100`). Канал `router2`-`router3` работает на уровнях 1 и 2; канал `router3`-`router6` и подключение `router3` к локальной сети `router4`/`router5` - только на уровне 2. Watcher получает LSDB через соседство уровня 2 на `router1` и сопоставляет System ID с именами узлов из TLV Dynamic Hostname. Поэтому в событиях указаны `router2`, `router3` и `router6`, а не идентификаторы вида `0100.1001.000x`."
       ],
       "steps": [
-        "Строка CSV Watcher - это детерминированное исходное событие.",
+        "Строка CSV Watcher - первичная запись сетевого события.",
         "Monitoring и SDK доказывают, что событие принято и доступно для запроса.",
         "Агент используется только для сведения нескольких событий в один инцидент, но не как замена исходной строки."
       ],
@@ -65,14 +65,14 @@
       "nav": "Запуск лаборатории",
       "title": "Запуск и проверка лаборатории из шести маршрутизаторов",
       "paragraphs": [
-        "Запустите публичную топологию isis01 на базе GRE из репозитория IS-IS Watcher. `prepare.sh` также создаёт мост `isis-br-dr` и загружает модули ядра MPLS, нужные IS-IS TE.",
-        "Сначала проверьте, не запущена ли уже лаборатория, командой `sudo clab inspect --all`. Если в списке есть устаревший isis01, снесите его командой `sudo clab destroy --topo isis01.clab.yml --cleanup` из `containerlab/isis01/` перед повторным развёртыванием - указывайте файл топологии, чтобы не задеть другие лаборатории."
+        "Запустите общедоступную топологию isis01 на базе GRE из репозитория IS-IS Watcher. Скрипт `prepare.sh` также создаёт мост `isis-br-dr` и загружает модули ядра MPLS, необходимые для IS-IS TE.",
+        "Сначала выполните `sudo clab inspect --all` и убедитесь, что лаборатория ещё не запущена. Если в списке остался прежний экземпляр isis01, перейдите в `containerlab/isis01/` и удалите его командой `sudo clab destroy --topo isis01.clab.yml --cleanup`. Всегда указывайте файл топологии, чтобы не затронуть другие лаборатории."
       ],
       "steps": [],
-      "command": "cd containerlab/isis01\nsudo clab inspect --all\nsudo clab destroy --topo isis01.clab.yml --cleanup   # only if a stale isis01 is listed\nsudo ./prepare.sh\nsudo clab deploy --topo isis01.clab.yml\nsudo docker logs clab-isis01-isis-watcher\nsudo tail -f watcher/logs/watcher1.isis.log",
+      "command": "cd containerlab/isis01\nsudo clab inspect --all\nsudo clab destroy --topo isis01.clab.yml --cleanup   # только если в списке остался прежний isis01\nsudo ./prepare.sh\nsudo clab deploy --topo isis01.clab.yml\nsudo docker logs clab-isis01-isis-watcher\nsudo tail -f watcher/logs/watcher1.isis.log",
       "observations": [
-        "Шесть контейнеров-маршрутизаторов и watcher запущены: `docker ps --filter name=clab-isis01` показывает `clab-isis01-router1..6` и `clab-isis01-isis-watcher`, все со `State=Up`.",
-        "У watcher есть LSDB и он слушает трафик: `docker logs clab-isis01-isis-watcher` показывает `ISIS LSDB has been received` и `Sniffing packets on interface: eth1`.",
+        "Шесть контейнеров-маршрутизаторов и Watcher запущены: `docker ps --filter name=clab-isis01` показывает `clab-isis01-router1..6` и `clab-isis01-isis-watcher`, все со `State=Up`.",
+        "Watcher получил LSDB и прослушивает трафик: `docker logs clab-isis01-isis-watcher` содержит строки `ISIS LSDB has been received` и `Sniffing packets on interface: eth1`.",
         "Смежности в состоянии Up: `docker exec clab-isis01-router1 vtysh -c 'show isis neighbor'` показывает `router3` в состоянии `Up`; первый граф Topolograph тогда содержит шесть маршрутизаторов."
       ],
       "rollback": "Когда закончите практикум, удалите лабораторию командой `sudo clab destroy --topo isis01.clab.yml --cleanup` из `containerlab/isis01/`."
@@ -82,13 +82,13 @@
       "nav": "Запись сетевого события",
       "title": "Формат записи сетевого события",
       "paragraphs": [
-        "В практикуме три семейства событий: `host`, `metric` и `network`. Читайте `event_object` как изменившийся объект, `event_status` как переход, а `event_detected_by` как маршрутизатор, который анонсирует или обнаруживает. `graph_time` - собственная метка запуска у watcher, она выбирает граф в Topolograph.",
-        "Строки IS-IS содержат поле `level` (`1` или `2`), которого нет в строках OSPF - это третье поле, сразу после `watcher_name`. Прочитайте строку `metric` выше как одно предложение: в `2026-09-07T06:55:14Z` watcher `lab-isis01` увидел, как `router3` переанонсировал свой канал Level-1 к `router2` с метрикой, изменившейся с `10` на `-1` (соседство потеряно), на интерфейсе с адресом `192.168.23.2` в зоне `49.0001` / AS `65100`. За `router2` стоит его NET / System ID `49.0001.0100.1001.0002.00`; watcher печатает hostname, потому что каждый маршрутизатор анонсирует TLV динамического имени.",
-        "Простая строка `host` или `network` up/down не содержит полей стоимости, поэтому Fluent Bit пересылает только парную строку `changed`. Topolograph понимает, что соседство падает, по строке `metric` с `new_cost` равным `-1`, и что оно восстанавливается - по строке с `old_cost` равным `-1`."
+        "В практикуме используются три семейства событий: `host`, `metric` и `network`. Поле `event_object` указывает изменившийся объект, `event_status` - тип изменения, а `event_detected_by` - маршрутизатор, который объявил или обнаружил изменение. Поле `graph_time` содержит метку запуска Watcher, по которой выбирается граф в Topolograph.",
+        "В строках IS-IS есть поле `level` (`1` или `2`), которого нет в строках OSPF. Оно стоит третьим, сразу после `watcher_name`. Строку `metric` выше можно прочитать так: в `2026-09-07T06:55:14Z` Watcher `lab-isis01` обнаружил, что `router3` объявил канал уровня 1 к `router2` с новой метрикой `-1` вместо `10`, то есть соседство было потеряно. Изменение относится к интерфейсу `192.168.23.2` в зоне `49.0001`, AS `65100`. Узлу `router2` соответствует NET/System ID `49.0001.0100.1001.0002.00`; имя маршрутизатора получено из TLV Dynamic Hostname.",
+        "Строки `host` и `network` со статусами `up` или `down` не содержат прежнюю и новую стоимость, поэтому Fluent Bit пересылает связанную с ними строку `changed`. Topolograph определяет потерю соседства по событию `metric` с `new_cost: -1`, а восстановление - по событию с `old_cost: -1`."
       ],
       "steps": [
         "Поля по порядку: `watcher_time`, `watcher_name`, `level`, `event_name`, `event_object`, `event_status`, [поля стоимости], `event_detected_by`, `graph_time`, `area_num`, `asn`, [`local_ip`, `remote_ip` | `subnet_type`, `int_ext_subtype`], `sesid`, `srcid`.",
-        "`area_num` `49.0001` и `asn` `65100` определяют домен маршрутизации; `sesid` - сессия watcher, `srcid` - System ID исходного маршрутизатора (`router1`, `0100.1001.0001`)."
+        "`area_num` `49.0001` и `asn` `65100` определяют домен маршрутизации; `sesid` - идентификатор сессии Watcher, `srcid` - System ID исходного маршрутизатора (`router1`, `0100.1001.0001`)."
       ],
       "command": "",
       "rollback": "",
@@ -100,12 +100,12 @@
       "nav": "Источники проверки",
       "title": "Откуда берутся события",
       "paragraphs": [
-        "Одно изменение IS-IS порождает одну строку CSV Watcher на каждый уровень. Fluent Bit пересылает её в Topolograph, который сохраняет её и отдаёт через страницу Monitoring, API событий и SDK. Каждое упражнение ниже проверяет один и тот же факт на всех доступных вам уровнях."
+        "Одно изменение IS-IS создаёт отдельную строку CSV Watcher для каждого уровня. Fluent Bit пересылает её в Topolograph, где событие сохраняется и становится доступно на странице Monitoring, через API событий и SDK. В каждом упражнении один и тот же факт проверяется во всех доступных источниках."
       ],
       "steps": [
         "Журнал Watcher isis01  ->  парсер CSV Fluent Bit  ->  приём в Topolograph  ->  страница Monitoring + API событий  ->  SDK Topolograph",
         "Страница Monitoring: OSPF/IS-IS Real-Time Monitoring. Выберите граф по метке времени в `Choose the graph`, задайте окно `From`/`To` в UTC, включите переключатели `L1` и `L2`, нажмите `Find logs`; переключатели `New/Old Subnets`, `Up/Down Links` и `Changed metric` фильтруют список.",
-        "Селектор графа перечисляет каждый snapshot топологии, о котором сообщил Watcher, - это топология, которую отправил Watcher."
+        "В списке графов показаны все снимки топологии, отправленные Watcher."
       ],
       "image": "monitoring.png",
       "image_alt": "Элементы управления Topolograph OSPF/IS-IS Real-Time Monitoring для графа 07Sep2026_06h49m43s_6_hosts: селектор графа, окно времени From/To, включённые переключатели уровней L1 и L2, переключатели New/Old Subnets, Up/Down Links и Changed metric, кнопка Find logs. Панель Watchers Status показывает \"No watchers registered yet\", потому что containerlab-watcher отправляет топологию, но не heartbeat-сообщения.",
@@ -116,10 +116,10 @@
     },
     {
       "id": "directed-cost",
-      "nav": "Линки точка-точка",
-      "title": "Изменение стоимости на линке точка-точка",
+      "nav": "Канал точка-точка",
+      "title": "Изменение стоимости канала точка-точка",
       "paragraphs": [
-        "Измените `router2` `eth1` в сторону `router3`. Метрики IS-IS направленные, поэтому обратную метрику `router3`-`router2` нельзя описывать как ту же величину. У `router2` `eth1` нет явного `isis metric`, поэтому она начинается со значения wide-metric по умолчанию - `10`. `router2`-`router3` - это канал Level-1-2, поэтому изменение анонсируется на обоих уровнях."
+        "Измените метрику интерфейса `eth1` на `router2` в направлении `router3`. Метрики IS-IS задаются отдельно для каждого направления, поэтому обратная метрика `router3` -> `router2` от этого не меняется. На `eth1` маршрутизатора `router2` команда `isis metric` не задана, и используется широкая метрика по умолчанию - `10`. Канал `router2`-`router3` работает на уровнях 1 и 2, поэтому изменение объявляется на обоих уровнях."
       ],
       "steps": [],
       "command": "sudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'isis metric 222'",
@@ -155,21 +155,21 @@
     {
       "id": "prefix-lifecycle",
       "nav": "Жизненный цикл префиксов",
-      "title": "Детектирование событий по внутренним и внешним префиксам",
+      "title": "События внутренних и внешних префиксов",
       "paragraphs": [
-        "Выполняйте каждый эксперимент с префиксом независимо. В отличие от OSPF, IS-IS анонсирует loopback с той маской, с которой он настроен, и назначает ему метрику интерфейса - `/24` остаётся `/24` со стоимостью `10`, он не сворачивается в host-маршрут `/32`. `router6` - только Level-2, поэтому его префиксы появляются только на L2."
+        "Выполняйте каждый эксперимент с префиксом независимо. В отличие от OSPF, IS-IS объявляет адрес loopback с настроенной маской и назначает ему метрику интерфейса: префикс `/24` остаётся `/24` со стоимостью `10`, а не преобразуется в маршрут `/32`. `router6` работает только на уровне 2, поэтому его префиксы появляются только в L2."
       ],
       "steps": [
-        "6a. На `router2`: `interface lo` / `ip address 192.168.123.1/24`; посмотрите `192.168.123.0/24` up и стоимость `-1` -> `10` на L1 и L2.",
-        "6b. На `router6`: `interface lo` / `ip address 10.10.36.6/24`; посмотрите `10.10.36.0/24` up и стоимость `-1` -> `10` на L2.",
-        "6c. На `router6`: `no ip route 6.6.6.6/32 192.168.36.3`; посмотрите `6.6.6.6/32` down и стоимость `11` -> `-1` на L2. FRR перераспределяет его в IS-IS без бита external, поэтому watcher помечает его как `internal`."
+        "6a. На `router2` выполните `interface lo` / `ip address 192.168.123.1/24`. Убедитесь, что для `192.168.123.0/24` появился статус `up`, а стоимость изменилась с `-1` на `10` в L1 и L2.",
+        "6b. На `router6` выполните `interface lo` / `ip address 10.10.36.6/24`. Убедитесь, что для `10.10.36.0/24` появился статус `up`, а стоимость изменилась с `-1` на `10` в L2.",
+        "6c. На `router6` выполните `no ip route 6.6.6.6/32 192.168.36.3`. Убедитесь, что для `6.6.6.6/32` появился статус `down`, а стоимость изменилась с `11` на `-1` в L2. FRR перераспределяет этот маршрут в IS-IS без признака external, поэтому Watcher помечает его как `internal`."
       ],
       "command": "sudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface lo' -c 'ip address 192.168.123.1/24'",
       "rollback": "6a: `no ip address 192.168.123.1/24` на `router2` `interface lo`. 6b: `no ip address 10.10.36.6/24` на `router6` `interface lo`. 6c: `ip route 6.6.6.6/32 192.168.36.3` на `router6`. После каждого подтвердите обратное событие.",
       "verify": [
         {
           "channel": "watcher",
-          "summary": "По одной строке up/down и одной changed на под-упражнение",
+          "summary": "Для каждого упражнения - строка up/down и связанная строка changed",
           "badge": "3 префикса",
           "code": "# 6a router2: interface lo / ip address 192.168.123.1/24\n2026-09-07T06:52:52.074Z,lab-isis01,1,network,192.168.123.0/24,up,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:52:52.075Z,lab-isis01,1,network,192.168.123.0/24,changed,old_cost:-1,new_cost:10,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# 6b router6: interface lo / ip address 10.10.36.6/24\n2026-09-07T06:53:39.099Z,lab-isis01,2,network,10.10.36.0/24,up,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:53:39.099Z,lab-isis01,2,network,10.10.36.0/24,changed,old_cost:-1,new_cost:10,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# 6c router6: no ip route 6.6.6.6/32 192.168.36.3\n2026-09-07T06:54:14.533Z,lab-isis01,2,network,6.6.6.6/32,down,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:54:14.533Z,lab-isis01,2,network,6.6.6.6/32,changed,old_cost:11,new_cost:-1,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001"
         },
@@ -180,28 +180,28 @@
         },
         {
           "channel": "sdk",
-          "summary": "get_network_events, по одному событию changed на под-упражнение",
+          "summary": "get_network_events возвращает события changed для каждого упражнения",
           "badge": "3 события",
           "request": "for start, end in [(\"2026-09-07T06:52:50Z\", \"2026-09-07T06:52:55Z\"),\n                   (\"2026-09-07T06:53:37Z\", \"2026-09-07T06:53:42Z\"),\n                   (\"2026-09-07T06:54:12Z\", \"2026-09-07T06:54:17Z\")]:\n    net = graph.events.get_network_events(start_time=start, end_time=end)\n    for e in net[\"network_up_down_events\"]:\n        print(e.event_object, e.event_status, e.event_detected_by,\n              f\"{e.old_cost} -> {e.new_cost}\", \"L\" + str(e.level_number), e.subnet_type)",
           "output": "192.168.123.0/24 changed router2 -1 -> 10 L1 internal\n192.168.123.0/24 changed router2 -1 -> 10 L2 internal\n10.10.36.0/24 changed router6 -1 -> 10 L2 internal\n6.6.6.6/32 changed router6 11 -> -1 L2 internal",
-          "note": "`/24` сохраняет свою маску - сворачивания в `/32` нет. Доступность - это строка up/down, которую forwarder отбрасывает; изменение стоимости - событие `changed`, которое возвращает SDK. loopback `router2` виден на L1 и L2, у `router6` - только на L2, а перераспределённый `6.6.6.6/32` помечен как `internal`."
+          "note": "Префикс `/24` сохраняет маску и не преобразуется в `/32`. Изменение доступности записано в строке со статусом `up` или `down`, которую модуль пересылки отбрасывает; SDK возвращает связанную строку `changed` с изменением стоимости. Loopback `router2` виден в L1 и L2, loopback `router6` - только в L2, а перераспределённый маршрут `6.6.6.6/32` помечен как `internal`."
         }
       ]
     },
     {
       "id": "adjacency-outage",
       "nav": "Отказ соседства",
-      "title": "Детектирование потери связности и её восстановления",
+      "title": "Обнаружение потери связи и её восстановления",
       "paragraphs": [
-        "Выключите `router2` `eth1`, изучите связанный набор событий, затем восстановите интерфейс командой `no shutdown`. Поскольку `router2`-`router3` - это Level-1-2, каждая строка появляется один раз для L1 и один для L2."
+        "Отключите интерфейс `eth1` на `router2`, изучите связанный набор событий, затем восстановите интерфейс командой `no shutdown`. Канал `router2`-`router3` работает на уровнях 1 и 2, поэтому каждое событие появляется по одному разу для L1 и L2."
       ],
       "steps": [],
-      "command": "# down\nsudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\n# recovery\nsudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "command": "# отключение\nsudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\n# восстановление\nsudo docker exec clab-isis01-router2 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
       "rollback": "`no shutdown` на `router2` `eth1` восстанавливает интерфейс; дождитесь событий восстановления `host`, `network` и `metric` на обоих уровнях.",
       "verify": [
         {
           "channel": "watcher",
-          "summary": "Набор down на L1 и набор восстановления на L1 для канала router2-router3",
+          "summary": "События потери и восстановления канала router2-router3 на уровне 1",
           "badge": "down + up",
           "code": "# router2: interface eth1 / shutdown\n2026-09-07T06:55:14.754Z,lab-isis01,1,host,router2,down,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.23.2,192.168.23.1,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:55:14.756Z,lab-isis01,1,metric,router2,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.23.2,192.168.23.1,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:55:14.760Z,lab-isis01,1,metric,router3,changed,old_cost:10,new_cost:-1,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:55:14.761Z,lab-isis01,1,network,192.168.23.0/24,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# router2: interface eth1 / no shutdown\n2026-09-07T06:55:39.545Z,lab-isis01,1,metric,router3,changed,old_cost:-1,new_cost:10,router2,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:55:39.607Z,lab-isis01,1,metric,router2,changed,old_cost:-1,new_cost:10,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.23.2,192.168.23.1,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001"
         },
@@ -212,11 +212,11 @@
         },
         {
           "channel": "sdk",
-          "summary": "get_adjacency_events возвращает парные переходы down/up",
+          "summary": "get_adjacency_events возвращает парные события потери и восстановления",
           "badge": "4 перехода",
           "request": "down = graph.events.get_adjacency_events(\n    start_time=\"2026-09-07T06:55:14Z\", end_time=\"2026-09-07T06:55:16Z\")\nfor e in down[\"all_host_up_down_events\"]:\n    print(e.event_object, \"detected_by\", e.event_detected_by,\n          f\"{e.old_cost} -> {e.new_cost}\", \"L\" + str(e.level_number))",
           "output": "router2 detected_by router3 10 -> -1 L1\nrouter3 detected_by router2 10 -> -1 L1\nrouter2 detected_by router3 10 -> -1 L2\nrouter3 detected_by router2 10 -> -1 L2",
-          "note": "`host` `router2` down, обнаружен `router3`, обе направленные метрики в `-1`, `192.168.23.0/24` down - на L1 и L2; затем зеркальное восстановление. При восстановлении watcher также логирует flap `node` `attr:attached` на `router2`, который Topolograph пока не принимает."
+          "note": "`router3` обнаруживает событие `host` со статусом `down` для `router2`; метрики обоих направлений становятся равны `-1`, а `192.168.23.0/24` становится недоступной в L1 и L2. Затем следуют обратные события восстановления. Watcher также записывает кратковременное изменение атрибута `node` `attr:attached` на `router2`, которое Topolograph пока не принимает."
         },
         {
           "channel": "agent",
@@ -238,36 +238,36 @@
       "nav": "Транзитный сегмент",
       "title": "Отчёт по широковещательному транзитному сегменту",
       "paragraphs": [
-        "`router6` `eth1` смотрит на `router3` по широковещательному (LAN) каналу. У `router6` `isis priority 100` против `64` у `router3`, поэтому `router6` - это DIS и он порождает LSP псевдоузла. Канал только Level-2, поэтому каждая строка - L2. У `router6` `eth1` нет явного `isis metric`, поэтому базовое значение - `10` по умолчанию."
+        "Интерфейс `eth1` на `router6` соединён с `router3` через широковещательный сегмент. Приоритет IS-IS на `router6` равен 100, а на `router3` - 64, поэтому `router6` выбирается DIS и формирует LSP псевдоузла. Канал работает только на уровне 2, поэтому все события относятся к L2. На `eth1` маршрутизатора `router6` команда `isis metric` не задана, и используется значение по умолчанию - `10`."
       ],
       "steps": [],
-      "command": "# cost\nsudo docker exec clab-isis01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'isis metric 66'\n# then, separately: shutdown, then no shutdown\nsudo docker exec clab-isis01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\nsudo docker exec clab-isis01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
+      "command": "# изменение стоимости\nsudo docker exec clab-isis01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'isis metric 66'\n# затем отдельно отключите и восстановите интерфейс\nsudo docker exec clab-isis01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'shutdown'\nsudo docker exec clab-isis01-router6 vtysh \\\n  -c 'conf t' -c 'interface eth1' -c 'no shutdown'",
       "rollback": "`isis metric 10` (или `no isis metric`) на `router6` `eth1` восстанавливает базовое значение `10`; `no shutdown` восстанавливает соседство. Подтвердите обратные события `metric`.",
       "verify": [
         {
           "channel": "watcher",
-          "summary": "Изменение стоимости на L2 с его побочными эффектами в network, плюс пара shutdown/восстановление",
-          "badge": "стоимость + up/down",
+          "summary": "Изменение стоимости в L2, связанные события network, потеря связи и восстановление",
+          "badge": "стоимость + доступность",
           "code": "# router6: interface eth1 / isis metric 66   (rollback: isis metric 10)\n2026-09-07T06:56:47.139Z,lab-isis01,2,network,192.168.36.0/24,changed,old_cost:10,new_cost:66,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:56:47.140Z,lab-isis01,2,metric,router3,changed,old_cost:10,new_cost:66,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:57:04.561Z,lab-isis01,2,metric,router3,changed,old_cost:66,new_cost:10,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# router6: interface eth1 / shutdown\n2026-09-07T06:57:22.037Z,lab-isis01,2,network,192.168.36.0/24,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,internal,0,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:57:22.055Z,lab-isis01,2,host,router6,down,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.36.3,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:57:22.055Z,lab-isis01,2,metric,router6,changed,old_cost:10,new_cost:-1,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.36.3,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n# router6: interface eth1 / no shutdown\n2026-09-07T06:57:55.962Z,lab-isis01,2,host,router6,up,router3,07Sep2026_06h49m43s_6_hosts,49.0001,65100,192.168.36.3,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001\n2026-09-07T06:57:55.973Z,lab-isis01,2,metric,router3,changed,old_cost:-1,new_cost:66,router6,07Sep2026_06h49m43s_6_hosts,49.0001,65100,,,e50b9d98-aa86-11f1-92b0-46ed252a638b,0100.1001.0001"
         },
         {
           "channel": "monitoring",
           "summary": "Изменение транзитной стоимости и отказ router6, только L2",
-          "path": "В OSPF/IS-IS Real-Time Monitoring выберите этот граф, задайте окно около 06:56-06:58 UTC, включите `L2` и нажмите `Find logs`. `object` события `metric` - это `router3` с `event_detected_by` `router6`, и изменение только на L2 - канал level-2-only. При shutdown лента показывает `host` `router6` down и недостижимую `192.168.36.0/24`, затем восстановление."
+          "path": "В OSPF/IS-IS Real-Time Monitoring выберите этот граф, задайте интервал около 06:56-06:58 UTC, включите `L2` и нажмите `Find logs`. В событии `metric` поле `object` содержит `router3`, а `event_detected_by` - `router6`. Изменение относится только к L2, поскольку канал работает лишь на уровне 2. После команды `shutdown` в ленте появляются событие `host` со статусом `down` для `router6` и потеря доступности `192.168.36.0/24`, затем события восстановления."
         },
         {
           "channel": "sdk",
-          "summary": "get_adjacency_events для транзитной стоимости и shutdown/восстановления",
+          "summary": "get_adjacency_events для изменения стоимости, отключения и восстановления",
           "badge": "только L2",
           "request": "cost = graph.events.get_adjacency_events(\n    start_time=\"2026-09-07T06:56:46Z\", end_time=\"2026-09-07T06:56:49Z\")\nfor e in cost[\"adjacency_cost_change_events\"]:\n    print(\"cost\", e.event_object, e.event_detected_by, f\"{e.old_cost} -> {e.new_cost}\", \"L\" + str(e.level_number))\nflap = graph.events.get_adjacency_events(\n    start_time=\"2026-09-07T06:57:21Z\", end_time=\"2026-09-07T06:58:00Z\")\nfor e in flap[\"all_host_up_down_events\"]:\n    print(\"updown\", e.event_object, e.event_detected_by, f\"{e.old_cost} -> {e.new_cost}\", \"L\" + str(e.level_number))",
           "output": "cost router3 router6 10 -> 66 L2\nupdown router6 router3 10 -> -1 L2\nupdown router6 router3 -1 -> 10 L2\nupdown router3 router6 -1 -> 10 L2",
-          "note": "На широковещательном сегменте событие `metric` по-прежнему называет соседа (`router3`), обнаружено `router6`, и только на L2; изменение метрики также затрагивает `192.168.36.0/24` и две `/127` IPv6. shutdown - это `host` `router6` down на L2, затем восстановление."
+          "note": "На широковещательном сегменте событие `metric` содержит соседа `router3` в поле `event_object`, маршрутизатор `router6` в поле `event_detected_by` и уровень L2. Изменение метрики также относится к `192.168.36.0/24` и двум префиксам IPv6 `/127`. Команда `shutdown` создаёт для `router6` событие `host` со статусом `down` в L2, после которого следует восстановление."
         },
         {
           "channel": "agent",
           "summary": "Общий вопрос об инциденте на router6",
           "prompt": "What happened on router6 in the last 20 minutes?",
-          "note": "Правильный ответ называет транзитную метрику `router6` -> `router3`, меняющуюся `10` -> `66` и обратно, затем падение подключения `router6` (метрика `-1` на L2) и восстановление, при том что вопрос не упоминает стоимость, DIS или shutdown."
+          "note": "Правильный ответ указывает изменение метрики в направлении `router6` -> `router3` с `10` на `66` и обратно, затем потерю связи с `router6` (метрика `-1` в L2) и восстановление, хотя в вопросе не упомянуты метрика, DIS или команда `shutdown`."
         }
       ]
     },
@@ -276,18 +276,18 @@
       "nav": "Фильтр по уровню IS-IS",
       "title": "Чтение TE-атрибутов и фильтрация рёбер по уровню IS-IS",
       "paragraphs": [
-        "Каждое распарсенное ребро несёт метрику и TE sub-TLV из RFC 5305 (admin group, пулы пропускной способности, TE metric) вместе с `isis_level` -- `1` или `2` для линка, анонсированного только на одном уровне, `3` (L1L2) для анонсированного на обоих. `router3`-`router6` работает только на Level-2, поэтому это единственное ребро в графе с `isis_level: 2`; все остальные линки здесь -- `3`.",
-        "Этот граф (`18Sep2026_08h50m15s_6_hosts`) получен полным парсингом LSDB (`POST /graphs` с выводом `show isis database detail` на `router1`). Граф из Watcher хранит per-level TE снапшоты так же, поэтому на запрос с уровнем тоже отвечает реальными данными."
+        "Для каждого разобранного ребра сохраняются метрика, атрибуты TE из sub-TLV RFC 5305 (административная группа, доступная пропускная способность и TE-метрика) и поле `isis_level`. Значение `1` или `2` означает, что канал объявлен только на одном уровне; `3` (L1L2) - на обоих. Канал `router3`-`router6` работает только на уровне 2, поэтому только его рёбра имеют `isis_level: 2`; у всех остальных рёбер этого графа значение равно `3`.",
+        "Граф `18Sep2026_08h50m15s_6_hosts` получен при полной обработке LSDB: в `POST /graphs` передан вывод `show isis database detail` с `router1`. Графы, полученные от Watcher, также хранят отдельные снимки атрибутов TE для каждого уровня, поэтому фильтр по уровню использует исходные данные IS-IS, а не объединённое представление."
       ],
       "steps": [],
       "command": "curl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/edges?isis_level=2\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/edges?admin_group=0x647a0001\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/edges?temetric__gt=25\"",
       "rollback": "",
       "image": "isis_te_link_tooltip_two_columns.png",
-      "image_alt": "Веб-тултип ребра router2-router3, теперь разбитый на две колонки рядом: 0100.1001.0003 в 0100.1001.0002 (Metric 10) слева и 0100.1001.0002 в 0100.1001.0003 (Metric 50) справа -- у каждой свои Local/Remote IP, TE Metric, Bandwidth и бейджи Unreserved BW, плюс разбивка по L1/L2 ниже. До фикса mpls-te router-address на router2 (см. rollback в разделе про point-to-point линк) направленные рёбра router2 попадали на два разных узла, и этот же линк показывал один столбец с отсутствующим вторым направлением.",
+      "image_alt": "Всплывающая карточка канала router2-router3 с двумя столбцами: направление 0100.1001.0003 -> 0100.1001.0002 с метрикой 10 слева и 0100.1001.0002 -> 0100.1001.0003 с метрикой 50 справа. Для каждого направления отдельно показаны локальный и удалённый IP-адреса, TE-метрика, пропускная способность, доступная пропускная способность по приоритетам и данные L1/L2.",
       "observations": [
-        "`isis_level=2` -- ровно по одному ребру на направление для Level-2-only канала: `10.10.10.3 -> 10.10.10.6` и `10.10.10.6 -> 10.10.10.3`, оба `isis_level: 2` -- больше ни один линк в этом графе из шести маршрутизаторов так не помечен.",
-        "`admin_group=0x647a0001` -- 2 ребра: `10.10.10.1 -> 10.10.10.3` (cost 10) и `10.10.10.2 -> 10.10.10.3` (cost 50) -- два направления, которыми `router1`/`router2` анонсируют этот admin group в сторону `router3`, у каждого свои `admin_group`, `temetric` и `unreserved_bw_0`..`unreserved_bw_7`.",
-        "`temetric__gt=25` -- 2 ребра: `10.10.10.1 -> 10.10.10.3` (`temetric: 111111`) и `10.10.10.3 -> 10.10.10.2` (`temetric: 32`) -- оператор диапазона читает то же поле TE-метрики, что показывает бейдж `TE Metric` в веб-тултипе."
+        "`isis_level=2` возвращает по одному ребру в каждом направлении канала, работающего только на уровне 2: `10.10.10.3 -> 10.10.10.6` и `10.10.10.6 -> 10.10.10.3`. У обоих `isis_level: 2`; других таких рёбер в графе из шести маршрутизаторов нет.",
+        "`admin_group=0x647a0001` возвращает два ребра: `10.10.10.1 -> 10.10.10.3` со стоимостью 10 и `10.10.10.2 -> 10.10.10.3` со стоимостью 50. Это направления, в которых `router1` и `router2` объявляют данную административную группу в сторону `router3`; у каждого направления собственные значения `admin_group`, `temetric` и `unreserved_bw_0`..`unreserved_bw_7`.",
+        "`temetric__gt=25` возвращает два ребра: `10.10.10.1 -> 10.10.10.3` с `temetric: 111111` и `10.10.10.3 -> 10.10.10.2` с `temetric: 32`. Фильтр использует то же поле TE-метрики, которое отображается в карточке канала."
       ],
       "sdk_request": "edges = graph.edges_list(isis_level=2)\nfor e in edges[\"items\"]:\n    print(e[\"src\"], \"->\", e[\"dst\"], e[\"isis_level\"], e[\"cost\"])",
       "sdk_output": "10.10.10.3 -> 10.10.10.6 2 10\n10.10.10.6 -> 10.10.10.3 2 10"
@@ -297,17 +297,17 @@
       "nav": "CSPF по уровню",
       "title": "Расчёт CSPF для одного уровня IS-IS",
       "paragraphs": [
-        "`GET /graph/{graph_time}/cspf-path/{node_a}/{node_b}?level=1|2` отвечает на вопрос, который недоступен комбинированному/дефолтному расчёту: какой путь (если он есть) существует, если использовать метрики и TE-данные строго одного уровня. `router3`-`router6` работает только на Level-2, поэтому `router6` вообще не входит в топологию Level-1 -- запрос Level-1 между `router1` и `router6` это не отказ из-за ограничений, а `src/dst not found`.",
-        "Явный запрос `level` к графу, который старше per-level хранения -- например загруженному до появления per-level снапшотов -- закрывается отказом: `422` и `code: isis_level_calculation_unavailable`, вместо того чтобы молча ответить из объединённого представления."
+        "Запрос `GET /graph/{graph_time}/cspf-path/{node_a}/{node_b}?level=1|2` рассчитывает путь только по метрикам и атрибутам TE выбранного уровня. Обычный расчёт по объединённому графу этого различия не показывает. Канал `router3`-`router6` работает только на уровне 2, поэтому `router6` не входит в топологию уровня 1. Запрос пути уровня 1 между `router1` и `router6` возвращает не отказ по ограничениям, а `src/dst not found`.",
+        "Если граф был сохранён до появления раздельных данных по уровням, запрос с параметром `level` завершается с HTTP 422 и кодом `isis_level_calculation_unavailable`. Topolograph не подменяет отсутствующие данные ответом из объединённого графа."
       ],
       "steps": [],
       "command": "curl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/cspf-path/10.10.10.1/10.10.10.6\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/cspf-path/10.10.10.1/10.10.10.6?level=1\"\ncurl -u \"<email>:<password>\" \"http://<your-topolograph>:8080/api/graph/18Sep2026_08h50m15s_6_hosts/cspf-path/10.10.10.1/10.10.10.6?level=2\"",
       "rollback": "",
       "observations": [
-        "Без `level` (комбинированный/дефолтный вид): `\"path\": [\"10.10.10.1\", \"10.10.10.3\", \"10.10.10.6\"]`, `\"cost\": 20`.",
-        "`level=1`: `\"path\": []`, `\"reason\": \"src/dst not found\"` -- у `router6` вообще нет членства в Level-1, ни на этом, ни на любом другом графе, так как его единственный канал -- только Level-2.",
-        "`level=2`: совпадает с комбинированным видом (`\"cost\": 20`) -- единственный Level-1-2 хоп этого графа, `router1`-`router3`, тоже анонсирован на L2, поэтому путь только для L2 совпадает с дефолтным.",
-        "Тот же запрос к графу, снятому до появления per-level хранения, `12Sep2026_19h04m47s_6_hosts` (`?level=1`), возвращает `422` с `\"code\": \"isis_level_calculation_unavailable\"`, `\"action\": \"reupload_graph\"` -- чтобы получить настоящий per-level ответ, перезалейте LSDB под текущей версией Topolograph."
+        "Без параметра `level` используется объединённый граф: `\"path\": [\"10.10.10.1\", \"10.10.10.3\", \"10.10.10.6\"]`, `\"cost\": 20`.",
+        "При `level=1` возвращаются `\"path\": []` и `\"reason\": \"src/dst not found\"`, поскольку единственный канал `router6` работает только на уровне 2 и узел отсутствует в топологии уровня 1.",
+        "При `level=2` результат совпадает с объединённым графом: стоимость равна 20. Канал `router1`-`router3` работает на обоих уровнях, поэтому он также доступен для пути уровня 2.",
+        "Такой же запрос с `?level=1` к старому графу `12Sep2026_19h04m47s_6_hosts` возвращает HTTP 422, `\"code\": \"isis_level_calculation_unavailable\"` и `\"action\": \"reupload_graph\"`. Чтобы получить корректный ответ для отдельного уровня, снова загрузите LSDB в текущую версию Topolograph."
       ],
       "sdk_request": "for level in (None, 1, 2):\n    r = graph.cspf_path(\"10.10.10.1\", \"10.10.10.6\", level=level)\n    print(level, r)",
       "sdk_output": "None {'cost': 20, 'path': ['10.10.10.1', '10.10.10.3', '10.10.10.6'], 'reason': ''}\n1 {'cost': None, 'path': [], 'reason': 'src/dst not found'}\n2 {'cost': 20, 'path': ['10.10.10.1', '10.10.10.3', '10.10.10.6'], 'reason': ''}"
@@ -315,29 +315,33 @@
     {
       "id": "cspf-01-lab",
       "nav": "CSPF 1: лаборатория",
-      "title": "Загрузить 13-маршрутизаторную IS-IS лабораторию",
+      "title": "Загрузка лаборатории IS-IS из 13 маршрутизаторов",
       "paragraphs": [
-        "Ситуация: шестирouterная лаборатория подходит для событий Watcher и TE-полей, но в ней нет полезных альтернативных маршрутов для CSPF. Текущего маршрута CSPF для 13 роутеров ещё нет.",
-        "Задача: развернуть `13-hosts-demo-isis`, снять LSDB с `r30` и загрузить её. Для расчёта пути нужны альтернативные маршруты, поэтому используйте эту лабораторию и публичный demo-граф [Topolograph](https://topolograph.com) ([лаборатория `13-hosts-demo-isis`](https://github.com/Vadims06/topolograph/tree/master/containerlab/13-hosts-demo-isis)).",
-        "Результат: в графе 13 узлов и 52 направленных ребра: 12 Level-1 и 40 Level-2. TE включён на 50 ребрах; два направления `r110-r111` TE-ребрами не являются."
+        "Лаборатория из шести маршрутизаторов подходит для изучения событий Watcher и атрибутов TE, но в ней недостаточно альтернативных путей для содержательных упражнений с CSPF. Используйте лабораторию [`13-hosts-demo-isis`](https://github.com/Vadims06/topolograph/tree/master/containerlab/13-hosts-demo-isis): разверните её или пропустите развёртывание и скачайте готовую LSDB [`demo_isis_LSDB.txt`](https://github.com/Vadims06/topolograph/blob/master/demo_isis_LSDB.txt).",
+        "Загрузите LSDB в Topolograph как файл FRR IS-IS: снятую с `r30` или скачанную `demo_isis_LSDB.txt`. Граф должен содержать 13 узлов и 52 направленных ребра: 12 на уровне 1 и 40 на уровне 2. Для 50 рёбер доступны атрибуты TE; исключение составляют два направления канала `r110-r111`."
       ],
-      "command": "Разверните лабораторию, снимите `show isis database detail` с `r30` и загрузите LSDB через SDK.",
-      "observations": ["`hosts` равно 13, общее число ребер 52; `is_te_link=True` возвращает 50, `False` возвращает 2."],
-      "sdk_request": "graph = topo.graphs.upload(open(\"demo_isis_LSDB.txt\").read(), vendor=\"FRR\", protocol=\"isis\")\nprint(graph.graph_time, graph.hosts)\nprint(graph.edges_list(per_page=200)[\"pagination\"][\"total\"])\nprint(graph.edges_list(is_te_link=True, per_page=200)[\"pagination\"][\"total\"])\nprint(graph.edges_list(is_te_link=False, per_page=200)[\"pagination\"][\"total\"])",
+      "command": "cd containerlab/13-hosts-demo-isis\nsudo clab deploy --topo 13-hosts-demo-isis.clab.yml\nsudo docker exec clab-13-hosts-demo-isis-r30 vtysh -c 'show isis database detail'",
+      "observations": [
+        "Поле `hosts` загруженного графа содержит `{'count': 13}`, а общее число рёбер равно 52.",
+        "`edges_list(is_te_link=True)` возвращает 50 рёбер; `edges_list(is_te_link=False)` - два направления канала `r110-r111`."
+      ],
+      "sdk_request": "from topolograph import Topolograph\n\ntopo = Topolograph(url=\"http://<your-topolograph>:8080\", username=\"<email>\", password=\"<password>\")\ngraph = topo.graphs.upload(open(\"demo_isis_LSDB.txt\").read(), vendor=\"FRR\", protocol=\"isis\")\nprint(graph.graph_time, graph.hosts)\nprint(graph.edges_list(per_page=200)[\"pagination\"][\"total\"])\nprint(graph.edges_list(is_te_link=True, per_page=200)[\"pagination\"][\"total\"])\nprint(graph.edges_list(is_te_link=False, per_page=200)[\"pagination\"][\"total\"])",
       "sdk_output": "<new graph time> {'count': 13}\n52\n50\n2"
     },
     {
       "id": "cspf-02-te-values",
       "nav": "CSPF 2: TE-поля",
-      "title": "Прочитать TE-поля перед расчётом",
+      "title": "Проверка атрибутов TE перед расчётом пути",
       "paragraphs": [
-        "Ситуация: ограничений ещё нет; граф содержит TE-атрибуты, но обычный расчёт пути не показывает, какие каналы безопасны для туннеля.",
-        "Задача: найти золотые и красные admin groups, высокие TE-метрики, малый priority-7 bandwidth pool, SRLG и не-TE каналы.",
-        "Результат: gold (`0x00000002`) даёт 10 направленных ребер, red (`0x00000004`) 2, `temetric__gt=30` 4, `unreserved_bw_7__lt=1000000` 2, а `is_te_link=False` 2 ребра `r110-r111`."
+        "Перед выбором ограничения проверьте атрибуты TE. Найдите рёбра с административными группами gold и red, высокой TE-метрикой, малым резервом пропускной способности для приоритета 7, а также рёбра с SRLG и без поддержки TE. Обычный расчёт кратчайшего пути не показывает, подходит ли канал для туннеля.",
+        "В этом графе фильтр gold (`0x00000002`) возвращает 10 направленных рёбер, red (`0x00000004`) - 2, `temetric__gt=30` - 4, `unreserved_bw_7__lt=1000000` - 2, а `is_te_link=False` - два направления канала `r110-r111`."
       ],
-      "command": "Выполните фильтры SDK для графа из шага 1.",
-      "observations": ["`is_te_link='yes'` отклоняется HTTP 400: `Wrong type, expected 'boolean'`."],
-      "sdk_request": "for query in ({'admin_group': '0x00000002'}, {'admin_group': '0x00000004'}, {'temetric__gt': 30}, {'unreserved_bw_7__lt': 1_000_000}, {'is_te_link': False}):\n    print(query, graph.edges_list(per_page=200, **query)['pagination']['total'])",
+      "command": "# Выполните через SDK для графа, загруженного на шаге 1",
+      "observations": [
+        "Данные SRLG есть у восьми рёбер на каналах `r10-r100`, `r100-r110` и `r100-r111`; два параллельных канала `r10-r100` сохраняют собственные группы риска.",
+        "Строковое значение `is_te_link='yes'` отклоняется с HTTP 400: `Wrong type, expected 'boolean'`."
+      ],
+      "sdk_request": "for query in (\n    {'admin_group': '0x00000002'},\n    {'admin_group': '0x00000004'},\n    {'temetric__gt': 30},\n    {'unreserved_bw_7__lt': 1_000_000},\n    {'is_te_link': False},\n):\n    result = graph.edges_list(per_page=200, **query)\n    print(query, result['pagination']['total'])",
       "sdk_output": "{'admin_group': '0x00000002'} 10\n{'admin_group': '0x00000004'} 2\n{'temetric__gt': 30} 4\n{'unreserved_bw_7__lt': 1000000} 2\n{'is_te_link': False} 2"
     },
     {
@@ -345,12 +349,11 @@
       "nav": "CSPF 3: эталонный путь",
       "title": "Зафиксировать путь без ограничений",
       "paragraphs": [
-        "Ситуация: без ограничений текущий путь `r10 r100 r110 r14` стоит 30.",
-        "Задача: сохранить этот путь как базовый для следующих упражнений.",
-        "Результат: эталонный маршрут `r10 r100 r110 r14`, стоимость 30, через параллельный канал `eth2` между `r10` и `r100`."
+        "Рассчитайте путь от `r10` до `r14` без ограничений и сохраните его как исходный для следующих упражнений. Так каждое новое ограничение можно будет сравнить с известным маршрутом.",
+        "Исходный путь проходит через `r10 r100 r110 r14`, имеет стоимость 30 и использует параллельный канал `eth2` между `r10` и `r100`."
       ],
-      "command": "Изменений на роутерах нет: выполните базовый CSPF-запрос.",
-      "observations": ["Следующие четыре шага меняют этот маршрут ровно одним ограничением за раз."],
+      "command": "# Конфигурация маршрутизаторов не меняется: рассчитайте исходный путь CSPF",
+      "observations": ["Исходный расчёт использует метрики IGP. В следующих четырёх упражнениях путь будет меняться под действием одного ограничения за раз."],
       "sdk_request": "print(graph.cspf_path('r10', 'r14'))",
       "sdk_output": "{'cost': 30, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}"
     },
@@ -359,26 +362,24 @@
       "nav": "CSPF 4: SRLG",
       "title": "Избежать общих групп риска",
       "paragraphs": [
-        "Ситуация: текущий маршрут `r10 r100 r110 r14`, стоимость 30; первый hop входит в SRLG 300, а оба параллельных первых hop входят в SRLG 100.",
-        "Задача: перестроить путь вокруг обслуживаемого канала или кабеля через `srlg_exclude`.",
-        "Результат: исключение 300 даёт стоимость 35; 100 даёт `r10 r11 r100 r110 r14`, 40; 200 даёт `r10 r100 r101 r111 r14`, 45; 100 и 200 вместе дают `r10 r11 r101 r111 r14`, 50."
+        "Используйте `srlg_exclude`, чтобы проложить путь в обход обслуживаемого канала или общей кабельной трассы. Исходный путь `r10 r100 r110 r14` имеет стоимость 30: его первый канал входит в SRLG 300, а оба параллельных канала между `r10` и `r100` - в SRLG 100.",
+        "При исключении SRLG 300 набор маршрутизаторов не меняется, но выбирается `eth1` и стоимость возрастает до 35. Исключение SRLG 100 даёт путь `r10 r11 r100 r110 r14` со стоимостью 40; SRLG 200 - `r10 r100 r101 r111 r14` со стоимостью 45; одновременно SRLG 100 и 200 - `r10 r11 r101 r111 r14` со стоимостью 50."
       ],
-      "command": "Меняйте только список `srlg_exclude` в запросе.",
-      "observations": ["Маршрут меняется из-за удаления каналов ограничением, а не из-за изменения IGP-метрики."],
+      "command": "# Конфигурация маршрутизаторов не меняется: меняйте только список srlg_exclude",
+      "observations": ["Маршрут меняется потому, что ограничение исключает отдельные каналы из расчёта. Метрики IGP при этом остаются прежними."],
       "sdk_request": "for groups in ([300], [100], [200], [100, 200]):\n    print(groups, graph.cspf_path('r10', 'r14', srlg_exclude=groups))",
       "sdk_output": "[300] {'cost': 35, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}\n[100] {'cost': 40, 'path': ['r10', 'r11', 'r100', 'r110', 'r14'], 'reason': ''}\n[200] {'cost': 45, 'path': ['r10', 'r100', 'r101', 'r111', 'r14'], 'reason': ''}\n[100, 200] {'cost': 50, 'path': ['r10', 'r11', 'r101', 'r111', 'r14'], 'reason': ''}"
     },
     {
       "id": "cspf-05-bandwidth",
       "nav": "CSPF 5: пропускная способность",
-      "title": "Выбрать путь по bandwidth и setup priority",
+      "title": "Выбор пути по пропускной способности и приоритету установки",
       "paragraphs": [
-        "Ситуация: текущий путь стоит 30, но на `r100-r110` доступно только 4 Mbit в priority-7 pool и 10 Mbit в priorities 0-3.",
-        "Задача: разместить туннель 8 Mbit с разными приоритетами, затем проверить запрос 20 Mbit.",
-        "Результат: priority 7 переводит путь на `r10 r100 r111 r14`, стоимость 40; priority 0 сохраняет путь стоимостью 30; для 20 Mbit пути нет."
+        "Запросите туннель 8 Мбит/с с разными приоритетами установки. Исходный путь `r10 r100 r110 r14` имеет стоимость 30, но канал `r100-r110` сообщает только 4 Мбит/с свободной пропускной способности для приоритета 7 и 10 Мбит/с для приоритетов 0-3.",
+        "С приоритетом 7 CSPF выбирает путь `r10 r100 r111 r14` стоимостью 40; с приоритетом 0 сохраняется `r10 r100 r110 r14` стоимостью 30. Запрос 20 Мбит/с не помещается ни на одном доступном пути и завершается отказом по ограничениям."
       ],
-      "command": "Меняйте `bandwidth` и `setup_priority` в CSPF-запросе.",
-      "observations": ["Setup priority выбирает пул unreserved bandwidth, используемый для размещения, но не меняет IGP cost."],
+      "command": "# Конфигурация маршрутизаторов не меняется: меняйте bandwidth и setup_priority",
+      "observations": ["Приоритет установки выбирает соответствующий резерв незанятой пропускной способности, но не изменяет стоимость пути по метрикам IGP."],
       "sdk_request": "for priority in (7, 0):\n    print(priority, graph.cspf_path('r10', 'r14', bandwidth='8M', setup_priority=priority))\nprint(graph.cspf_path('r10', 'r14', bandwidth='20M'))",
       "sdk_output": "7 {'cost': 40, 'path': ['r10', 'r100', 'r111', 'r14'], 'reason': ''}\n0 {'cost': 30, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}\n{'cost': None, 'path': [], 'reason': 'no path satisfies the requested constraints'}"
     },
@@ -387,26 +388,24 @@
       "nav": "CSPF 6: TE-метрика",
       "title": "Рассчитать путь по TE-метрике",
       "paragraphs": [
-        "Ситуация: IGP-маршрут `r10 r100 r110 r14` стоит 30; TE metric `r100-r110` равна 100, а `r100-r111` 10.",
-        "Задача: перестроить путь с `metric_type='te'` и убедиться, что у каждого канала есть TE metric.",
-        "Результат: TE-путь `r10 r100 r111 r14` имеет TE cost 30; его IGP cost равен 40."
+        "Перед расчётом с `metric_type='te'` убедитесь, что для каждого рассматриваемого канала известна TE-метрика. Путь `r10 r100 r110 r14` имеет стоимость IGP 30, но TE-метрика канала `r100-r110` равна 100, а канала `r100-r111` - 10.",
+        "По TE-метрике CSPF выбирает путь `r10 r100 r111 r14` со стоимостью 30. Стоимость того же пути по метрикам IGP равна 40, поэтому влияние выбранной метрики хорошо видно."
       ],
-      "command": "Укажите `metric_type='te'`; конфигурацию роутеров не меняйте.",
-      "observations": ["Если у канала нет TE metric, расчёт использует для него IGP metric; сначала проверьте атрибуты ребер."],
+      "command": "# Конфигурация маршрутизаторов не меняется: выберите TE-метрику вместо метрики IGP",
+      "observations": ["Если у канала нет TE-метрики, CSPF использует для него метрику IGP. Поэтому сначала проверьте атрибуты рёбер."],
       "sdk_request": "print(graph.cspf_path('r10', 'r14', metric_type='te'))",
       "sdk_output": "{'cost': 30, 'path': ['r10', 'r100', 'r111', 'r14'], 'reason': ''}"
     },
     {
       "id": "cspf-07-admin-groups",
-      "nav": "CSPF 7: admin groups",
-      "title": "Включить или исключить биты admin group",
+      "nav": "CSPF 7: административные группы",
+      "title": "Включение и исключение административных групп",
       "paragraphs": [
-        "Ситуация: `r13`-`r15` сейчас идёт `r13 r100 r110 r15` со стоимостью 30; бит 1 означает gold, бит 2 red.",
-        "Задача: потребовать gold через `admin_include_all=['1']`, затем исключить red через `admin_exclude_any=['2']`.",
-        "Результат: gold-only даёт `r13 r101 r111 r15`, 45; для `r10`-`r14` gold-only даёт `r10 r101 r111 r14`, 55; исключение red даёт `r13 r100 r111 r15`, 40."
+        "Используйте биты административных групп, чтобы потребовать или исключить определённый класс каналов. Бит 1 обозначает gold, бит 2 - red. Путь от `r13` до `r15` без ограничений проходит через `r13 r100 r110 r15` и имеет стоимость 30.",
+        "Требование gold через `admin_include_all=['1']` переводит этот путь на `r13 r101 r111 r15` со стоимостью 45; для пары `r10`-`r14` оно даёт `r10 r101 r111 r14` со стоимостью 55. Исключение red через `admin_exclude_any=['2']` даёт путь `r13 r100 r111 r15` со стоимостью 40."
       ],
-      "command": "Передавайте номера битов, а не hex-маски.",
-      "observations": ["Бит 1 это маска `0x00000002`, бит 2 это `0x00000004`; бит 0 младший."],
+      "command": "# Передавайте номера битов, а не шестнадцатеричные маски",
+      "observations": ["Биту 1 соответствует маска `0x00000002`, биту 2 - `0x00000004`; бит 0 является младшим."],
       "sdk_request": "print(graph.cspf_path('r13', 'r15', admin_include_all=['1']))\nprint(graph.cspf_path('r10', 'r14', admin_include_all=['1']))\nprint(graph.cspf_path('r13', 'r15', admin_exclude_any=['2']))",
       "sdk_output": "{'cost': 45, 'path': ['r13', 'r101', 'r111', 'r15'], 'reason': ''}\n{'cost': 55, 'path': ['r10', 'r101', 'r111', 'r14'], 'reason': ''}\n{'cost': 40, 'path': ['r13', 'r100', 'r111', 'r15'], 'reason': ''}"
     },
@@ -415,56 +414,55 @@
       "nav": "CSPF 8: уровень IS-IS",
       "title": "Ограничить CSPF одним уровнем IS-IS",
       "paragraphs": [
-        "Ситуация: `r30`-`r31` стоит 10 на прямом Level-1 пути, а Level-2 путь `r30 r10 r11 r31` стоит 40.",
-        "Задача: сигнализировать туннель только в Level 2 через `level=2` и проверить состав каждой независимой топологии.",
-        "Результат: `r30`-`r31` стоит 10 на L1 и 40 на L2; `r130`-`r131` стоит 10 на L1 и возвращает `src/dst not found` на L2; `r130`-`r15` имеет combined cost 50, но не имеет пути ни на одном уровне."
+        "Задайте `level=1` или `level=2`, чтобы выполнить расчёт внутри одной топологии IS-IS, и убедитесь, что оба конечных узла входят в неё. Для пары `r30`-`r31` прямой путь уровня 1 имеет стоимость 10, а путь уровня 2 проходит через `r30 r10 r11 r31` и имеет стоимость 40.",
+        "Путь `r130`-`r131` имеет стоимость 10 на уровне 1, а на уровне 2 возвращает `src/dst not found`. В объединённой топологии путь `r130`-`r15` имеет стоимость 50, но ни на одном отдельном уровне он не существует, потому что пересекает границу уровней."
       ],
-      "command": "Добавляйте `level=1` или `level=2` в CSPF-запрос.",
-      "observations": ["Для старого графа без per-level data явный level возвращает HTTP 422 и `isis_level_calculation_unavailable`; граф нужно загрузить заново."],
+      "command": "# Конфигурация маршрутизаторов не меняется: ограничьте запрос уровнем 1 или 2",
+      "observations": ["Для графа, сохранённого до появления раздельных данных по уровням, явный параметр `level` возвращает HTTP 422 и код `isis_level_calculation_unavailable`. Такой граф нужно загрузить заново."],
       "sdk_request": "for level in (None, 1, 2):\n    print(level, graph.cspf_path('r30', 'r31', level=level))\nprint(graph.cspf_path('r130', 'r131', level=2))",
       "sdk_output": "None {'cost': 10, 'path': ['r30', 'r31'], 'reason': ''}\n1 {'cost': 10, 'path': ['r30', 'r31'], 'reason': ''}\n2 {'cost': 40, 'path': ['r30', 'r10', 'r11', 'r31'], 'reason': ''}\n{'cost': None, 'path': [], 'reason': 'src/dst not found'}"
     },
     {
       "id": "cspf-09-refusal",
       "nav": "CSPF 9: отказ",
-      "title": "Отличить невыполнимое ограничение от отсутствующего endpoint",
+      "title": "Разбор причин отказа CSPF",
       "paragraphs": [
-        "Ситуация: запрос 20 Mbit имеет известные endpoints, но ни один канал не вмещает его; запрос Level-1 `r130`-`r15` не имеет общего уровня с обоими endpoints.",
-        "Задача: читать поле `reason`, а не считать любой пустой path одной и той же ошибкой.",
-        "Результат: для bandwidth ответ `no path satisfies the requested constraints`; для неверного уровня `src/dst not found`."
+        "Проверяйте поле `reason`, когда CSPF возвращает пустой `path`. В запросе на 20 Мбит/с оба конечных узла известны, но ни один путь не располагает достаточной пропускной способностью. Для запроса уровня 1 между `r130` и `r15` нет топологии выбранного уровня, содержащей оба узла.",
+        "При невыполнимом ограничении пропускной способности возвращается `no path satisfies the requested constraints`; если один из узлов отсутствует на выбранном уровне - `src/dst not found`. Эти причины требуют разных действий."
       ],
-      "command": "Повторите отказавшие запросы из шагов 5 и 8.",
-      "observations": ["Первый ответ требует ослабить bandwidth, affinity или SRLG; второй означает, что оба endpoint не входят в выбранную топологию."],
+      "command": "# Повторите запросы с отказом из шагов 5 и 8",
+      "observations": ["В первом случае нужно ослабить ограничение по пропускной способности, административной группе или SRLG. Второй ответ означает, что выбранная топология не содержит обоих конечных узлов."],
       "sdk_request": "print(graph.cspf_path('r10', 'r14', bandwidth='20M'))\nprint(graph.cspf_path('r130', 'r15', level=1))",
       "sdk_output": "{'cost': None, 'path': [], 'reason': 'no path satisfies the requested constraints'}\n{'cost': None, 'path': [], 'reason': 'src/dst not found'}"
     },
     {
       "id": "cspf-10-what-if",
-      "nav": "CSPF 10: what-if",
-      "title": "Изменить одно ребро и пересчитать",
+      "nav": "CSPF 10: моделирование",
+      "title": "Моделирование изменения одного ребра",
       "paragraphs": [
-        "Ситуация: путь `r10 r100 r110 r14` стоит 30. Планируется обслуживание `r100-r110`, но конфигурацию роутера менять нельзя.",
-        "Задача: на копии графа добавить SRLG 999 к Level-2 ребру через `update_edge`, исключить его, затем очистить SRLG.",
-        "Результат: исключение 999 даёт `r10 r100 r111 r14`, 40; очистка возвращает `r10 r100 r110 r14`, 30."
+        "Смоделируйте работы на канале `r100-r110`, не меняя конфигурацию маршрутизаторов. На отдельной копии графа добавьте SRLG 999 к ребру уровня 2 с помощью `update_edge`, пересчитайте путь с исключением этой группы, а затем очистите SRLG.",
+        "Исключение SRLG 999 заменяет путь `r10 r100 r110 r14` стоимостью 30 на `r10 r100 r111 r14` стоимостью 40; очистка SRLG восстанавливает исходный путь. Ребро, существующее только на уровне 2, отклоняет `isis_level=1`. После полной замены через `replace_edge` раздельные данные по уровням теряются, поэтому CSPF с явным параметром `level` возвращает HTTP 422."
       ],
-      "command": "Запускайте это на отдельном графе: изменение сохраняется.",
-      "observations": ["`update_edge` частичный, `replace_edge` переписывает всё и удаляет per-level data; явный level после него возвращает 422."],
-      "sdk_request": "edge = next(e for e in graph.edges_list(include=['edge_key'], per_page=200)['items'] if e['src'] == 'r100' and e['dst'] == 'r110')\nprint(graph.update_edge(edge['id'], isis_level=2, srlg=[999]))\nprint(graph.cspf_path('r10', 'r14', srlg_exclude=[999]))\nprint(graph.update_edge(edge['id'], isis_level=2, srlg=[]))\nprint(graph.cspf_path('r10', 'r14'))",
+      "command": "# Выполняйте упражнение на отдельном графе: изменение сохраняется\n# Сначала найдите идентификатор ребра через edges_list(include=['edge_key'])",
+      "observations": ["`update_edge` изменяет только переданные поля, а `replace_edge` полностью перезаписывает ребро. Не применяйте эти методы к эталонному графу, который должен остаться неизменным."],
+      "sdk_request": "edge = next(e for e in graph.edges_list(include=['edge_key'], per_page=200)['items']\n             if e['src'] == 'r100' and e['dst'] == 'r110')\nprint(graph.update_edge(edge['id'], isis_level=2, srlg=[999]))\nprint(graph.cspf_path('r10', 'r14', srlg_exclude=[999]))\nprint(graph.update_edge(edge['id'], isis_level=2, srlg=[]))\nprint(graph.cspf_path('r10', 'r14'))",
       "sdk_output": "... srlg: [999] ...\n{'cost': 40, 'path': ['r10', 'r100', 'r111', 'r14'], 'reason': ''}\n... srlg: [] ...\n{'cost': 30, 'path': ['r10', 'r100', 'r110', 'r14'], 'reason': ''}"
     },
     {
       "id": "cspf-11-lsp-placement",
       "nav": "CSPF 11: LSP",
-      "title": "Разместить LSP и проверить остаток bandwidth",
+      "title": "Размещение LSP с учётом остаточной пропускной способности",
       "paragraphs": [
-        "Ситуация: туннелей нет; эталонный путь `r10 r100 r110 r14` стоит 30, а priority-7 pool 4 Mbit свободен.",
-        "Задача: последовательно добавить четыре туннеля по 4 Mbit между `r10` и `r14`, затем проверить остаточную bandwidth.",
-        "Результат: `T1` идёт `r10 r100 r110 r14` (30), `T2` `r10 r100 r111 r14` (40), `T3` через другой `r10-r100` (45), `T4` `r10 r11 r101 r110 r14` (55). После проверки удалите LSP."
+        "Последовательно создайте четыре туннеля по 4 Мбит/с между `r10` и `r14` и после каждого размещения проверяйте остаточную пропускную способность и выбранный путь. До размещения первого LSP на исходном пути `r10 r100 r110 r14` доступен резерв 4 Мбит/с для приоритета 7.",
+        "`T1` проходит через `r10 r100 r110 r14` со стоимостью 30; `T2` - через `r10 r100 r111 r14` со стоимостью 40; `T3` использует второй канал `r10-r100` и имеет стоимость 45; `T4` проходит через `r10 r11 r101 r110 r14` со стоимостью 55. После упражнения удалите все тестовые LSP."
       ],
-      "command": "Создайте четыре LSP по 4 Mbit через SDK, затем вызовите `delete_lsps()`.",
-      "observations": ["`edges_list(include=['lsp_left_bw', 'lsps'])` показывает, какой bandwidth pool вызвал следующий переход; размещение меняет сохранённый граф."],
-      "sdk_request": "for name in ('T1', 'T2', 'T3', 'T4'):\n    lsp = graph.add_lsp({'name': name, 'src': 'r10', 'dst': 'r14', 'bandwidth': '4M', 'paths': {'primary': {'role': 'primary', 'bandwidth': '4M'}}})\n    print(name, lsp['paths']['primary']['path'], lsp['paths']['primary']['cost'])\ngraph.delete_lsps()",
-      "sdk_output": "T1 ['r10', 'r100', 'r110', 'r14'] 30\nT2 ['r10', 'r100', 'r111', 'r14'] 40\nT3 ['r10', 'r100', 'r110', 'r14'] 45\nT4 ['r10', 'r11', 'r101', 'r110', 'r14'] 55\n{'deleted': 4}"
+      "command": "# Конфигурация маршрутизаторов не меняется: создайте через SDK четыре туннеля RSVP-TE по 4 Мбит/с",
+      "observations": [
+        "После каждого размещения вызовите `edges_list(include=['lsp_left_bw', 'lsps'])`, чтобы увидеть, уменьшение какого резерва привело к выбору следующего пути.",
+        "В конце обязательно вызовите `delete_lsps()`: размещение LSP изменяет сохранённый граф."
+      ],
+      "sdk_request": "for name in ('T1', 'T2', 'T3', 'T4'):\n    lsp = graph.add_lsp({\n        'name': name, 'src': 'r10', 'dst': 'r14', 'bandwidth': '4M',\n        'paths': {'primary': {'role': 'primary', 'bandwidth': '4M'}},\n    })\n    primary = lsp['paths']['primary']\n    print(name, primary['path'], primary['cost'])\nprint(graph.edges_list(include=['lsp_left_bw', 'lsps'], per_page=200)['items'])\ngraph.delete_lsps()",
+      "sdk_output": "T1 ['r10', 'r100', 'r110', 'r14'] 30\nT2 ['r10', 'r100', 'r111', 'r14'] 40\nT3 ['r10', 'r100', 'r110', 'r14'] 45\nT4 ['r10', 'r11', 'r101', 'r110', 'r14'] 55\n... lsp_left_bw_7 и lsps для каждого ребра ...\n{'deleted': 4}"
     }
   ]
 }
