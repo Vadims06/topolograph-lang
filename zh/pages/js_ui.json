@@ -281,8 +281,6 @@
   "path_bgp_found": "共 {total} 条，显示前 {shown} 条",
   "path_bgp_dst_node": "节点",
   "path_bgp_dst_via": "经由",
-  "path_bgp_dst_local": "本 PE 本地",
-  "path_bgp_dst_more": "另有 {count} 个来源",
   "path_bgp_assumption_import_not_observed": "路由器收到了该 VPN；是否安装取决于其导入 route target，而它不可观测。",
   "path_bgp_assumption_reflection_assumed": "对该路由器的反射是假定的：未采集反射器的出方向表。",
   "bgp_node_card_behalf_adj_rib_in": "由 {s} 通告给该路由器（{s} 的 Adj-RIB-Out，RFC 8671）",

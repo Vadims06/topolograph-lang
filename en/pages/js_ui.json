@@ -281,8 +281,6 @@
   "path_bgp_found": "found {total}, showing the first {shown}",
   "path_bgp_dst_node": "node",
   "path_bgp_dst_via": "via",
-  "path_bgp_dst_local": "local to this PE",
-  "path_bgp_dst_more": "+{count} more sources",
   "path_bgp_assumption_import_not_observed": "The router received this VPN; whether it installed it depends on its import route targets, which are not observable.",
   "path_bgp_assumption_reflection_assumed": "Reflection to this router is assumed: the reflector's outbound table is not collected.",
   "bgp_node_card_behalf_adj_rib_in": "as advertised by {s} to this router ({s} Adj-RIB-Out, RFC 8671)",
