@@ -40,5 +40,45 @@
   "events_title": "Eventos BGP individuais", "events_intro": "Events usa o mesmo painel e intervalo temporal, mas mantém cada observação de rota e peer em vez de as reduzir a uma diferença T0-T1.", "events_steps": ["Mude de Compare para Events e mantenha uma janela que cubra as alterações da demo.", "Prima Run e verifique uma rota adicionada, um evento peer down e uma alteração de rota para 100.14.210.0/24.", "Use event, kind, prefix, peer source, peer target e at para distinguir alterações de rota de alterações do estado da sessão."], "events_visual": "Events apresenta cronologicamente a rota adicionada, o evento peer-down e a rota alterada com MED 80.", "events_alt": "Modo Events mostrando uma rota adicionada, um evento peer down e uma alteração de rota", "events_result": "Events mostra as três observações por ordem. Ao contrário de Compare, mantém eventos intermédios mesmo quando o estado final não muda.",
   "resolution_title": "9. Resolução do próximo salto BGP através de OSPF", "resolution_intro": "O BGP escolhe a rota; o OSPF fornece acessibilidade ao próximo salto BGP selecionado. A vista mostra explicitamente essa transição.", "resolution_steps": ["No modo Standard / IGP, use o PE30 como origem e 100.14.0.0/24 como destino.", "Inspecione a linha BGP selecionada e identifique o PE14 como próximo salto BGP.", "Abra Route resolution e leia da esquerda para a direita: a primeira linha é BGP com distância administrativa 200 e próximo salto PE14.", "Continue pelas cinco linhas IGP com distância administrativa 110 que resolvem fisicamente a acessibilidade do PE30 ao PE14."], "resolution_alt": "Tabela com uma decisão BGP seguida de cinco linhas de resolução IGP", "resolution_visual": "A tabela separa a escolha da rota BGP dos saltos IGP que tornam o seu próximo salto acessível.", "resolution_result": "O próximo salto BGP aponta para o PE14; o resto da rota é construído com dados OSPF.",
   "limits_title": "10. Vista sem possibilidade de construir um caminho", "limits_intro": "Filtre por PE31. O Topolograph mostra as rotas que o RR1 recebeu do PE31, mas a RFC 7854 por si só não revela a rota instalada pelo PE31 nem o que o RR1 lhe anunciou.", "limits_steps": ["Abra Rotas BGP e filtre peer ip por PE31. Adj-RIB-In (pre) e (post) mostram as rotas que o RR1 recebeu do PE31, não a tabela do PE31.", "Abra o formulário BGP / VPN e selecione Router PE31. O formulário avisa que a tabela não é observada e não permite construir um caminho com dados BGP.", "Compare PE31 com PE15: para PE15, o Topolograph usa a Loc-RIB do RR2 e pressupõe explicitamente que o RR2 lhe anunciou a rota e que o PE15 aplicou a sua política de entrada."],
-  "limits_result": "O Topolograph não constrói um caminho quando os dados BMP disponíveis não descrevem a tabela do dispositivo selecionado. Para remover este limite, forneça a Loc-RIB do dispositivo através da RFC 9069 ou o seu Adj-RIB-Out post-policy por vizinho através da RFC 8671."
+  "limits_result": "O Topolograph não constrói um caminho quando os dados BMP disponíveis não descrevem a tabela do dispositivo selecionado. Para remover este limite, forneça a Loc-RIB do dispositivo através da RFC 9069 ou o seu Adj-RIB-Out post-policy por vizinho através da RFC 8671.",
+  "nav_evpn": "EVPN: hosts, VNIs, movimentos de MAC",
+  "evpn_title": "11. EVPN: onde está um host, quais nós leaf têm um VNI, movimentos de MAC",
+  "evpn_intro": "A demo também contém uma fábrica BGP EVPN/VXLAN capturada no laboratório 13-hosts-demo-bgp: os nós leaf 123.14.14.14, 123.15.15.15, 123.123.30.30 e 123.123.31.31, cada um com o seu router ID como VTEP, L2VNI 1010 nos quatro e L2VNI 1020 em 123.123.30.30 e 123.123.31.31, e a VRF tenant1 com L3VNI 5000. Os dois route reflectors a exportam por BMP.",
+  "evpn_vni_title": "Quais nós leaf têm um VNI",
+  "evpn_vni_steps": [
+    "Mude para o modo de caminho BGP / VPN e deixe Router vazio. VPN or global table passa a listar todos os VNIs e VRFs da fábrica.",
+    "Escolha 65000:1020 · VNI 1020. O grafo destaca 123.123.30.30 e 123.123.31.31, e o formulário indica «Nós leaf com esta VPN: 2».",
+    "Clique em «Colorir underlay» para pintar o caminho IGP entre esses nós leaf: os enlaces que levam o VNI 1020 entre os seus VTEPs."
+  ],
+  "evpn_vni_alt": "Formulário BGP / VPN sem router e com o VNI 1020 escolhido, com dois nós leaf encontrados",
+  "evpn_underlay_alt": "Grafo com o caminho IGP entre os dois nós leaf do VNI 1020 pintado",
+  "evpn_host_title": "Onde está um host",
+  "evpn_host_steps": [
+    "Defina Router como 123.15.15.15 e VPN or global table como tenant1.",
+    "Digite 10.10.20.13 em To. O cartão abaixo do formulário mostra o VTEP 123.123.31.31, o VNI 1020, o L3VNI 5000 e o MAC do host 00:c1:ab:00:00:03.",
+    "Clique em Build a path. O caminho IGP de 123.15.15.15 até o VTEP 123.123.31.31 é pintado: o host existe apenas no overlay, então o caminho termina no seu VTEP."
+  ],
+  "evpn_host_alt": "Formulário BGP / VPN com o cartão do host 10.10.20.13 atrás do VTEP 123.123.31.31",
+  "evpn_host_note": "123.15.15.15 tem o VNI 1010, mas não o VNI 1020, então alcança este host pela VRF tenant1 (symmetric IRB, L3VNI 5000), e não pelo VNI.",
+  "evpn_move_title": "Um MAC se moveu?",
+  "evpn_move_steps": [
+    "Defina Router como 123.123.101.101 e VPN or global table como 65000:1010 · VNI 1010.",
+    "Digite o MAC 00:c1:ab:00:00:01 em To. O cartão mostra o VTEP atual 123.15.15.15 e o último movimento, 123.14.14.14 → 123.15.15.15, com o horário.",
+    "Um movimento é o MAC saindo de um VTEP e aparecendo em outro. O mesmo MAC anunciado por vários VTEPs com um mesmo ESI é multihoming, não um movimento."
+  ],
+  "evpn_move_alt": "Cartão do MAC 00:c1:ab:00:00:01 com o último movimento de 123.14.14.14 para 123.15.15.15",
+  "evpn_mh_title": "Um host com multihoming",
+  "evpn_mh_steps": [
+    "Mantenha Router 123.123.101.101 e o VNI 1010, e digite 00:c1:ab:00:00:02 em To.",
+    "O cartão lista dois VTEPs, 123.123.30.30 e 123.123.31.31, e o ESI 03:44:38:39:ff:00:01:00:00:01: o host está ligado aos dois nós leaf por um único Ethernet Segment.",
+    "Clique em Build a path. Os caminhos para os dois VTEPs são pintados de uma vez. Se um nó leaf falhar, o outro continua atendendo o segmento; qual nó encaminha o tráfego broadcast (o designated forwarder) é decidido nos próprios nós leaf e não é visível por BMP."
+  ],
+  "evpn_mh_alt": "Cartão do MAC 00:c1:ab:00:00:02 com dois VTEPs e um ESI",
+  "evpn_mh_path_alt": "Grafo com os caminhos de 123.123.101.101 para os dois VTEPs do Ethernet Segment",
+  "evpn_l3_title": "Sub-redes de uma VRF",
+  "evpn_l3_steps": [
+    "Abra Graph table, selecione BGP Routes e filtre a coluna evpn route type por 5.",
+    "A tabela lista as rotas IP Prefix da VRF tenant1: 10.10.10.0/24 dos quatro nós leaf e 10.10.20.0/24 de 123.123.30.30 e 123.123.31.31, cada uma com L3VNI 5000 e o router MAC do seu nó leaf."
+  ],
+  "evpn_result": "Cada resposta vem dos dados BMP dos route reflectors, resolvidos sobre o grafo OSPF: um VTEP é o nó leaf com esse router ID, e um caminho até um host termina no seu VTEP."
 }

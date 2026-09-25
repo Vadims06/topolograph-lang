@@ -67,5 +67,45 @@
   "resolution_alt": "Tabla con una decisión BGP seguida de cinco filas de resolución IGP", "resolution_visual": "La tabla separa la selección de ruta BGP de los saltos IGP que hacen alcanzable su siguiente salto.", "resolution_result": "El siguiente salto BGP apunta a PE14; el resto de la ruta se construye con datos OSPF.",
   "limits_title": "10. Vista que no permite construir un camino", "limits_intro": "Filtre por PE31. Topolograph muestra las rutas que RR1 recibió de PE31, pero RFC 7854 por sí sola no revela qué ruta instaló PE31 ni qué le anunció RR1.",
   "limits_steps": ["Abra Rutas BGP y filtre peer ip por PE31. Adj-RIB-In (pre) y (post) muestran rutas que RR1 recibió de PE31, no la tabla de PE31.", "Abra el formulario BGP / VPN y seleccione Router PE31. El formulario advierte que su tabla no se observa y no permite construir un camino con datos BGP.", "Compare PE31 con PE15: para PE15, Topolograph usa la Loc-RIB de RR2 y supone explícitamente que RR2 le anunció la ruta y que PE15 aplicó su política de entrada."],
-  "limits_result": "Topolograph no construye un camino cuando los datos BMP disponibles no describen la tabla del dispositivo seleccionado. Para eliminar el límite, proporcione su Loc-RIB mediante RFC 9069 o su Adj-RIB-Out post-policy por vecino mediante RFC 8671."
+  "limits_result": "Topolograph no construye un camino cuando los datos BMP disponibles no describen la tabla del dispositivo seleccionado. Para eliminar el límite, proporcione su Loc-RIB mediante RFC 9069 o su Adj-RIB-Out post-policy por vecino mediante RFC 8671.",
+  "nav_evpn": "EVPN: hosts, VNI, movimientos de MAC",
+  "evpn_title": "11. EVPN: dónde está un host, qué nodos hoja tienen un VNI, movimientos de MAC",
+  "evpn_intro": "La demo también contiene una fábrica BGP EVPN/VXLAN capturada en el laboratorio 13-hosts-demo-bgp: los nodos hoja 123.14.14.14, 123.15.15.15, 123.123.30.30 y 123.123.31.31, cada uno con su router ID como VTEP, L2VNI 1010 en los cuatro y L2VNI 1020 en 123.123.30.30 y 123.123.31.31, y la VRF tenant1 con L3VNI 5000. Ambos route reflectors la exportan por BMP.",
+  "evpn_vni_title": "Qué nodos hoja tienen un VNI",
+  "evpn_vni_steps": [
+    "Cambie al modo de camino BGP / VPN y deje Router vacío. VPN or global table muestra entonces todos los VNI y VRF de la fábrica.",
+    "Elija 65000:1020 · VNI 1020. El grafo resalta 123.123.30.30 y 123.123.31.31, y el formulario indica «Nodos hoja con esta VPN: 2».",
+    "Pulse «Colorear underlay» para pintar el camino IGP entre estos nodos hoja: los enlaces que llevan el VNI 1020 entre sus VTEP."
+  ],
+  "evpn_vni_alt": "Formulario BGP / VPN sin router y con el VNI 1020 elegido, con dos nodos hoja encontrados",
+  "evpn_underlay_alt": "Grafo con el camino IGP entre los dos nodos hoja del VNI 1020 pintado",
+  "evpn_host_title": "Dónde está un host",
+  "evpn_host_steps": [
+    "Establezca Router en 123.15.15.15 y VPN or global table en tenant1.",
+    "Escriba 10.10.20.13 en To. La tarjeta bajo el formulario muestra el VTEP 123.123.31.31, el VNI 1020, el L3VNI 5000 y la MAC del host 00:c1:ab:00:00:03.",
+    "Pulse Build a path. Se pinta el camino IGP de 123.15.15.15 al VTEP 123.123.31.31: el host solo existe en el overlay, así que el camino termina en su VTEP."
+  ],
+  "evpn_host_alt": "Formulario BGP / VPN con la tarjeta del host 10.10.20.13 detrás del VTEP 123.123.31.31",
+  "evpn_host_note": "123.15.15.15 tiene el VNI 1010 pero no el VNI 1020, así que llega a este host a través de la VRF tenant1 (symmetric IRB, L3VNI 5000), no a través del VNI.",
+  "evpn_move_title": "¿Se movió una MAC?",
+  "evpn_move_steps": [
+    "Establezca Router en 123.123.101.101 y VPN or global table en 65000:1010 · VNI 1010.",
+    "Escriba la MAC 00:c1:ab:00:00:01 en To. La tarjeta muestra su VTEP actual 123.15.15.15 y el último movimiento, 123.14.14.14 → 123.15.15.15, con su hora.",
+    "Un movimiento es la MAC dejando un VTEP y apareciendo en otro. La misma MAC anunciada por varios VTEP con un mismo ESI es multihoming, no un movimiento."
+  ],
+  "evpn_move_alt": "Tarjeta de la MAC 00:c1:ab:00:00:01 con su último movimiento de 123.14.14.14 a 123.15.15.15",
+  "evpn_mh_title": "Un host con multihoming",
+  "evpn_mh_steps": [
+    "Mantenga Router 123.123.101.101 y el VNI 1010, y escriba 00:c1:ab:00:00:02 en To.",
+    "La tarjeta lista dos VTEP, 123.123.30.30 y 123.123.31.31, y el ESI 03:44:38:39:ff:00:01:00:00:01: el host está conectado a ambos nodos hoja a través de un Ethernet Segment.",
+    "Pulse Build a path. Los caminos a ambos VTEP se pintan a la vez. Si un nodo hoja falla, el otro sigue sirviendo el segmento; qué nodo reenvía el tráfico broadcast (el designated forwarder) se decide en los nodos hoja y no es visible por BMP."
+  ],
+  "evpn_mh_alt": "Tarjeta de la MAC 00:c1:ab:00:00:02 con dos VTEP y un ESI",
+  "evpn_mh_path_alt": "Grafo con los caminos de 123.123.101.101 a ambos VTEP del Ethernet Segment",
+  "evpn_l3_title": "Subredes de una VRF",
+  "evpn_l3_steps": [
+    "Abra Graph table, elija BGP Routes y filtre la columna evpn route type por 5.",
+    "La tabla lista las rutas IP Prefix de la VRF tenant1: 10.10.10.0/24 desde los cuatro nodos hoja y 10.10.20.0/24 desde 123.123.30.30 y 123.123.31.31, cada una con L3VNI 5000 y la router MAC de su nodo hoja."
+  ],
+  "evpn_result": "Cada respuesta sale de los datos BMP de los route reflectors, resueltos sobre el grafo OSPF: un VTEP es el nodo hoja con ese router ID, y un camino a un host termina en su VTEP."
 }
