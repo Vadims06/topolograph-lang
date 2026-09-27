@@ -40,5 +40,45 @@
   "events_title": "Événements BGP individuels", "events_intro": "Events utilise le même volet et la même période, mais conserve chaque observation de route et de peer au lieu de les réduire à un écart T0-T1.", "events_steps": ["Passez de Compare à Events et conservez une période couvrant les changements de la démo.", "Cliquez sur Run et vérifiez l’ajout d’une route, un événement peer down et une modification de route pour 100.14.210.0/24.", "Utilisez event, kind, prefix, peer source, peer target et at pour distinguer les changements de route des changements de session."], "events_visual": "Events répertorie chronologiquement la route ajoutée, l’événement peer-down puis la route modifiée avec MED 80.", "events_alt": "Mode Events montrant l’ajout d’une route, un événement peer down et une modification de route", "events_result": "Events montre les trois observations dans l’ordre. Contrairement à Compare, il conserve les événements intermédiaires même si l’état final est inchangé.",
   "resolution_title": "9. Résolution du prochain saut BGP via OSPF", "resolution_intro": "BGP choisit la route ; OSPF fournit l’accessibilité vers le prochain saut BGP sélectionné. La vue montre explicitement ce relais.", "resolution_steps": ["En mode Standard / IGP, utilisez PE30 comme source et 100.14.0.0/24 comme destination.", "Examinez la ligne BGP sélectionnée et identifiez PE14 comme prochain saut.", "Ouvrez Route resolution et lisez de gauche à droite : la première ligne est BGP, avec une distance administrative de 200 et PE14 comme prochain saut.", "Poursuivez sur les cinq lignes IGP de distance administrative 110 qui résolvent physiquement l’accessibilité de PE30 à PE14."], "resolution_alt": "Table avec une décision BGP suivie de cinq lignes de résolution IGP", "resolution_visual": "La table sépare le choix de route BGP des sauts IGP qui rendent son prochain saut accessible.", "resolution_result": "Le prochain saut BGP pointe vers PE14 ; le reste de la route est construit à partir des données OSPF.",
   "limits_title": "10. Vue ne permettant pas de construire un chemin", "limits_intro": "Filtrez sur PE31. Topolograph montre les routes reçues de PE31 par RR1, mais RFC 7854 seule ne révèle ni la route installée par PE31 ni ce que RR1 lui a annoncé.", "limits_steps": ["Ouvrez Routes BGP et filtrez peer ip sur PE31. Adj-RIB-In (pre) et (post) montrent les routes reçues de PE31 par RR1, pas la table de PE31.", "Ouvrez le formulaire BGP / VPN et sélectionnez Router PE31. Il avertit que sa table n’est pas observée et interdit de construire un chemin avec les données BGP.", "Comparez PE31 et PE15 : pour PE15, Topolograph utilise la Loc-RIB de RR2 et suppose explicitement que RR2 lui a annoncé la route et que PE15 a appliqué sa politique entrante."],
-  "limits_result": "Topolograph ne construit pas de chemin lorsque les données BMP disponibles ne décrivent pas la table de l’équipement sélectionné. Pour lever cette limite, fournissez sa Loc-RIB via RFC 9069 ou son Adj-RIB-Out post-policy par voisin via RFC 8671."
+  "limits_result": "Topolograph ne construit pas de chemin lorsque les données BMP disponibles ne décrivent pas la table de l’équipement sélectionné. Pour lever cette limite, fournissez sa Loc-RIB via RFC 9069 ou son Adj-RIB-Out post-policy par voisin via RFC 8671.",
+  "nav_evpn": "EVPN : hôtes, VNI, déplacements de MAC",
+  "evpn_title": "11. EVPN : où se trouve un hôte, quelles feuilles portent un VNI, déplacements de MAC",
+  "evpn_intro": "La démo contient aussi une fabrique BGP EVPN/VXLAN capturée sur le lab 13-hosts-demo-bgp : les feuilles 123.14.14.14, 123.15.15.15, 123.123.30.30 et 123.123.31.31, chacune avec son router ID comme VTEP, le L2VNI 1010 sur les quatre et le L2VNI 1020 sur 123.123.30.30 et 123.123.31.31, et la VRF tenant1 avec le L3VNI 5000. Les deux route reflectors l'exportent par BMP.",
+  "evpn_vni_title": "Quelles feuilles portent un VNI",
+  "evpn_vni_steps": [
+    "Passez en mode de chemin BGP / VPN et laissez Router vide. VPN or global table liste alors tous les VNI et VRF de la fabrique.",
+    "Choisissez 65000:1020 · VNI 1020. Le graphe met en évidence 123.123.30.30 et 123.123.31.31, et le formulaire indique « Feuilles portant ce VPN : 2 ».",
+    "Cliquez sur « Colorer l'underlay » pour peindre le chemin IGP entre ces feuilles : les liens qui transportent le VNI 1020 entre ses VTEP."
+  ],
+  "evpn_vni_alt": "Formulaire BGP / VPN sans routeur, VNI 1020 choisi, deux feuilles trouvées",
+  "evpn_underlay_alt": "Graphe avec le chemin IGP entre les deux feuilles du VNI 1020 peint",
+  "evpn_host_title": "Où se trouve un hôte",
+  "evpn_host_steps": [
+    "Choisissez 123.15.15.15 comme Router et tenant1 comme VPN or global table.",
+    "Saisissez 10.10.20.13 dans To. La carte sous le formulaire affiche le VTEP 123.123.31.31, le VNI 1020, le L3VNI 5000 et la MAC de l'hôte 00:c1:ab:00:00:03.",
+    "Cliquez sur Build a path. Le chemin IGP de 123.15.15.15 au VTEP 123.123.31.31 est peint : l'hôte n'existe que dans l'overlay, le chemin s'arrête donc à son VTEP."
+  ],
+  "evpn_host_alt": "Formulaire BGP / VPN avec la carte de l'hôte 10.10.20.13 derrière le VTEP 123.123.31.31",
+  "evpn_host_note": "123.15.15.15 porte le VNI 1010 mais pas le VNI 1020 : il atteint donc cet hôte par la VRF tenant1 (symmetric IRB, L3VNI 5000), et non par le VNI.",
+  "evpn_move_title": "Une MAC s'est-elle déplacée",
+  "evpn_move_steps": [
+    "Choisissez 123.123.101.101 comme Router et 65000:1010 · VNI 1010 comme VPN or global table.",
+    "Saisissez la MAC 00:c1:ab:00:00:01 dans To. La carte affiche son VTEP actuel 123.15.15.15 et le dernier déplacement, 123.14.14.14 → 123.15.15.15, avec son heure.",
+    "Un déplacement, c'est la MAC qui quitte un VTEP et apparaît sur un autre. La même MAC annoncée par plusieurs VTEP sous un même ESI relève du multihoming, pas d'un déplacement."
+  ],
+  "evpn_move_alt": "Carte de la MAC 00:c1:ab:00:00:01 avec son dernier déplacement de 123.14.14.14 vers 123.15.15.15",
+  "evpn_mh_title": "Un hôte en multihoming",
+  "evpn_mh_steps": [
+    "Gardez Router 123.123.101.101 et le VNI 1010, et saisissez 00:c1:ab:00:00:02 dans To.",
+    "La carte liste deux VTEP, 123.123.30.30 et 123.123.31.31, et l'ESI 03:44:38:39:ff:00:01:00:00:01 : l'hôte est relié aux deux feuilles par un seul Ethernet Segment.",
+    "Cliquez sur Build a path. Les chemins vers les deux VTEP sont peints en même temps. Si une feuille tombe, l'autre dessert toujours le segment ; la feuille qui transmet le trafic broadcast (le designated forwarder) est choisie sur les feuilles et n'est pas visible par BMP."
+  ],
+  "evpn_mh_alt": "Carte de la MAC 00:c1:ab:00:00:02 avec deux VTEP et un ESI",
+  "evpn_mh_path_alt": "Graphe avec les chemins de 123.123.101.101 vers les deux VTEP de l'Ethernet Segment",
+  "evpn_l3_title": "Sous-réseaux d'une VRF",
+  "evpn_l3_steps": [
+    "Ouvrez Graph table, sélectionnez BGP Routes et filtrez la colonne evpn route type sur 5.",
+    "La table liste les routes IP Prefix de la VRF tenant1 : 10.10.10.0/24 depuis les quatre feuilles et 10.10.20.0/24 depuis 123.123.30.30 et 123.123.31.31, chacune avec le L3VNI 5000 et sa feuille comme VTEP."
+  ],
+  "evpn_result": "Chaque réponse provient des données BMP des route reflectors, rattachées au graphe OSPF : un VTEP est la feuille qui porte ce router ID, et un chemin vers un hôte s'arrête à son VTEP."
 }

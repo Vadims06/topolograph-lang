@@ -160,5 +160,45 @@
     "Open the BGP / VPN path form and select Router 123.123.31.31. The form warns that this router's table is not observed and does not allow a path to be built from BGP data.",
     "Compare 123.123.31.31 (PE31) with 123.15.15.15 (PE15): for 123.15.15.15 (PE15), Topolograph uses 123.123.101.101 (RR2) Loc-RIB and explicitly assumes that 123.123.101.101 (RR2) advertised the route to 123.15.15.15 (PE15) and 123.15.15.15 (PE15) applied its inbound policy."
   ],
-  "limits_result": "Topolograph does not build a path when the available BMP data does not describe the selected device's routing table. To remove this limit, provide the device's Loc-RIB through RFC 9069 or its per-neighbor Adj-RIB-Out post-policy through RFC 8671."
+  "limits_result": "Topolograph does not build a path when the available BMP data does not describe the selected device's routing table. To remove this limit, provide the device's Loc-RIB through RFC 9069 or its per-neighbor Adj-RIB-Out post-policy through RFC 8671.",
+  "nav_evpn": "EVPN: hosts, VNIs, MAC moves",
+  "evpn_title": "11. EVPN: where a host is, which leaves carry a VNI, MAC moves",
+  "evpn_intro": "The demo also holds a BGP EVPN/VXLAN fabric captured on the 13-hosts-demo-bgp lab: leaves 123.14.14.14, 123.15.15.15, 123.123.30.30 and 123.123.31.31, each using its router ID as VTEP, L2VNI 1010 on all four and L2VNI 1020 on 123.123.30.30 and 123.123.31.31, and VRF tenant1 with L3VNI 5000. Both route reflectors export it over BMP.",
+  "evpn_vni_title": "Which leaves carry a VNI",
+  "evpn_vni_steps": [
+    "Switch to BGP / VPN path mode and leave Router empty. VPN or global table then lists every VNI and VRF of the fabric.",
+    "Choose 65000:1020 · VNI 1020. The graph highlights 123.123.30.30 and 123.123.31.31, and the form reports Leaves with this VPN: 2.",
+    "Press Colour underlay to paint the IGP path between these leaves: the links that carry VNI 1020 between its VTEPs."
+  ],
+  "evpn_vni_alt": "BGP / VPN form with no router and VNI 1020 chosen, reporting two leaves",
+  "evpn_underlay_alt": "Graph with the IGP path between the two VNI 1020 leaves painted",
+  "evpn_host_title": "Where a host is",
+  "evpn_host_steps": [
+    "Set Router to 123.15.15.15 and VPN or global table to tenant1.",
+    "Type 10.10.20.13 into To. The card below the form shows VTEP 123.123.31.31, VNI 1020, L3VNI 5000 and the host's MAC 00:c1:ab:00:00:03.",
+    "Press Build a path. The IGP path from 123.15.15.15 to VTEP 123.123.31.31 is painted: the host exists only in the overlay, so the path ends at its VTEP."
+  ],
+  "evpn_host_alt": "BGP / VPN form with the card for host 10.10.20.13 behind VTEP 123.123.31.31",
+  "evpn_host_note": "123.15.15.15 carries VNI 1010 but not VNI 1020, so it reaches this host through VRF tenant1 (symmetric IRB, L3VNI 5000), not through the VNI.",
+  "evpn_move_title": "Did a MAC move",
+  "evpn_move_steps": [
+    "Set Router to 123.123.101.101 and VPN or global table to 65000:1010 · VNI 1010.",
+    "Type the MAC 00:c1:ab:00:00:01 into To. The card shows its current VTEP 123.15.15.15 and the last move, 123.14.14.14 → 123.15.15.15, with its time.",
+    "A move is the MAC leaving one VTEP and appearing on another. The same MAC advertised by several VTEPs under one ESI is multihoming, not a move."
+  ],
+  "evpn_move_alt": "Card for MAC 00:c1:ab:00:00:01 with its last move from 123.14.14.14 to 123.15.15.15",
+  "evpn_mh_title": "A multihomed host",
+  "evpn_mh_steps": [
+    "Keep Router 123.123.101.101 and VNI 1010, and type 00:c1:ab:00:00:02 into To.",
+    "The card lists two VTEPs, 123.123.30.30 and 123.123.31.31, and ESI 03:44:38:39:ff:00:01:00:00:01: the host is attached to both leaves through one Ethernet Segment.",
+    "Press Build a path. The paths to both VTEPs are painted at once. If one leaf fails, the other still serves the segment; which leaf forwards broadcast traffic (the designated forwarder) is decided on the leaves and is not visible over BMP."
+  ],
+  "evpn_mh_alt": "Card for MAC 00:c1:ab:00:00:02 with two VTEPs and one ESI",
+  "evpn_mh_path_alt": "Graph with the paths from 123.123.101.101 to both VTEPs of the Ethernet Segment",
+  "evpn_l3_title": "Subnets of a VRF",
+  "evpn_l3_steps": [
+    "Open Graph table, select BGP Routes and filter evpn route type by 5.",
+    "The table lists the IP Prefix routes of VRF tenant1: 10.10.10.0/24 from all four leaves and 10.10.20.0/24 from 123.123.30.30 and 123.123.31.31, each with L3VNI 5000 and its leaf as the VTEP."
+  ],
+  "evpn_result": "Every answer comes from the BMP feed of the route reflectors, resolved onto the OSPF graph: a VTEP is the leaf with that router ID, and a path to a host ends at its VTEP."
 }

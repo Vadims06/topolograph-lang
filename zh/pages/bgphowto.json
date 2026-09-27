@@ -256,5 +256,45 @@
     "打开 BGP / VPN 路径查找表单并选择 Router 123.123.31.31。表单会警告未观测到该路由器的表，并且不允许根据 BGP 数据构建路径。",
     "将 123.123.31.31 (PE31) 与 123.15.15.15 (PE15) 对比：对于 123.15.15.15 (PE15)，Topolograph 使用 123.123.101.101 (RR2) Loc-RIB，并明确假设 123.123.101.101 (RR2) 已向 123.15.15.15 (PE15) 通告路由且 123.15.15.15 (PE15) 已应用入站策略。"
   ],
-  "limits_result": "当可用 BMP 数据无法描述所选设备的路由表时，Topolograph 不会构建路径。要消除此限制，请通过 RFC 9069 提供该设备的 Loc-RIB，或通过 RFC 8671 提供其按 BGP 邻居的 Adj-RIB-Out post-policy。"
+  "limits_result": "当可用 BMP 数据无法描述所选设备的路由表时，Topolograph 不会构建路径。要消除此限制，请通过 RFC 9069 提供该设备的 Loc-RIB，或通过 RFC 8671 提供其按 BGP 邻居的 Adj-RIB-Out post-policy。",
+  "nav_evpn": "EVPN：主机、VNI、MAC 迁移",
+  "evpn_title": "11. EVPN：主机在哪里、哪些叶子节点承载某个 VNI、MAC 迁移",
+  "evpn_intro": "演示中还包含一个在 13-hosts-demo-bgp 实验室中采集的 BGP EVPN/VXLAN 网络：叶子节点 123.14.14.14、123.15.15.15、123.123.30.30 和 123.123.31.31，每个节点都以自己的 router ID 作为 VTEP；四个叶子节点都有 L2VNI 1010，123.123.30.30 和 123.123.31.31 还有 L2VNI 1020；VRF tenant1 使用 L3VNI 5000。两个路由反射器都通过 BMP 导出这些数据。",
+  "evpn_vni_title": "哪些叶子节点承载某个 VNI",
+  "evpn_vni_steps": [
+    "切换到 BGP / VPN 路径模式，并将 Router 留空。此时 VPN 或全局表会列出网络中的所有 VNI 和 VRF。",
+    "选择 65000:1020 · VNI 1020。图中高亮 123.123.30.30 和 123.123.31.31，表单显示「承载此 VPN 的叶子节点: 2」。",
+    "点击「为 underlay 着色」，绘制这些叶子节点之间的 IGP 路径：即 VNI 1020 在其 VTEP 之间经过的链路。"
+  ],
+  "evpn_vni_alt": "未选路由器、已选 VNI 1020 的 BGP / VPN 表单，找到两个叶子节点",
+  "evpn_underlay_alt": "已绘制 VNI 1020 两个叶子节点之间 IGP 路径的图",
+  "evpn_host_title": "主机在哪里",
+  "evpn_host_steps": [
+    "将 Router 设为 123.15.15.15，将 VPN 或全局表设为 tenant1。",
+    "在 To 中输入 10.10.20.13。表单下方的卡片显示 VTEP 123.123.31.31、VNI 1020、L3VNI 5000 以及主机 MAC 00:c1:ab:00:00:03。",
+    "点击 Build a path。从 123.15.15.15 到 VTEP 123.123.31.31 的 IGP 路径被绘制出来：主机只存在于 overlay 中，所以路径止于它的 VTEP。"
+  ],
+  "evpn_host_alt": "BGP / VPN 表单，显示位于 VTEP 123.123.31.31 之后的主机 10.10.20.13 的卡片",
+  "evpn_host_note": "123.15.15.15 承载 VNI 1010 但不承载 VNI 1020，因此它通过 VRF tenant1（symmetric IRB，L3VNI 5000）而不是通过该 VNI 到达这个主机。",
+  "evpn_move_title": "MAC 是否发生过迁移",
+  "evpn_move_steps": [
+    "将 Router 设为 123.123.101.101，将 VPN 或全局表设为 65000:1010 · VNI 1010。",
+    "在 To 中输入 MAC 00:c1:ab:00:00:01。卡片显示它当前的 VTEP 123.15.15.15 以及最近一次迁移 123.14.14.14 → 123.15.15.15 和迁移时间。",
+    "迁移是指 MAC 离开一个 VTEP 并出现在另一个 VTEP 上。同一个 MAC 由多个 VTEP 在同一 ESI 下通告属于 multihoming，而不是迁移。"
+  ],
+  "evpn_move_alt": "MAC 00:c1:ab:00:00:01 的卡片，显示最近一次从 123.14.14.14 迁移到 123.15.15.15",
+  "evpn_mh_title": "多归属主机",
+  "evpn_mh_steps": [
+    "保持 Router 为 123.123.101.101、VNI 为 1010，在 To 中输入 00:c1:ab:00:00:02。",
+    "卡片列出两个 VTEP：123.123.30.30 和 123.123.31.31，以及 ESI 03:44:38:39:ff:00:01:00:00:01：主机通过一个 Ethernet Segment 同时连接到这两个叶子节点。",
+    "点击 Build a path。到两个 VTEP 的路径会同时绘制。如果一个叶子节点故障，另一个仍会服务该网段；由哪个叶子节点转发广播流量（designated forwarder）在叶子节点上决定，通过 BMP 不可见。"
+  ],
+  "evpn_mh_alt": "MAC 00:c1:ab:00:00:02 的卡片，显示两个 VTEP 和一个 ESI",
+  "evpn_mh_path_alt": "显示从 123.123.101.101 到 Ethernet Segment 两个 VTEP 路径的图",
+  "evpn_l3_title": "VRF 的子网",
+  "evpn_l3_steps": [
+    "打开 Graph table，选择 BGP Routes，并按 5 过滤 evpn route type 列。",
+    "表格列出 VRF tenant1 的 IP Prefix 路由：来自全部四个叶子节点的 10.10.10.0/24，以及来自 123.123.30.30 和 123.123.31.31 的 10.10.20.0/24，每条都带有 L3VNI 5000，并以所属叶子节点作为 VTEP。"
+  ],
+  "evpn_result": "每个答案都来自路由反射器的 BMP 数据，并映射到 OSPF 图上：VTEP 就是具有该 router ID 的叶子节点，到主机的路径止于它的 VTEP。"
 }
