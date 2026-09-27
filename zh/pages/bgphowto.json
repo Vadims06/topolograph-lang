@@ -294,7 +294,7 @@
   "evpn_l3_title": "VRF 的子网",
   "evpn_l3_steps": [
     "打开 Graph table，选择 BGP Routes，并按 5 过滤 evpn route type 列。",
-    "表格列出 VRF tenant1 的 IP Prefix 路由：来自全部四个叶子节点的 10.10.10.0/24，以及来自 123.123.30.30 和 123.123.31.31 的 10.10.20.0/24，每条都带有 L3VNI 5000 和所属叶子节点的 router MAC。"
+    "表格列出 VRF tenant1 的 IP Prefix 路由：来自全部四个叶子节点的 10.10.10.0/24，以及来自 123.123.30.30 和 123.123.31.31 的 10.10.20.0/24，每条都带有 L3VNI 5000，并以所属叶子节点作为 VTEP。"
   ],
   "evpn_result": "每个答案都来自路由反射器的 BMP 数据，并映射到 OSPF 图上：VTEP 就是具有该 router ID 的叶子节点，到主机的路径止于它的 VTEP。"
 }

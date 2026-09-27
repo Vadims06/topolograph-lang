@@ -105,7 +105,7 @@
   "evpn_l3_title": "Subredes de una VRF",
   "evpn_l3_steps": [
     "Abra Graph table, elija BGP Routes y filtre la columna evpn route type por 5.",
-    "La tabla lista las rutas IP Prefix de la VRF tenant1: 10.10.10.0/24 desde los cuatro nodos hoja y 10.10.20.0/24 desde 123.123.30.30 y 123.123.31.31, cada una con L3VNI 5000 y la router MAC de su nodo hoja."
+    "La tabla lista las rutas IP Prefix de la VRF tenant1: 10.10.10.0/24 desde los cuatro nodos hoja y 10.10.20.0/24 desde 123.123.30.30 y 123.123.31.31, cada una con L3VNI 5000 y su nodo hoja como VTEP."
   ],
   "evpn_result": "Cada respuesta sale de los datos BMP de los route reflectors, resueltos sobre el grafo OSPF: un VTEP es el nodo hoja con ese router ID, y un camino a un host termina en su VTEP."
 }

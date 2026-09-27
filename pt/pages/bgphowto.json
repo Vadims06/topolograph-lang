@@ -78,7 +78,7 @@
   "evpn_l3_title": "Sub-redes de uma VRF",
   "evpn_l3_steps": [
     "Abra Graph table, selecione BGP Routes e filtre a coluna evpn route type por 5.",
-    "A tabela lista as rotas IP Prefix da VRF tenant1: 10.10.10.0/24 dos quatro nós leaf e 10.10.20.0/24 de 123.123.30.30 e 123.123.31.31, cada uma com L3VNI 5000 e o router MAC do seu nó leaf."
+    "A tabela lista as rotas IP Prefix da VRF tenant1: 10.10.10.0/24 dos quatro nós leaf e 10.10.20.0/24 de 123.123.30.30 e 123.123.31.31, cada uma com L3VNI 5000 e o seu nó leaf como VTEP."
   ],
   "evpn_result": "Cada resposta vem dos dados BMP dos route reflectors, resolvidos sobre o grafo OSPF: um VTEP é o nó leaf com esse router ID, e um caminho até um host termina no seu VTEP."
 }
