@@ -79,28 +79,36 @@
   ],
   "evpn_vni_alt": "Formulario BGP / VPN sin router y con el VNI 1020 elegido, con dos nodos hoja encontrados",
   "evpn_underlay_alt": "Grafo con el camino IGP entre los dos nodos hoja del VNI 1020 pintado",
+  "evpn_leaf_title": "EVPN en un leaf",
+  "evpn_leaf_steps": [
+    "Haga clic en 123.123.30.30 en el grafo. La sección EVPN del formulario del dispositivo muestra su VTEP y tres contadores: L2VNI 2, ESI 1 y MAC/IP 2.",
+    "Los contadores cubren solo lo que origina este VTEP, así que el formulario sigue siendo corto en un leaf con miles de VNI. ESI se oculta en un leaf sin multihoming, como en 123.14.14.14.",
+    "Haga clic en L2VNI. Graph table abre BGP Routes con una fila por VNI, 1010 y 1020, filtradas por el VTEP del leaf. ESI y MAC/IP abren sus Ethernet Segments y hosts de la misma forma."
+  ],
+  "evpn_leaf_alt": "Formulario del dispositivo 123.123.30.30 con la sección EVPN: VTEP 123.123.30.30, L2VNI 2, ESI 1, MAC/IP 2",
+  "evpn_leaf_vni_alt": "Graph table con los dos L2VNI del VTEP 123.123.30.30",
   "evpn_host_title": "Dónde está un host",
   "evpn_host_steps": [
     "Establezca Router en 123.15.15.15 y VPN or global table en tenant1.",
-    "Escriba 10.10.20.13 en To. La tarjeta bajo el formulario muestra el VTEP 123.123.31.31, el VNI 1020, el L3VNI 5000 y la MAC del host 00:c1:ab:00:00:03.",
+    "Escriba 10.10.20.13 en To. Graph table abre BGP Routes con la fila del host: VTEP 123.123.31.31, VNI 1020, L3VNI 5000 y MAC 00:c1:ab:00:00:03.",
     "Pulse Build a path. Se pinta el camino IGP de 123.15.15.15 al VTEP 123.123.31.31: el host solo existe en el overlay, así que el camino termina en su VTEP."
   ],
-  "evpn_host_alt": "Formulario BGP / VPN con la tarjeta del host 10.10.20.13 detrás del VTEP 123.123.31.31",
+  "evpn_host_alt": "Formulario BGP / VPN y Graph table con el host 10.10.20.13 detrás del VTEP 123.123.31.31",
   "evpn_host_note": "123.15.15.15 tiene el VNI 1010 pero no el VNI 1020, así que llega a este host a través de la VRF tenant1 (symmetric IRB, L3VNI 5000), no a través del VNI.",
   "evpn_move_title": "¿Se movió una MAC?",
   "evpn_move_steps": [
     "Establezca Router en 123.123.101.101 y VPN or global table en 65000:1010 · VNI 1010.",
-    "Escriba la MAC 00:c1:ab:00:00:01 en To. La tarjeta muestra su VTEP actual 123.15.15.15 y el último movimiento, 123.14.14.14 → 123.15.15.15, con su hora.",
+    "Escriba la MAC 00:c1:ab:00:00:01 en To. Graph table muestra su VTEP actual 123.15.15.15. Cambie la tabla a Events, retrase T0 a antes del movimiento y pulse Run; luego escriba 123.14.14.14 en el filtro Moved from VTEP: la fila que queda es el movimiento, el add en 123.15.15.15 con su hora.",
     "Un movimiento es la MAC dejando un VTEP y apareciendo en otro. La misma MAC anunciada por varios VTEP con un mismo ESI es multihoming, no un movimiento."
   ],
-  "evpn_move_alt": "Tarjeta de la MAC 00:c1:ab:00:00:01 con su último movimiento de 123.14.14.14 a 123.15.15.15",
+  "evpn_move_alt": "Eventos de la MAC 00:c1:ab:00:00:01: el add en el VTEP 123.15.15.15, movida desde 123.14.14.14",
   "evpn_mh_title": "Un host con multihoming",
   "evpn_mh_steps": [
     "Mantenga Router 123.123.101.101 y el VNI 1010, y escriba 00:c1:ab:00:00:02 en To.",
-    "La tarjeta lista dos VTEP, 123.123.30.30 y 123.123.31.31, y el ESI 03:44:38:39:ff:00:01:00:00:01: el host está conectado a ambos nodos hoja a través de un Ethernet Segment.",
+    "Graph table muestra la MAC en dos VTEP, 123.123.30.30 y 123.123.31.31, con un único ESI 03:44:38:39:ff:00:01:00:00:01: el host está conectado a ambos leaf mediante un Ethernet Segment.",
     "Pulse Build a path. Los caminos a ambos VTEP se pintan a la vez. Si un nodo hoja falla, el otro sigue sirviendo el segmento; qué nodo reenvía el tráfico broadcast (el designated forwarder) se decide en los nodos hoja y no es visible por BMP."
   ],
-  "evpn_mh_alt": "Tarjeta de la MAC 00:c1:ab:00:00:02 con dos VTEP y un ESI",
+  "evpn_mh_alt": "Graph table con la MAC 00:c1:ab:00:00:02 en dos VTEP y un ESI",
   "evpn_mh_path_alt": "Grafo con los caminos de 123.123.101.101 a ambos VTEP del Ethernet Segment",
   "evpn_l3_title": "Subredes de una VRF",
   "evpn_l3_steps": [
