@@ -124,7 +124,7 @@
   "compare_intro": "Live shows the current route-table state. Compare evaluates route state at T0 and T1.",
   "compare_steps": [
     "Open the graph-wide BGP Routes table and switch from Live to Compare.",
-    "Keep the default one-hour T0 to T1 window created when the demo loads, then press Run.",
+    "Keep the default one-hour T0 to T1 window created when the demo loads, then press Run. The window also holds the MAC move from the EVPN section, so set the Prefix filter to Equals 100.14.210.0/24.",
     "The table shows one added route, 100.14.210.0/24; changed at contains the time of its last change before T1.",
     "added means the route is absent at T0 and present at T1; withdrawn means it is present at T0 and absent at T1; changed means it is present at both instants but its attributes differ. Events after T1 are outside the comparison.",
     "Switch back to Live to open the current route-table state."
@@ -135,11 +135,11 @@
   "events_title": "Individual BGP events",
   "events_intro": "Events uses the same BGP Routes drawer and time range, but preserves every route and peer observation instead of reducing them to a T0-to-T1 difference.",
   "events_steps": [
-    "Switch from Compare to Events and keep a time window that covers the demo change burst.",
-    "Press Run and verify one route add, one peer down event, and one route change for 100.14.210.0/24.",
+    "Switch from Compare to Events and keep a time window that covers the demo change burst. Press Clear filters first: the Prefix filter from Compare would hide the MAC move and the peer-down event.",
+    "Press Run. The last three rows are one route add, one peer down event, and one route change for 100.14.210.0/24; the rows above them are the MAC move from the EVPN section.",
     "Use event, kind, prefix, peer source, peer target, and at to distinguish route changes from BGP-session state changes."
   ],
-  "events_visual": "The Events view below lists the observations chronologically: the added route, the peer-down event, then the changed route with MED 80.",
+  "events_visual": "The Events view below lists the observations chronologically: the end of the MAC move, then the added route, the peer-down event, and the changed route with MED 80.",
   "events_alt": "BGP Routes Events mode showing a route add, a peer down event, and a route change",
   "events_result": "Events shows all three observations in order. Unlike Compare, it keeps intermediate events even when the final route state is unchanged.",
   "resolution_title": "9. BGP next-hop resolution through OSPF",
@@ -172,28 +172,36 @@
   ],
   "evpn_vni_alt": "BGP / VPN form with no router and VNI 1020 chosen, reporting two leaves",
   "evpn_underlay_alt": "Graph with the IGP path between the two VNI 1020 leaves painted",
+  "evpn_leaf_title": "EVPN on a leaf",
+  "evpn_leaf_steps": [
+    "Click 123.123.30.30 on the graph. The EVPN section of the device form shows its VTEP and three counts: L2VNI 2, ESI 1 and MAC/IP 2.",
+    "The counts cover only what this VTEP originates, so the form stays short on a leaf with thousands of VNIs. ESI is hidden on a leaf without multihoming, as on 123.14.14.14.",
+    "Click L2VNI. Graph table opens BGP Routes with one row per VNI, 1010 and 1020, filtered by the leaf's VTEP. ESI and MAC/IP open its Ethernet Segments and hosts the same way."
+  ],
+  "evpn_leaf_alt": "Device form of 123.123.30.30 with the EVPN section: VTEP 123.123.30.30, L2VNI 2, ESI 1, MAC/IP 2",
+  "evpn_leaf_vni_alt": "Graph table with the two L2VNIs of VTEP 123.123.30.30",
   "evpn_host_title": "Where a host is",
   "evpn_host_steps": [
     "Set Router to 123.15.15.15 and VPN or global table to tenant1.",
-    "Type 10.10.20.13 into To. The card below the form shows VTEP 123.123.31.31, VNI 1020, L3VNI 5000 and the host's MAC 00:c1:ab:00:00:03.",
+    "Type 10.10.20.13 into To. Graph table opens BGP Routes with the host's row: VTEP 123.123.31.31, VNI 1020, L3VNI 5000 and MAC 00:c1:ab:00:00:03.",
     "Press Build a path. The IGP path from 123.15.15.15 to VTEP 123.123.31.31 is painted: the host exists only in the overlay, so the path ends at its VTEP."
   ],
-  "evpn_host_alt": "BGP / VPN form with the card for host 10.10.20.13 behind VTEP 123.123.31.31",
+  "evpn_host_alt": "BGP / VPN form and Graph table with host 10.10.20.13 behind VTEP 123.123.31.31",
   "evpn_host_note": "123.15.15.15 carries VNI 1010 but not VNI 1020, so it reaches this host through VRF tenant1 (symmetric IRB, L3VNI 5000), not through the VNI.",
   "evpn_move_title": "Did a MAC move",
   "evpn_move_steps": [
     "Set Router to 123.123.101.101 and VPN or global table to 65000:1010 · VNI 1010.",
-    "Type the MAC 00:c1:ab:00:00:01 into To. The card shows its current VTEP 123.15.15.15 and the last move, 123.14.14.14 → 123.15.15.15, with its time.",
+    "Type the MAC 00:c1:ab:00:00:01 into To. Graph table shows its current VTEP 123.15.15.15. Switch the table to Events and press Run, then type 123.14.14.14 into the Moved from VTEP filter: the remaining row is the move itself, the add on 123.15.15.15 with its time.",
     "A move is the MAC leaving one VTEP and appearing on another. The same MAC advertised by several VTEPs under one ESI is multihoming, not a move."
   ],
-  "evpn_move_alt": "Card for MAC 00:c1:ab:00:00:01 with its last move from 123.14.14.14 to 123.15.15.15",
+  "evpn_move_alt": "Events of MAC 00:c1:ab:00:00:01: the add on VTEP 123.15.15.15, moved from 123.14.14.14",
   "evpn_mh_title": "A multihomed host",
   "evpn_mh_steps": [
     "Keep Router 123.123.101.101 and VNI 1010, and type 00:c1:ab:00:00:02 into To.",
-    "The card lists two VTEPs, 123.123.30.30 and 123.123.31.31, and ESI 03:44:38:39:ff:00:01:00:00:01: the host is attached to both leaves through one Ethernet Segment.",
+    "Graph table lists the MAC on two VTEPs, 123.123.30.30 and 123.123.31.31, with one ESI 03:44:38:39:ff:00:01:00:00:01: the host is attached to both leaves through one Ethernet Segment.",
     "Press Build a path. The paths to both VTEPs are painted at once. If one leaf fails, the other still serves the segment; which leaf forwards broadcast traffic (the designated forwarder) is decided on the leaves and is not visible over BMP."
   ],
-  "evpn_mh_alt": "Card for MAC 00:c1:ab:00:00:02 with two VTEPs and one ESI",
+  "evpn_mh_alt": "Graph table with MAC 00:c1:ab:00:00:02 on two VTEPs and one ESI",
   "evpn_mh_path_alt": "Graph with the paths from 123.123.101.101 to both VTEPs of the Ethernet Segment",
   "evpn_l3_title": "Subnets of a VRF",
   "evpn_l3_steps": [

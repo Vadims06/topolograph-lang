@@ -292,11 +292,5 @@
   "bgp_evidence_import_not_observed": "результат применения входящей политики неизвестен",
   "bgp_evidence_reflection_assumed": "предполагается отражение через route reflector",
   "path_bgp_vni_leaves": "Leaf-узлы с этим VPN",
-  "path_bgp_color_underlay": "Показать underlay",
-  "path_bgp_tracker_vtep": "VTEP",
-  "path_bgp_tracker_vni": "VNI",
-  "path_bgp_tracker_l3vni": "L3VNI / VRF",
-  "path_bgp_tracker_mac": "MAC",
-  "path_bgp_tracker_esi": "ESI",
-  "path_bgp_tracker_last_move": "Последнее перемещение"
+  "path_bgp_color_underlay": "Показать underlay"
 }

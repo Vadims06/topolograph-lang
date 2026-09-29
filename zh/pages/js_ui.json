@@ -292,11 +292,5 @@
   "bgp_evidence_import_not_observed": "入站策略的结果未知",
   "bgp_evidence_reflection_assumed": "假设经 route reflector 反射",
   "path_bgp_vni_leaves": "承载此 VPN 的叶子节点",
-  "path_bgp_color_underlay": "为 underlay 着色",
-  "path_bgp_tracker_vtep": "VTEP",
-  "path_bgp_tracker_vni": "VNI",
-  "path_bgp_tracker_l3vni": "L3VNI / VRF",
-  "path_bgp_tracker_mac": "MAC",
-  "path_bgp_tracker_esi": "ESI",
-  "path_bgp_tracker_last_move": "最近一次迁移"
+  "path_bgp_color_underlay": "为 underlay 着色"
 }
