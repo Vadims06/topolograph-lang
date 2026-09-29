@@ -124,7 +124,7 @@
   "compare_intro": "Live shows the current route-table state. Compare evaluates route state at T0 and T1.",
   "compare_steps": [
     "Open the graph-wide BGP Routes table and switch from Live to Compare.",
-    "Keep the default one-hour T0 to T1 window created when the demo loads, then press Run.",
+    "Keep the default one-hour T0 to T1 window created when the demo loads, then press Run. The window also holds the MAC move from the EVPN section, so set the Prefix filter to Equals 100.14.210.0/24.",
     "The table shows one added route, 100.14.210.0/24; changed at contains the time of its last change before T1.",
     "added means the route is absent at T0 and present at T1; withdrawn means it is present at T0 and absent at T1; changed means it is present at both instants but its attributes differ. Events after T1 are outside the comparison.",
     "Switch back to Live to open the current route-table state."
@@ -136,10 +136,10 @@
   "events_intro": "Events uses the same BGP Routes drawer and time range, but preserves every route and peer observation instead of reducing them to a T0-to-T1 difference.",
   "events_steps": [
     "Switch from Compare to Events and keep a time window that covers the demo change burst.",
-    "Press Run and verify one route add, one peer down event, and one route change for 100.14.210.0/24.",
+    "Press Run. The last three rows are one route add, one peer down event, and one route change for 100.14.210.0/24; the rows above them are the MAC move from the EVPN section.",
     "Use event, kind, prefix, peer source, peer target, and at to distinguish route changes from BGP-session state changes."
   ],
-  "events_visual": "The Events view below lists the observations chronologically: the added route, the peer-down event, then the changed route with MED 80.",
+  "events_visual": "The Events view below lists the observations chronologically: the end of the MAC move, then the added route, the peer-down event, and the changed route with MED 80.",
   "events_alt": "BGP Routes Events mode showing a route add, a peer down event, and a route change",
   "events_result": "Events shows all three observations in order. Unlike Compare, it keeps intermediate events even when the final route state is unchanged.",
   "resolution_title": "9. BGP next-hop resolution through OSPF",
@@ -191,7 +191,7 @@
   "evpn_move_title": "Did a MAC move",
   "evpn_move_steps": [
     "Set Router to 123.123.101.101 and VPN or global table to 65000:1010 · VNI 1010.",
-    "Type the MAC 00:c1:ab:00:00:01 into To. Graph table shows its current VTEP 123.15.15.15. Switch the table to Events, move T0 back before the move and press Run, then type 123.14.14.14 into the Moved from VTEP filter: the remaining row is the move itself, the add on 123.15.15.15 with its time.",
+    "Type the MAC 00:c1:ab:00:00:01 into To. Graph table shows its current VTEP 123.15.15.15. Switch the table to Events and press Run, then type 123.14.14.14 into the Moved from VTEP filter: the remaining row is the move itself, the add on 123.15.15.15 with its time.",
     "A move is the MAC leaving one VTEP and appearing on another. The same MAC advertised by several VTEPs under one ESI is multihoming, not a move."
   ],
   "evpn_move_alt": "Events of MAC 00:c1:ab:00:00:01: the add on VTEP 123.15.15.15, moved from 123.14.14.14",
