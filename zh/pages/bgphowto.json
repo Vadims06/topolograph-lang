@@ -220,7 +220,7 @@
   "compare_intro": "实时显示当前路由表状态。对比用于比较 T0 和 T1 时刻的路由状态。",
   "compare_steps": [
     "打开图级别的 BGP Routes 表格，并从实时切换到对比。",
-    "保留演示加载时创建的默认一小时 T0-T1 时间范围，然后按运行。该范围也包含 EVPN 部分的 MAC 迁移，因此把 Prefix 过滤设为 Equals 100.14.210.0/24。",
+    "保留演示加载时创建的默认一小时 T0-T1 时间范围，然后按“运行”。该范围也包含 EVPN 部分的 MAC 迁移，因此把 Prefix 过滤设为“等于”100.14.210.0/24。",
     "表格显示一条新增路由 100.14.210.0/24；changed at 列包含该路由在 T1 之前最后一次变更的时间。",
     "added 表示路由在 T0 不存在而在 T1 存在；withdrawn 表示在 T0 存在而在 T1 不存在；changed 表示两个时刻都存在但属性不同。T1 之后的事件不在比较范围内。",
     "切回实时以打开当前路由表状态。"
@@ -231,8 +231,8 @@
   "events_title": "单个 BGP 事件",
   "events_intro": "事件模式使用相同的 BGP Routes 表格和时间范围，但显示每一次路由和 BGP 邻居观测，而不只显示 T0 与 T1 之间的差异。",
   "events_steps": [
-    "从对比切换到事件，并保留覆盖演示变更的时间范围。",
-    "按运行。最后三行是一条路由 add、一个 peer down 事件，以及针对 100.14.210.0/24 的一条路由 change；它们上面的行是 EVPN 部分的 MAC 迁移。",
+    "从对比切换到事件，并保留覆盖演示变更的时间范围。先点击“清除筛选”：对比步骤留下的 Prefix 过滤会隐藏 MAC 迁移和 peer down 事件。",
+    "按“运行”。最后三行是一条路由 add、一个 peer down 事件，以及针对 100.14.210.0/24 的一条路由 change；它们上面的行是 EVPN 部分的 MAC 迁移。",
     "使用 event、kind、prefix、peer source、peer target 和 at 区分路由变更与 BGP 会话状态变更。"
   ],
   "events_visual": "下方事件视图按时间列出观测：MAC 迁移的末尾，然后是新增的路由、peer down 事件，以及 MED 为 80 的变更路由。",
@@ -272,14 +272,14 @@
   "evpn_leaf_steps": [
     "在图上点击 123.123.30.30。设备表单的 EVPN 部分显示它的 VTEP 和三个计数：L2VNI 2、ESI 1、MAC/IP 2。",
     "计数只包含该 VTEP 自己发起的路由，因此即使 leaf 上有上千个 VNI，表单依然很短。没有 multihoming 的 leaf（如 123.14.14.14）不显示 ESI。",
-    "点击 L2VNI。Graph table 打开 BGP Routes，按该 leaf 的 VTEP 过滤，每个 VNI 一行：1010 和 1020。ESI 和 MAC/IP 以同样方式打开它的 Ethernet Segment 和主机。"
+    "点击 L2VNI。图数据表打开 BGP 路由，按该 leaf 的 VTEP 过滤，每个 VNI 一行：1010 和 1020。ESI 和 MAC/IP 以同样方式打开它的 Ethernet Segment 和主机。"
   ],
   "evpn_leaf_alt": "123.123.30.30 的设备表单及 EVPN 部分：VTEP 123.123.30.30、L2VNI 2、ESI 1、MAC/IP 2",
   "evpn_leaf_vni_alt": "Graph table 中 VTEP 123.123.30.30 的两个 L2VNI",
   "evpn_host_title": "主机在哪里",
   "evpn_host_steps": [
     "将 Router 设为 123.15.15.15，将 VPN 或全局表设为 tenant1。",
-    "在 To 中输入 10.10.20.13。Graph table 打开 BGP Routes，显示该主机的行：VTEP 123.123.31.31、VNI 1020、L3VNI 5000 和 MAC 00:c1:ab:00:00:03。",
+    "在“到”中输入 10.10.20.13。图数据表打开 BGP 路由，显示该主机的行：VTEP 123.123.31.31、VNI 1020、L3VNI 5000 和 MAC 00:c1:ab:00:00:03。",
     "点击 Build a path。从 123.15.15.15 到 VTEP 123.123.31.31 的 IGP 路径被绘制出来：主机只存在于 overlay 中，所以路径止于它的 VTEP。"
   ],
   "evpn_host_alt": "BGP / VPN 表单和 Graph table，主机 10.10.20.13 位于 VTEP 123.123.31.31 之后",
@@ -287,14 +287,14 @@
   "evpn_move_title": "MAC 是否发生过迁移",
   "evpn_move_steps": [
     "将 Router 设为 123.123.101.101，将 VPN 或全局表设为 65000:1010 · VNI 1010。",
-    "在 To 中输入 MAC 00:c1:ab:00:00:01。Graph table 显示它当前的 VTEP 123.15.15.15。把表格切换到 Events 并点击 Run，然后在 Moved from VTEP 过滤框中输入 123.14.14.14：剩下的一行就是这次迁移，即 123.15.15.15 上的 add 及其时间。",
+    "在“到”中输入 MAC 00:c1:ab:00:00:01。图数据表显示它当前的 VTEP 123.15.15.15。把表格切换到“事件”并点击“运行”，然后在 Moved from VTEP 过滤框中输入 123.14.14.14：剩下的一行就是这次迁移，即 123.15.15.15 上的 add 及其时间。",
     "迁移是指 MAC 离开一个 VTEP 并出现在另一个 VTEP 上。同一个 MAC 由多个 VTEP 在同一 ESI 下通告属于 multihoming，而不是迁移。"
   ],
   "evpn_move_alt": "MAC 00:c1:ab:00:00:01 的事件：VTEP 123.15.15.15 上的 add，从 123.14.14.14 迁移而来",
   "evpn_mh_title": "多归属主机",
   "evpn_mh_steps": [
     "保持 Router 为 123.123.101.101、VNI 为 1010，在 To 中输入 00:c1:ab:00:00:02。",
-    "Graph table 显示该 MAC 位于两个 VTEP 123.123.30.30 和 123.123.31.31，且只有一个 ESI 03:44:38:39:ff:00:01:00:00:01：主机通过同一个 Ethernet Segment 连接到两个 leaf。",
+    "图数据表显示该 MAC 位于两个 VTEP 123.123.30.30 和 123.123.31.31，且只有一个 ESI 03:44:38:39:ff:00:01:00:00:01：主机通过同一个 Ethernet Segment 连接到两个 leaf。",
     "点击 Build a path。到两个 VTEP 的路径会同时绘制。如果一个叶子节点故障，另一个仍会服务该网段；由哪个叶子节点转发广播流量（designated forwarder）在叶子节点上决定，通过 BMP 不可见。"
   ],
   "evpn_mh_alt": "Graph table 中 MAC 00:c1:ab:00:00:02 位于两个 VTEP、只有一个 ESI",

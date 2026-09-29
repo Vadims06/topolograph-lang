@@ -135,7 +135,7 @@
   "events_title": "Individual BGP events",
   "events_intro": "Events uses the same BGP Routes drawer and time range, but preserves every route and peer observation instead of reducing them to a T0-to-T1 difference.",
   "events_steps": [
-    "Switch from Compare to Events and keep a time window that covers the demo change burst.",
+    "Switch from Compare to Events and keep a time window that covers the demo change burst. Press Clear filters first: the Prefix filter from Compare would hide the MAC move and the peer-down event.",
     "Press Run. The last three rows are one route add, one peer down event, and one route change for 100.14.210.0/24; the rows above them are the MAC move from the EVPN section.",
     "Use event, kind, prefix, peer source, peer target, and at to distinguish route changes from BGP-session state changes."
   ],

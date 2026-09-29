@@ -57,10 +57,10 @@
   "decision_rows": [["LOCAL_PREF", "198.18.1.0/24", "123.123.30.30 (PE30)", "Local Preference más alta"], ["AS_PATH", "198.18.2.0/24", "123.14.14.14 (PE14)", "AS_PATH más corto"], ["ORIGIN", "198.18.3.0/24", "123.123.30.30 (PE30)", "El origen IGP supera a incomplete"], ["MED comparado", "198.18.4.0/24", "123.14.14.14 (PE14)", "MED inferior del mismo AS vecino"], ["MED no comparado", "198.18.5.0/24", "123.14.14.14 (PE14)", "Los AS vecinos diferentes impiden comparar MED"], ["Originator ID", "198.18.6.0/24", "123.14.14.14 (PE14)", "Originator ID inferior tras los empates anteriores"]],
   "advanced_title": "Criterios adicionales de selección", "advanced_text": "La demo muestra los seis criterios de selección BGP de la tabla. No demuestra la preferencia de eBGP sobre iBGP, el coste IGP al siguiente salto, la antigüedad de la ruta, la longitud de cluster-list ni la dirección del vecino BGP.",
   "compare_title": "8. Comparación del estado de rutas entre dos instantes", "compare_intro": "Live muestra el estado actual. Compare evalúa el estado en T0 y T1.",
-  "compare_steps": ["Abra la tabla Rutas BGP de todo el grafo y cambie de Live a Compare.", "Mantenga la ventana predeterminada de una hora de T0 a T1 creada al cargar la demo y pulse Run. La ventana también contiene el movimiento de MAC de la sección EVPN, así que ponga el filtro Prefix en Equals 100.14.210.0/24.", "La tabla muestra una ruta añadida, 100.14.210.0/24; changed at contiene la hora de su último cambio antes de T1.", "added significa ausente en T0 y presente en T1; withdrawn, presente en T0 y ausente en T1; changed, presente en ambos pero con atributos distintos. Los eventos posteriores a T1 quedan fuera.", "Vuelva a Live para abrir el estado actual."],
+  "compare_steps": ["Abra la tabla Rutas BGP de todo el grafo y cambie de Live a Compare.", "Mantenga la ventana predeterminada de una hora de T0 a T1 creada al cargar la demo y pulse Ejecutar. La ventana también contiene el movimiento de MAC de la sección EVPN, así que ponga el filtro Prefix en Igual a 100.14.210.0/24.", "La tabla muestra una ruta añadida, 100.14.210.0/24; changed at contiene la hora de su último cambio antes de T1.", "added significa ausente en T0 y presente en T1; withdrawn, presente en T0 y ausente en T1; changed, presente en ambos pero con atributos distintos. Los eventos posteriores a T1 quedan fuera.", "Vuelva a Live para abrir el estado actual."],
   "compare_alt": "Modo Compare mostrando 100.14.210.0/24 como añadida en la ventana predeterminada", "compare_visual": "La comparación muestra la diferencia entre los extremos de la ventana demo, no un registro cronológico.", "compare_result": "En el intervalo predeterminado, 100.14.210.0/24 tiene estado added y MED 80 en T1.",
   "events_title": "Eventos BGP individuales", "events_intro": "Events usa el mismo panel y rango temporal, pero conserva cada observación de ruta y peer en lugar de reducirlas a una diferencia T0-T1.",
-  "events_steps": ["Cambie de Compare a Events y mantenga una ventana que cubra los cambios de la demo.", "Pulse Run. Las tres últimas filas son una ruta añadida, un evento peer down y un cambio de ruta para 100.14.210.0/24; las filas anteriores son el movimiento de MAC de la sección EVPN.", "Use event, kind, prefix, peer source, peer target y at para distinguir cambios de ruta de cambios de estado de sesión."],
+  "events_steps": ["Cambie de Compare a Events y mantenga una ventana que cubra los cambios de la demo. Pulse antes «Limpiar filtros»: el filtro Prefix de Comparar ocultaría el movimiento de MAC y el evento peer down.", "Pulse Ejecutar. Las tres últimas filas son una ruta añadida, un evento peer down y un cambio de ruta para 100.14.210.0/24; las filas anteriores son el movimiento de MAC de la sección EVPN.", "Use event, kind, prefix, peer source, peer target y at para distinguir cambios de ruta de cambios de estado de sesión."],
   "events_visual": "Events enumera cronológicamente el final del movimiento de MAC y después la ruta añadida, el evento peer-down y la ruta modificada con MED 80.", "events_alt": "Modo Events mostrando una ruta añadida, un evento peer down y un cambio de ruta", "events_result": "Events muestra las tres observaciones en orden. A diferencia de Compare, conserva eventos intermedios aunque el estado final no cambie.",
   "resolution_title": "9. Resolución del siguiente salto BGP mediante OSPF", "resolution_intro": "BGP elige la ruta; OSPF proporciona alcanzabilidad al siguiente salto BGP seleccionado. La vista muestra explícitamente el traspaso.",
   "resolution_steps": ["En modo Standard / IGP, use PE30 como origen y 100.14.0.0/24 como destino.", "Examine la fila BGP seleccionada e identifique PE14 como siguiente salto.", "Abra Route resolution y lea de izquierda a derecha: la primera fila es BGP con distancia administrativa 200 y siguiente salto PE14.", "Continúe por las cinco filas IGP con distancia administrativa 110 que resuelven físicamente la alcanzabilidad de PE30 a PE14."],
@@ -83,14 +83,14 @@
   "evpn_leaf_steps": [
     "Haga clic en 123.123.30.30 en el grafo. La sección EVPN del formulario del dispositivo muestra su VTEP y tres contadores: L2VNI 2, ESI 1 y MAC/IP 2.",
     "Los contadores cubren solo lo que origina este VTEP, así que el formulario sigue siendo corto en un leaf con miles de VNI. ESI se oculta en un leaf sin multihoming, como en 123.14.14.14.",
-    "Haga clic en L2VNI. Graph table abre BGP Routes con una fila por VNI, 1010 y 1020, filtradas por el VTEP del leaf. ESI y MAC/IP abren sus Ethernet Segments y hosts de la misma forma."
+    "Haga clic en L2VNI. La Tabla del grafo abre Rutas BGP con una fila por VNI, 1010 y 1020, filtradas por el VTEP del leaf. ESI y MAC/IP abren sus Ethernet Segments y hosts de la misma forma."
   ],
   "evpn_leaf_alt": "Formulario del dispositivo 123.123.30.30 con la sección EVPN: VTEP 123.123.30.30, L2VNI 2, ESI 1, MAC/IP 2",
   "evpn_leaf_vni_alt": "Graph table con los dos L2VNI del VTEP 123.123.30.30",
   "evpn_host_title": "Dónde está un host",
   "evpn_host_steps": [
     "Establezca Router en 123.15.15.15 y VPN or global table en tenant1.",
-    "Escriba 10.10.20.13 en To. Graph table abre BGP Routes con la fila del host: VTEP 123.123.31.31, VNI 1020, L3VNI 5000 y MAC 00:c1:ab:00:00:03.",
+    "Escriba 10.10.20.13 en el campo Hasta. La Tabla del grafo abre Rutas BGP con la fila del host: VTEP 123.123.31.31, VNI 1020, L3VNI 5000 y MAC 00:c1:ab:00:00:03.",
     "Pulse Build a path. Se pinta el camino IGP de 123.15.15.15 al VTEP 123.123.31.31: el host solo existe en el overlay, así que el camino termina en su VTEP."
   ],
   "evpn_host_alt": "Formulario BGP / VPN y Graph table con el host 10.10.20.13 detrás del VTEP 123.123.31.31",
@@ -98,14 +98,14 @@
   "evpn_move_title": "¿Se movió una MAC?",
   "evpn_move_steps": [
     "Establezca Router en 123.123.101.101 y VPN or global table en 65000:1010 · VNI 1010.",
-    "Escriba la MAC 00:c1:ab:00:00:01 en To. Graph table muestra su VTEP actual 123.15.15.15. Cambie la tabla a Events y pulse Run; luego escriba 123.14.14.14 en el filtro Moved from VTEP: la fila que queda es el movimiento, el add en 123.15.15.15 con su hora.",
+    "Escriba la MAC 00:c1:ab:00:00:01 en el campo Hasta. La Tabla del grafo muestra su VTEP actual 123.15.15.15. Cambie la tabla a Eventos y pulse Ejecutar; luego escriba 123.14.14.14 en el filtro Moved from VTEP: la fila que queda es el movimiento, el add en 123.15.15.15 con su hora.",
     "Un movimiento es la MAC dejando un VTEP y apareciendo en otro. La misma MAC anunciada por varios VTEP con un mismo ESI es multihoming, no un movimiento."
   ],
   "evpn_move_alt": "Eventos de la MAC 00:c1:ab:00:00:01: el add en el VTEP 123.15.15.15, movida desde 123.14.14.14",
   "evpn_mh_title": "Un host con multihoming",
   "evpn_mh_steps": [
     "Mantenga Router 123.123.101.101 y el VNI 1010, y escriba 00:c1:ab:00:00:02 en To.",
-    "Graph table muestra la MAC en dos VTEP, 123.123.30.30 y 123.123.31.31, con un único ESI 03:44:38:39:ff:00:01:00:00:01: el host está conectado a ambos leaf mediante un Ethernet Segment.",
+    "La Tabla del grafo muestra la MAC en dos VTEP, 123.123.30.30 y 123.123.31.31, con un único ESI 03:44:38:39:ff:00:01:00:00:01: el host está conectado a ambos leaf mediante un Ethernet Segment.",
     "Pulse Build a path. Los caminos a ambos VTEP se pintan a la vez. Si un nodo hoja falla, el otro sigue sirviendo el segmento; qué nodo reenvía el tráfico broadcast (el designated forwarder) se decide en los nodos hoja y no es visible por BMP."
   ],
   "evpn_mh_alt": "Graph table con la MAC 00:c1:ab:00:00:02 en dos VTEP y un ESI",
