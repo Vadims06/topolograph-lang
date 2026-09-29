@@ -292,11 +292,5 @@
   "bgp_evidence_import_not_observed": "o resultado da política de entrada é desconhecido",
   "bgp_evidence_reflection_assumed": "assume-se a reflexão por um route reflector",
   "path_bgp_vni_leaves": "Nós leaf com esta VPN",
-  "path_bgp_color_underlay": "Colorir underlay",
-  "path_bgp_tracker_vtep": "VTEP",
-  "path_bgp_tracker_vni": "VNI",
-  "path_bgp_tracker_l3vni": "L3VNI / VRF",
-  "path_bgp_tracker_mac": "MAC",
-  "path_bgp_tracker_esi": "ESI",
-  "path_bgp_tracker_last_move": "Último movimento"
+  "path_bgp_color_underlay": "Colorir underlay"
 }
