@@ -41,7 +41,6 @@
   "info_version": "版本",
   "update_available": "有新版本：",
   "btn_update": "更新",
-  "install_title": "安装",
   "command_block_1": "下载",
   "command_block_2": "配置并运行",
   "http_warning": "Topolograph 通过 http 打开，令牌以明文传输。",

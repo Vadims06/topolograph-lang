@@ -41,7 +41,6 @@
   "info_version": "Versão",
   "update_available": "Há uma nova versão:",
   "btn_update": "Atualizar",
-  "install_title": "Instalação",
   "command_block_1": "Baixar",
   "command_block_2": "Configurar e executar",
   "http_warning": "O Topolograph está aberto por http, então o token trafega em texto claro.",

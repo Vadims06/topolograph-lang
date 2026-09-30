@@ -41,7 +41,6 @@
   "info_version": "Версия",
   "update_available": "Доступна версия",
   "btn_update": "Обновить",
-  "install_title": "Установка",
   "command_block_1": "Скачать",
   "command_block_2": "Настроить и запустить",
   "http_warning": "Topolograph открыт по http, поэтому токен передаётся открытым текстом.",

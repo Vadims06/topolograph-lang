@@ -41,7 +41,6 @@
   "info_version": "Version",
   "update_available": "Une nouvelle version est disponible :",
   "btn_update": "Mettre à jour",
-  "install_title": "Installation",
   "command_block_1": "Télécharger",
   "command_block_2": "Configurer et lancer",
   "http_warning": "Topolograph est ouvert en http, le jeton circule donc en clair.",
