@@ -17,7 +17,7 @@
   "state_waiting": "Ожидает запуска команды",
   "state_reporting": "Watcher запущен",
   "state_connected": "Подключён",
-  "state_unregistered": "Unregistered",
+  "state_unregistered": "Не зарегистрирован",
   "unregistered_hint": "Установлен вручную, только просмотр.",
   "action_open": "Открыть",
   "empty_cards_title": "Watcher пока нет. Выберите, с какого начать:",
