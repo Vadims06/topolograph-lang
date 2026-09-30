@@ -56,7 +56,7 @@
   "btn_delete": "Удалить",
   "no_token": "У watcher нет токена. Смените токен, чтобы получить новый.",
   "delete_title": "Удалить watcher",
-  "delete_revoke_note": "Сначала отзывается токен, и watcher перестаёт отправлять данные. Остановите его на хосте командой docker compose down в его каталоге.",
+  "delete_revoke_note": "Сначала отзывается токен, и watcher перестаёт отправлять данные. Затем удалите его контейнеры с хоста watcher.",
   "delete_only": "Удалить только watcher",
   "delete_only_hint": "Его графы и события останутся в Topolograph.",
   "delete_with_data": "Удалить watcher вместе с графами и событиями",

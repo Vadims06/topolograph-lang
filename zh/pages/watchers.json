@@ -56,7 +56,7 @@
   "btn_delete": "删除",
   "no_token": "此 watcher 没有令牌。更换令牌以获取新令牌。",
   "delete_title": "删除 watcher",
-  "delete_revoke_note": "先吊销令牌，watcher 随即停止发送数据。在主机上的 watcher 目录中运行 docker compose down 停止它。",
+  "delete_revoke_note": "先吊销令牌，watcher 随即停止发送数据。之后请从 watcher 主机上删除它的容器。",
   "delete_only": "只删除 watcher",
   "delete_only_hint": "其图和事件保留在 Topolograph 中。",
   "delete_with_data": "删除 watcher 及其图和事件",

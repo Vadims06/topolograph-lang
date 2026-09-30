@@ -56,7 +56,7 @@
   "btn_delete": "Supprimer",
   "no_token": "Ce watcher n’a pas de jeton. Changez le jeton pour en obtenir un nouveau.",
   "delete_title": "Supprimer le watcher",
-  "delete_revoke_note": "Le jeton est d’abord révoqué, le watcher cesse donc d’envoyer des données. Arrêtez-le sur l’hôte avec docker compose down dans son répertoire.",
+  "delete_revoke_note": "Le jeton est d’abord révoqué, le watcher cesse donc d’envoyer des données. Supprimez ensuite ses conteneurs de l’hôte du watcher.",
   "delete_only": "Supprimer seulement le watcher",
   "delete_only_hint": "Ses graphes et événements restent dans Topolograph.",
   "delete_with_data": "Supprimer le watcher avec ses graphes et événements",

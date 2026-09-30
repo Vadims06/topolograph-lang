@@ -56,7 +56,7 @@
   "btn_delete": "Excluir",
   "no_token": "Este watcher não tem token. Troque o token para obter um novo.",
   "delete_title": "Excluir o watcher",
-  "delete_revoke_note": "Primeiro o token é revogado, então o watcher para de enviar dados. Pare-o no host com docker compose down no diretório dele.",
+  "delete_revoke_note": "Primeiro o token é revogado, então o watcher para de enviar dados. Depois remova os contêineres dele do host do watcher.",
   "delete_only": "Excluir só o watcher",
   "delete_only_hint": "Os grafos e eventos dele continuam no Topolograph.",
   "delete_with_data": "Excluir o watcher com os grafos e eventos dele",
