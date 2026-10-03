@@ -30,7 +30,7 @@
   "field_name_help": "小写字母、数字和连字符。显示在 watcher 列表中。",
   "advanced": "高级",
   "btn_register": "注册 watcher 并显示命令",
-  "localhost_warning": "Topolograph 通过 localhost 打开，watcher 主机无法访问该地址。请通过本主机的 IP 地址或名称重新登录后继续。",
+  "localhost_warning": "Topolograph 通过 localhost 打开，watcher 主机无法访问该地址。请通过本主机的 IP 地址或名称重新登录，或将该地址设置到 TOPOLOGRAPH_EXTERNAL_URL 并重启 Topolograph（例如通过 SSH 隧道连接时）。",
   "back": "返回",
   "marks_title": "状态",
   "mark_command": "命令已在 watcher 主机上执行",

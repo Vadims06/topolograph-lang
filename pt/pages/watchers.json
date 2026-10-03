@@ -30,7 +30,7 @@
   "field_name_help": "Letras minúsculas, dígitos e hífens. Aparece na tabela de watchers.",
   "advanced": "Avançado",
   "btn_register": "Registrar o watcher e mostrar os comandos",
-  "localhost_warning": "O Topolograph está aberto via localhost, que o host do watcher não alcança. Entre de novo pelo endereço IP ou nome deste host e continue.",
+  "localhost_warning": "O Topolograph está aberto via localhost, que o host do watcher não alcança. Entre de novo pelo endereço IP ou nome deste host, ou defina esse endereço em TOPOLOGRAPH_EXTERNAL_URL e reinicie o Topolograph (por exemplo, ao conectar por um túnel SSH).",
   "back": "Voltar",
   "marks_title": "Estado",
   "mark_command": "O comando rodou no host do watcher",

@@ -30,7 +30,7 @@
   "field_name_help": "Lowercase letters, digits and dashes. Shown in the Watchers table.",
   "advanced": "Advanced",
   "btn_register": "Register watcher and show commands",
-  "localhost_warning": "Topolograph is opened via localhost, which the watcher host cannot reach. Log in again via the IP address or name of this host, then continue.",
+  "localhost_warning": "Topolograph is opened via localhost, which the watcher host cannot reach. Log in again via the IP address or name of this host, or set TOPOLOGRAPH_EXTERNAL_URL to that address and restart Topolograph (for example, when you connect through an SSH tunnel).",
   "back": "Back",
   "marks_title": "Status",
   "mark_command": "Command ran on the watcher host",

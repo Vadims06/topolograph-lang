@@ -30,7 +30,7 @@
   "field_name_help": "Строчные латинские буквы, цифры и дефисы. Показывается в таблице Watchers.",
   "advanced": "Дополнительно",
   "btn_register": "Зарегистрировать watcher и показать команды",
-  "localhost_warning": "Topolograph открыт через localhost, а этот адрес недоступен с хоста watcher. Перезайдите по IP-адресу или имени этого хоста и продолжите.",
+  "localhost_warning": "Topolograph открыт через localhost, а этот адрес недоступен с хоста watcher. Перезайдите по IP-адресу или имени этого хоста либо укажите этот адрес в TOPOLOGRAPH_EXTERNAL_URL и перезапустите Topolograph (например, если вы подключены через SSH-туннель).",
   "back": "Назад",
   "marks_title": "Статус",
   "mark_command": "Команда выполнена на хосте watcher",
