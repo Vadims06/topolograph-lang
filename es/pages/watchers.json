@@ -18,7 +18,7 @@
   "state_reporting": "El watcher está en marcha",
   "state_connected": "Conectado",
   "state_unregistered": "Sin registrar",
-  "unregistered_hint": "Instalado a mano, solo lectura.",
+  "unregistered_hint": "Envía sin token de watcher, que Topolograph 3.0.0 rechazará. Para migrarlo: deténgalo en su host y añádalo aquí con las mismas respuestas.",
   "action_open": "Abrir",
   "empty_cards_title": "Aún no hay watchers. Elija uno para empezar:",
   "host_requirements": "Requisitos del host",

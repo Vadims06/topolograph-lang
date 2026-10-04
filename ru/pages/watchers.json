@@ -18,7 +18,7 @@
   "state_reporting": "Watcher запущен",
   "state_connected": "Подключён",
   "state_unregistered": "Не зарегистрирован",
-  "unregistered_hint": "Установлен вручную, только просмотр.",
+  "unregistered_hint": "Подключён без токена вотчера, Topolograph 3.0.0 перестанет его принимать. Чтобы перенести: остановите его на хосте и добавьте здесь с теми же ответами.",
   "action_open": "Открыть",
   "empty_cards_title": "Watcher пока нет. Выберите, с какого начать:",
   "host_requirements": "Требования к хосту",

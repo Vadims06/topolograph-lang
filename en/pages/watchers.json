@@ -18,7 +18,7 @@
   "state_reporting": "Watcher is running",
   "state_connected": "Connected",
   "state_unregistered": "Unregistered",
-  "unregistered_hint": "Installed by hand, shown read-only.",
+  "unregistered_hint": "Sends without a watcher token, which Topolograph 3.0.0 will refuse. To move it: stop it on its host, then add it here with the same answers.",
   "action_open": "Open",
   "empty_cards_title": "No watchers yet. Pick one to start:",
   "host_requirements": "Host requirements",

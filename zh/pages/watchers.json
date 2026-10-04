@@ -18,7 +18,7 @@
   "state_reporting": "Watcher 正在运行",
   "state_connected": "已连接",
   "state_unregistered": "未注册",
-  "unregistered_hint": "手动安装，只读。",
+  "unregistered_hint": "未使用 watcher 令牌发送数据，Topolograph 3.0.0 将拒绝。迁移方法：在其主机上停止它，然后在此处用相同的参数添加。",
   "action_open": "打开",
   "empty_cards_title": "还没有 watcher。选择一个开始：",
   "host_requirements": "主机要求",
