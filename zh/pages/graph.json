@@ -94,6 +94,8 @@
   "legend_cost": "链路端点处的数字是朝向另一端的 cost",
   "tooltip_rid": "RID",
   "tooltip_area": "区域",
+  "ecmp_links": "{count} 条链路",
+  "tooltip_link": "链路 {number}",
   "role_abr": "ABR",
   "role_asbr": "ASBR",
   "role_overload": "过载",

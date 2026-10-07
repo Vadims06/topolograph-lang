@@ -94,6 +94,8 @@
   "legend_cost": "Le nombre au bout d'un lien est le cost vers l'autre extrémité",
   "tooltip_rid": "RID",
   "tooltip_area": "area",
+  "ecmp_links": "{count} liens",
+  "tooltip_link": "lien {number}",
   "role_abr": "ABR",
   "role_asbr": "ASBR",
   "role_overload": "surcharge",

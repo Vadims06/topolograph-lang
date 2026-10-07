@@ -94,6 +94,8 @@
   "legend_cost": "O número na ponta de um link é o cost em direção ao outro lado",
   "tooltip_rid": "RID",
   "tooltip_area": "área",
+  "ecmp_links": "{count} links",
+  "tooltip_link": "link {number}",
   "role_abr": "ABR",
   "role_asbr": "ASBR",
   "role_overload": "sobrecarga",

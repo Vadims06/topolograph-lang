@@ -94,6 +94,8 @@
   "legend_cost": "Число у конца связи - cost в сторону другого конца",
   "tooltip_rid": "RID",
   "tooltip_area": "зона",
+  "ecmp_links": "{count} связи",
+  "tooltip_link": "линк {number}",
   "role_abr": "ABR",
   "role_asbr": "ASBR",
   "role_overload": "перегружен",
