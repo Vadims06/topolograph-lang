@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "title": "Graph",
+    "description": "Topology of one OSPF or IS-IS graph."
+  },
+  "title": "Graph",
+  "back_to_graphs": "← Graphs",
+  "mode_label": "Mode",
+  "mode_overview": "Overview",
+  "mode_failure": "Failure",
+  "mode_paths": "Paths",
+  "hint": "Click a node or a link to select it",
+  "hint_close": "Close the hint",
+  "canvas_label": "Network topology",
+  "zoom_in": "Zoom in",
+  "zoom_out": "Zoom out",
+  "fit": "Fit to window",
+  "layout_progress": "Layout of {nodes} nodes: {done} / {total}",
+  "loading": "Loading the graph",
+  "load_failed": "Unable to load the graph",
+  "retry": "Retry",
+  "tables_label": "Tables",
+  "tables_collapse": "Collapse"
+}
