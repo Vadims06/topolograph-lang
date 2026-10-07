@@ -21,6 +21,7 @@
   "retry": "Retry",
   "tables_label": "Tables",
   "tables_collapse": "Collapse",
+  "tables_full_screen": "Full screen",
   "all_values": "All values",
   "search": "Search",
   "select_all": "Select all found",
