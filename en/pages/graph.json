@@ -131,5 +131,22 @@
   "card_attr_max_link_bw": "Max link BW",
   "card_attr_max_rsrv_link_bw": "Max reservable BW",
   "card_attr_unreserved_bw": "Unreserved BW {priority}",
-  "card_attr_srlg": "SRLG"
+  "card_attr_srlg": "SRLG",
+  "search_label": "Search",
+  "search_attribute": "Search attribute",
+  "search_value": "Value",
+  "search_run": "Find",
+  "search_remove": "Remove condition",
+  "search_clear": "Clear the search",
+  "search_results": "Where assigned",
+  "search_loading": "Searching",
+  "search_nothing": "Nothing found",
+  "search_failed": "Search failed",
+  "search_nodes_count": "Nodes: {count}",
+  "search_attr_hostname": "Hostname",
+  "search_attr_subnet": "Subnet",
+  "search_attr_vni": "VNI",
+  "search_attr_vrf": "VRF",
+  "search_attr_esi": "ESI",
+  "search_attr_mac": "MAC"
 }

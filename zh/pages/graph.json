@@ -131,5 +131,22 @@
   "card_attr_max_link_bw": "链路最大带宽",
   "card_attr_max_rsrv_link_bw": "最大可预留带宽",
   "card_attr_unreserved_bw": "未预留带宽 {priority}",
-  "card_attr_srlg": "共享风险链路组 (SRLG)"
+  "card_attr_srlg": "共享风险链路组 (SRLG)",
+  "search_label": "搜索",
+  "search_attribute": "搜索属性",
+  "search_value": "值",
+  "search_run": "查找",
+  "search_remove": "移除条件",
+  "search_clear": "清除搜索",
+  "search_results": "分配位置",
+  "search_loading": "搜索中",
+  "search_nothing": "未找到任何结果",
+  "search_failed": "搜索失败",
+  "search_nodes_count": "节点数：{count}",
+  "search_attr_hostname": "主机名",
+  "search_attr_subnet": "子网",
+  "search_attr_vni": "VNI",
+  "search_attr_vrf": "VRF",
+  "search_attr_esi": "ESI",
+  "search_attr_mac": "MAC"
 }
