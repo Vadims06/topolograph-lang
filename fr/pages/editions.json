@@ -33,7 +33,7 @@
   "ed_c_stack": "Flask, MongoDB",
   "ed_e_stack": "Repensée pour les fortes charges",
   "ed_c_support": "GitHub issues",
-  "ed_e_support": "Prioritaire, best effort, N jours ouvrés",
+  "ed_e_support": "Support prioritaire",
   "ed_who_community_title": "Pour l'ingénieur",
   "ed_who_community_text": "Comprendre son réseau en une soirée : importez un LSDB et regardez les chemins et les pannes.",
   "ed_who_community_btn": "Installer",
