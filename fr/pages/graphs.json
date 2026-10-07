@@ -35,5 +35,11 @@
   "no_matches": "Aucun graphe ne correspond aux filtres",
   "page_range": "{from}-{to} sur {total}",
   "next_page": "Page suivante",
-  "page_label": "Page"
+  "page_label": "Page",
+  "compare_graph": "Comparer avec un autre graphe",
+  "compare_banner": "Comparaison : {graph} du {time} sélectionné. Cliquez sur la ligne du second graphe : la comparaison s'ouvre sur sa page.",
+  "compare_cancel": "Annuler",
+  "open_demo": "Ouvrir le graphe de démonstration",
+  "demo_title": "Graphe de démonstration",
+  "demo_badge": "démo"
 }

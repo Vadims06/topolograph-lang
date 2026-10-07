@@ -35,5 +35,11 @@
   "no_matches": "No graphs match the filters",
   "page_range": "{from}-{to} of {total}",
   "next_page": "Next page",
-  "page_label": "Page"
+  "page_label": "Page",
+  "compare_graph": "Compare with another graph",
+  "compare_banner": "Comparison: {graph} from {time} selected. Click the row of the second graph - the comparison opens on its page.",
+  "compare_cancel": "Cancel",
+  "open_demo": "Open demo graph",
+  "demo_title": "Demo graph",
+  "demo_badge": "demo"
 }
