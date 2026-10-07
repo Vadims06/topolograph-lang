@@ -35,5 +35,11 @@
   "no_matches": "没有符合筛选条件的图",
   "page_range": "第 {from}-{to} 项，共 {total} 项",
   "next_page": "下一页",
-  "page_label": "页"
+  "page_label": "页",
+  "compare_graph": "与另一个图比较",
+  "compare_banner": "比较：已选择 {time} 的 {graph}。点击第二个图所在的行，比较将在其页面中打开。",
+  "compare_cancel": "取消",
+  "open_demo": "打开演示图",
+  "demo_title": "演示图",
+  "demo_badge": "演示"
 }
