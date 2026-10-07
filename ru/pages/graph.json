@@ -26,7 +26,7 @@
   "coloring_area": "По area",
   "legend": "Легенда",
   "legend_router": "роутер",
-  "legend_area": "area {area}",
+  "legend_area": "зона {area}",
   "legend_abr": "ABR: половина цвета backbone",
   "legend_asbr": "ASBR: выход наружу",
   "legend_link": "связь",
@@ -35,9 +35,9 @@
   "legend_level_1_2": "связь L1/L2",
   "legend_cost": "Число у конца связи - cost в сторону другого конца",
   "tooltip_rid": "RID",
-  "tooltip_area": "area",
+  "tooltip_area": "зона",
   "role_abr": "ABR",
   "role_asbr": "ASBR",
-  "role_overload": "overload",
-  "role_attached": "attached"
+  "role_overload": "перегружен",
+  "role_attached": "присоединён (ATT)"
 }

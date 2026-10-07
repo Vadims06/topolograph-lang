@@ -38,6 +38,6 @@
   "tooltip_area": "区域",
   "role_abr": "ABR",
   "role_asbr": "ASBR",
-  "role_overload": "overload",
-  "role_attached": "attached"
+  "role_overload": "过载",
+  "role_attached": "已连接 (ATT)"
 }

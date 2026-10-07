@@ -38,6 +38,6 @@
   "tooltip_area": "área",
   "role_abr": "ABR",
   "role_asbr": "ASBR",
-  "role_overload": "overload",
-  "role_attached": "attached"
+  "role_overload": "sobrecarga",
+  "role_attached": "adjunto (ATT)"
 }
