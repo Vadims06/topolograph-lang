@@ -26,6 +26,7 @@
   "shared_badge": "общий",
   "copy_graph_time": "Копировать graph_time",
   "graph_time_copied": "graph_time скопирован",
+  "copy_failed": "Не удалось скопировать graph_time",
   "delete_graph": "Удалить граф",
   "delete_confirm": "Удалить {graph} от {time}? Это нельзя отменить.",
   "delete_confirm_button": "Удалить",

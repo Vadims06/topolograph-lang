@@ -26,6 +26,7 @@
   "shared_badge": "compartilhado",
   "copy_graph_time": "Copiar graph_time",
   "graph_time_copied": "graph_time copiado",
+  "copy_failed": "Não foi possível copiar graph_time",
   "delete_graph": "Excluir grafo",
   "delete_confirm": "Excluir {graph} carregado em {time}? Esta ação não pode ser desfeita.",
   "delete_confirm_button": "Excluir",

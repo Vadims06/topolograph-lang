@@ -26,6 +26,7 @@
   "shared_badge": "共享",
   "copy_graph_time": "复制 graph_time",
   "graph_time_copied": "graph_time 已复制",
+  "copy_failed": "无法复制 graph_time",
   "delete_graph": "删除图",
   "delete_confirm": "删除 {time} 上传的 {graph}？此操作无法撤销。",
   "delete_confirm_button": "删除",
