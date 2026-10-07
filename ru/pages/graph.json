@@ -33,5 +33,11 @@
   "legend_level_1": "связь L1",
   "legend_level_2": "связь L2",
   "legend_level_1_2": "связь L1/L2",
-  "legend_cost": "Число у конца связи - cost в сторону другого конца"
+  "legend_cost": "Число у конца связи - cost в сторону другого конца",
+  "tooltip_rid": "RID",
+  "tooltip_area": "area",
+  "role_abr": "ABR",
+  "role_asbr": "ASBR",
+  "role_overload": "overload",
+  "role_attached": "attached"
 }

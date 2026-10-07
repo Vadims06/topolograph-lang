@@ -33,5 +33,11 @@
   "legend_level_1": "enlace L1",
   "legend_level_2": "enlace L2",
   "legend_level_1_2": "enlace L1/L2",
-  "legend_cost": "El número en el extremo de un enlace es el cost hacia el otro lado"
+  "legend_cost": "El número en el extremo de un enlace es el cost hacia el otro lado",
+  "tooltip_rid": "RID",
+  "tooltip_area": "área",
+  "role_abr": "ABR",
+  "role_asbr": "ASBR",
+  "role_overload": "overload",
+  "role_attached": "attached"
 }

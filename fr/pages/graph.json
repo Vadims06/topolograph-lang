@@ -33,5 +33,11 @@
   "legend_level_1": "lien L1",
   "legend_level_2": "lien L2",
   "legend_level_1_2": "lien L1/L2",
-  "legend_cost": "Le nombre au bout d'un lien est le cost vers l'autre extrémité"
+  "legend_cost": "Le nombre au bout d'un lien est le cost vers l'autre extrémité",
+  "tooltip_rid": "RID",
+  "tooltip_area": "area",
+  "role_abr": "ABR",
+  "role_asbr": "ASBR",
+  "role_overload": "overload",
+  "role_attached": "attached"
 }

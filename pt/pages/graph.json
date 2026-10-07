@@ -33,5 +33,11 @@
   "legend_level_1": "link L1",
   "legend_level_2": "link L2",
   "legend_level_1_2": "link L1/L2",
-  "legend_cost": "O número na ponta de um link é o cost em direção ao outro lado"
+  "legend_cost": "O número na ponta de um link é o cost em direção ao outro lado",
+  "tooltip_rid": "RID",
+  "tooltip_area": "área",
+  "role_abr": "ABR",
+  "role_asbr": "ASBR",
+  "role_overload": "overload",
+  "role_attached": "attached"
 }
