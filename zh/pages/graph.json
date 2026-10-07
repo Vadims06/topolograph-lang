@@ -198,6 +198,7 @@
   "search_nothing": "未找到任何结果",
   "search_failed": "搜索失败",
   "search_nodes_count": "节点数：{count}",
+  "search_suggestions_count": "建议数：{count}",
   "search_attr_hostname": "主机名",
   "search_attr_subnet": "子网",
   "search_attr_vni": "VNI",

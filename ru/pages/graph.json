@@ -200,6 +200,7 @@
   "search_nothing": "Ничего не найдено",
   "search_failed": "Не удалось выполнить поиск",
   "search_nodes_count": "Узлов: {count}",
+  "search_suggestions_count": "Подсказок: {count}",
   "search_attr_hostname": "Имя хоста",
   "search_attr_subnet": "Подсеть",
   "search_attr_vni": "VNI",

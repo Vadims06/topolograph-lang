@@ -198,6 +198,7 @@
   "search_nothing": "Nothing found",
   "search_failed": "Search failed",
   "search_nodes_count": "Nodes: {count}",
+  "search_suggestions_count": "Suggestions: {count}",
   "search_attr_hostname": "Hostname",
   "search_attr_subnet": "Subnet",
   "search_attr_vni": "VNI",

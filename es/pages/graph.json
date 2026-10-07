@@ -198,6 +198,7 @@
   "search_nothing": "No se encontró nada",
   "search_failed": "Error en la búsqueda",
   "search_nodes_count": "Nodos: {count}",
+  "search_suggestions_count": "Sugerencias: {count}",
   "search_attr_hostname": "Nombre de host",
   "search_attr_subnet": "Subred",
   "search_attr_vni": "VNI",

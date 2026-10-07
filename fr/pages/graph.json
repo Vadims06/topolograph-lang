@@ -198,6 +198,7 @@
   "search_nothing": "Rien trouvé",
   "search_failed": "Échec de la recherche",
   "search_nodes_count": "Nœuds : {count}",
+  "search_suggestions_count": "Suggestions : {count}",
   "search_attr_hostname": "Nom d'hôte",
   "search_attr_subnet": "Sous-réseau",
   "search_attr_vni": "VNI",
