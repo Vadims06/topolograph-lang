@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "title": "Граф",
+    "description": "Топология одного графа OSPF или IS-IS."
+  },
+  "title": "Граф",
+  "back_to_graphs": "← Графы",
+  "mode_label": "Режим",
+  "mode_overview": "Обзор",
+  "mode_failure": "Отказ",
+  "mode_paths": "Пути",
+  "hint": "Клик по узлу или связи - выделить её",
+  "hint_close": "Закрыть подсказку",
+  "canvas_label": "Топология сети",
+  "zoom_in": "Приблизить",
+  "zoom_out": "Отдалить",
+  "fit": "Вписать в окно",
+  "layout_progress": "Раскладка {nodes} узлов: {done} / {total}",
+  "loading": "Загрузка графа",
+  "load_failed": "Не удалось загрузить граф",
+  "retry": "Повторить",
+  "tables_label": "Таблицы",
+  "tables_collapse": "Свернуть"
+}

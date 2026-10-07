@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "title": "Graphe",
+    "description": "Topologie d'un graphe OSPF ou IS-IS."
+  },
+  "title": "Graphe",
+  "back_to_graphs": "← Graphes",
+  "mode_label": "Mode",
+  "mode_overview": "Vue d'ensemble",
+  "mode_failure": "Panne",
+  "mode_paths": "Chemins",
+  "hint": "Cliquez sur un nœud ou un lien pour le sélectionner",
+  "hint_close": "Fermer l'astuce",
+  "canvas_label": "Topologie du réseau",
+  "zoom_in": "Zoom avant",
+  "zoom_out": "Zoom arrière",
+  "fit": "Ajuster à la fenêtre",
+  "layout_progress": "Disposition de {nodes} nœuds : {done} / {total}",
+  "loading": "Chargement du graphe",
+  "load_failed": "Impossible de charger le graphe",
+  "retry": "Réessayer",
+  "tables_label": "Tableaux",
+  "tables_collapse": "Réduire"
+}

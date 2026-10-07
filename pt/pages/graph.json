@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "title": "Grafo",
+    "description": "Topologia de um grafo OSPF ou IS-IS."
+  },
+  "title": "Grafo",
+  "back_to_graphs": "← Grafos",
+  "mode_label": "Modo",
+  "mode_overview": "Visão geral",
+  "mode_failure": "Falha",
+  "mode_paths": "Caminhos",
+  "hint": "Clique em um nó ou em um link para selecioná-lo",
+  "hint_close": "Fechar a dica",
+  "canvas_label": "Topologia da rede",
+  "zoom_in": "Aumentar",
+  "zoom_out": "Diminuir",
+  "fit": "Ajustar à janela",
+  "layout_progress": "Disposição de {nodes} nós: {done} / {total}",
+  "loading": "Carregando o grafo",
+  "load_failed": "Não foi possível carregar o grafo",
+  "retry": "Tentar novamente",
+  "tables_label": "Tabelas",
+  "tables_collapse": "Recolher"
+}

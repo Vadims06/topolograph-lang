@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "title": "图",
+    "description": "单个 OSPF 或 IS-IS 图的拓扑。"
+  },
+  "title": "图",
+  "back_to_graphs": "← 图",
+  "mode_label": "模式",
+  "mode_overview": "概览",
+  "mode_failure": "故障",
+  "mode_paths": "路径",
+  "hint": "点击节点或链路即可选中",
+  "hint_close": "关闭提示",
+  "canvas_label": "网络拓扑",
+  "zoom_in": "放大",
+  "zoom_out": "缩小",
+  "fit": "适应窗口",
+  "layout_progress": "{nodes} 个节点的布局：{done} / {total}",
+  "loading": "正在加载图",
+  "load_failed": "无法加载图",
+  "retry": "重试",
+  "tables_label": "表",
+  "tables_collapse": "收起"
+}
