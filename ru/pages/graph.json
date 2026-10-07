@@ -121,12 +121,12 @@
   "card_collapse_bundle": "Свернуть на графе",
   "card_expand_bundle": "Раскрыть связку",
   "card_more_links": "↓ ещё {count}",
-  "card_ip": "IP {name}",
-  "card_attr_cost": "cost",
+  "card_ip": "IP на {name}",
+  "card_attr_cost": "стоимость",
   "card_attr_temetric": "TE-метрика",
-  "card_attr_admin_group": "Admin group",
+  "card_attr_admin_group": "Административная группа",
   "card_attr_max_link_bw": "Макс. полоса линка",
   "card_attr_max_rsrv_link_bw": "Макс. резервируемая полоса",
   "card_attr_unreserved_bw": "Нерезерв. полоса {priority}",
-  "card_attr_srlg": "SRLG"
+  "card_attr_srlg": "Группа общего риска (SRLG)"
 }

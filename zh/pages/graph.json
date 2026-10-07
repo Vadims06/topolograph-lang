@@ -126,5 +126,5 @@
   "card_attr_max_link_bw": "链路最大带宽",
   "card_attr_max_rsrv_link_bw": "最大可预留带宽",
   "card_attr_unreserved_bw": "未预留带宽 {priority}",
-  "card_attr_srlg": "SRLG"
+  "card_attr_srlg": "共享风险链路组 (SRLG)"
 }
