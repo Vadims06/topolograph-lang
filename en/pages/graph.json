@@ -20,5 +20,18 @@
   "load_failed": "Unable to load the graph",
   "retry": "Retry",
   "tables_label": "Tables",
-  "tables_collapse": "Collapse"
+  "tables_collapse": "Collapse",
+  "coloring_label": "Colouring",
+  "coloring_single": "Single colour",
+  "coloring_area": "By area",
+  "legend": "Legend",
+  "legend_router": "router",
+  "legend_area": "area {area}",
+  "legend_abr": "ABR: half in backbone colour",
+  "legend_asbr": "ASBR: exit outwards",
+  "legend_link": "link",
+  "legend_level_1": "link L1",
+  "legend_level_2": "link L2",
+  "legend_level_1_2": "link L1/L2",
+  "legend_cost": "The number at a link end is the cost towards the other side"
 }
