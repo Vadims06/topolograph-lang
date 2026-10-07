@@ -75,5 +75,8 @@
   "wizard_parsing": "Processando {file}",
   "wizard_parsing_text": "{vendor} · {protocol}. O grafo abre sozinho, normalmente em poucos segundos.",
   "wizard_upload_failed": "Nenhum grafo foi construído a partir deste arquivo. Verifique o fabricante, o protocolo e os comandos.",
-  "wizard_vendors_failed": "Não foi possível carregar a lista de fabricantes"
+  "wizard_vendors_failed": "Não foi possível carregar a lista de fabricantes",
+  "wizard_cancel": "Cancelar",
+  "wizard_upload_aborted": "O envio foi interrompido. O arquivo pode ter sido salvo; verifique a lista de grafos.",
+  "wizard_graphs_list": "Abrir a lista de grafos"
 }

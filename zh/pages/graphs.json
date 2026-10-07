@@ -75,5 +75,8 @@
   "wizard_parsing": "正在解析 {file}",
   "wizard_parsing_text": "{vendor} · {protocol}。拓扑图会自动打开,通常只需几秒钟。",
   "wizard_upload_failed": "未能从此文件生成拓扑图。请检查厂商、协议和命令。",
-  "wizard_vendors_failed": "无法加载厂商列表"
+  "wizard_vendors_failed": "无法加载厂商列表",
+  "wizard_cancel": "取消",
+  "wizard_upload_aborted": "上传已中断。文件可能已保存，请查看拓扑图列表。",
+  "wizard_graphs_list": "打开拓扑图列表"
 }

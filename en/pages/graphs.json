@@ -75,5 +75,8 @@
   "wizard_parsing": "Parsing {file}",
   "wizard_parsing_text": "{vendor} · {protocol}. The graph opens by itself, usually within seconds.",
   "wizard_upload_failed": "No graph was built from this file. Check the vendor, the protocol and the commands.",
-  "wizard_vendors_failed": "Unable to load vendors"
+  "wizard_vendors_failed": "Unable to load vendors",
+  "wizard_cancel": "Cancel",
+  "wizard_upload_aborted": "The upload was interrupted. The file may still have been saved; check the graphs list.",
+  "wizard_graphs_list": "Open the graphs list"
 }
