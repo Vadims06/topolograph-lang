@@ -26,7 +26,7 @@
   "ed_c_users": "单个或共享",
   "ed_e_users": "团队、RBAC",
   "ed_c_login": "用户名和密码",
-  "ed_e_login": "SSO (OIDC / SAML / LDAP)",
+  "ed_e_login": "单点登录 (SSO): OIDC / SAML / LDAP",
   "ed_c_alerts": "事件导出:Logstash 到 ELK、Zabbix、webhook;Fluent Bit 到 webhook",
   "ed_e_alerts": "告警规则与路由",
   "ed_e_hardware": "预装 watcher 的物理设备:接入 LAN,通过 SSH 访问",
