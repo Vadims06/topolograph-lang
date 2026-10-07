@@ -79,5 +79,8 @@
   "wizard_vendors_failed": "无法加载厂商列表",
   "wizard_cancel": "取消",
   "wizard_upload_aborted": "上传已中断。文件可能已保存，请查看拓扑图列表。",
-  "wizard_graphs_list": "打开拓扑图列表"
+  "wizard_graphs_list": "打开拓扑图列表",
+  "wizard_done_title": "图已生成，但有警告",
+  "wizard_done_text": "文件的一部分无法读取，因此图可能不完整：",
+  "wizard_open_graph": "打开图"
 }
