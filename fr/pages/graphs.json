@@ -75,6 +75,7 @@
   "wizard_parsing": "Analyse de {file}",
   "wizard_parsing_text": "{vendor} · {protocol}. Le graphe s'ouvre tout seul, en général en quelques secondes.",
   "wizard_upload_failed": "Aucun graphe n'a été construit à partir de ce fichier. Vérifiez le constructeur, le protocole et les commandes.",
+  "wizard_upload_rejected": "Le fichier n'a pas été accepté : {reason}",
   "wizard_vendors_failed": "Impossible de charger la liste des constructeurs",
   "wizard_cancel": "Annuler",
   "wizard_upload_aborted": "Le téléversement a été interrompu. Le fichier a peut-être été enregistré ; consultez la liste des graphes.",
