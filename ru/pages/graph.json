@@ -19,6 +19,7 @@
   "loading": "Загрузка графа",
   "load_failed": "Не удалось загрузить граф",
   "retry": "Повторить",
+  "sign_in": "Войти",
   "tables_label": "Таблицы",
   "tables_collapse": "Свернуть",
   "tables_full_screen": "Весь экран",
