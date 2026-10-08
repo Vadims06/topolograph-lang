@@ -254,6 +254,7 @@
   "paths_mode_cspf": "MPLS · CSPF",
   "paths_mode_label": "Path type",
   "cspf_bandwidth": "Bandwidth",
+  "cspf_bandwidth_unit": "Bandwidth unit",
   "cspf_metric": "Metric",
   "cspf_metric_igp": "IGP",
   "cspf_metric_te": "TE",
