@@ -301,5 +301,6 @@
   "watcher_connected": "connected",
   "watcher_offline": "not connected",
   "demo_title": "Demo graph",
-  "graph_actions": "Graph actions"
+  "graph_actions": "Graph actions",
+  "share_graph": "Share…"
 }
