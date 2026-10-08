@@ -62,6 +62,7 @@
   "tab_adjacencies": "Liaisons",
   "tab_nodes": "Nœuds",
   "tab_networks": "Réseaux",
+  "tab_count_note": "Le nombre inclut toutes les lignes, pas seulement les lignes filtrées",
   "tables_height": "Hauteur des tableaux",
   "tables_resize": "Redimensionner les tableaux",
   "tables_hint": "Les tableaux montrent les liaisons, nœuds et réseaux de ce graphe. Le filtre et le tri portent sur toutes les lignes.",

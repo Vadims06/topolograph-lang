@@ -62,6 +62,7 @@
   "tab_adjacencies": "Enlaces",
   "tab_nodes": "Nós",
   "tab_networks": "Redes",
+  "tab_count_note": "O número inclui todas as linhas, não apenas as filtradas",
   "tables_height": "Altura das tabelas",
   "tables_resize": "Redimensionar as tabelas",
   "tables_hint": "As tabelas mostram os enlaces, nós e redes deste grafo. O filtro e a ordenação aplicam-se a todas as linhas.",
