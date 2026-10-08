@@ -16,6 +16,8 @@
   "zoom_out": "Zoom arrière",
   "fit": "Ajuster à la fenêtre",
   "layout_progress": "Disposition de {nodes} nœuds : {done} / {total}",
+  "skipped_events_one": "{count} événement du watcher n'a pas pu être appliqué",
+  "skipped_events_other": "{count} événements du watcher n'ont pas pu être appliqués",
   "loading": "Chargement du graphe",
   "load_failed": "Impossible de charger le graphe",
   "retry": "Réessayer",
