@@ -22,6 +22,8 @@
   "token_last4": "Оканчивается на",
   "token_created": "Создан",
   "token_expires": "Истекает",
+  "token_last_used": "Последнее использование",
+  "token_never": "не использовался",
   "token_status": "Статус",
   "token_active": "действует",
   "token_revoked": "отозван",

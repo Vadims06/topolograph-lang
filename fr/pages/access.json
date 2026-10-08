@@ -22,6 +22,8 @@
   "token_last4": "Se termine par",
   "token_created": "Créé",
   "token_expires": "Expire",
+  "token_last_used": "Dernière utilisation",
+  "token_never": "jamais",
   "token_status": "Statut",
   "token_active": "actif",
   "token_revoked": "révoqué",

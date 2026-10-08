@@ -22,6 +22,8 @@
   "token_last4": "末尾为",
   "token_created": "创建时间",
   "token_expires": "到期时间",
+  "token_last_used": "最后使用",
+  "token_never": "从未",
   "token_status": "状态",
   "token_active": "有效",
   "token_revoked": "已吊销",
