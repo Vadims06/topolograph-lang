@@ -283,7 +283,8 @@
   "legend_link_forward": "link, direction found first",
   "legend_link_backward": "link, reverse direction",
   "legend_link_both": "link listed in both directions",
-  "legend_heat_ok": "all addresses backed up",
-  "legend_heat_some": "up to half without backup",
-  "legend_heat_most": "more than half without backup"
+  "legend_heat_good": "85 % or more of addresses backed up",
+  "legend_heat_fair": "60-85 % backed up",
+  "legend_heat_poor": "40-60 % backed up",
+  "legend_heat_bad": "less than 40 % backed up"
 }
