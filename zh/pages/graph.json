@@ -16,6 +16,8 @@
   "zoom_out": "缩小",
   "fit": "适应窗口",
   "layout_progress": "{nodes} 个节点的布局：{done} / {total}",
+  "skipped_events_one": "有 {count} 个 watcher 事件无法应用",
+  "skipped_events_other": "有 {count} 个 watcher 事件无法应用",
   "loading": "正在加载图",
   "load_failed": "无法加载图",
   "retry": "重试",

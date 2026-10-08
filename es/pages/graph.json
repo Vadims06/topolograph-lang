@@ -16,6 +16,8 @@
   "zoom_out": "Alejar",
   "fit": "Ajustar a la ventana",
   "layout_progress": "Disposición de {nodes} nodos: {done} / {total}",
+  "skipped_events_one": "No se pudo aplicar {count} evento del watcher",
+  "skipped_events_other": "No se pudieron aplicar {count} eventos del watcher",
   "loading": "Cargando el grafo",
   "load_failed": "No se pudo cargar el grafo",
   "retry": "Reintentar",

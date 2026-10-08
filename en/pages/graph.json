@@ -16,6 +16,8 @@
   "zoom_out": "Zoom out",
   "fit": "Fit to window",
   "layout_progress": "Layout of {nodes} nodes: {done} / {total}",
+  "skipped_events_one": "{count} watcher event could not be applied",
+  "skipped_events_other": "{count} watcher events could not be applied",
   "loading": "Loading the graph",
   "load_failed": "Unable to load the graph",
   "retry": "Retry",
