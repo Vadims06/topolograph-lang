@@ -19,6 +19,7 @@
   "loading": "Loading the graph",
   "load_failed": "Unable to load the graph",
   "retry": "Retry",
+  "sign_in": "Sign in",
   "tables_label": "Tables",
   "tables_collapse": "Collapse",
   "tables_full_screen": "Full screen",

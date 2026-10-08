@@ -19,6 +19,7 @@
   "loading": "Chargement du graphe",
   "load_failed": "Impossible de charger le graphe",
   "retry": "Réessayer",
+  "sign_in": "Se connecter",
   "tables_label": "Tableaux",
   "tables_collapse": "Réduire",
   "tables_full_screen": "Plein écran",

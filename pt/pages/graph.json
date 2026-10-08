@@ -19,6 +19,7 @@
   "loading": "Carregando o grafo",
   "load_failed": "Não foi possível carregar o grafo",
   "retry": "Tentar novamente",
+  "sign_in": "Entrar",
   "tables_label": "Tabelas",
   "tables_collapse": "Recolher",
   "tables_full_screen": "Tela cheia",
