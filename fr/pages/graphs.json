@@ -79,5 +79,8 @@
   "wizard_vendors_failed": "Impossible de charger la liste des constructeurs",
   "wizard_cancel": "Annuler",
   "wizard_upload_aborted": "Le téléversement a été interrompu. Le fichier a peut-être été enregistré ; consultez la liste des graphes.",
-  "wizard_graphs_list": "Ouvrir la liste des graphes"
+  "wizard_graphs_list": "Ouvrir la liste des graphes",
+  "wizard_done_title": "Le graphe a été construit avec des avertissements",
+  "wizard_done_text": "Une partie du fichier n'a pas pu être lue ; le graphe peut donc être incomplet :",
+  "wizard_open_graph": "Ouvrir le graphe"
 }
