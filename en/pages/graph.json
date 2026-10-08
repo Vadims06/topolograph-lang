@@ -235,5 +235,20 @@
   "paths_not_built": "Path not built",
   "paths_reason_empty": "The field {field} is empty.",
   "paths_reason_unknown": "No router {value} in the field {field}.",
-  "paths_back": "← To the path"
+  "paths_back": "← To the path",
+  "copy_graph_time": "Copy graph_time",
+  "graph_time_copied": "graph_time copied",
+  "copy_failed": "Unable to copy graph_time",
+  "delete_graph": "Delete graph",
+  "delete_confirm": "Delete {graph} uploaded {time}? This cannot be undone.",
+  "delete_confirm_button": "Delete",
+  "delete_cancel": "Cancel",
+  "delete_failed": "Unable to delete the graph",
+  "type_lsdb": "LSDB",
+  "type_watcher": "watcher",
+  "type_yaml": "YAML",
+  "watcher_connected": "connected",
+  "watcher_offline": "not connected",
+  "demo_title": "Demo graph",
+  "graph_actions": "Graph actions"
 }
