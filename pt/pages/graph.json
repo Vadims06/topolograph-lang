@@ -176,7 +176,6 @@
   "card_row_not_backuped": "sem backup",
   "card_path_from": "Caminho de…",
   "card_path_to": "Caminho até…",
-  "card_path_soon": "Disponível no modo Caminhos",
   "card_ecmp_note": "ECMP: {links} entre os mesmos roteadores.",
   "card_collapse_bundle": "Recolher no grafo",
   "card_expand_bundle": "Expandir o feixe",
@@ -206,5 +205,6 @@
   "search_attr_vni": "VNI",
   "search_attr_vrf": "VRF",
   "search_attr_esi": "ESI",
-  "search_attr_mac": "MAC"
+  "search_attr_mac": "MAC",
+  "coming_soon": "Em breve"
 }

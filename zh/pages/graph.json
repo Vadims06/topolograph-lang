@@ -176,7 +176,6 @@
   "card_row_not_backuped": "无备份",
   "card_path_from": "路径起点…",
   "card_path_to": "路径终点…",
-  "card_path_soon": "将在“路径”模式中提供",
   "card_ecmp_note": "ECMP：同一对路由器之间的{links}。",
   "card_collapse_bundle": "在拓扑图上折叠",
   "card_expand_bundle": "展开链路束",
@@ -206,5 +205,6 @@
   "search_attr_vni": "VNI",
   "search_attr_vrf": "VRF",
   "search_attr_esi": "ESI",
-  "search_attr_mac": "MAC"
+  "search_attr_mac": "MAC",
+  "coming_soon": "即将推出"
 }
