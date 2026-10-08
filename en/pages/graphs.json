@@ -82,5 +82,6 @@
   "wizard_graphs_list": "Open the graphs list",
   "wizard_done_title": "The graph was built with warnings",
   "wizard_done_text": "Some of the file could not be read, so the graph may be incomplete:",
-  "wizard_open_graph": "Open graph"
+  "wizard_open_graph": "Open graph",
+  "coming_soon": "Coming soon"
 }
