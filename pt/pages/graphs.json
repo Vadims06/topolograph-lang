@@ -82,5 +82,6 @@
   "wizard_graphs_list": "Abrir a lista de grafos",
   "wizard_done_title": "O grafo foi construído com avisos",
   "wizard_done_text": "Parte do arquivo não pôde ser lida, então o grafo pode estar incompleto:",
-  "wizard_open_graph": "Abrir grafo"
+  "wizard_open_graph": "Abrir grafo",
+  "coming_soon": "Em breve"
 }

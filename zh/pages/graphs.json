@@ -82,5 +82,6 @@
   "wizard_graphs_list": "打开拓扑图列表",
   "wizard_done_title": "图已生成，但有警告",
   "wizard_done_text": "文件的一部分无法读取，因此图可能不完整：",
-  "wizard_open_graph": "打开图"
+  "wizard_open_graph": "打开图",
+  "coming_soon": "即将推出"
 }
