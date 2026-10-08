@@ -52,5 +52,6 @@
   "ed_form_consent": "I agree to be contacted about this request",
   "ed_form_submit": "Send",
   "ed_form_sent": "Thank you, we will reply by email.",
-  "ed_form_failed": "Could not send. Check the fields and try again."
+  "ed_form_failed": "Could not send. Check the fields and try again.",
+  "ed_form_too_many": "Too many requests. Please try again in a few minutes."
 }
