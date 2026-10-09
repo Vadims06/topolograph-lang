@@ -39,6 +39,8 @@
   "token_revoked_done": "Token revoked",
   "token_deleted_done": "Token deleted",
   "ips_scope": "The list is checked only for API sign-in with login and password. Requests with a token and web sign-in are not limited by it.",
+  "ips_seen_as": "Your address as the server sees it: {ip}",
+  "ips_use_it": "Use it",
   "ips_network": "Network (CIDR)",
   "ips_add": "Add network",
   "ips_remove": "Remove",
