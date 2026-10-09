@@ -59,6 +59,8 @@
   "category_adjacency": "Adjacency",
   "category_metric": "Metric",
   "category_network": "Networks",
+  "category_bgp_peer": "BGP peers",
+  "category_bgp_route": "BGP routes",
   "events_none": "No events in this period.",
   "router_search": "router",
   "routers_shown": "Routers {from}-{to} of {total}, by number of events",
