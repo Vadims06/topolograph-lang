@@ -64,5 +64,20 @@
   "routers_shown": "Routers {from}-{to} of {total}, by number of events",
   "routers_none": "No router matches the search.",
   "per_page": "per page",
-  "watcher_select": "Watcher"
+  "watcher_select": "Watcher",
+  "column.at": "Time",
+  "column.event": "Event",
+  "column.change": "Change",
+  "column.category": "Category",
+  "column.detected_by": "Detected by",
+  "column.object": "Object",
+  "column.duration": "Duration",
+  "event_kind_up": "Up",
+  "event_kind_down": "Down",
+  "event_kind_cost_changed": "Cost changed",
+  "event_kind_te_changed": "TE metric changed",
+  "event_kind_network_added": "Network added",
+  "event_kind_network_removed": "Network removed",
+  "event_still_down": "still down at the end of the period",
+  "event_open": "Open the graph at this time"
 }
