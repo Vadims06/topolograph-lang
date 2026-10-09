@@ -34,6 +34,8 @@
   "tab_adjacencies": "Adjacencies",
   "tab_nodes": "Nodes",
   "tab_events": "Events",
+  "events_button": "Events",
+  "events_button_count": "Events: {count} · {range}",
   "state_at": "State at {at}",
   "back_to_live": "Back to live",
   "tab_networks": "Networks",
