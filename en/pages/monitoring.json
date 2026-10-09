@@ -23,7 +23,6 @@
   "no_graph": "no graph yet",
   "empty": "No watchers yet.",
   "no_match": "No watcher matches the search.",
-  "events_region": "Events",
   "load_failed": "Unable to load the list",
   "retry": "Retry"
 }
