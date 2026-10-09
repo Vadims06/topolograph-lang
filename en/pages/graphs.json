@@ -108,5 +108,7 @@
   "wizard_copy": "Copy",
   "wizard_copied": "Copied",
   "wizard_copy_failed": "Unable to copy",
+  "wizard_watcher_timeout": "The server did not answer in time. Try again.",
+  "wizard_watcher_create_failed": "The watcher was not created. Check the connection and try again.",
   "coming_soon": "Coming soon"
 }
