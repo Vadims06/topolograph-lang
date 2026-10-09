@@ -56,5 +56,12 @@
   "sharing_empty": "Nothing here yet",
   "level_read": "Read",
   "level_write": "Write",
-  "level_admin": "Admin"
+  "level_admin": "Admin",
+  "share_title": "Share a graph",
+  "share_email": "User email",
+  "share_expires": "Expires (UTC)",
+  "share_submit": "Share",
+  "share_no_graphs": "You have no graphs to share",
+  "sharing_shared": "Graph shared",
+  "sharing_level_changed": "Access changed"
 }
