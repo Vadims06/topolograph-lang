@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "title": "Monitoring",
+    "description": "Watchers of your networks and the state of each one."
+  },
+  "title": "Monitoring",
+  "watchers": "Watchers",
+  "summary_watchers": "watchers",
+  "state_connected": "connected",
+  "state_reporting": "no data yet",
+  "state_waiting": "waiting for connection",
+  "unregistered": "unregistered",
+  "unregistered_hint": "Reports to Topolograph without a registered watcher",
+  "search_placeholder": "Search watcher or router",
+  "col_name": "Name",
+  "col_type": "Type",
+  "col_mode": "Mode",
+  "col_host": "Router",
+  "col_status": "Status",
+  "col_last_event": "Last event",
+  "col_graph": "Graph",
+  "graph_link": "graph ›",
+  "no_graph": "no graph yet",
+  "empty": "No watchers yet.",
+  "no_match": "No watcher matches the search.",
+  "load_failed": "Unable to load the list",
+  "retry": "Retry"
+}
