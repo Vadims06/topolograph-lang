@@ -538,7 +538,6 @@
   "failure_path_cost": "Cost",
   "failure_path_none": "No backup path:",
   "failure_path_back": "← To the path",
-  "failure_path_unjudged": "A backup path is calculated for failed links only. For failed routers and cost changes see the consequences below.",
   "failure_path_failed": "Unable to calculate the backup path",
   "hostname_edit": "Edit hostname",
   "hostname_save": "Save",
