@@ -108,7 +108,7 @@
   "wizard_copy": "Copy",
   "wizard_copied": "Copied",
   "wizard_copy_failed": "Unable to copy",
-  "wizard_watcher_timeout": "The server did not answer in time. Try again.",
-  "wizard_watcher_create_failed": "The watcher was not created. Check the connection and try again.",
+  "wizard_watcher_timeout": "No answer from the server. The watcher may already exist: check the Watchers list, or rotate its token there.",
+  "wizard_watcher_rotate_unknown": "No answer from the server, so the token may already have been replaced and the one shown before no longer works. Rotate it again to get a token you can copy.",
   "coming_soon": "Coming soon"
 }
