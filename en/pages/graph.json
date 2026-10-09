@@ -332,6 +332,7 @@
   "failure_cost_direction": "Directed link",
   "failure_cost_both": "both directions",
   "failure_cost_input": "New cost (now {cost})",
+  "failure_cost_new": "New cost",
   "failure_cost_apply": "Apply",
   "failure_cost_invalid": "Enter a whole number from 1 to 4294967295",
   "failure_cost_close": "Close"
