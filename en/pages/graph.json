@@ -214,6 +214,8 @@
   "card_ecmp_note": "ECMP: {links} between the same routers.",
   "card_collapse_bundle": "Collapse on the graph",
   "card_expand_bundle": "Expand the bundle",
+  "card_events": "Events · last 24 h",
+  "card_events_all": "All events ›",
   "card_more_links": "↓ {count} more",
   "card_ip": "IP {name}",
   "card_attr_cost": "cost",
