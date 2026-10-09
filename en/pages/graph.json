@@ -15,6 +15,10 @@
   "zoom_in": "Zoom in",
   "zoom_out": "Zoom out",
   "fit": "Fit to window",
+  "physics": "Physics",
+  "layout_save": "Save layout",
+  "layout_saved": "Layout saved",
+  "layout_save_failed": "Unable to save the layout",
   "layout_progress": "Layout of {nodes} nodes: {done} / {total}",
   "skipped_events_one": "{count} watcher event could not be applied",
   "skipped_events_other": "{count} watcher events could not be applied",
@@ -336,5 +340,6 @@
   "watcher_connected": "connected",
   "watcher_offline": "not connected",
   "demo_title": "Demo graph",
-  "graph_actions": "Graph actions"
+  "graph_actions": "Graph actions",
+  "share_graph": "Share…"
 }
