@@ -7,6 +7,7 @@
     "og_description": "Compare Topolograph Community and Enterprise: LSDB analysis, watchers, event history, SSO, alerts and support."
   },
   "ed_heading": "Community and Enterprise",
+  "ed_intro": "Community is the open self-hosted edition, all three connection steps are free. Enterprise is a separate platform for teams on a different stack.",
   "ed_col_feature": "Feature",
   "ed_f_core": "LSDB upload, graph, path calculation, failure scenarios",
   "ed_f_api": "API, SDK, MCP server",
@@ -53,5 +54,6 @@
   "ed_form_submit": "Send",
   "ed_form_sent": "Thank you, we will reply by email.",
   "ed_form_failed": "Could not send. Check the fields and try again.",
-  "ed_form_too_many": "Too many requests. Please try again in a few minutes."
+  "ed_form_too_many": "Too many requests. Please try again in a few minutes.",
+  "ed_form_close": "Close"
 }
