@@ -1,7 +1,10 @@
 {
   "_meta": {
-    "title": "Графы",
-    "description": "Ваши графы OSPF и IS-IS: загруженные снимки LSDB, графы watcher и YAML-диаграммы."
+    "title": "Визуализация LSDB OSPF/OSPFv3/IS-IS онлайн для построения графа сети",
+    "description": "Онлайн-визуализация OSPF/IS-IS для Arista, Cisco, Fortinet, Juniper, Nokia, Quagga, Bird, MikroTik, Huawei, Palo Alto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus",
+    "og_title": "Онлайн-визуализация LSDB OSPF/OSPFv3/IS-IS",
+    "og_description": "Загрузите LSDB OSPF/IS-IS с устройств Arista, Cisco, Juniper, Nokia, Huawei, FRR и других для построения интерактивного графа сети, поиска кратчайших и резервных путей офлайн.",
+    "meta_keywords": "topolograph, OSPF, OSPFv3, IS-IS, LSDB, онлайн, Arista, Cisco, Fortinet, Juniper, Quagga, Bird, Nokia, Mikrotik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus"
   },
   "title": "Графы",
   "search_placeholder": "Поиск по описанию, вендору или graph_time",

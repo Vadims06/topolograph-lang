@@ -1,7 +1,10 @@
 {
   "_meta": {
-    "title": "Grafos",
-    "description": "Sus grafos OSPF e IS-IS: instantáneas LSDB cargadas, grafos de watcher y diagramas YAML."
+    "title": "Visualización en línea de LSDB OSPF/OSPFv3/IS-IS para construcción de grafo de red",
+    "description": "Visualización en línea de OSPF/IS-IS para Arista, Cisco, Fortinet, Juniper, Nokia, Quagga, Bird, MikroTik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus",
+    "og_title": "Visualización en línea de LSDB OSPF/OSPFv3/IS-IS",
+    "og_description": "Sube LSDB OSPF/IS-IS de Arista, Cisco, Juniper, Nokia, Huawei, FRR y más para construir un grafo de red interactivo, encontrar caminos más cortos y analizar caminos de respaldo sin conexión.",
+    "meta_keywords": "topolograph, OSPF, OSPFv3, IS-IS, LSDB, Online, Arista, Cisco, Fortinet, Juniper, Quagga, Bird, Nokia, Mikrotik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus"
   },
   "title": "Grafos",
   "search_placeholder": "Buscar por descripción, fabricante o graph_time",

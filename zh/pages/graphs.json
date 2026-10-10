@@ -1,7 +1,10 @@
 {
   "_meta": {
-    "title": "图",
-    "description": "您的 OSPF 和 IS-IS 图：已上传的 LSDB 快照、watcher 图和 YAML 图示。"
+    "title": "在线构建网络图：OSPF/OSPFv3/IS-IS LSDB 可视化",
+    "description": "面向 Arista、Cisco、Fortinet、Juniper、Nokia、Quagga、Bird、MikroTik、Huawei、Palo Alto、Ubiquiti、Extreme、Ericsson、FRR、Ruckus 等设备的 OSPF/IS-IS 在线可视化",
+    "og_title": "OSPF/OSPFv3/IS-IS LSDB 在线可视化",
+    "og_description": "上传来自 Arista、Cisco、Juniper、Nokia、Huawei、FRR 等设备的 OSPF/IS-IS LSDB，构建交互式网络图，离线查找最短路径与备份路径。",
+    "meta_keywords": "topolograph, OSPF, OSPFv3, IS-IS, LSDB, 在线, Arista, Cisco, Fortinet, Juniper, Quagga, Bird, Nokia, Mikrotik, Huawei, Paloalto, Ubiquiti, Extreme, Ericsson, FRR, Ruckus"
   },
   "title": "图",
   "search_placeholder": "按描述、厂商或 graph_time 搜索",
