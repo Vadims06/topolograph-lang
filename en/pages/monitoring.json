@@ -27,5 +27,11 @@
   "no_match": "No watcher matches the search.",
   "load_failed": "Unable to load the list",
   "retry": "Retry",
-  "watcher_select": "Watcher"
+  "add_watcher": "+ Add watcher",
+  "layout": "Watcher list position",
+  "layout_top": "Top",
+  "layout_right": "Right",
+  "layout_hide": "Hide",
+  "watchers_hidden": "The watcher list is hidden.",
+  "show": "Show"
 }
