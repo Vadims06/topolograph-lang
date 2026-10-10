@@ -47,6 +47,7 @@
   "compare_banner": "Comparison: {graph} from {time} selected. Click the row of the second graph - the comparison opens on its page.",
   "compare_cancel": "Cancel",
   "open_demo": "Open demo graph",
+  "demo_failed": "Unable to open the demo graph",
   "demo_title": "Demo graph",
   "demo_badge": "demo",
   "wizard_title": "Add graph",
