@@ -69,5 +69,6 @@
   "operator.contains": "содержит",
   "operator.startsWith": "начинается с",
   "operator.hasItem": "содержит элемент",
-  "operator.inNetwork": "входит в сеть"
+  "operator.inNetwork": "входит в сеть",
+  "column.isis_level": "Уровень IS-IS"
 }

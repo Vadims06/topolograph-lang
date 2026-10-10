@@ -69,5 +69,6 @@
   "operator.contains": "contém",
   "operator.startsWith": "começa com",
   "operator.hasItem": "tem o item",
-  "operator.inNetwork": "pertence à rede"
+  "operator.inNetwork": "pertence à rede",
+  "column.isis_level": "Nível IS-IS"
 }

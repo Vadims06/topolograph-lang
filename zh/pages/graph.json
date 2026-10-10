@@ -42,7 +42,6 @@
   "column.cost": "开销",
   "column.local_ip_address": "本地 IP 地址",
   "column.remote_ip_address": "远端 IP 地址",
-  "column.isis_level": "IS-IS 级别",
   "column.name": "名称",
   "column.hostname": "主机名",
   "column.systemid": "System ID",
