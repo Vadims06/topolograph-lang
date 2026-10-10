@@ -69,5 +69,6 @@
   "operator.contains": "包含",
   "operator.startsWith": "开头为",
   "operator.hasItem": "包含项",
-  "operator.inNetwork": "属于网络"
+  "operator.inNetwork": "属于网络",
+  "column.isis_level": "IS-IS 级别"
 }
