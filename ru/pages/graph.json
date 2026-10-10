@@ -44,7 +44,6 @@
   "column.cost": "Стоимость",
   "column.local_ip_address": "Локальный IP-адрес",
   "column.remote_ip_address": "Удалённый IP-адрес",
-  "column.isis_level": "Уровень IS-IS",
   "column.name": "Имя",
   "column.hostname": "Имя хоста",
   "column.systemid": "System ID",

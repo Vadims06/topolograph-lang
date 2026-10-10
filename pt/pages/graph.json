@@ -42,7 +42,6 @@
   "column.cost": "Custo",
   "column.local_ip_address": "Endereço IP local",
   "column.remote_ip_address": "Endereço IP remoto",
-  "column.isis_level": "Nível IS-IS",
   "column.name": "Nome",
   "column.hostname": "Nome do host",
   "column.systemid": "System ID",

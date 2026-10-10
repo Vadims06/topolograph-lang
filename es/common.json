@@ -69,5 +69,6 @@
   "operator.contains": "contiene",
   "operator.startsWith": "empieza por",
   "operator.hasItem": "tiene el elemento",
-  "operator.inNetwork": "pertenece a la red"
+  "operator.inNetwork": "pertenece a la red",
+  "column.isis_level": "Nivel IS-IS"
 }

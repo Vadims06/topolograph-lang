@@ -42,7 +42,6 @@
   "column.cost": "Coste",
   "column.local_ip_address": "Dirección IP local",
   "column.remote_ip_address": "Dirección IP remota",
-  "column.isis_level": "Nivel IS-IS",
   "column.name": "Nombre",
   "column.hostname": "Nombre de host",
   "column.systemid": "System ID",

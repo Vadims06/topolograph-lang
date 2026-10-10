@@ -132,5 +132,6 @@
   "column.event": "Event",
   "column.object": "Object",
   "column.change": "Change",
-  "column.duration": "Duration"
+  "column.duration": "Duration",
+  "column.isis_level": "IS-IS level"
 }
