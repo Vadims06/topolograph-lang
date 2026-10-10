@@ -46,7 +46,7 @@
   "tab_resolution": "Route resolution",
   "tab_bgp_sessions": "BGP sessions",
   "tab_bgp_routes": "BGP routes",
-  "score_summary": "Score: {total}/{max} ({percentage}%)",
+  "score_summary": "Score: {total} of {max}",
   "tab_count_note": "Count includes all rows, not only filtered ones",
   "tables_height": "Tables height",
   "tables_resize": "Resize the tables",
