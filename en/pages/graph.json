@@ -674,5 +674,9 @@
   "compare_counts": "new {new}, old {old}",
   "compare_counts_changed": "new {new}, old {old}, changed {changed}",
   "compare_hint": "The result is here, in the table. Switch Routers / Networks / Links; on the canvas new routers are ringed green, new links are green and gone links are red dashed. Full screen hides the graph and keeps the table.",
-  "compare_hint_ok": "Got it"
+  "compare_hint_ok": "Got it",
+  "not_monitored": "not monitored",
+  "connect_watcher": "connect watcher",
+  "updated_by": "updated by",
+  "watchers_more": "+{count} more"
 }
