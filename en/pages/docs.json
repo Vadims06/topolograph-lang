@@ -15,6 +15,7 @@
   "version": "Documentation for Topolograph v{version}",
   "not_ready": "This guide is moving to the new design.",
   "open_current_runbook": "Open the current runbook",
+  "open_old_guide": "Open the current guide",
   "section_getting_started": "Getting started",
   "section_runbooks": "Runbooks",
   "section_reference": "Reference",
