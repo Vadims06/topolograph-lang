@@ -34,8 +34,6 @@
   "layout_hide": "Hide",
   "watchers_hidden": "The watcher list is hidden.",
   "show": "Show",
-  "all_watchers": "All watchers",
-  "filter_area_all": "All areas",
   "column.watcher": "Watcher",
   "column.area": "Area",
   "last_event_metric": "Link",
