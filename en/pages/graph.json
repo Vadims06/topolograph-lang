@@ -253,7 +253,6 @@
   "lsp_show_all_on_graph": "Show all on graph",
   "lsp_count": "{shown} of {total}",
   "lsp_empty": "No LSPs match",
-  "lsp_more": "↓ {count} more, refine the filters",
   "lsp_back": "← all LSPs",
   "lsp_status_placed": "placed",
   "lsp_status_unplaced": "no path",
