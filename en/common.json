@@ -39,6 +39,7 @@
   "add_condition": "Add a condition",
   "all_values": "All values",
   "columns": "Columns",
+  "columns_shown": "Columns {shown} of {total}",
   "filter_by": "Filter by",
   "filters": "Filters",
   "join": "Join conditions",

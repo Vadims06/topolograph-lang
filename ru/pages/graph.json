@@ -152,7 +152,6 @@
   "card_collapse_bundle": "Свернуть на графе",
   "card_expand_bundle": "Раскрыть связку",
   "card_more_links": "↓ ещё {count}",
-  "card_ip": "IP на {name}",
   "card_attr_cost": "стоимость",
   "card_attr_temetric": "TE-метрика",
   "card_attr_admin_group": "Административная группа",
