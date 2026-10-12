@@ -136,5 +136,7 @@
   "column.change": "Change",
   "column.duration": "Duration",
   "column.isis_level": "IS-IS level",
-  "filter_node": "Router"
+  "filter_node": "Router",
+  "all_watchers": "All watchers",
+  "filter_area_all": "All areas"
 }
