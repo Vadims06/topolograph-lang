@@ -33,5 +33,11 @@
   "layout_right": "Right",
   "layout_hide": "Hide",
   "watchers_hidden": "The watcher list is hidden.",
-  "show": "Show"
+  "show": "Show",
+  "column.watcher": "Watcher",
+  "column.area": "Area",
+  "last_event_metric": "Link",
+  "last_event_network": "Network",
+  "last_event_temetric": "TE link",
+  "last_event_node": "Router flag"
 }
