@@ -28,6 +28,7 @@
   "load_failed": "Unable to load the list",
   "retry": "Retry",
   "add_watcher": "+ Add watcher",
+  "community_note": "Community: monitoring is available on the demo graph only.",
   "layout": "Watcher list position",
   "layout_top": "Top",
   "layout_right": "Right",
