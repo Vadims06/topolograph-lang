@@ -138,5 +138,6 @@
   "column.isis_level": "IS-IS level",
   "filter_node": "Router",
   "all_watchers": "All watchers",
-  "filter_area_all": "All areas"
+  "filter_area_all": "All areas",
+  "delete_watcher_graph_note": "If a watcher feeds it, that watcher stays registered and keeps sending, so a new graph appears with its next data. To stop it, delete the watcher on Monitoring."
 }

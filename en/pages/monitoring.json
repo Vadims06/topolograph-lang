@@ -40,5 +40,12 @@
   "last_event_metric": "Link",
   "last_event_network": "Network",
   "last_event_temetric": "TE link",
-  "last_event_node": "Router flag"
+  "last_event_node": "Router flag",
+  "col_actions": "Actions",
+  "delete_watcher": "Delete",
+  "delete_watcher_confirm": "Delete watcher {name}? Its token stops working, so stop it on its host too. Its graphs and events can stay or go with it.",
+  "delete_watcher_keep": "Delete watcher, keep graphs",
+  "delete_watcher_with_data": "Delete watcher and its graphs",
+  "watcher_deleted": "Watcher deleted",
+  "watcher_delete_failed": "Unable to delete the watcher"
 }
