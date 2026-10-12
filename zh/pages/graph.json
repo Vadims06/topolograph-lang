@@ -148,7 +148,6 @@
   "card_collapse_bundle": "在拓扑图上折叠",
   "card_expand_bundle": "展开链路束",
   "card_more_links": "↓ 还有 {count} 项",
-  "card_ip": "{name} 的 IP",
   "card_attr_cost": "开销",
   "card_attr_temetric": "TE 度量",
   "card_attr_admin_group": "管理组",
