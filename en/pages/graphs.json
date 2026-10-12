@@ -101,6 +101,7 @@
   "wizard_yaml_failed": "The diagram was not created. Check the connection and try again.",
   "wizard_source_watcher": "Watcher",
   "wizard_source_watcher_text": "A live feed of topology changes from a router. Installed on a host you run.",
+  "wizard_source_watcher_community": "You are on Community: BGP topology visualisation only, monitoring is unavailable.",
   "wizard_host_requirements": "Host requirements",
   "wizard_router_requirements": "Router requirements",
   "wizard_watcher_catalog_failed": "Unable to load the watcher catalog",
