@@ -148,7 +148,6 @@
   "card_collapse_bundle": "Réduire sur le graphe",
   "card_expand_bundle": "Déplier le faisceau",
   "card_more_links": "↓ {count} de plus",
-  "card_ip": "IP {name}",
   "card_attr_cost": "coût",
   "card_attr_temetric": "Métrique TE",
   "card_attr_admin_group": "Groupe d'administration",
