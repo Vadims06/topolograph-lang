@@ -488,6 +488,8 @@
   "analysis_links_other": "{count} links one way",
   "analysis_links_back_one": "{count} link the other way",
   "analysis_links_back_other": "{count} links the other way",
+  "analysis_links_both_one": "{count} link in both directions",
+  "analysis_links_both_other": "{count} links in both directions",
   "analysis_heatmap_nodes": "Nodes with addresses without backup: {count} of {total}",
   "analysis_count_backup_paths_in_ecmp_one": "{count} router pair",
   "analysis_count_backup_paths_in_ecmp_other": "{count} router pairs",
