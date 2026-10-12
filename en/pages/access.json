@@ -42,6 +42,7 @@
   "ips_seen_as": "Your address as the server sees it: {ip}",
   "ips_use_it": "Use it",
   "ips_network": "Network (CIDR)",
+  "ips_invalid": "Enter a network in CIDR notation, for example 192.0.2.0/24",
   "ips_add": "Add network",
   "ips_remove": "Remove",
   "ips_empty": "No networks: API sign-in with login and password is refused until a network is added",
