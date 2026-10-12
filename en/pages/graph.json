@@ -335,7 +335,6 @@
   "search_failed": "Search failed",
   "search_nodes_count": "Nodes: {count}",
   "search_suggestions_count": "Suggestions: {count}",
-  "search_evpn_where": "RD {rd} - ESI {esi}",
   "search_attr_all": "All",
   "search_attr_node": "Node (name, Router ID, System ID, hostname)",
   "search_chip_node": "Node",
