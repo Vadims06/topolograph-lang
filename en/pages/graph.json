@@ -496,6 +496,7 @@
   "failure_chip_link": "link {from} ↔ {to}",
   "failure_chip_link_n": "link {from} ↔ {to} · link {number}",
   "failure_chip_cost": "{from} → {to} cost {cost}",
+  "failure_chip_cost_n": "{from} → {to} cost {cost} · link {number}",
   "failure_chip_return": "Return: {item}",
   "failure_bundle_down": "{count} down",
   "failure_new_transit": "new transit",
