@@ -150,5 +150,16 @@
   "filter_node": "Router",
   "all_watchers": "All watchers",
   "filter_area_all": "All areas",
-  "delete_watcher_graph_note": "If a watcher feeds it, that watcher stays registered and keeps sending, so a new graph appears with its next data. To stop it, delete the watcher on Monitoring."
+  "delete_watcher_graph_note": "If a watcher feeds it, that watcher stays registered and keeps sending, so a new graph appears with its next data. To stop it, delete the watcher on Monitoring.",
+  "range_common_today": "Today",
+  "range_common_yesterday": "Yesterday",
+  "range_common_week": "This week",
+  "range_search": "Search quick ranges",
+  "range_search_none": "No range matches.",
+  "range_prev_month": "Previous month",
+  "range_next_month": "Next month",
+  "range_time": "Time",
+  "kind_filter_igp": "IGP",
+  "kind_filter_te": "TE",
+  "event_kind_filter": "Event kinds"
 }
