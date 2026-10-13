@@ -71,7 +71,7 @@
   "wizard_file_chosen": "File selected. Drop another to replace it.",
   "wizard_description": "Description (optional)",
   "wizard_description_placeholder": "for example: dc1-core, before R5 replacement",
-  "wizard_hostname_note": "hostname and groups are carried over from the latest graph with the same RIDs",
+  "wizard_hostname_note": "Carry hostnames and groups over from the latest graph with the same RIDs",
   "wizard_name_hint": "The list shows the graph as \"{name}\", with the upload time and node count. Equal descriptions differ by time.",
   "wizard_back": "Back",
   "wizard_upload": "Upload",
@@ -123,5 +123,15 @@
   "wizard_copy_failed": "Unable to copy",
   "wizard_watcher_timeout": "No answer from the server. The watcher may already exist: check the Watchers list, or rotate its token there.",
   "wizard_watcher_rotate_unknown": "No answer from the server, so the token may already have been replaced and the one shown before no longer works. Rotate it again to get a token you can copy.",
-  "coming_soon": "Coming soon"
+  "coming_soon": "Coming soon",
+  "wizard_error_expected": "Expected the output of a command containing {command}, but the file has none.",
+  "wizard_error_todo": "What to do",
+  "wizard_error_todo_text": "Run all the commands above, save the output into one file and choose it again.",
+  "wizard_type_scope_ospf": "OSPF changes by area",
+  "wizard_type_scope_isis": "IS-IS changes by level L1 / L2",
+  "wizard_type_scope_bmp": "BGP: ipv4 / ipv6, VPN, EVPN",
+  "wizard_status": "Status",
+  "wizard_status_awaiting": "Awaiting connection",
+  "wizard_status_awaiting_text": "turns to Connected when the watcher starts reporting",
+  "wizard_status_connected": "Connected"
 }
