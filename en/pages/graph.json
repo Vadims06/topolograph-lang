@@ -442,7 +442,6 @@
   "path_bgp_igp_show": "Show IGP path to next hop",
   "path_bgp_igp_hint": "Off draws only the PE / VTEP on the canvas",
   "path_bgp_in_table": "BGP routes - in the table",
-  "path_new": "New path",
   "path_vpn_title": "Path in VPN {vrf}",
   "path_role_pe_ingress": "PE (ingress)",
   "path_role_pe_transit": "P",
