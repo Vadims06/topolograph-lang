@@ -130,6 +130,7 @@
   "view_categories": "By category",
   "view_histogram": "Histogram",
   "view_routers": "By router",
+  "events_updated": "updated {time}",
   "zoom_hint": "drag over a span to zoom in",
   "zoom_out": "Zoom out",
   "zoom_reset": "Reset zoom",
