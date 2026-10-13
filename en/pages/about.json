@@ -123,7 +123,7 @@
   "landing_step_integrate_need": "Network Device Command Proxy with read-only access to devices and an inventory (for example NetBox).",
   "landing_step_integrate_limit": "Commands are read-only; access to devices stays under your control.",
   "landing_flow_heading": "How data reaches Topolograph",
-  "landing_hero_title": "See your OSPF / IS-IS network as a graph - and ask it about paths and failures",
+  "landing_hero_title": "See your OSPF / IS‑IS network as a graph - and ask it about paths and failures",
   "landing_hero_lead": "Upload an LSDB output - in a minute you see the topology, the shortest paths and where traffic goes on a failure. No agents on routers, and in the self-hosted version the output never leaves your installation.",
   "landing_hero_upload_btn": "Upload your LSDB",
   "landing_art_bar": "OSPF · Paths · R1 → R9",
