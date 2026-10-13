@@ -51,6 +51,7 @@
   "demo_title": "Demo graph",
   "demo_badge": "demo",
   "wizard_title": "Add graph",
+  "wizard_title_watcher": "Add watcher",
   "wizard_close": "Close",
   "wizard_step_source": "Source",
   "wizard_step_vendor": "Vendor and protocol",
