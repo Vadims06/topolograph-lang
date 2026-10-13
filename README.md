@@ -21,7 +21,7 @@ English (`en/`) is the reference catalog. Other locales should keep the same key
 
 Some prose strings quote the name of a UI element (button, tab, dropdown label) inline — for example, a description that says *"open the «Network reaction on failure» tab"*. When translating such a string, use the **translated form of that UI label**, not the English one.
 
-- Find the key for the UI label (e.g. `btn_network_reaction` in `js_ui.json`).
+- Find the key for the UI label (e.g. `mode_failure` in `graph.json`).
 - Copy its translated value into the prose string.
 - Wrap it in guillemets (`«»`) for Russian or corner brackets (`「」`) for Chinese to keep it visually distinct.
 
