@@ -115,6 +115,8 @@
   "wizard_invalid_ospf_area": "Enter an area as a number or as an IPv4 address, such as 0.0.0.0",
   "wizard_invalid_isis_area": "Enter an IS-IS area, such as 49.0001",
   "wizard_invalid_slug": "Lowercase letters, digits and dashes only",
+  "wizard_invalid_range": "The number is outside the allowed range",
+  "wizard_invalid_pattern": "The value does not match the expected format",
   "wizard_invalid_unsafe": "Quotes and control characters are not allowed",
   "wizard_watcher_name_help": "Lowercase letters, digits and hyphens; starts with a letter or digit.",
   "wizard_watcher_advanced": "Advanced",
