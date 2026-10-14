@@ -52,6 +52,7 @@
   "operator": "Operator",
   "page_next": "Next",
   "page_range": "{first}-{last} of {total}",
+  "page_none_loaded": "0 of {total} loaded - load more to search the rest",
   "page_prev": "Previous",
   "pages": "Pages",
   "remove_condition": "Remove the condition",
