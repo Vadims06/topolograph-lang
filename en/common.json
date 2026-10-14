@@ -131,6 +131,7 @@
   "range_to": "To",
   "range_zone": "Browser time zone, {zone}",
   "router_search": "router",
+  "routers_per_page": "Routers per page",
   "routers_none": "No router matches the search.",
   "routers_shown": "Routers {from}-{to} of {total}, by number of events",
   "view_categories": "By category",
