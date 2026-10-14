@@ -660,6 +660,8 @@
   "hostnames_preview": "Preview",
   "hostnames_nothing": "Nothing to change",
   "hostnames_apply_count": "Apply {count}",
+  "hostnames_transfer_count": "Transfer {count}",
+  "hostnames_cancel": "Cancel",
   "hostnames_applied": "Applied: {count}",
   "hostnames_partly": "Not applied: {list}",
   "hostnames_manual_hint": "Type a name to change it; empty clears it. Rows you do not touch stay as they are.",
