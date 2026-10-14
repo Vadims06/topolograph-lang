@@ -247,6 +247,7 @@
   "yaml_text_hint": "Tab indents, Shift+Tab outdents; press Esc then Tab to leave the editor.",
   "card_label": "Details of the selected element",
   "card_close": "Close the card",
+  "card_hostname_unset": "hostname not set",
   "card_loading": "Loading the card",
   "card_failed": "Unable to load the card",
   "card_stale": "The graph changed since this page loaded. Reload the page.",
