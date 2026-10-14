@@ -282,7 +282,7 @@
   "card_attr_srlg": "SRLG",
   "layer_label": "Layers",
   "layer_igp": "IGP",
-  "layer_bgp": "BGP",
+  "layer_bgp": "BGP sessions",
   "layer_lsp": "LSP",
   "layer_bgp_loading": "Loading the BGP graph",
   "layer_bgp_unbound": "No BGP graph is bound to this graph",
