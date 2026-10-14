@@ -258,6 +258,8 @@
   "card_row_backuped": "with backup",
   "card_row_not_backuped": "without backup",
   "card_row_transit": "Transit paths",
+  "card_row_link_paths": "Paths through the link",
+  "card_ip_at": "IP {name}",
   "card_transit_show": "Show",
   "card_transit_loading": "Calculating",
   "card_transit_share": "{percentage}% of router pairs",
