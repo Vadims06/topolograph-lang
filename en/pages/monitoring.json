@@ -5,6 +5,7 @@
   },
   "title": "Monitoring",
   "watchers": "Watchers",
+  "events_watcher": "watcher",
   "summary_watchers_one": "{count} watcher",
   "summary_watchers_other": "{count} watchers",
   "state_connected": "connected",
