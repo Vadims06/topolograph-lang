@@ -73,6 +73,7 @@
   "wizard_hostname_note": "Carry hostnames and groups over from the latest graph with the same RIDs",
   "wizard_name_hint": "The list shows the graph as \"{name}\", with the upload time and node count. Equal descriptions differ by time.",
   "wizard_back": "Back",
+  "wizard_next": "Next",
   "wizard_upload": "Upload",
   "wizard_choice_hint": "A choice moves to the next step at once",
   "wizard_parsing": "Parsing {file}",
