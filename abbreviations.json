@@ -18,6 +18,6 @@
     "Ingress", "Egress", "Transit", "Head-end", "Tail-end", "Standby", "Secondary", "Setup", "Hold",
     "Backbone", "Affinity", "Autoroute", "Live", "Down", "Watchers", "Next hop", "Local pref", "AS path",
     "Communities", "Large communities", "Extended communities", "Cluster list", "Path ID", "Route targets",
-    "Ethernet tag", "MAC mobility seq", "Exclude any", "Include any", "Include all", "Admin distance", "Admin group", "IP", "PE"
+    "Ethernet tag", "L1", "L2", "GitHub", "Telegram", "admin@topolograph.com", "MAC mobility seq", "Exclude any", "Include any", "Include all", "Admin distance", "Admin group", "IP", "PE"
   ]
 }
