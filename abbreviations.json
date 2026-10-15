@@ -13,6 +13,11 @@
     "src", "dst", "cost", "color", "dashes", "directed", "label",
     "ha_role", "primary", "dc1", "lsdb_samples",
     "Cisco_ospf.txt", "Juniper_ospf.txt", "name@example.com",
-    "Docker-compose"
+    "Docker-compose",
+    "IGP", "AS", "iBGP", "eBGP", "RR", "RD", "AFI", "SAFI", "ERO", "VPNv4", "CSV", "Hostname",
+    "Ingress", "Egress", "Transit", "Head-end", "Tail-end", "Standby", "Secondary", "Setup", "Hold",
+    "Backbone", "Affinity", "Autoroute", "Live", "Down", "Watchers", "Next hop", "Local pref", "AS path",
+    "Communities", "Large communities", "Extended communities", "Cluster list", "Path ID", "Route targets",
+    "Ethernet tag", "MAC mobility seq", "Exclude any", "Include any", "Include all", "Admin distance", "Admin group", "IP", "PE"
   ]
 }
