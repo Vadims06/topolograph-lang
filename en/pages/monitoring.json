@@ -49,5 +49,7 @@
   "delete_watcher_with_data": "Delete watcher and its graphs",
   "watcher_deleted": "Watcher deleted",
   "watcher_delete_failed": "Unable to delete the watcher",
-  "bgp_load_more": "Load more"
+  "bgp_load_more": "Load more",
+  "skipped_events_one": "{count} watcher event could not be applied",
+  "skipped_events_other": "{count} watcher events could not be applied"
 }

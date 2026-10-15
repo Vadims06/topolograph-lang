@@ -51,5 +51,9 @@
   "watcher_delete_failed": "Не удалось удалить watcher",
   "summary_watchers_few": "watchers: {count}",
   "summary_watchers_many": "watchers: {count}",
-  "bgp_load_more": "Загрузить ещё"
+  "bgp_load_more": "Загрузить ещё",
+  "skipped_events_one": "{count} событие watcher не удалось применить",
+  "skipped_events_few": "{count} события watcher не удалось применить",
+  "skipped_events_many": "{count} событий watcher не удалось применить",
+  "skipped_events_other": "{count} события watcher не удалось применить"
 }
