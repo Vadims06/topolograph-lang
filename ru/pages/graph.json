@@ -262,6 +262,8 @@
   "legend_lsp_standby": "его standby-путь",
   "legend_lsp_ends": "head-end и tail-end LSP",
   "legend_search": "найденные роутеры",
+  "legend_new_router": "новый роутер",
+  "legend_new_link": "связь нового роутера",
   "legend_failure_more": "связь, где трафика стало больше после отказа",
   "legend_failure_less": "связь, где трафика стало меньше после отказа",
   "legend_bgp_session": "BGP-сессия",

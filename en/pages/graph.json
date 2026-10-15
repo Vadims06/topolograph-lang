@@ -152,6 +152,8 @@
   "legend_lsp_standby": "its standby path",
   "legend_lsp_ends": "head and tail of the LSP",
   "legend_search": "found routers",
+  "legend_new_router": "new router",
+  "legend_new_link": "link of a new router",
   "legend_failure_more": "link with more traffic after the failure",
   "legend_failure_less": "link with less traffic after the failure",
   "legend_bgp_session": "BGP session",
