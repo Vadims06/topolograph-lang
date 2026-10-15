@@ -69,7 +69,6 @@
   "column.label": "Node label",
   "column.neighbors": "Neighbors",
   "column.transit": "Transit, % of pairs",
-  "column.display_name_override": "Display name override",
   "column.te_metric": "TE metric",
   "column.admin_group": "Admin group",
   "column.max_link_bw": "Max link BW",
