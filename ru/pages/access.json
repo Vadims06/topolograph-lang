@@ -56,5 +56,22 @@
   "sharing_empty": "Пока пусто",
   "level_read": "Чтение",
   "level_write": "Изменение",
-  "level_admin": "Администратор"
+  "level_admin": "Администратор",
+  "tokens_intro": "Токен нужен REST API, Python SDK, MCP-серверу и watcher: Authorization: Bearer sk-... Запросы с токеном не проверяются по списку IP. Значение токена показывается один раз, при создании.",
+  "token_dialog_title": "Создать API-токен",
+  "token_created_title": "Токен {name} создан",
+  "token_copy_now": "Скопируйте токен сейчас. После закрытия окна показываются только его последние символы.",
+  "token_check": "Проверка",
+  "ips_seen_as": "Ваш адрес, как его видит сервер: {ip}",
+  "ips_use_it": "Использовать",
+  "ips_invalid": "Введите сеть в формате CIDR, например 192.0.2.0/24",
+  "share_title": "Поделиться графом",
+  "share_open": "Поделиться графами",
+  "sharing_rights_help": "Чтение: открыть граф, считать пути и отказы. Изменение: ещё раскладка, hostname, YAML. Удалить граф может только владелец.",
+  "share_email": "Email пользователя",
+  "share_expires": "Истекает (UTC)",
+  "share_submit": "Поделиться",
+  "share_no_graphs": "Нет графов, которыми можно поделиться",
+  "sharing_shared": "Граф доступен",
+  "sharing_level_changed": "Доступ изменён"
 }
