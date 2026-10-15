@@ -165,5 +165,8 @@
   "range_time": "Время",
   "kind_filter_igp": "IGP",
   "kind_filter_te": "TE",
-  "event_kind_filter": "Типы событий"
+  "event_kind_filter": "Типы событий",
+  "events_lanes_note": "Отрезок соседства - от down до up (сколько связь лежала), как на текущем таймлайне; метрики и сети - отметки времени.",
+  "events_routers_note": "Дорожка - роутер, который обнаружил событие (event_detected_by); цвет - категория.",
+  "range_last_4h": "Последние 4 часа"
 }
