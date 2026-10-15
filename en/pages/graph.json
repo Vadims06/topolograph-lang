@@ -25,6 +25,7 @@
   "skipped_events_other": "{count} watcher events could not be applied",
   "loading": "Loading the graph",
   "load_failed": "Unable to load the graph",
+  "session_expired": "Session expired - sign in again",
   "retry": "Retry",
   "sign_in": "Sign in",
   "tables_label": "Tables",
