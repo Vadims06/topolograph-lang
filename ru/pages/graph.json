@@ -21,6 +21,7 @@
   "skipped_events_other": "{count} события watcher не удалось применить",
   "loading": "Загрузка графа",
   "load_failed": "Не удалось загрузить граф",
+  "session_expired": "Сессия истекла - войдите снова",
   "retry": "Повторить",
   "sign_in": "Войти",
   "tables_label": "Таблицы",
