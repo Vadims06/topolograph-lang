@@ -48,5 +48,6 @@
   "delete_watcher_keep": "Delete watcher, keep graphs",
   "delete_watcher_with_data": "Delete watcher and its graphs",
   "watcher_deleted": "Watcher deleted",
-  "watcher_delete_failed": "Unable to delete the watcher"
+  "watcher_delete_failed": "Unable to delete the watcher",
+  "bgp_load_more": "Load more"
 }

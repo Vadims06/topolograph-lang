@@ -50,5 +50,6 @@
   "watcher_deleted": "Watcher удалён",
   "watcher_delete_failed": "Не удалось удалить watcher",
   "summary_watchers_few": "watchers: {count}",
-  "summary_watchers_many": "watchers: {count}"
+  "summary_watchers_many": "watchers: {count}",
+  "bgp_load_more": "Загрузить ещё"
 }
