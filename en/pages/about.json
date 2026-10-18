@@ -69,7 +69,7 @@
   "lp_beat_4_p": "The engineer asks the question. The agent calls the Topolograph MCP server tools for events and failure calculation, and answers with a reference to the data. Agent 2.0 already diagnoses incidents with a runbook agreed in advance: on an engineer's request, or automatically when an event opens a ticket. Read-only access, authorization and the explicit runbook steps make the diagnosis safe and several times faster.",
   "lp_know_1": "Structure and paths",
   "lp_know_2": "Changes over time",
-  "lp_know_3": "Answers with evidence",
+  "lp_know_3": "Network AI Agent",
   "lp_scene_aria": "Topolograph demo network: 13 OSPF routers",
   "lp_scene_collector": "Collector",
   "lp_scene_store": "model · events · history",
