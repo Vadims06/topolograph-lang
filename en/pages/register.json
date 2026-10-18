@@ -6,5 +6,10 @@
   "valid_feedback": "Nice to meet you!",
   "invalid_feedback": "Please provide an email.",
   "password_label": "Password",
-  "submit": "Sign up"
+  "submit": "Sign up",
+  "password_help": "From {min} to {max} characters.",
+  "error_password_length": "The password must be from {min} to {max} characters long.",
+  "error_login_taken": "This email is already registered. Log in instead.",
+  "error_invalid_form": "Enter an email and a password.",
+  "have_account": "Already have an account? Log in"
 }

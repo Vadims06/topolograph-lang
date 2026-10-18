@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "title": "Confidentiality policy - Topolograph"
+  },
+  "heading": "Confidentiality policy",
+  "collected_heading": "Which information is going to be collected",
+  "collected_registration": "For registration purpose, we keep only username (or nickname) and email address. Actually, we do not have any email checks, therefore, an email address can be dummy or random.",
+  "collected_logs": "Our web server has automatic settings for keeping some general logs which are mainly going to be used for further investigation of web server problems (if any). Some logs can include IP address, type of browser, time of request, etc.",
+  "usage_heading": "How the getting information is going to be used",
+  "usage_text": "The combination of username (or nickname) and email address is used for generation of a random anonymous user ID. This User ID is used for linking all artifacts (topology information, graphs ID, plots ID, device groups, etc) to the actual user. It is worth to mention, that unregistered users do not have such options (saving multiple graphs, groups, etc) because of lack of technical ability to link such unregistered user to multiple artifacts.",
+  "third_parties_heading": "Providing data to third parties",
+  "third_parties_text": "Personal data of users can be transferred to persons not associated with this site, if necessary:",
+  "third_parties_law": "to comply with the law, regulatory act, the execution of a court decision;",
+  "third_parties_fraud": "to detect or prevent fraud;",
+  "third_parties_malfunctions": "to eliminate technical malfunctions of the site;",
+  "third_parties_requests": "to provide information on the basis of a request from authorized state bodies.",
+  "security_heading": "Data security",
+  "security_text": "The site administration takes measures to protect user data from unauthorized access, in particular:",
+  "security_updates": "update services and system packages;",
+  "security_server": "use to host a virtual dedicated server site.",
+  "changes_heading": "Changes",
+  "changes_text": "Privacy policy updates are published on this page."
+}
