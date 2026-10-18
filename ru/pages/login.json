@@ -8,5 +8,7 @@
   "email_placeholder": "name@example.com",
   "password_label": "Пароль",
   "submit": "Войти",
-  "create_account": "Создать локальный аккаунт"
+  "create_account": "Создать локальный аккаунт",
+  "error_wrong_password": "Неверная эл. почта или пароль.",
+  "error_invalid_form": "Укажите корректную эл. почту и пароль."
 }
