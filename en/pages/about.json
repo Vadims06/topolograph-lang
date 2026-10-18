@@ -69,7 +69,7 @@
   "lp_beat_4_p": "The engineer asks the question. The agent calls the Topolograph MCP server tools for events and failure calculation, and answers with a reference to the data. Agent 2.0 already diagnoses incidents with a runbook agreed in advance: on an engineer's request, or automatically when an event opens a ticket. Read-only access, authorization and the explicit runbook steps make the diagnosis safe and several times faster.",
   "lp_know_1": "Structure and paths",
   "lp_know_2": "Changes over time",
-  "lp_know_3": "Answers with evidence",
+  "lp_know_3": "Network AI Agent",
   "lp_scene_aria": "Topolograph demo network: 13 OSPF routers",
   "lp_scene_collector": "Collector",
   "lp_scene_store": "model · events · history",
@@ -140,11 +140,10 @@
   "lp_dep_self_p": "Topolograph and the routing protocol collectors run in your infrastructure; the routing data and the history of network states stay under your control.",
   "lp_dep_zone_own": "Your infrastructure",
   "lp_dep_net": "Network",
-  "lp_dep_collector": "On-site collector",
-  "lp_dep_saas_h": "Hosted (SaaS) with an on-site collector sensor",
-  "lp_dep_saas_p": "A physical collector sensor on your site receives the routing data locally and passes the agreed data to the hosted Topolograph over a protected channel.",
+  "lp_dep_collector": "Collector",
+  "lp_dep_saas_h": "Hosted (SaaS) with an on-site collector",
+  "lp_dep_saas_p": "A physical collector on your site receives the routing data locally and passes the agreed data to the hosted Topolograph over a protected channel.",
   "lp_dep_zone_site": "Your site",
-  "lp_dep_sensor": "Collector sensor",
   "lp_dep_zone_host": "Topolograph hosting",
   "lp_dep_saas": "SaaS",
   "lp_dep_channel": "Encrypted outbound channel or VPN.",
@@ -185,5 +184,5 @@
   "lp_ed10_e": "reworked for heavy load",
   "lp_ed11_name": "Support",
   "lp_ed11_c": "GitHub issues",
-  "lp_ed11_e": "priority, best effort, N business days"
+  "lp_ed11_e": "priority support"
 }
