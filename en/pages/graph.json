@@ -186,6 +186,7 @@
   "yaml_edit": "Edit YAML",
   "yaml_title": "YAML graph editor",
   "yaml_close": "Close the editor",
+  "yaml_resize": "Resize the editor panel",
   "yaml_entity_node": "Node",
   "yaml_entity_link": "Link",
   "yaml_entity_lsp": "LSP",
