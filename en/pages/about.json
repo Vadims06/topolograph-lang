@@ -111,7 +111,7 @@
   "lp_demo_text": "Paths, failures and events on a 13-router graph, no sign-up needed.",
   "lp_float": "Skip to the end of the demo ↓",
   "lp_mon_heading": "Existing monitoring and Topolograph: complementing and extending network visibility",
-  "lp_mon_sub": "Zabbix, Prometheus, Cacti and Grafana watch devices and interfaces. Topolograph shows how the network routes traffic and works alongside them.",
+  "lp_mon_sub": "Zabbix, Prometheus and Cacti watch devices and interfaces. Topolograph shows how the network routes traffic and works alongside them.",
   "lp_cmp_title": "Capability comparison",
   "lp_cmp_sub": "Classic monitoring and Topolograph across 6 criteria",
   "lp_cmp_show": "Show the table",
