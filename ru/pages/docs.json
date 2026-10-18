@@ -13,7 +13,7 @@
   "step_1": "Шаг 2 · Наблюдение: watcher",
   "step_2": "Шаг 3 · Интеграция: Command Proxy",
   "version": "Документация к Topolograph v{version}",
-  "not_ready": "Это руководство переносится в новый дизайн.",
+  "docs_full_guide": "Полное руководство на docs.topolograph.com",
   "section_getting_started": "Начало работы",
   "section_runbooks": "Практикумы",
   "section_reference": "Справочник",
