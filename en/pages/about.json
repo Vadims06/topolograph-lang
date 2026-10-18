@@ -16,7 +16,6 @@
   "lp_h1": "Your network, as its protocols see it",
   "lp_lead": "Topolograph builds a model of the network from what its routing protocols report. Each new source adds its own independent layer to that model. Everything else is computed on it: primary and backup paths, links with no backup, search over network elements (prefixes, MAC addresses and more), and link or node failures simulated before maintenance starts. Analysis works from a single LSDB snapshot; a collector adds the stream of changes, and an AI agent answers questions from the same data.",
   "lp_cta_demo": "Open the interactive demo",
-  "lp_cta_start": "Start for free",
   "lp_cta_upload": "Upload your own LSDB",
   "lp_tech": "OSPF · OSPFv3 · IS-IS · BGP / EVPN · {count} vendors",
   "lp_t_plus": "T+{t} s",
