@@ -83,6 +83,7 @@
   "yaml_edit": "Редактировать YAML",
   "yaml_title": "Редактор YAML-графа",
   "yaml_close": "Закрыть редактор",
+  "yaml_resize": "Изменить ширину панели редактора",
   "yaml_entity_node": "Узел",
   "yaml_entity_link": "Линк",
   "yaml_entity_lsp": "LSP",
