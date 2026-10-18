@@ -13,7 +13,7 @@
   "step_1": "Step 2 · Monitoring: watcher",
   "step_2": "Step 3 · Integration: Command Proxy",
   "version": "Documentation for Topolograph v{version}",
-  "not_ready": "This guide is moving to the new design.",
+  "docs_full_guide": "The full guide on docs.topolograph.com",
   "section_getting_started": "Getting started",
   "section_runbooks": "Runbooks",
   "section_reference": "Reference",
