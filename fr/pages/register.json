@@ -6,5 +6,10 @@
   "valid_feedback": "Ravi de vous rencontrer !",
   "invalid_feedback": "Veuillez indiquer une adresse e-mail.",
   "password_label": "Mot de passe",
-  "submit": "S'inscrire"
+  "submit": "S'inscrire",
+  "password_help": "De {min} à {max} caractères.",
+  "error_password_length": "Le mot de passe doit comporter de {min} à {max} caractères.",
+  "error_login_taken": "Cet e-mail est déjà enregistré. Connectez-vous plutôt.",
+  "error_invalid_form": "Saisissez un e-mail et un mot de passe.",
+  "have_account": "Vous avez déjà un compte ? Se connecter"
 }

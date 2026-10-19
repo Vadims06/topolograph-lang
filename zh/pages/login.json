@@ -8,5 +8,7 @@
   "email_placeholder": "name@example.com",
   "password_label": "密码",
   "submit": "登录",
-  "create_account": "创建本地账户"
+  "create_account": "创建本地账户",
+  "error_wrong_password": "邮箱或密码错误。",
+  "error_invalid_form": "请输入有效的邮箱和密码。"
 }

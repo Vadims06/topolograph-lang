@@ -6,5 +6,10 @@
   "valid_feedback": "¡Un placer conocerte!",
   "invalid_feedback": "Por favor, indica un correo electrónico.",
   "password_label": "Contraseña",
-  "submit": "Registrarse"
+  "submit": "Registrarse",
+  "password_help": "De {min} a {max} caracteres.",
+  "error_password_length": "La contraseña debe tener de {min} a {max} caracteres.",
+  "error_login_taken": "Este correo ya está registrado. Inicie sesión.",
+  "error_invalid_form": "Introduzca un correo y una contraseña.",
+  "have_account": "¿Ya tiene una cuenta? Inicie sesión"
 }

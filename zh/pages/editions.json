@@ -19,5 +19,7 @@
   "ed_form_consent": "我同意就此请求与我联系",
   "ed_form_submit": "发送",
   "ed_form_sent": "谢谢,我们会通过邮件回复。",
-  "ed_form_failed": "发送失败。请检查各字段后重试。"
+  "ed_form_failed": "发送失败。请检查各字段后重试。",
+  "ed_form_too_many": "请求过多。请几分钟后再试。",
+  "ed_form_close": "关闭"
 }

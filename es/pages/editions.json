@@ -19,5 +19,7 @@
   "ed_form_consent": "Acepto que me contacten sobre esta solicitud",
   "ed_form_submit": "Enviar",
   "ed_form_sent": "Gracias, responderemos por correo.",
-  "ed_form_failed": "No se pudo enviar. Revise los campos e inténtelo de nuevo."
+  "ed_form_failed": "No se pudo enviar. Revise los campos e inténtelo de nuevo.",
+  "ed_form_too_many": "Demasiadas solicitudes. Inténtelo de nuevo en unos minutos.",
+  "ed_form_close": "Cerrar"
 }

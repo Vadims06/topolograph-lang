@@ -8,5 +8,7 @@
   "email_placeholder": "name@example.com",
   "password_label": "Mot de passe",
   "submit": "Se connecter",
-  "create_account": "Créer un compte local"
+  "create_account": "Créer un compte local",
+  "error_wrong_password": "E-mail ou mot de passe incorrect.",
+  "error_invalid_form": "Saisissez un e-mail et un mot de passe valides."
 }
