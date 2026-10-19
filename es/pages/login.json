@@ -10,5 +10,8 @@
   "submit": "Iniciar sesión",
   "create_account": "Crear cuenta local",
   "error_wrong_password": "Correo o contraseña incorrectos.",
-  "error_invalid_form": "Introduzca un correo válido y una contraseña."
+  "error_invalid_form": "Introduzca un correo válido y una contraseña.",
+  "error_sign_in_required": "Inicie sesión para continuar.",
+  "error_provider_failed": "No se pudo iniciar sesión con el proveedor. Inténtelo de nuevo o use una cuenta local.",
+  "error_provider_unavailable": "Este proveedor de inicio de sesión no está disponible."
 }

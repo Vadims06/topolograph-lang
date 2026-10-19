@@ -10,5 +10,8 @@
   "submit": "登录",
   "create_account": "创建本地账户",
   "error_wrong_password": "邮箱或密码错误。",
-  "error_invalid_form": "请输入有效的邮箱和密码。"
+  "error_invalid_form": "请输入有效的邮箱和密码。",
+  "error_sign_in_required": "请先登录后继续。",
+  "error_provider_failed": "通过第三方登录失败，请重试或使用本地账户。",
+  "error_provider_unavailable": "该登录方式暂不可用。"
 }
