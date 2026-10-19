@@ -61,6 +61,7 @@
   "reset_all": "Reset all",
   "reset_filters": "Reset filters",
   "list_more": "{count} more - narrow the search",
+  "facet_truncated": "Only the first {count} values are listed - narrow the search",
   "search": "Search",
   "select_all": "Select all found",
   "sort_by": "Sort by",
