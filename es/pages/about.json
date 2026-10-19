@@ -38,7 +38,7 @@
   "lp_q0_d": "Comparar el grafo en distintos momentos muestra cuándo el prefijo salió de la red.",
   "lp_q1_q": "¿Se puede sacar de servicio un enlace o un dispositivo?",
   "lp_q1_d": "Simular el fallo en el grafo muestra adónde va el tráfico y qué segmentos se quedan sin respaldo, antes de empezar el trabajo.",
-  "lp_q2_q": "¿Por dónde irá un nuevo LSP MPLS TE con el ancho de banda requerido?",
+  "lp_q2_q": "¿Por dónde irá un nuevo MPLS TE LSP con el ancho de banda requerido?",
   "lp_q2_d": "CSPF sobre los atributos TE de la LSDB muestra la ruta del LSP para el ancho de banda solicitado y cómo se comporta cuando falla un enlace.",
   "lp_q3_q": "¿Qué cambió antes del incidente?",
   "lp_q3_d": "El historial de eventos del colector y el grafo en el momento del incidente muestran qué cambió y en qué orden.",

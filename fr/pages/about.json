@@ -38,7 +38,7 @@
   "lp_q0_d": "La comparaison du graphe à différents instants montre quand le préfixe a quitté le réseau.",
   "lp_q1_q": "Peut-on mettre un lien ou un équipement hors service ?",
   "lp_q1_d": "La simulation de la panne sur le graphe montre où passe le trafic et quels segments restent sans secours, avant le début des travaux.",
-  "lp_q2_q": "Où passera un nouveau LSP MPLS TE avec la bande passante requise ?",
+  "lp_q2_q": "Où passera un nouveau MPLS TE LSP avec la bande passante requise ?",
   "lp_q2_d": "Le CSPF sur les attributs TE de la LSDB montre le chemin du LSP pour la bande passante demandée et son comportement en cas de panne d'un lien.",
   "lp_q3_q": "Qu'est-ce qui a changé avant l'incident ?",
   "lp_q3_d": "L'historique des événements du collecteur et le graphe au moment de l'incident montrent ce qui a changé et dans quel ordre.",
