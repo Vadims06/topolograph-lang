@@ -13,5 +13,6 @@
   "error_invalid_form": "Introduzca un correo válido y una contraseña.",
   "error_sign_in_required": "Inicie sesión para continuar.",
   "error_provider_failed": "No se pudo iniciar sesión con el proveedor. Inténtelo de nuevo o use una cuenta local.",
-  "error_provider_unavailable": "Este proveedor de inicio de sesión no está disponible."
+  "error_provider_unavailable": "Este proveedor de inicio de sesión no está disponible.",
+  "error_session_unavailable": "No se pudo cargar el formulario de inicio de sesión. Recargue la página para intentarlo de nuevo."
 }

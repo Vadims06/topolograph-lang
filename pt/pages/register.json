@@ -11,5 +11,6 @@
   "error_password_length": "A senha deve ter de {min} a {max} caracteres.",
   "error_login_taken": "Este e-mail já está registrado. Entre com ele.",
   "error_invalid_form": "Informe um e-mail e uma senha.",
-  "have_account": "Já tem uma conta? Entrar"
+  "have_account": "Já tem uma conta? Entrar",
+  "error_session_unavailable": "Não foi possível carregar o formulário de cadastro. Recarregue a página para tentar novamente."
 }

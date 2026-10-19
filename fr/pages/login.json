@@ -13,5 +13,6 @@
   "error_invalid_form": "Saisissez un e-mail et un mot de passe valides.",
   "error_sign_in_required": "Connectez-vous pour continuer.",
   "error_provider_failed": "La connexion via le fournisseur a échoué. Réessayez ou utilisez un compte local.",
-  "error_provider_unavailable": "Ce fournisseur de connexion n'est pas disponible."
+  "error_provider_unavailable": "Ce fournisseur de connexion n'est pas disponible.",
+  "error_session_unavailable": "Le formulaire de connexion n'a pas pu se charger. Rechargez la page pour réessayer."
 }

@@ -13,5 +13,6 @@
   "error_invalid_form": "Enter a valid email and a password.",
   "error_sign_in_required": "Sign in to continue.",
   "error_provider_failed": "Sign-in with the provider failed. Try again or use a local account.",
-  "error_provider_unavailable": "This sign-in provider is not available."
+  "error_provider_unavailable": "This sign-in provider is not available.",
+  "error_session_unavailable": "The sign-in form could not load. Reload the page to try again."
 }
