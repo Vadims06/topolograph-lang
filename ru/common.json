@@ -80,6 +80,7 @@
   "page_none_loaded": "Загружено 0 из {total} - загрузите ещё, чтобы искать по остальным",
   "reset_filters": "Сбросить фильтры",
   "list_more": "Ещё {count} - уточните поиск",
+  "facet_truncated": "Показаны только первые {count} значений - уточните поиск",
   "bmp_event_add": "Маршрут добавлен",
   "bmp_event_change": "Маршрут изменён",
   "bmp_event_mac_move": "Перенос MAC",
