@@ -10,5 +10,9 @@
   "submit": "Entrar",
   "create_account": "Criar conta local",
   "error_wrong_password": "E-mail ou senha incorretos.",
-  "error_invalid_form": "Informe um e-mail e uma senha válidos."
+  "error_invalid_form": "Informe um e-mail e uma senha válidos.",
+  "error_sign_in_required": "Entre para continuar.",
+  "error_provider_failed": "Falha ao entrar pelo provedor. Tente novamente ou use uma conta local.",
+  "error_provider_unavailable": "Este provedor de login não está disponível.",
+  "error_session_unavailable": "Não foi possível carregar o formulário de login. Recarregue a página para tentar novamente."
 }

@@ -11,5 +11,6 @@
   "error_password_length": "La contraseña debe tener de {min} a {max} caracteres.",
   "error_login_taken": "Este correo ya está registrado. Inicie sesión.",
   "error_invalid_form": "Introduzca un correo y una contraseña.",
-  "have_account": "¿Ya tiene una cuenta? Inicie sesión"
+  "have_account": "¿Ya tiene una cuenta? Inicie sesión",
+  "error_session_unavailable": "No se pudo cargar el formulario de registro. Recargue la página para intentarlo de nuevo."
 }

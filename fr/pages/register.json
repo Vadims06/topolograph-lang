@@ -11,5 +11,6 @@
   "error_password_length": "Le mot de passe doit comporter de {min} à {max} caractères.",
   "error_login_taken": "Cet e-mail est déjà enregistré. Connectez-vous plutôt.",
   "error_invalid_form": "Saisissez un e-mail et un mot de passe.",
-  "have_account": "Vous avez déjà un compte ? Se connecter"
+  "have_account": "Vous avez déjà un compte ? Se connecter",
+  "error_session_unavailable": "Le formulaire d'inscription n'a pas pu se charger. Rechargez la page pour réessayer."
 }
