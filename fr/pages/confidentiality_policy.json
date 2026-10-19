@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "title": "Politique de confidentialité - Topolograph"
+  },
+  "heading": "Politique de confidentialité",
+  "collected_heading": "Quelles informations sont collectées",
+  "collected_registration": "Pour l'inscription, nous conservons uniquement le nom d'utilisateur (ou pseudo) et l'adresse e-mail. En réalité, nous ne vérifions pas les e-mails ; l'adresse peut donc être fictive ou aléatoire.",
+  "collected_logs": "Notre serveur web conserve automatiquement certains logs généraux, principalement destinés à l'analyse ultérieure d'éventuels problèmes du serveur web. Certains logs peuvent contenir l'adresse IP, le type de navigateur, l'heure de la requête, etc.",
+  "usage_heading": "Comment les informations obtenues sont utilisées",
+  "usage_text": "La combinaison du nom d'utilisateur (ou pseudo) et de l'adresse e-mail sert à générer un identifiant utilisateur anonyme aléatoire. Cet identifiant relie tous les éléments (informations de topologie, identifiants de graphes, de tracés, groupes d'équipements, etc.) à l'utilisateur concerné. Notons que les utilisateurs non inscrits n'ont pas ces possibilités (enregistrer plusieurs graphes, groupes, etc.), faute de moyen technique pour relier un utilisateur non inscrit à plusieurs éléments.",
+  "third_parties_heading": "Transmission de données à des tiers",
+  "third_parties_text": "Les données personnelles des utilisateurs peuvent être transmises à des personnes étrangères à ce site, si nécessaire :",
+  "third_parties_law": "pour se conformer à la loi, à un acte réglementaire ou à l'exécution d'une décision de justice ;",
+  "third_parties_fraud": "pour détecter ou prévenir une fraude ;",
+  "third_parties_malfunctions": "pour éliminer des dysfonctionnements techniques du site ;",
+  "third_parties_requests": "pour fournir des informations à la demande d'organismes d'État habilités.",
+  "security_heading": "Sécurité des données",
+  "security_text": "L'administration du site prend des mesures pour protéger les données des utilisateurs contre tout accès non autorisé, notamment :",
+  "security_updates": "mise à jour des services et des paquets système ;",
+  "security_server": "hébergement du site sur un serveur dédié virtuel.",
+  "changes_heading": "Modifications",
+  "changes_text": "Les mises à jour de la politique de confidentialité sont publiées sur cette page."
+}

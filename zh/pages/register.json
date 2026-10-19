@@ -6,5 +6,10 @@
   "valid_feedback": "很高兴认识你！",
   "invalid_feedback": "请填写电子邮箱。",
   "password_label": "密码",
-  "submit": "注册"
+  "submit": "注册",
+  "password_help": "{min} 到 {max} 个字符。",
+  "error_password_length": "密码长度必须为 {min} 到 {max} 个字符。",
+  "error_login_taken": "该邮箱已注册。请直接登录。",
+  "error_invalid_form": "请输入邮箱和密码。",
+  "have_account": "已有账户？请登录"
 }

@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "title": "Política de confidencialidade - Topolograph"
+  },
+  "heading": "Política de confidencialidade",
+  "collected_heading": "Quais informações serão coletadas",
+  "collected_registration": "Para fins de cadastro, mantemos apenas o nome de usuário (ou apelido) e o endereço de e-mail. Na verdade, não fazemos nenhuma verificação de e-mail, portanto o endereço pode ser fictício ou aleatório.",
+  "collected_logs": "Nosso servidor web tem configurações automáticas para manter alguns logs gerais, usados principalmente para investigar problemas do servidor web (se houver). Alguns logs podem incluir endereço IP, tipo de navegador, hora da requisição, etc.",
+  "usage_heading": "Como as informações obtidas serão usadas",
+  "usage_text": "A combinação de nome de usuário (ou apelido) e endereço de e-mail é usada para gerar um ID de usuário anônimo aleatório. Esse ID de usuário é usado para vincular todos os artefatos (informações de topologia, IDs de grafos, IDs de gráficos, grupos de dispositivos, etc.) ao usuário real. Vale mencionar que usuários não registrados não têm essas opções (salvar vários grafos, grupos, etc.) por falta de capacidade técnica de vincular um usuário não registrado a vários artefatos.",
+  "third_parties_heading": "Fornecimento de dados a terceiros",
+  "third_parties_text": "Os dados pessoais dos usuários podem ser transferidos a pessoas não associadas a este site, se necessário:",
+  "third_parties_law": "para cumprir a lei, um ato regulatório ou a execução de uma decisão judicial;",
+  "third_parties_fraud": "para detectar ou prevenir fraudes;",
+  "third_parties_malfunctions": "para eliminar falhas técnicas do site;",
+  "third_parties_requests": "para fornecer informações com base em solicitação de órgãos estatais autorizados.",
+  "security_heading": "Segurança dos dados",
+  "security_text": "A administração do site toma medidas para proteger os dados dos usuários contra acesso não autorizado, em particular:",
+  "security_updates": "atualização de serviços e pacotes do sistema;",
+  "security_server": "uso de um servidor dedicado virtual para hospedar o site.",
+  "changes_heading": "Alterações",
+  "changes_text": "As atualizações da política de privacidade são publicadas nesta página."
+}

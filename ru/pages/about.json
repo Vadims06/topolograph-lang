@@ -190,13 +190,13 @@
   "lp_ed8_name": "NetFlow: граф трафика",
   "lp_ed8_c": "❌",
   "lp_ed8_e": "✅",
-  "lp_ed9_name": "Hardware watcher",
+  "lp_ed9_name": "Аппаратный watcher",
   "lp_ed9_c": "❌",
   "lp_ed9_e": "физическое устройство с установленными watchers: включается в LAN, доступ по SSH",
   "lp_ed10_name": "Стек",
   "lp_ed10_c": "Flask, MongoDB",
   "lp_ed10_e": "переработан под большие нагрузки",
   "lp_ed11_name": "Поддержка",
-  "lp_ed11_c": "GitHub issues",
+  "lp_ed11_c": "Issues на GitHub",
   "lp_ed11_e": "приоритетная поддержка"
 }

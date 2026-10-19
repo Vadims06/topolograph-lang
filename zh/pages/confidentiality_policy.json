@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "title": "保密政策 - Topolograph"
+  },
+  "heading": "保密政策",
+  "collected_heading": "将收集哪些信息",
+  "collected_registration": "为了注册，我们只保存用户名（或昵称）和电子邮箱地址。实际上我们不会校验邮箱，因此邮箱地址可以是虚构或随机的。",
+  "collected_logs": "我们的 Web 服务器自动保存一些常规日志，主要用于进一步排查 Web 服务器的问题（如有）。部分日志可能包含 IP 地址、浏览器类型、请求时间等。",
+  "usage_heading": "所获取信息的使用方式",
+  "usage_text": "用户名（或昵称）与电子邮箱地址的组合用于生成随机的匿名用户 ID。该用户 ID 用于将所有内容（拓扑信息、图 ID、绘图 ID、设备组等）与实际用户关联。需要说明的是，未注册用户没有这些功能（保存多个图、组等），因为技术上无法将这类未注册用户与多个内容关联。",
+  "third_parties_heading": "向第三方提供数据",
+  "third_parties_text": "必要时，用户的个人数据可能会转交给与本网站无关的人员：",
+  "third_parties_law": "为遵守法律、监管规定或执行法院裁决；",
+  "third_parties_fraud": "为发现或防止欺诈；",
+  "third_parties_malfunctions": "为排除网站的技术故障；",
+  "third_parties_requests": "应有权国家机关的请求提供信息。",
+  "security_heading": "数据安全",
+  "security_text": "网站管理方采取措施保护用户数据免遭未经授权的访问，具体包括：",
+  "security_updates": "更新服务和系统软件包；",
+  "security_server": "网站托管在虚拟专用服务器上。",
+  "changes_heading": "变更",
+  "changes_text": "隐私政策的更新会发布在此页面。"
+}

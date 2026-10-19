@@ -19,5 +19,7 @@
   "ed_form_consent": "J'accepte d'être contacté au sujet de cette demande",
   "ed_form_submit": "Envoyer",
   "ed_form_sent": "Merci, nous répondrons par e-mail.",
-  "ed_form_failed": "Envoi impossible. Vérifiez les champs et réessayez."
+  "ed_form_failed": "Envoi impossible. Vérifiez les champs et réessayez.",
+  "ed_form_too_many": "Trop de requêtes. Réessayez dans quelques minutes.",
+  "ed_form_close": "Fermer"
 }
