@@ -97,6 +97,7 @@
   "event_kind_flag_set": "вкл",
   "event_kind_network_added": "Сеть добавлена",
   "event_kind_network_removed": "Сеть удалена",
+  "event_kind_network_cost_changed": "Cost сети изменился",
   "event_kind_te_changed": "TE-метрика изменилась",
   "event_kind_up": "Up",
   "event_open": "Открыть граф на этот момент",

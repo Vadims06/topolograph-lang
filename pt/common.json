@@ -96,6 +96,7 @@
   "event_kind_flag_set": "ativado",
   "event_kind_network_added": "Rede adicionada",
   "event_kind_network_removed": "Rede removida",
+  "event_kind_network_cost_changed": "Custo da rede alterado",
   "event_kind_te_changed": "Métrica TE alterada",
   "event_kind_up": "Up",
   "event_open": "Abrir o grafo neste momento",

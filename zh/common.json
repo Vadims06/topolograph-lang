@@ -96,6 +96,7 @@
   "event_kind_flag_set": "开启",
   "event_kind_network_added": "网络已添加",
   "event_kind_network_removed": "网络已移除",
+  "event_kind_network_cost_changed": "网络 Cost 已变更",
   "event_kind_te_changed": "TE 度量已变更",
   "event_kind_up": "恢复",
   "event_open": "打开此时刻的图",
