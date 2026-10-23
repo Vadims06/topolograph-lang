@@ -143,6 +143,7 @@
   "card_stale": "Граф изменился после загрузки страницы. Обновите страницу.",
   "card_protocol_ospf": "OSPF",
   "card_protocol_isis": "IS-IS",
+  "card_protocol_igp": "IGP",
   "card_row_links": "Связи",
   "card_row_networks": "Сети",
   "card_row_backuped": "с резервом",
