@@ -259,6 +259,7 @@
   "card_stale": "O grafo mudou desde que a página foi carregada. Recarregue a página.",
   "card_protocol_ospf": "OSPF",
   "card_protocol_isis": "IS-IS",
+  "card_protocol_igp": "IGP",
   "card_row_links": "Links",
   "card_row_networks": "Redes",
   "card_row_backuped": "com backup",
