@@ -170,5 +170,6 @@
   "range_time": "Hora",
   "kind_filter_igp": "IGP",
   "kind_filter_te": "TE",
-  "event_kind_filter": "Tipos de evento"
+  "event_kind_filter": "Tipos de evento",
+  "history_enterprise_note": "El historial de eventos y el monitoreo están disponibles en Topolograph Enterprise."
 }

@@ -29,7 +29,6 @@
   "load_failed": "Не удалось загрузить список",
   "retry": "Повторить",
   "add_watcher": "+ Добавить watcher",
-  "community_note": "Community: мониторинг доступен только на демо-графе.",
   "layout": "Положение списка watchers",
   "layout_top": "Сверху",
   "layout_right": "Справа",
