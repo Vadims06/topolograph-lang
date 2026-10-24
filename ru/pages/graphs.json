@@ -77,6 +77,7 @@
   "wizard_parsing_text": "{vendor} · {protocol}. Граф откроется сам, обычно за несколько секунд.",
   "wizard_upload_failed": "Из этого файла граф не построен. Проверьте вендора, протокол и команды.",
   "wizard_upload_rejected": "Файл не принят: {reason}",
+  "wizard_upload_too_large": "Файл больше 50 МБ.",
   "wizard_vendors_failed": "Не удалось загрузить список вендоров",
   "wizard_cancel": "Отмена",
   "wizard_upload_aborted": "Загрузка прервана. Файл мог всё же сохраниться: проверьте список графов.",
