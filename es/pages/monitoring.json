@@ -29,7 +29,6 @@
   "load_failed": "No se pudo cargar la lista",
   "retry": "Reintentar",
   "add_watcher": "+ Añadir watcher",
-  "community_note": "Community: el monitoreo está disponible solo en el grafo de demostración.",
   "layout": "Posición de la lista de watchers",
   "layout_top": "Arriba",
   "layout_right": "Derecha",

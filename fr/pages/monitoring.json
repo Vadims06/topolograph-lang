@@ -29,7 +29,6 @@
   "load_failed": "Impossible de charger la liste",
   "retry": "Réessayer",
   "add_watcher": "+ Ajouter un watcher",
-  "community_note": "Community : la supervision n'est disponible que sur le graphe de démonstration.",
   "layout": "Position de la liste des watchers",
   "layout_top": "En haut",
   "layout_right": "À droite",

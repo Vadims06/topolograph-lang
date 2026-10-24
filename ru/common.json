@@ -170,5 +170,6 @@
   "event_kind_filter": "Типы событий",
   "events_lanes_note": "Отрезок соседства - от down до up (сколько связь лежала), как на текущем таймлайне; метрики и сети - отметки времени.",
   "events_routers_note": "Дорожка - роутер, который обнаружил событие (event_detected_by); цвет - категория.",
-  "range_last_4h": "Последние 4 часа"
+  "range_last_4h": "Последние 4 часа",
+  "history_enterprise_note": "История событий и мониторинг доступны в Topolograph Enterprise."
 }

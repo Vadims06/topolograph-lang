@@ -170,5 +170,6 @@
   "range_time": "时间",
   "kind_filter_igp": "IGP",
   "kind_filter_te": "TE",
-  "event_kind_filter": "事件类型"
+  "event_kind_filter": "事件类型",
+  "history_enterprise_note": "事件历史和监控功能在 Topolograph Enterprise 中提供。"
 }
