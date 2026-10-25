@@ -148,5 +148,22 @@
   "wizard_status": "Estado",
   "wizard_status_awaiting": "Aguardando conexão",
   "wizard_status_awaiting_text": "passa a Conectado quando o watcher começa a informar",
-  "wizard_status_connected": "Conectado"
+  "wizard_status_connected": "Conectado",
+  "wizard_watcher_install_kind": "Instalação",
+  "wizard_watcher_install_docker": "Docker (como hoje)",
+  "wizard_watcher_install_lab": "Um comando (laboratório)",
+  "wizard_watcher_lab_unavailable": "Requer WATCHER_BUNDLES no servidor",
+  "wizard_watcher_lab_lifetime": "Duração do watcher",
+  "wizard_watcher_lab_30": "30 minutos",
+  "wizard_watcher_lab_60": "1 hora",
+  "wizard_watcher_lab_command": "Executar no host do laboratório",
+  "wizard_watcher_lab_loading": "Carregando o comando de instalação…",
+  "wizard_watcher_lab_command_unavailable": "O comando de instalação não está disponível: o catálogo de watchers não foi carregado ou o servidor não tem um pacote verificável para este tipo de watcher.",
+  "wizard_watcher_lab_expires": "O token deixa de funcionar às {time}; o watcher se desconecta nesse momento.",
+  "wizard_watcher_lab_req_linux_sudo": "Host Linux x86_64 com sudo",
+  "wizard_watcher_lab_req_iproute": "iproute2 instalado (ip, e tc quando o filtro de anúncios está ativo)",
+  "wizard_watcher_lab_req_gre": "O firewall do host permite pacotes GRE (protocolo IP 47) do roteador",
+  "wizard_watcher_lab_req_linux_user": "Host Linux x86_64; root não é necessário",
+  "wizard_watcher_lab_req_bmp_port": "A porta TCP do BMP está aberta a partir dos roteadores",
+  "wizard_watcher_lab_req_topolograph": "Acesso ao Topolograph por HTTP(S)"
 }
