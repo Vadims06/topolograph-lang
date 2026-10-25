@@ -103,7 +103,7 @@
   "wizard_yaml_failed": "Диаграмма не создана. Проверьте соединение и повторите.",
   "wizard_source_watcher": "Watcher",
   "wizard_source_watcher_text": "Живая лента изменений топологии с роутера. Ставится на вашем хосте.",
-  "wizard_source_watcher_community": "У вас Community: доступна только визуализация топологии BGP, мониторинг недоступен.",
+  "wizard_source_watcher_limited": "Доступна только топология BGP (BMP watcher в режиме Topology only); watcher мониторинга для этой учётной записи недоступны.",
   "wizard_host_requirements": "Требования к хосту",
   "wizard_router_requirements": "Требования к роутеру",
   "wizard_watcher_catalog_failed": "Не удалось загрузить каталог watcher",

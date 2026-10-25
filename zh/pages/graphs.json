@@ -102,7 +102,7 @@
   "wizard_yaml_failed": "未能创建图示。请检查连接后重试。",
   "wizard_source_watcher": "Watcher",
   "wizard_source_watcher_text": "来自路由器的拓扑变化实时数据流。安装在你运行的主机上。",
-  "wizard_source_watcher_community": "你使用的是 Community：仅提供 BGP 拓扑可视化，不提供监控。",
+  "wizard_source_watcher_limited": "仅限 BGP 拓扑（BMP watcher 的 Topology only 模式）；此账户无法使用监控 watcher。",
   "wizard_host_requirements": "主机要求",
   "wizard_router_requirements": "路由器要求",
   "wizard_watcher_catalog_failed": "无法加载 watcher 目录",
