@@ -157,5 +157,11 @@
   "wizard_watcher_lab_30": "30 分钟",
   "wizard_watcher_lab_60": "1 小时",
   "wizard_watcher_lab_command": "在实验环境主机上运行",
-  "wizard_watcher_lab_expires": "令牌将在 {time} 失效，watcher 随之断开。"
+  "wizard_watcher_lab_expires": "令牌将在 {time} 失效，watcher 随之断开。",
+  "wizard_watcher_lab_req_linux_sudo": "带 sudo 的 Linux x86_64 主机",
+  "wizard_watcher_lab_req_iproute": "已安装 iproute2（ip；启用公告过滤时还需要 tc）",
+  "wizard_watcher_lab_req_gre": "主机防火墙允许来自路由器的 GRE 数据包（IP 协议 47）",
+  "wizard_watcher_lab_req_linux_user": "Linux x86_64 主机，无需 root 权限",
+  "wizard_watcher_lab_req_bmp_port": "路由器可访问 BMP 的 TCP 端口",
+  "wizard_watcher_lab_req_topolograph": "可通过 HTTP(S) 访问 Topolograph"
 }

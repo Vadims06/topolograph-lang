@@ -157,5 +157,11 @@
   "wizard_watcher_lab_30": "30 minutes",
   "wizard_watcher_lab_60": "1 hour",
   "wizard_watcher_lab_command": "Run on the lab host",
-  "wizard_watcher_lab_expires": "The token stops working at {time}; the watcher disconnects then."
+  "wizard_watcher_lab_expires": "The token stops working at {time}; the watcher disconnects then.",
+  "wizard_watcher_lab_req_linux_sudo": "Linux x86_64 host with sudo",
+  "wizard_watcher_lab_req_iproute": "iproute2 installed (ip, and tc when the announcement filter is on)",
+  "wizard_watcher_lab_req_gre": "The host firewall allows GRE packets (IP protocol 47) from the router",
+  "wizard_watcher_lab_req_linux_user": "Linux x86_64 host; root is not needed",
+  "wizard_watcher_lab_req_bmp_port": "The BMP TCP port is open from the routers",
+  "wizard_watcher_lab_req_topolograph": "Access to Topolograph over HTTP(S)"
 }
