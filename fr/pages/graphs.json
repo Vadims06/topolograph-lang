@@ -102,7 +102,7 @@
   "wizard_yaml_failed": "Le schéma n'a pas été créé. Vérifiez la connexion et réessayez.",
   "wizard_source_watcher": "Watcher",
   "wizard_source_watcher_text": "Un flux en direct des changements de topologie d'un routeur. Installé sur un hôte que vous exploitez.",
-  "wizard_source_watcher_community": "Vous êtes sur Community : visualisation de la topologie BGP uniquement, la supervision n'est pas disponible.",
+  "wizard_source_watcher_limited": "Topologie BGP uniquement (watcher BMP en mode Topology only) ; les watchers de supervision ne sont pas disponibles pour ce compte.",
   "wizard_host_requirements": "Prérequis de l'hôte",
   "wizard_router_requirements": "Prérequis du routeur",
   "wizard_watcher_catalog_failed": "Impossible de charger le catalogue des watchers",

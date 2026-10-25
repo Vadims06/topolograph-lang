@@ -102,7 +102,7 @@
   "wizard_yaml_failed": "O diagrama não foi criado. Verifique a conexão e tente novamente.",
   "wizard_source_watcher": "Watcher",
   "wizard_source_watcher_text": "Um fluxo ao vivo de mudanças de topologia de um roteador. Instalado em um host que você administra.",
-  "wizard_source_watcher_community": "Você está na Community: apenas visualização da topologia BGP, o monitoramento não está disponível.",
+  "wizard_source_watcher_limited": "Apenas topologia BGP (watcher BMP no modo Topology only); os watchers de monitoramento não estão disponíveis para esta conta.",
   "wizard_host_requirements": "Requisitos do host",
   "wizard_router_requirements": "Requisitos do roteador",
   "wizard_watcher_catalog_failed": "Não foi possível carregar o catálogo de watchers",
