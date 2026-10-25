@@ -148,5 +148,14 @@
   "wizard_status": "Estado",
   "wizard_status_awaiting": "Esperando la conexión",
   "wizard_status_awaiting_text": "pasa a Conectado cuando el watcher empieza a informar",
-  "wizard_status_connected": "Conectado"
+  "wizard_status_connected": "Conectado",
+  "wizard_watcher_install_kind": "Instalación",
+  "wizard_watcher_install_docker": "Docker (como hasta ahora)",
+  "wizard_watcher_install_lab": "Un solo comando (laboratorio)",
+  "wizard_watcher_lab_unavailable": "Requiere WATCHER_BUNDLE_URL en el servidor",
+  "wizard_watcher_lab_lifetime": "Duración del watcher",
+  "wizard_watcher_lab_30": "30 minutos",
+  "wizard_watcher_lab_60": "1 hora",
+  "wizard_watcher_lab_command": "Ejecutar en el host del laboratorio",
+  "wizard_watcher_lab_expires": "El token deja de funcionar a las {time}; entonces el watcher se desconecta."
 }

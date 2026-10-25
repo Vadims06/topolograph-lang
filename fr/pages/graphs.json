@@ -148,5 +148,14 @@
   "wizard_status": "Statut",
   "wizard_status_awaiting": "En attente de connexion",
   "wizard_status_awaiting_text": "passe à Connecté quand le watcher commence à envoyer des données",
-  "wizard_status_connected": "Connecté"
+  "wizard_status_connected": "Connecté",
+  "wizard_watcher_install_kind": "Installation",
+  "wizard_watcher_install_docker": "Docker (comme avant)",
+  "wizard_watcher_install_lab": "Une seule commande (labo)",
+  "wizard_watcher_lab_unavailable": "Nécessite WATCHER_BUNDLE_URL sur le serveur",
+  "wizard_watcher_lab_lifetime": "Durée de vie du watcher",
+  "wizard_watcher_lab_30": "30 minutes",
+  "wizard_watcher_lab_60": "1 heure",
+  "wizard_watcher_lab_command": "À exécuter sur l'hôte du labo",
+  "wizard_watcher_lab_expires": "Le jeton cesse de fonctionner à {time} ; le watcher se déconnecte alors."
 }

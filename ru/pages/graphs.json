@@ -148,5 +148,14 @@
   "wizard_status": "Статус",
   "wizard_status_awaiting": "Ожидает подключения",
   "wizard_status_awaiting_text": "станет «подключён», когда watcher начнёт присылать данные",
-  "wizard_status_connected": "Подключён"
+  "wizard_status_connected": "Подключён",
+  "wizard_watcher_install_kind": "Установка",
+  "wizard_watcher_install_docker": "Docker (как сейчас)",
+  "wizard_watcher_install_lab": "Одна команда (лаборатория)",
+  "wizard_watcher_lab_unavailable": "На сервере не задан WATCHER_BUNDLE_URL",
+  "wizard_watcher_lab_lifetime": "Время работы watcher",
+  "wizard_watcher_lab_30": "30 минут",
+  "wizard_watcher_lab_60": "1 час",
+  "wizard_watcher_lab_command": "Выполняется на хосте лаборатории",
+  "wizard_watcher_lab_expires": "Токен перестаёт действовать в {time}, и watcher в это время отключается."
 }

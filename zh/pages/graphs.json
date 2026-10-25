@@ -148,5 +148,14 @@
   "wizard_status": "状态",
   "wizard_status_awaiting": "等待连接",
   "wizard_status_awaiting_text": "watcher 开始上报后变为已连接",
-  "wizard_status_connected": "已连接"
+  "wizard_status_connected": "已连接",
+  "wizard_watcher_install_kind": "安装方式",
+  "wizard_watcher_install_docker": "Docker（与现在相同）",
+  "wizard_watcher_install_lab": "一条命令（实验环境）",
+  "wizard_watcher_lab_unavailable": "服务器需要设置 WATCHER_BUNDLE_URL",
+  "wizard_watcher_lab_lifetime": "Watcher 运行时长",
+  "wizard_watcher_lab_30": "30 分钟",
+  "wizard_watcher_lab_60": "1 小时",
+  "wizard_watcher_lab_command": "在实验环境主机上运行",
+  "wizard_watcher_lab_expires": "令牌将在 {time} 失效，watcher 随之断开。"
 }
