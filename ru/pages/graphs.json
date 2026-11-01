@@ -167,5 +167,12 @@
   "wizard_watcher_lab_req_gre": "Межсетевой экран хоста пропускает GRE-пакеты (IP-протокол 47) от маршрутизатора",
   "wizard_watcher_lab_req_linux_user": "Хост Linux x86_64; права root не требуются",
   "wizard_watcher_lab_req_bmp_port": "TCP-порт BMP открыт для маршрутизаторов",
-  "wizard_watcher_lab_req_topolograph": "Доступ к Topolograph по HTTP(S)"
+  "wizard_watcher_lab_req_topolograph": "Доступ к Topolograph по HTTP(S)",
+  "wizard_watcher_code": "Код установки",
+  "wizard_watcher_code_warning": "Код показывается один раз, действует 10 минут и срабатывает единственный раз. Его нужно скопировать сейчас; команда ниже уже содержит код.",
+  "wizard_watcher_rotate_code": "Новый код",
+  "wizard_watcher_rotate_code_confirm": "Текущий код перестаёт действовать сразу, а работающий watcher сохраняет собственный токен.",
+  "wizard_watcher_rotate_code_unknown": "Сервер не ответил, поэтому код мог быть заменён, и показанный ранее уже не действует. Новый код можно запросить повторно, чтобы получить копируемый.",
+  "wizard_watcher_lab_code_expires": "Код действует 10 минут (до {time}) и срабатывает один раз.",
+  "wizard_watcher_trial_lab_only": "В пробный период watcher устанавливаются только одной командой (лаборатория)."
 }

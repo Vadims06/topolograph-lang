@@ -54,5 +54,21 @@
   "skipped_events_one": "{count} событие watcher не удалось применить",
   "skipped_events_few": "{count} события watcher не удалось применить",
   "skipped_events_many": "{count} событий watcher не удалось применить",
-  "skipped_events_other": "{count} события watcher не удалось применить"
+  "skipped_events_other": "{count} события watcher не удалось применить",
+  "trial_available_title": "Watcher Enterprise на 14 дней",
+  "trial_available_text": "Watcher передаёт на эту страницу события OSPF, IS-IS и BMP в реальном времени. Пробный период позволяет установить до 3 watcher одной командой.",
+  "trial_consent": "Согласие на разовый 14-дневный пробный период для этого адреса почты и этой сети.",
+  "trial_activate": "Включить Enterprise на 14 дней",
+  "trial_active_title": "Пробный период Enterprise идёт",
+  "trial_active_text": "Пробный период Enterprise до {date}. После этого watcher останавливаются, а собранные события остаются видимыми.",
+  "trial_ended_title": "Пробный период закончился",
+  "trial_ended_text": "Пробный период закончился, события остаются видимыми.",
+  "trial_refused_title": "Пробный период недоступен",
+  "trial_refused_text": "Пробный период для этого адреса почты или этой сети уже использован.",
+  "trial_email_not_verified_title": "Нужна подтверждённая почта",
+  "trial_email_not_verified_text": "Для включения нужен адрес почты, подтверждённый провайдером: вход через Google, GitHub или Yandex.",
+  "trial_contact": "Связаться по поводу Enterprise",
+  "trial_via_google": "Войти через Google",
+  "trial_via_github": "Войти через GitHub",
+  "trial_via_yandex": "Войти через Яндекс"
 }

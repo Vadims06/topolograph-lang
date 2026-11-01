@@ -167,5 +167,12 @@
   "wizard_watcher_lab_req_gre": "主机防火墙允许来自路由器的 GRE 数据包（IP 协议 47）",
   "wizard_watcher_lab_req_linux_user": "Linux x86_64 主机，无需 root 权限",
   "wizard_watcher_lab_req_bmp_port": "路由器可访问 BMP 的 TCP 端口",
-  "wizard_watcher_lab_req_topolograph": "可通过 HTTP(S) 访问 Topolograph"
+  "wizard_watcher_lab_req_topolograph": "可通过 HTTP(S) 访问 Topolograph",
+  "wizard_watcher_code": "安装码",
+  "wizard_watcher_code_warning": "安装码只显示一次，有效期 10 分钟，且只能使用一次。请立即复制；下面的命令已包含该码。",
+  "wizard_watcher_rotate_code": "新安装码",
+  "wizard_watcher_rotate_code_confirm": "当前安装码立即失效，已运行的 watcher 保留自己的令牌。",
+  "wizard_watcher_rotate_code_unknown": "服务器没有响应，安装码可能已被替换，之前显示的已失效。请再申请一个新安装码以便复制。",
+  "wizard_watcher_lab_code_expires": "安装码有效期 10 分钟（至 {time}），只能使用一次。",
+  "wizard_watcher_trial_lab_only": "试用期间，watcher 仅支持一条命令的实验环境安装。"
 }

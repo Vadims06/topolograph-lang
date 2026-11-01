@@ -167,5 +167,12 @@
   "wizard_watcher_lab_req_gre": "El firewall del host permite paquetes GRE (protocolo IP 47) del router",
   "wizard_watcher_lab_req_linux_user": "Host Linux x86_64; no se necesita root",
   "wizard_watcher_lab_req_bmp_port": "El puerto TCP de BMP está abierto desde los routers",
-  "wizard_watcher_lab_req_topolograph": "Acceso a Topolograph por HTTP(S)"
+  "wizard_watcher_lab_req_topolograph": "Acceso a Topolograph por HTTP(S)",
+  "wizard_watcher_code": "Código de instalación",
+  "wizard_watcher_code_warning": "El código se muestra una vez, vale 10 minutos y funciona una sola vez. Cópialo ahora; el comando de abajo ya lo contiene.",
+  "wizard_watcher_rotate_code": "Código nuevo",
+  "wizard_watcher_rotate_code_confirm": "El código actual deja de funcionar al instante; un watcher en marcha conserva su propio token.",
+  "wizard_watcher_rotate_code_unknown": "Sin respuesta del servidor, así que el código puede haberse reemplazado y el mostrado antes ya no sirve. Pide un código nuevo para tener uno que puedas copiar.",
+  "wizard_watcher_lab_code_expires": "El código vale 10 minutos (hasta las {time}) y funciona una sola vez.",
+  "wizard_watcher_trial_lab_only": "Durante la prueba, los watchers se instalan solo con la instalación de laboratorio de un comando."
 }

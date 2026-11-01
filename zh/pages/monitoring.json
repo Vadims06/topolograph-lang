@@ -50,5 +50,21 @@
   "watcher_delete_failed": "无法删除 watcher",
   "bgp_load_more": "加载更多",
   "skipped_events_one": "有 {count} 个 watcher 事件无法应用",
-  "skipped_events_other": "有 {count} 个 watcher 事件无法应用"
+  "skipped_events_other": "有 {count} 个 watcher 事件无法应用",
+  "trial_available_title": "免费试用 Enterprise watcher 14 天",
+  "trial_available_text": "watcher 会把 OSPF、IS-IS 和 BMP 的实时事件送到本页。试用期内可用一条命令安装最多 3 个 watcher。",
+  "trial_consent": "同意此邮箱和此网络享有一次 14 天试用。",
+  "trial_activate": "开通 14 天 Enterprise",
+  "trial_active_title": "Enterprise 试用中",
+  "trial_active_text": "Enterprise 试用至 {date}。之后 watcher 停止，已收集的事件仍可查看。",
+  "trial_ended_title": "试用已结束",
+  "trial_ended_text": "试用已结束，事件仍可查看。",
+  "trial_refused_title": "无法试用",
+  "trial_refused_text": "此邮箱或网络已使用过试用。",
+  "trial_email_not_verified_title": "需要已验证的邮箱",
+  "trial_email_not_verified_text": "开通需要由服务商验证过的邮箱，请使用 Google、GitHub 或 Yandex 登录。",
+  "trial_contact": "咨询 Enterprise",
+  "trial_via_google": "使用 Google 登录",
+  "trial_via_github": "使用 GitHub 登录",
+  "trial_via_yandex": "使用 Yandex 登录"
 }
