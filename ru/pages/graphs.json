@@ -107,6 +107,8 @@
   "wizard_host_requirements": "Требования к хосту",
   "wizard_router_requirements": "Требования к роутеру",
   "wizard_watcher_catalog_failed": "Не удалось загрузить каталог watcher",
+  "wizard_watcher_sign_in_required": "Добавление watcher доступно после входа.",
+  "wizard_watcher_sign_in": "Войти",
   "wizard_watcher_localhost": "Откройте Topolograph по адресу, доступному с хоста watcher, или задайте TOPOLOGRAPH_EXTERNAL_URL. Watcher не может подключиться к адресу localhost.",
   "wizard_watcher_name": "Имя watcher",
   "wizard_invalid_ip": "Введите IP-адрес, например 10.10.10.1",

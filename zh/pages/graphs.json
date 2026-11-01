@@ -106,6 +106,8 @@
   "wizard_host_requirements": "主机要求",
   "wizard_router_requirements": "路由器要求",
   "wizard_watcher_catalog_failed": "无法加载 watcher 目录",
+  "wizard_watcher_sign_in_required": "登录后才能添加 watcher。",
+  "wizard_watcher_sign_in": "登录",
   "wizard_watcher_localhost": "请通过 watcher 主机可访问的地址打开 Topolograph，或设置 TOPOLOGRAPH_EXTERNAL_URL。Watcher 无法连接到 localhost 地址。",
   "wizard_watcher_name": "Watcher 名称",
   "wizard_invalid_ip": "请输入 IP 地址，例如 10.10.10.1",

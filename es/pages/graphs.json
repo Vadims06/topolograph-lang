@@ -106,6 +106,8 @@
   "wizard_host_requirements": "Requisitos del host",
   "wizard_router_requirements": "Requisitos del router",
   "wizard_watcher_catalog_failed": "No se pudo cargar el catálogo de watchers",
+  "wizard_watcher_sign_in_required": "Para añadir un watcher hay que iniciar sesión.",
+  "wizard_watcher_sign_in": "Iniciar sesión",
   "wizard_watcher_localhost": "Abra Topolograph en una dirección a la que el host del watcher pueda acceder, o defina TOPOLOGRAPH_EXTERNAL_URL. Un watcher no puede conectarse a una dirección localhost.",
   "wizard_watcher_name": "Nombre del watcher",
   "wizard_invalid_ip": "Introduzca una dirección IP, por ejemplo 10.10.10.1",
