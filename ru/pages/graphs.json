@@ -161,7 +161,7 @@
   "wizard_watcher_lab_command_unavailable": "Команда установки недоступна: каталог watcher не загрузился либо на сервере нет проверяемого пакета для этого типа watcher.",
   "wizard_watcher_lab_req_linux_sudo": "Хост Linux x86_64 с sudo",
   "wizard_watcher_lab_req_iproute": "Установлен iproute2 (ip, а при включённом фильтре анонсов также tc)",
-  "wizard_watcher_lab_req_gre": "Межсетевой экран хоста пропускает GRE-пакеты (IP-протокол 47) от маршрутизатора",
+  "wizard_watcher_lab_req_gre": "Режим GRE: межсетевой экран хоста пропускает GRE-пакеты (IP-протокол 47) от маршрутизатора",
   "wizard_watcher_lab_req_linux_user": "Хост Linux x86_64; права root не требуются",
   "wizard_watcher_lab_req_bmp_port": "TCP-порт BMP открыт для маршрутизаторов",
   "wizard_watcher_lab_req_topolograph": "Доступ к Topolograph по HTTP(S)",

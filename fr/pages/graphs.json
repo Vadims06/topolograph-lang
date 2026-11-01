@@ -161,7 +161,7 @@
   "wizard_watcher_lab_command_unavailable": "La commande d'installation est indisponible : le catalogue des watchers n'a pas été chargé, ou le serveur n'a pas de paquet vérifiable pour ce type de watcher.",
   "wizard_watcher_lab_req_linux_sudo": "Hôte Linux x86_64 avec sudo",
   "wizard_watcher_lab_req_iproute": "iproute2 installé (ip, et tc lorsque le filtre d'annonces est activé)",
-  "wizard_watcher_lab_req_gre": "Le pare-feu de l'hôte autorise les paquets GRE (protocole IP 47) du routeur",
+  "wizard_watcher_lab_req_gre": "Mode GRE : le pare-feu de l'hôte autorise les paquets GRE (protocole IP 47) du routeur",
   "wizard_watcher_lab_req_linux_user": "Hôte Linux x86_64 ; root n'est pas nécessaire",
   "wizard_watcher_lab_req_bmp_port": "Le port TCP BMP est ouvert depuis les routeurs",
   "wizard_watcher_lab_req_topolograph": "Accès à Topolograph en HTTP(S)",
