@@ -237,5 +237,20 @@
   "agent_q_mon_events_2": "Which events affected traffic paths?",
   "agent_q_mon_events_3": "Which adjacencies went down most often?",
   "agent_q_mon_watchers_1": "Which watchers have not sent events for a long time?",
-  "agent_q_v2_mon_1": "Why did the adjacency not come up after the last event?"
+  "agent_q_v2_mon_1": "Why did the adjacency not come up after the last event?",
+  "agent_vt": "AI agent",
+  "agent_wider": "Wider",
+  "agent_narrower": "Narrower",
+  "agent_tall": "Whole work area",
+  "agent_tall_exit": "Column beside the graph",
+  "agent_g_bgp_evpn": "BGP / EVPN",
+  "agent_placeholder_graph": "A question about this graph: nodes, paths, failures, LSPs",
+  "agent_q_graph_topology_1": "Which nodes are in this graph?",
+  "agent_q_graph_topology_2": "Which networks terminate on R4?",
+  "agent_q_graph_topology_3": "What is the path from R1 to R9?",
+  "agent_q_graph_events_1": "What changed in the selected period?",
+  "agent_q_graph_failures_1": "What happens if node R5 fails?",
+  "agent_q_graph_lsp_1": "Which LSPs pass through R5?",
+  "agent_q_graph_evpn_1": "On which VTEPs is VNI 10010 advertised?",
+  "agent_q_v2_graph_1": "Check the adjacency R1 ↔ R2 on the devices"
 }

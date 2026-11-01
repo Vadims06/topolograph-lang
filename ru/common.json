@@ -240,5 +240,20 @@
   "agent_q_mon_events_2": "Какие события повлияли на пути трафика?",
   "agent_q_mon_events_3": "Какие соседства падали чаще всего?",
   "agent_q_mon_watchers_1": "Какие watchers давно не присылали событий?",
-  "agent_q_v2_mon_1": "Почему соседство не поднялось после последнего события?"
+  "agent_q_v2_mon_1": "Почему соседство не поднялось после последнего события?",
+  "agent_vt": "AI-агент",
+  "agent_wider": "Шире",
+  "agent_narrower": "Уже",
+  "agent_tall": "Вся рабочая область",
+  "agent_tall_exit": "Колонка рядом с графом",
+  "agent_g_bgp_evpn": "BGP / EVPN",
+  "agent_placeholder_graph": "Вопрос об этом графе: узлы, пути, отказы, LSP",
+  "agent_q_graph_topology_1": "Какие узлы в этом графе?",
+  "agent_q_graph_topology_2": "Какие сети терминируются на R4?",
+  "agent_q_graph_topology_3": "Какой путь от R1 до R9?",
+  "agent_q_graph_events_1": "Что изменилось за выбранный период?",
+  "agent_q_graph_failures_1": "Что будет при отказе узла R5?",
+  "agent_q_graph_lsp_1": "Какие LSP проходят через R5?",
+  "agent_q_graph_evpn_1": "На каких VTEP объявлен VNI 10010?",
+  "agent_q_v2_graph_1": "Проверь соседство R1 ↔ R2 на устройствах"
 }
