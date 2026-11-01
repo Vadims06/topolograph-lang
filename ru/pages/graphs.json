@@ -113,7 +113,7 @@
   "wizard_watcher_name": "Имя watcher",
   "wizard_invalid_ip": "Введите IP-адрес, например 10.10.10.1",
   "wizard_invalid_ipv4": "Введите IPv4-адрес, например 10.10.10.1",
-  "wizard_invalid_ip_interface": "Введите IPv4-адрес с маской короче /32, например 169.254.1.2/30",
+  "wizard_invalid_ip_interface": "Введите IPv4-адрес с маской от /8 до /31, кроме адреса сети и широковещательного адреса, например 169.254.1.2/30",
   "wizard_invalid_asn": "Введите номер AS от 1 до 4294967295",
   "wizard_invalid_integer": "Введите целое число",
   "wizard_invalid_ospf_area": "Введите область числом или адресом IPv4, например 0.0.0.0",

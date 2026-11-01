@@ -112,7 +112,7 @@
   "wizard_watcher_name": "Watcher 名称",
   "wizard_invalid_ip": "请输入 IP 地址，例如 10.10.10.1",
   "wizard_invalid_ipv4": "请输入 IPv4 地址，例如 10.10.10.1",
-  "wizard_invalid_ip_interface": "请输入掩码短于 /32 的 IPv4 地址，例如 169.254.1.2/30",
+  "wizard_invalid_ip_interface": "请输入掩码为 /8 到 /31 的 IPv4 地址，且不能是网络地址或广播地址，例如 169.254.1.2/30",
   "wizard_invalid_asn": "请输入 1 到 4294967295 之间的 AS 号",
   "wizard_invalid_integer": "请输入整数",
   "wizard_invalid_ospf_area": "请以数字或 IPv4 地址形式输入区域，例如 0.0.0.0",

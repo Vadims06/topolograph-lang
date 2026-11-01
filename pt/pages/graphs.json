@@ -112,7 +112,7 @@
   "wizard_watcher_name": "Nome do watcher",
   "wizard_invalid_ip": "Informe um endereço IP, como 10.10.10.1",
   "wizard_invalid_ipv4": "Informe um endereço IPv4, como 10.10.10.1",
-  "wizard_invalid_ip_interface": "Informe um endereço IPv4 com máscara menor que /32, como 169.254.1.2/30",
+  "wizard_invalid_ip_interface": "Informe um endereço IPv4 com máscara de /8 a /31, que não seja o endereço de rede nem o de broadcast, como 169.254.1.2/30",
   "wizard_invalid_asn": "Informe um número de AS de 1 a 4294967295",
   "wizard_invalid_integer": "Informe um número inteiro",
   "wizard_invalid_ospf_area": "Informe uma área como número ou como endereço IPv4, como 0.0.0.0",

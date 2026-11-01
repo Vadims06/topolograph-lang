@@ -112,7 +112,7 @@
   "wizard_watcher_name": "Watcher name",
   "wizard_invalid_ip": "Enter an IP address, such as 10.10.10.1",
   "wizard_invalid_ipv4": "Enter an IPv4 address, such as 10.10.10.1",
-  "wizard_invalid_ip_interface": "Enter an IPv4 address with a mask shorter than /32, such as 169.254.1.2/30",
+  "wizard_invalid_ip_interface": "Enter an IPv4 address with a mask from /8 to /31, other than the network or broadcast address, such as 169.254.1.2/30",
   "wizard_invalid_asn": "Enter an AS number from 1 to 4294967295",
   "wizard_invalid_integer": "Enter a whole number",
   "wizard_invalid_ospf_area": "Enter an area as a number or as an IPv4 address, such as 0.0.0.0",

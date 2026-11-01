@@ -112,7 +112,7 @@
   "wizard_watcher_name": "Nom du watcher",
   "wizard_invalid_ip": "Saisissez une adresse IP, par exemple 10.10.10.1",
   "wizard_invalid_ipv4": "Saisissez une adresse IPv4, par exemple 10.10.10.1",
-  "wizard_invalid_ip_interface": "Saisissez une adresse IPv4 avec un masque plus court que /32, par exemple 169.254.1.2/30",
+  "wizard_invalid_ip_interface": "Saisissez une adresse IPv4 avec un masque de /8 à /31, autre que l'adresse de réseau ou de diffusion, par exemple 169.254.1.2/30",
   "wizard_invalid_asn": "Saisissez un numéro d'AS de 1 à 4294967295",
   "wizard_invalid_integer": "Saisissez un nombre entier",
   "wizard_invalid_ospf_area": "Saisissez une zone sous forme de nombre ou d'adresse IPv4, par exemple 0.0.0.0",
