@@ -155,13 +155,9 @@
   "wizard_watcher_install_docker": "Docker (como hasta ahora)",
   "wizard_watcher_install_lab": "Un solo comando (laboratorio)",
   "wizard_watcher_lab_unavailable": "Requiere WATCHER_BUNDLES en el servidor",
-  "wizard_watcher_lab_lifetime": "Duración del watcher",
-  "wizard_watcher_lab_30": "30 minutos",
-  "wizard_watcher_lab_60": "1 hora",
   "wizard_watcher_lab_command": "Ejecutar en el host del laboratorio",
   "wizard_watcher_lab_loading": "Cargando el comando de instalación…",
   "wizard_watcher_lab_command_unavailable": "El comando de instalación no está disponible: no se cargó el catálogo de watchers o el servidor no tiene un paquete verificable para este tipo de watcher.",
-  "wizard_watcher_lab_expires": "El token deja de funcionar a las {time}; entonces el watcher se desconecta.",
   "wizard_watcher_lab_req_linux_sudo": "Host Linux x86_64 con sudo",
   "wizard_watcher_lab_req_iproute": "iproute2 instalado (ip, y tc cuando el filtro de anuncios está activo)",
   "wizard_watcher_lab_req_gre": "El firewall del host permite paquetes GRE (protocolo IP 47) del router",
@@ -173,6 +169,12 @@
   "wizard_watcher_rotate_code": "Código nuevo",
   "wizard_watcher_rotate_code_confirm": "El código actual deja de funcionar al instante; un watcher en marcha conserva su propio token.",
   "wizard_watcher_rotate_code_unknown": "Sin respuesta del servidor, así que el código puede haberse reemplazado y el mostrado antes ya no sirve. Pide un código nuevo para tener uno que puedas copiar.",
-  "wizard_watcher_lab_code_expires": "El código vale 10 minutos (hasta las {time}) y funciona una sola vez.",
-  "wizard_watcher_trial_lab_only": "Durante la prueba, los watchers se instalan solo con la instalación de laboratorio de un comando."
+  "wizard_watcher_lab_code_expires": "El código funciona una sola vez, dentro de 10 minutos (hasta las {time}).",
+  "wizard_watcher_trial_lab_only": "Durante la prueba, los watchers se instalan solo con la instalación de laboratorio de un comando.",
+  "wizard_watcher_lab_runs_trial": "Después el watcher funciona hasta que termina la prueba.",
+  "wizard_watcher_lab_runs": "Después el watcher funciona con el token guardado en el host.",
+  "wizard_watcher_lab_restart": "Para reiniciarlo más tarde, ejecuta esto en el mismo host; reutiliza el token guardado allí:",
+  "wizard_watcher_service_summary": "Ejecutar como servicio (opcional)",
+  "wizard_watcher_service_intro": "Topolograph no crea el servicio. Para ejecutar el watcher con systemd, guarda esta unidad como {path} y sustituye <install dir> por la carpeta donde se descomprimió el bundle. RestartPreventExitStatus=3 evita que systemd reinicie un watcher cuyo token caducó o fue rechazado.",
+  "wizard_watcher_service_enable": "Luego cárgalo e inícialo:"
 }

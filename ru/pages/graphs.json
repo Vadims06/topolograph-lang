@@ -155,13 +155,9 @@
   "wizard_watcher_install_docker": "Docker (как сейчас)",
   "wizard_watcher_install_lab": "Одна команда (лаборатория)",
   "wizard_watcher_lab_unavailable": "На сервере не задан WATCHER_BUNDLES",
-  "wizard_watcher_lab_lifetime": "Время работы watcher",
-  "wizard_watcher_lab_30": "30 минут",
-  "wizard_watcher_lab_60": "1 час",
   "wizard_watcher_lab_command": "Выполняется на хосте лаборатории",
   "wizard_watcher_lab_loading": "Команда установки загружается…",
   "wizard_watcher_lab_command_unavailable": "Команда установки недоступна: каталог watcher не загрузился либо на сервере нет проверяемого пакета для этого типа watcher.",
-  "wizard_watcher_lab_expires": "Токен перестаёт действовать в {time}, и watcher в это время отключается.",
   "wizard_watcher_lab_req_linux_sudo": "Хост Linux x86_64 с sudo",
   "wizard_watcher_lab_req_iproute": "Установлен iproute2 (ip, а при включённом фильтре анонсов также tc)",
   "wizard_watcher_lab_req_gre": "Межсетевой экран хоста пропускает GRE-пакеты (IP-протокол 47) от маршрутизатора",
@@ -173,6 +169,12 @@
   "wizard_watcher_rotate_code": "Новый код",
   "wizard_watcher_rotate_code_confirm": "Текущий код перестаёт действовать сразу, а работающий watcher сохраняет собственный токен.",
   "wizard_watcher_rotate_code_unknown": "Сервер не ответил, поэтому код мог быть заменён, и показанный ранее уже не действует. Новый код можно запросить повторно, чтобы получить копируемый.",
-  "wizard_watcher_lab_code_expires": "Код действует 10 минут (до {time}) и срабатывает один раз.",
-  "wizard_watcher_trial_lab_only": "В пробный период watcher устанавливаются только одной командой (лаборатория)."
+  "wizard_watcher_lab_code_expires": "Код срабатывает один раз в течение 10 минут (до {time}).",
+  "wizard_watcher_trial_lab_only": "В пробный период watcher устанавливаются только одной командой (лаборатория).",
+  "wizard_watcher_lab_runs_trial": "После запуска watcher работает до конца пробного периода.",
+  "wizard_watcher_lab_runs": "После запуска watcher работает на токене, сохранённом на хосте.",
+  "wizard_watcher_lab_restart": "Для перезапуска позже на том же хосте выполняется команда, которая использует сохранённый там токен:",
+  "wizard_watcher_service_summary": "Запуск как службы (по желанию)",
+  "wizard_watcher_service_intro": "Topolograph службу не создаёт. Для запуска watcher под systemd этот unit-файл сохраняется как {path}, а <install dir> заменяется папкой, в которую распакован бандл. Параметр RestartPreventExitStatus=3 не даёт systemd перезапускать watcher, у которого токен истёк или был отклонён.",
+  "wizard_watcher_service_enable": "Затем служба загружается и запускается:"
 }
