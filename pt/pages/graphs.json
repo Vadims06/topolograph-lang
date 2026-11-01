@@ -175,6 +175,6 @@
   "wizard_watcher_lab_runs": "Depois o watcher funciona com o token salvo no host.",
   "wizard_watcher_lab_restart": "Para reiniciá-lo mais tarde, execute isto no mesmo host; ele reutiliza o token salvo lá:",
   "wizard_watcher_service_summary": "Executar como serviço (opcional)",
-  "wizard_watcher_service_intro": "O Topolograph não cria o serviço. Para executar o watcher no systemd, salve esta unit como {path} e troque <install dir> pela pasta onde o bundle foi descompactado. RestartPreventExitStatus=3 impede que o systemd reinicie um watcher cujo token expirou ou foi recusado.",
+  "wizard_watcher_service_intro": "O Topolograph não cria o serviço. Para executar o watcher no systemd, salve esta unit como {path} e troque <install dir> pela pasta onde o bundle foi descompactado. A unit do BMP também tem User=<user>: troque pela conta que fez a instalação, pois o token salvo fica na pasta pessoal dela. Um watcher cujo token terminou sai normalmente, então o systemd não o reinicia.",
   "wizard_watcher_service_enable": "Depois carregue e inicie:"
 }

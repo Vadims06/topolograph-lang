@@ -175,6 +175,6 @@
   "wizard_watcher_lab_runs": "Le watcher fonctionne ensuite avec le jeton enregistré sur l’hôte.",
   "wizard_watcher_lab_restart": "Pour le redémarrer plus tard, exécutez ceci sur le même hôte ; la commande réutilise le jeton qui y est enregistré :",
   "wizard_watcher_service_summary": "Exécuter comme service (facultatif)",
-  "wizard_watcher_service_intro": "Topolograph ne crée pas le service. Pour lancer le watcher sous systemd, enregistrez cette unité sous {path} en remplaçant <install dir> par le dossier où le bundle a été décompressé. RestartPreventExitStatus=3 empêche systemd de relancer un watcher dont le jeton a expiré ou a été refusé.",
+  "wizard_watcher_service_intro": "Topolograph ne crée pas le service. Pour lancer le watcher sous systemd, enregistrez cette unité sous {path} en remplaçant <install dir> par le dossier où le bundle a été décompressé. L'unité BMP contient aussi User=<user> : remplacez-le par le compte qui a fait l'installation, car le jeton enregistré se trouve dans son dossier personnel. Un watcher dont le jeton est terminé s'arrête normalement, donc systemd ne le relance pas.",
   "wizard_watcher_service_enable": "Chargez-la ensuite et démarrez-la :"
 }

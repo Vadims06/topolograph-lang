@@ -175,6 +175,6 @@
   "wizard_watcher_lab_runs": "启动后 watcher 使用保存在主机上的令牌运行。",
   "wizard_watcher_lab_restart": "之后如需重启，请在同一主机上运行下面的命令，它会使用保存在那里的令牌：",
   "wizard_watcher_service_summary": "作为服务运行（可选）",
-  "wizard_watcher_service_intro": "Topolograph 不会创建该服务。若要通过 systemd 运行 watcher，请将下面的 unit 保存为 {path}，并把 <install dir> 替换为解压 bundle 的目录。RestartPreventExitStatus=3 可避免 systemd 重启令牌已过期或被拒绝的 watcher。",
+  "wizard_watcher_service_intro": "Topolograph 不会创建该服务。若要通过 systemd 运行 watcher，请将下面的 unit 保存为 {path}，并把 <install dir> 替换为解压 bundle 的目录。BMP 的 unit 还包含 User=<user>：请替换为执行安装的账户，因为保存的令牌位于该账户的主目录。令牌已结束的 watcher 会正常退出，因此 systemd 不会重启它。",
   "wizard_watcher_service_enable": "然后加载并启动它："
 }

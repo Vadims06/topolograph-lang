@@ -175,6 +175,6 @@
   "wizard_watcher_lab_runs": "После запуска watcher работает на токене, сохранённом на хосте.",
   "wizard_watcher_lab_restart": "Для перезапуска позже на том же хосте выполняется команда, которая использует сохранённый там токен:",
   "wizard_watcher_service_summary": "Запуск как службы (по желанию)",
-  "wizard_watcher_service_intro": "Topolograph службу не создаёт. Для запуска watcher под systemd этот unit-файл сохраняется как {path}, а <install dir> заменяется папкой, в которую распакован бандл. Параметр RestartPreventExitStatus=3 не даёт systemd перезапускать watcher, у которого токен истёк или был отклонён.",
+  "wizard_watcher_service_intro": "Topolograph службу не создаёт. Для запуска watcher под systemd этот unit-файл сохраняется как {path}, а <install dir> заменяется папкой, в которую распакован бандл. В unit-файле BMP есть ещё User=<user>: он заменяется учётной записью, под которой выполнена установка, так как сохранённый токен лежит в её домашней папке. Watcher с завершившимся токеном выходит штатно, поэтому systemd его не перезапускает.",
   "wizard_watcher_service_enable": "Затем служба загружается и запускается:"
 }
