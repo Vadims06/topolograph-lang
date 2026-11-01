@@ -155,6 +155,7 @@
   "wizard_watcher_install_docker": "Docker (как сейчас)",
   "wizard_watcher_install_lab": "Одна команда (лаборатория)",
   "wizard_watcher_lab_unavailable": "На сервере не задан WATCHER_BUNDLES",
+  "wizard_watcher_lab_other_server": "Установка одной командой работает только с topolograph.com; используйте docker compose.",
   "wizard_watcher_lab_command": "Выполняется на хосте лаборатории",
   "wizard_watcher_lab_loading": "Команда установки загружается…",
   "wizard_watcher_lab_command_unavailable": "Команда установки недоступна: каталог watcher не загрузился либо на сервере нет проверяемого пакета для этого типа watcher.",

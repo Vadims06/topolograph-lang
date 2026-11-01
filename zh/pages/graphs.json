@@ -155,6 +155,7 @@
   "wizard_watcher_install_docker": "Docker（与现在相同）",
   "wizard_watcher_install_lab": "一条命令（实验环境）",
   "wizard_watcher_lab_unavailable": "服务器需要设置 WATCHER_BUNDLES",
+  "wizard_watcher_lab_other_server": "一条命令安装仅适用于 topolograph.com；请使用 docker compose。",
   "wizard_watcher_lab_command": "在实验环境主机上运行",
   "wizard_watcher_lab_loading": "正在加载安装命令…",
   "wizard_watcher_lab_command_unavailable": "安装命令不可用：监视器目录未能加载，或服务器上没有该监视器类型的可校验安装包。",

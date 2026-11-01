@@ -155,6 +155,7 @@
   "wizard_watcher_install_docker": "Docker (as today)",
   "wizard_watcher_install_lab": "One command (lab)",
   "wizard_watcher_lab_unavailable": "Needs WATCHER_BUNDLES on the server",
+  "wizard_watcher_lab_other_server": "One-command install works only with topolograph.com; use docker compose.",
   "wizard_watcher_lab_command": "Run on the lab host",
   "wizard_watcher_lab_loading": "Loading the install command…",
   "wizard_watcher_lab_command_unavailable": "The install command is unavailable: the watcher catalog did not load, or the server has no verified bundle for this watcher type.",
