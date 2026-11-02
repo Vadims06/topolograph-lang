@@ -238,5 +238,20 @@
   "agent_q_mon_events_2": "哪些事件影响了流量路径？",
   "agent_q_mon_events_3": "哪些邻接关系最常中断？",
   "agent_q_mon_watchers_1": "哪些 watcher 长时间没有发送事件？",
-  "agent_q_v2_mon_1": "为什么最近一次事件后邻接关系没有恢复？"
+  "agent_q_v2_mon_1": "为什么最近一次事件后邻接关系没有恢复？",
+  "agent_vt": "AI 助手",
+  "agent_wider": "加宽",
+  "agent_narrower": "变窄",
+  "agent_tall": "整个工作区",
+  "agent_tall_exit": "图旁的侧栏",
+  "agent_g_bgp_evpn": "BGP / EVPN",
+  "agent_placeholder_graph": "关于此图的问题：节点、路径、故障、LSP",
+  "agent_q_graph_topology_1": "此图中有哪些节点？",
+  "agent_q_graph_topology_2": "哪些网络终结在 R4 上？",
+  "agent_q_graph_topology_3": "R1 到 R9 的路径是什么？",
+  "agent_q_graph_events_1": "所选时间段内发生了什么变化？",
+  "agent_q_graph_failures_1": "如果节点 R5 发生故障会怎样？",
+  "agent_q_graph_lsp_1": "哪些 LSP 经过 R5？",
+  "agent_q_graph_evpn_1": "VNI 10010 在哪些 VTEP 上发布？",
+  "agent_q_v2_graph_1": "在设备上检查 R1 ↔ R2 的邻接关系"
 }

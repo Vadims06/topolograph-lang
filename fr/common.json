@@ -238,5 +238,20 @@
   "agent_q_mon_events_2": "Quels événements ont affecté les chemins du trafic ?",
   "agent_q_mon_events_3": "Quelles adjacences sont tombées le plus souvent ?",
   "agent_q_mon_watchers_1": "Quels watchers n'ont pas envoyé d'événements depuis longtemps ?",
-  "agent_q_v2_mon_1": "Pourquoi l'adjacence n'est-elle pas remontée après le dernier événement ?"
+  "agent_q_v2_mon_1": "Pourquoi l'adjacence n'est-elle pas remontée après le dernier événement ?",
+  "agent_vt": "Agent IA",
+  "agent_wider": "Plus large",
+  "agent_narrower": "Plus étroit",
+  "agent_tall": "Toute la zone de travail",
+  "agent_tall_exit": "Colonne à côté du graphe",
+  "agent_g_bgp_evpn": "BGP / EVPN",
+  "agent_placeholder_graph": "Une question sur ce graphe : nœuds, chemins, pannes, LSP",
+  "agent_q_graph_topology_1": "Quels nœuds y a-t-il dans ce graphe ?",
+  "agent_q_graph_topology_2": "Quels réseaux se terminent sur R4 ?",
+  "agent_q_graph_topology_3": "Quel est le chemin de R1 à R9 ?",
+  "agent_q_graph_events_1": "Qu'est-ce qui a changé sur la période sélectionnée ?",
+  "agent_q_graph_failures_1": "Que se passe-t-il si le nœud R5 tombe ?",
+  "agent_q_graph_lsp_1": "Quels LSP passent par R5 ?",
+  "agent_q_graph_evpn_1": "Sur quels VTEP le VNI 10010 est-il annoncé ?",
+  "agent_q_v2_graph_1": "Vérifie l'adjacence R1 ↔ R2 sur les équipements"
 }

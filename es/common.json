@@ -238,5 +238,20 @@
   "agent_q_mon_events_2": "¿Qué eventos afectaron a las rutas del tráfico?",
   "agent_q_mon_events_3": "¿Qué adyacencias cayeron con más frecuencia?",
   "agent_q_mon_watchers_1": "¿Qué watchers llevan mucho tiempo sin enviar eventos?",
-  "agent_q_v2_mon_1": "¿Por qué no se recuperó la adyacencia tras el último evento?"
+  "agent_q_v2_mon_1": "¿Por qué no se recuperó la adyacencia tras el último evento?",
+  "agent_vt": "Agente de IA",
+  "agent_wider": "Más ancho",
+  "agent_narrower": "Más estrecho",
+  "agent_tall": "Toda el área de trabajo",
+  "agent_tall_exit": "Columna junto al grafo",
+  "agent_g_bgp_evpn": "BGP / EVPN",
+  "agent_placeholder_graph": "Una pregunta sobre este grafo: nodos, rutas, fallos, LSP",
+  "agent_q_graph_topology_1": "¿Qué nodos hay en este grafo?",
+  "agent_q_graph_topology_2": "¿Qué redes terminan en R4?",
+  "agent_q_graph_topology_3": "¿Cuál es la ruta de R1 a R9?",
+  "agent_q_graph_events_1": "¿Qué cambió en el período seleccionado?",
+  "agent_q_graph_failures_1": "¿Qué pasa si falla el nodo R5?",
+  "agent_q_graph_lsp_1": "¿Qué LSP pasan por R5?",
+  "agent_q_graph_evpn_1": "¿En qué VTEP se anuncia el VNI 10010?",
+  "agent_q_v2_graph_1": "Comprueba la adyacencia R1 ↔ R2 en los dispositivos"
 }
