@@ -51,7 +51,7 @@
   "bgp_load_more": "加载更多",
   "skipped_events_one": "有 {count} 个 watcher 事件无法应用",
   "skipped_events_other": "有 {count} 个 watcher 事件无法应用",
-  "older_snapshots_left_out": "该时段内 watcher 重启次数超过一次查看可读取的数量，最早的部分未显示。选择更早结束的时段即可看到。",
+  "older_snapshots_left_out": "该时段内 watcher 重启次数超过一次查看可读取的数量，最早结束的部分未显示。选择更早结束的时段即可看到。",
   "trial_available_title": "免费试用 Enterprise watcher 14 天",
   "trial_available_text": "watcher 会把 OSPF、IS-IS 和 BMP 的实时事件送到本页。试用期内可用一条命令安装最多 3 个 watcher。",
   "trial_consent": "同意此邮箱和此网络享有一次 14 天试用。",

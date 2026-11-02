@@ -51,7 +51,7 @@
   "bgp_load_more": "Carregar mais",
   "skipped_events_one": "{count} evento do watcher não pôde ser aplicado",
   "skipped_events_other": "{count} eventos do watcher não puderam ser aplicados",
-  "older_snapshots_left_out": "O período contém mais reinícios do watcher do que uma visualização lê; os mais antigos ficam de fora. Um período que termina antes os mostra.",
+  "older_snapshots_left_out": "O período contém mais reinícios do watcher do que uma visualização lê; ficam de fora os que terminaram primeiro. Um período que termina antes os mostra.",
   "trial_available_title": "Teste os watchers Enterprise por 14 dias",
   "trial_available_text": "Os watchers enviam a esta página eventos OSPF, IS-IS e BMP ao vivo. O teste permite instalar até 3 com um único comando.",
   "trial_consent": "Concordo com um teste único de 14 dias para este e-mail e esta rede.",
