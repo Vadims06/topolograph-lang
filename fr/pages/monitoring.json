@@ -51,7 +51,7 @@
   "bgp_load_more": "Charger plus",
   "skipped_events_one": "{count} événement du watcher n'a pas pu être appliqué",
   "skipped_events_other": "{count} événements du watcher n'ont pas pu être appliqués",
-  "older_snapshots_left_out": "La période contient plus de redémarrages du watcher qu'une vue n'en lit ; les plus anciens sont omis. Une période plus courte les affiche.",
+  "older_snapshots_left_out": "La période contient plus de redémarrages du watcher qu'une vue n'en lit ; les plus anciens sont omis. Une période qui se termine plus tôt les affiche.",
   "trial_available_title": "Essai des watchers Enterprise pendant 14 jours",
   "trial_available_text": "Les watchers alimentent cette page en événements OSPF, IS-IS et BMP en direct. L’essai permet d’en installer jusqu’à 3 avec une seule commande.",
   "trial_consent": "J’accepte un essai unique de 14 jours pour cette adresse e-mail et ce réseau.",
