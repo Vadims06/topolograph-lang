@@ -43,7 +43,7 @@
   "last_event_node": "路由器标志",
   "col_actions": "操作",
   "delete_watcher": "删除",
-  "delete_watcher_confirm": "删除 watcher {name}？其令牌将失效，因此也请在其主机上停止它。其图和事件可以保留，也可以一并删除。",
+  "delete_watcher_confirm": "删除 watcher {name}？其令牌将失效，因此也请在其主机上停止它。保留的图仍在图列表中，但其事件会被隐藏，直到再次注册同名的 watcher。",
   "delete_watcher_keep": "删除 watcher，保留图",
   "delete_watcher_with_data": "删除 watcher 及其图",
   "watcher_deleted": "Watcher 已删除",

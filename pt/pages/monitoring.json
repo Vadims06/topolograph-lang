@@ -43,7 +43,7 @@
   "last_event_node": "Flag do roteador",
   "col_actions": "Ações",
   "delete_watcher": "Excluir",
-  "delete_watcher_confirm": "Excluir o watcher {name}? Seu token deixa de funcionar, então pare-o também no host dele. Seus grafos e eventos podem ficar ou ser removidos com ele.",
+  "delete_watcher_confirm": "Excluir o watcher {name}? Seu token deixa de funcionar, então pare-o também no host dele. Os grafos mantidos continuam na lista de grafos, mas seus eventos ficam ocultos até que um watcher com o mesmo nome seja registrado novamente.",
   "delete_watcher_keep": "Excluir o watcher, manter os grafos",
   "delete_watcher_with_data": "Excluir o watcher e seus grafos",
   "watcher_deleted": "Watcher excluído",
