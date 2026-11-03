@@ -96,7 +96,7 @@
   "event_kind_network_added": "Network added",
   "event_kind_network_removed": "Network removed",
   "event_kind_network_cost_changed": "Network cost changed",
-  "event_kind_te_changed": "TE metric changed",
+  "event_kind_te_changed": "TE changed",
   "card_attr_temetric": "TE metric",
   "card_attr_admin_group": "Admin group",
   "card_attr_max_link_bw": "Max link BW",

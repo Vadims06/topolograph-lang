@@ -98,7 +98,7 @@
   "event_kind_network_added": "Сеть добавлена",
   "event_kind_network_removed": "Сеть удалена",
   "event_kind_network_cost_changed": "Cost сети изменился",
-  "event_kind_te_changed": "TE-метрика изменилась",
+  "event_kind_te_changed": "TE-атрибуты изменились",
   "card_attr_temetric": "TE-метрика",
   "card_attr_admin_group": "Административная группа",
   "card_attr_max_link_bw": "Макс. полоса линка",

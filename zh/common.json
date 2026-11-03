@@ -97,7 +97,7 @@
   "event_kind_network_added": "网络已添加",
   "event_kind_network_removed": "网络已移除",
   "event_kind_network_cost_changed": "网络 Cost 已变更",
-  "event_kind_te_changed": "TE 度量已变更",
+  "event_kind_te_changed": "TE 已变更",
   "card_attr_temetric": "TE 度量",
   "card_attr_admin_group": "管理组",
   "card_attr_max_link_bw": "链路最大带宽",

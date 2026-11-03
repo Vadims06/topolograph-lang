@@ -97,7 +97,7 @@
   "event_kind_network_added": "Red añadida",
   "event_kind_network_removed": "Red eliminada",
   "event_kind_network_cost_changed": "Coste de red modificado",
-  "event_kind_te_changed": "Métrica TE modificada",
+  "event_kind_te_changed": "TE modificado",
   "card_attr_temetric": "Métrica TE",
   "card_attr_admin_group": "Grupo administrativo",
   "card_attr_max_link_bw": "AB máx. del enlace",
