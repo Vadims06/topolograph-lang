@@ -779,6 +779,5 @@
   "moment_expand": "显示直方图",
   "moment_slider_label": "时间点",
   "moment_down_label": "曾经中断的邻接",
-  "moment_restart": "Watcher 重启:新快照 {name}",
-  "moment_chart_note": "事件直方图位于图上方的“时刻”栏中"
+  "moment_restart": "Watcher 重启:新快照 {name}"
 }

@@ -780,6 +780,5 @@
   "moment_expand": "Mostrar o histograma",
   "moment_slider_label": "Momento no tempo",
   "moment_down_label": "Adjacências que estiveram inativas",
-  "moment_restart": "Reinício do watcher: novo instantâneo {name}",
-  "moment_chart_note": "O histograma de eventos está na faixa Momento acima do grafo"
+  "moment_restart": "Reinício do watcher: novo instantâneo {name}"
 }

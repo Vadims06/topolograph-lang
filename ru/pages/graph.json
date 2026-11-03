@@ -818,6 +818,5 @@
   "moment_expand": "Показать гистограмму",
   "moment_slider_label": "Момент времени",
   "moment_down_label": "Соседства, которые были down",
-  "moment_restart": "Перезапуск watcher: новый снимок {name}",
-  "moment_chart_note": "Гистограмма событий находится в полосе «Момент» над графом"
+  "moment_restart": "Перезапуск watcher: новый снимок {name}"
 }

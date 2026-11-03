@@ -780,6 +780,5 @@
   "moment_expand": "Afficher l’histogramme",
   "moment_slider_label": "Instant dans le temps",
   "moment_down_label": "Adjacences qui étaient hors service",
-  "moment_restart": "Redémarrage du watcher : nouvel instantané {name}",
-  "moment_chart_note": "L’histogramme des événements se trouve dans la bande Instant au-dessus du graphe"
+  "moment_restart": "Redémarrage du watcher : nouvel instantané {name}"
 }

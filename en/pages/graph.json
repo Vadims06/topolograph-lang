@@ -780,6 +780,5 @@
   "moment_expand": "Show the histogram",
   "moment_slider_label": "Moment in time",
   "moment_down_label": "Adjacencies that were down",
-  "moment_restart": "Watcher restart: new snapshot {name}",
-  "moment_chart_note": "The events histogram is in the Moment strip above the graph"
+  "moment_restart": "Watcher restart: new snapshot {name}"
 }
