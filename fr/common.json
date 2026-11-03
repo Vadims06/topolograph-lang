@@ -152,6 +152,7 @@
   "events_updated": "mis à jour {time}",
   "zoom_hint": "faites glisser sur une plage pour zoomer",
   "zoom_out": "Zoom out",
+  "zoom_in": "Zoom avant",
   "zoom_reset": "Réinitialiser le zoom",
   "column.category": "Catégorie",
   "column.at": "Heure",

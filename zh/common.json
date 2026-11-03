@@ -152,6 +152,7 @@
   "events_updated": "更新于 {time}",
   "zoom_hint": "在时间轴上拖动选择区间即可放大",
   "zoom_out": "Zoom out",
+  "zoom_in": "放大",
   "zoom_reset": "重置缩放",
   "column.category": "类别",
   "column.at": "时间",
