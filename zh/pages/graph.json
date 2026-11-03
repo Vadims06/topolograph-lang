@@ -774,5 +774,17 @@
   "not_monitored": "未监控",
   "connect_watcher": "连接 watcher",
   "updated_by": "更新方",
-  "watchers_more": "另有 {count} 个"
+  "watchers_more": "另有 {count} 个",
+  "moment_label": "时刻",
+  "moment_live": "实时",
+  "moment_snapshot": "快照 {name}",
+  "moment_links_down_other": "{count} 条链路中断",
+  "moment_prev": "上一个事件",
+  "moment_next": "下一个事件",
+  "moment_collapse": "收起直方图",
+  "moment_expand": "显示直方图",
+  "moment_slider_label": "时间点",
+  "moment_down_label": "曾经中断的邻接",
+  "moment_restart": "Watcher 重启:新快照 {name}",
+  "moment_chart_note": "事件直方图位于图上方的“时刻”栏中"
 }
