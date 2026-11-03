@@ -778,5 +778,6 @@
   "moment_expand": "显示直方图",
   "moment_slider_label": "时间点",
   "moment_down_label": "曾经中断的邻接",
-  "moment_restart": "Watcher 重启:新快照 {name}"
+  "moment_restart": "Watcher 重启:新快照 {name}",
+  "moment_select_span": "用鼠标选择时间段以放大"
 }

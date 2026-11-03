@@ -814,5 +814,6 @@
   "moment_expand": "Показать гистограмму",
   "moment_slider_label": "Момент времени",
   "moment_down_label": "Соседства, которые были down",
-  "moment_restart": "Перезапуск watcher: новый снимок {name}"
+  "moment_restart": "Перезапуск watcher: новый снимок {name}",
+  "moment_select_span": "Выделить отрезок мышью и приблизить"
 }

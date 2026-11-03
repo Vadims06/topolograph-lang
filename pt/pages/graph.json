@@ -778,5 +778,6 @@
   "moment_expand": "Mostrar o histograma",
   "moment_slider_label": "Momento no tempo",
   "moment_down_label": "Adjacências que estiveram inativas",
-  "moment_restart": "Reinício do watcher: novo instantâneo {name}"
+  "moment_restart": "Reinício do watcher: novo instantâneo {name}",
+  "moment_select_span": "Selecione um intervalo com o mouse para aproximar"
 }

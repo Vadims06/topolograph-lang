@@ -778,5 +778,6 @@
   "moment_expand": "Mostrar el histograma",
   "moment_slider_label": "Momento en el tiempo",
   "moment_down_label": "Adyacencias que estuvieron caídas",
-  "moment_restart": "Reinicio del watcher: nueva instantánea {name}"
+  "moment_restart": "Reinicio del watcher: nueva instantánea {name}",
+  "moment_select_span": "Selecciona un intervalo con el ratón para acercar"
 }

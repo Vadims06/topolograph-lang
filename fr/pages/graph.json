@@ -778,5 +778,6 @@
   "moment_expand": "Afficher l’histogramme",
   "moment_slider_label": "Instant dans le temps",
   "moment_down_label": "Adjacences qui étaient hors service",
-  "moment_restart": "Redémarrage du watcher : nouvel instantané {name}"
+  "moment_restart": "Redémarrage du watcher : nouvel instantané {name}",
+  "moment_select_span": "Sélectionner une plage à la souris pour zoomer"
 }
