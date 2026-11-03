@@ -39,7 +39,7 @@
   "tab_nodes": "节点",
   "tab_events": "事件",
   "events_button": "事件",
-  "events_button_count": "事件：{count} · {range}",
+  "events_button_count": "事件：{count}",
   "state_at": "{at} 时的状态",
   "event_card_title": "事件",
   "back_to_live": "返回实时",

@@ -181,7 +181,7 @@
   "layout_save_failed": "Не удалось сохранить раскладку",
   "tab_events": "События",
   "events_button": "События",
-  "events_button_count": "События: {count} · {range}",
+  "events_button_count": "События: {count}",
   "state_at": "Состояние на {at}",
   "event_card_title": "Событие",
   "back_to_live": "К live",

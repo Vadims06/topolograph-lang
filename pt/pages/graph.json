@@ -39,7 +39,7 @@
   "tab_nodes": "Nós",
   "tab_events": "Eventos",
   "events_button": "Eventos",
-  "events_button_count": "Eventos: {count} · {range}",
+  "events_button_count": "Eventos: {count}",
   "state_at": "Estado em {at}",
   "event_card_title": "Evento",
   "back_to_live": "Voltar ao vivo",

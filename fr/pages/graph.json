@@ -39,7 +39,7 @@
   "tab_nodes": "Nœuds",
   "tab_events": "Événements",
   "events_button": "Événements",
-  "events_button_count": "Événements : {count} · {range}",
+  "events_button_count": "Événements : {count}",
   "state_at": "État au {at}",
   "event_card_title": "Événement",
   "back_to_live": "Retour au direct",

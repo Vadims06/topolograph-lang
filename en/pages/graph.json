@@ -38,7 +38,7 @@
   "tab_nodes": "Nodes",
   "tab_events": "Events",
   "events_button": "Events",
-  "events_button_count": "Events: {count} · {range}",
+  "events_button_count": "Events: {count}",
   "state_at": "State at {at}",
   "event_card_title": "Event",
   "back_to_live": "Back to live",
