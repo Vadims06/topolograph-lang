@@ -774,5 +774,18 @@
   "not_monitored": "non supervisé",
   "connect_watcher": "connecter un watcher",
   "updated_by": "mis à jour par",
-  "watchers_more": "+{count} de plus"
+  "watchers_more": "+{count} de plus",
+  "moment_label": "Instant",
+  "moment_live": "En direct",
+  "moment_snapshot": "instantané {name}",
+  "moment_links_down_one": "{count} lien hors service",
+  "moment_links_down_other": "{count} liens hors service",
+  "moment_prev": "Événement précédent",
+  "moment_next": "Événement suivant",
+  "moment_collapse": "Replier l’histogramme",
+  "moment_expand": "Afficher l’histogramme",
+  "moment_slider_label": "Instant dans le temps",
+  "moment_down_label": "Adjacences qui étaient hors service",
+  "moment_restart": "Redémarrage du watcher : nouvel instantané {name}",
+  "moment_chart_note": "L’histogramme des événements se trouve dans la bande Instant au-dessus du graphe"
 }

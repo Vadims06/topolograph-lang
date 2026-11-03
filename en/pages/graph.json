@@ -774,5 +774,18 @@
   "not_monitored": "not monitored",
   "connect_watcher": "connect watcher",
   "updated_by": "updated by",
-  "watchers_more": "+{count} more"
+  "watchers_more": "+{count} more",
+  "moment_label": "Moment",
+  "moment_live": "Live",
+  "moment_snapshot": "snapshot {name}",
+  "moment_links_down_one": "{count} link down",
+  "moment_links_down_other": "{count} links down",
+  "moment_prev": "Previous event",
+  "moment_next": "Next event",
+  "moment_collapse": "Collapse the histogram",
+  "moment_expand": "Show the histogram",
+  "moment_slider_label": "Moment in time",
+  "moment_down_label": "Adjacencies that were down",
+  "moment_restart": "Watcher restart: new snapshot {name}",
+  "moment_chart_note": "The events histogram is in the Moment strip above the graph"
 }

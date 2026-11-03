@@ -810,5 +810,20 @@
   "analysis_count_backup_paths_in_inter_area_few": "{count} пары роутеров",
   "analysis_count_backup_paths_in_inter_area_many": "{count} пар роутеров",
   "analysis_count_duplicated_terminated_networks_few": "{count} дублирующиеся сети",
-  "analysis_count_duplicated_terminated_networks_many": "{count} дублирующихся сетей"
+  "analysis_count_duplicated_terminated_networks_many": "{count} дублирующихся сетей",
+  "moment_label": "Момент",
+  "moment_live": "Сейчас",
+  "moment_snapshot": "снимок {name}",
+  "moment_links_down_one": "{count} связь недоступна",
+  "moment_links_down_few": "{count} связи недоступны",
+  "moment_links_down_many": "{count} связей недоступны",
+  "moment_links_down_other": "{count} связи недоступны",
+  "moment_prev": "Предыдущее событие",
+  "moment_next": "Следующее событие",
+  "moment_collapse": "Свернуть гистограмму",
+  "moment_expand": "Показать гистограмму",
+  "moment_slider_label": "Момент времени",
+  "moment_down_label": "Соседства, которые были down",
+  "moment_restart": "Перезапуск watcher: новый снимок {name}",
+  "moment_chart_note": "Гистограмма событий находится в полосе «Момент» над графом"
 }

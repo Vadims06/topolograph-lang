@@ -774,5 +774,18 @@
   "not_monitored": "não monitorado",
   "connect_watcher": "conectar watcher",
   "updated_by": "atualizado por",
-  "watchers_more": "+{count} mais"
+  "watchers_more": "+{count} mais",
+  "moment_label": "Momento",
+  "moment_live": "Ao vivo",
+  "moment_snapshot": "instantâneo {name}",
+  "moment_links_down_one": "{count} link inativo",
+  "moment_links_down_other": "{count} links inativos",
+  "moment_prev": "Evento anterior",
+  "moment_next": "Próximo evento",
+  "moment_collapse": "Recolher o histograma",
+  "moment_expand": "Mostrar o histograma",
+  "moment_slider_label": "Momento no tempo",
+  "moment_down_label": "Adjacências que estiveram inativas",
+  "moment_restart": "Reinício do watcher: novo instantâneo {name}",
+  "moment_chart_note": "O histograma de eventos está na faixa Momento acima do grafo"
 }
