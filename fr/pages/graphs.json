@@ -165,6 +165,7 @@
   "wizard_watcher_lab_other_server": "L'installation en une commande ne fonctionne qu'avec topolograph.com ; utilisez docker compose.",
   "wizard_watcher_lab_command": "À exécuter sur l'hôte du labo",
   "wizard_watcher_lab_command_warning": "La commande contient un code à usage unique et n’est affichée qu’une fois.",
+  "wizard_watcher_lab_command_token_warning": "La commande contient le jeton du watcher et n’est affichée qu’une fois.",
   "wizard_watcher_lab_loading": "Chargement de la commande d'installation…",
   "wizard_watcher_lab_command_unavailable": "La commande d'installation est indisponible : le catalogue des watchers n'a pas été chargé, ou le serveur n'a pas de paquet vérifiable pour ce type de watcher.",
   "wizard_watcher_lab_req_linux_sudo": "Hôte Linux x86_64 avec sudo",
