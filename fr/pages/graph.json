@@ -779,5 +779,5 @@
   "moment_slider_label": "Instant dans le temps",
   "moment_down_label": "Adjacences qui étaient hors service",
   "moment_restart": "Redémarrage du watcher : nouvel instantané {name}",
-  "moment_select_span": "Sélectionner une plage à la souris pour zoomer"
+  "moment_select_span": "Sélectionner une plage à la souris pour zoomer ; Maj+glisser fait de même"
 }

@@ -779,5 +779,5 @@
   "moment_slider_label": "时间点",
   "moment_down_label": "曾经中断的邻接",
   "moment_restart": "Watcher 重启:新快照 {name}",
-  "moment_select_span": "用鼠标选择时间段以放大"
+  "moment_select_span": "用鼠标选择时间段以放大；按住 Shift 拖动也可以"
 }
