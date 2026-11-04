@@ -161,7 +161,7 @@
   "column.detail": "Подробности",
   "column.duration": "Длительность",
   "filter_node": "Роутер",
-  "all_watchers": "Все watchers",
+  "all_watchers": "Все IGP watchers",
   "filter_area_all": "Все области",
   "delete_watcher_graph_note": "Если граф питает watcher, он остаётся зарегистрированным и продолжает слать данные, поэтому с очередными данными появится новый граф. Чтобы остановить, удалите watcher в разделе «Мониторинг».",
   "range_common_today": "Сегодня",

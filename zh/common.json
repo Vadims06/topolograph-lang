@@ -164,7 +164,7 @@
   "column.duration": "持续时间",
   "column.isis_level": "IS-IS 级别",
   "filter_node": "路由器",
-  "all_watchers": "所有 watcher",
+  "all_watchers": "所有 IGP watcher",
   "filter_area_all": "所有区域",
   "delete_watcher_graph_note": "如果有 watcher 向它提供数据，该 watcher 仍保持注册并继续发送，因此下一次数据到来时会出现新的图。要停止它，请在监控页面删除该 watcher。",
   "range_common_today": "今天",

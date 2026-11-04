@@ -164,7 +164,7 @@
   "column.duration": "Duración",
   "column.isis_level": "Nivel IS-IS",
   "filter_node": "Router",
-  "all_watchers": "Todos los watchers",
+  "all_watchers": "Todos los watchers IGP",
   "filter_area_all": "Todas las áreas",
   "delete_watcher_graph_note": "Si un watcher lo alimenta, ese watcher sigue registrado y sigue enviando datos, por lo que aparecerá un grafo nuevo con su siguiente dato. Para detenerlo, elimine el watcher en Monitoreo.",
   "range_common_today": "Hoy",
