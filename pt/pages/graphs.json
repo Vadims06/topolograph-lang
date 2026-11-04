@@ -157,6 +157,7 @@
   "wizard_watcher_lab_unavailable": "Requer WATCHER_BUNDLES no servidor",
   "wizard_watcher_lab_other_server": "A instalação com um único comando funciona apenas com topolograph.com; use docker compose.",
   "wizard_watcher_lab_command": "Executar no host do laboratório",
+  "wizard_watcher_lab_command_warning": "O comando contém um código de uso único e só é exibido uma vez.",
   "wizard_watcher_lab_loading": "Carregando o comando de instalação…",
   "wizard_watcher_lab_command_unavailable": "O comando de instalação não está disponível: o catálogo de watchers não foi carregado ou o servidor não tem um pacote verificável para este tipo de watcher.",
   "wizard_watcher_lab_req_linux_sudo": "Host Linux x86_64 com sudo",

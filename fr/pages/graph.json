@@ -39,7 +39,7 @@
   "tab_nodes": "Nœuds",
   "tab_events": "Événements",
   "events_button": "Événements",
-  "events_button_count": "Événements : {count} · {range}",
+  "events_button_count": "Événements : {count}",
   "state_at": "État au {at}",
   "event_card_title": "Événement",
   "back_to_live": "Retour au direct",
@@ -772,8 +772,6 @@
   "moment_label": "Instant",
   "moment_live": "En direct",
   "moment_snapshot": "instantané {name}",
-  "moment_links_down_one": "{count} lien hors service",
-  "moment_links_down_other": "{count} liens hors service",
   "moment_prev": "Événement précédent",
   "moment_next": "Événement suivant",
   "moment_collapse": "Replier l’histogramme",
@@ -781,5 +779,5 @@
   "moment_slider_label": "Instant dans le temps",
   "moment_down_label": "Adjacences qui étaient hors service",
   "moment_restart": "Redémarrage du watcher : nouvel instantané {name}",
-  "moment_chart_note": "L’histogramme des événements se trouve dans la bande Instant au-dessus du graphe"
+  "moment_select_span": "Sélectionner une plage à la souris pour zoomer"
 }

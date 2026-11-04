@@ -39,7 +39,7 @@
   "tab_nodes": "节点",
   "tab_events": "事件",
   "events_button": "事件",
-  "events_button_count": "事件：{count} · {range}",
+  "events_button_count": "事件：{count}",
   "state_at": "{at} 时的状态",
   "event_card_title": "事件",
   "back_to_live": "返回实时",
@@ -772,7 +772,6 @@
   "moment_label": "时刻",
   "moment_live": "实时",
   "moment_snapshot": "快照 {name}",
-  "moment_links_down_other": "{count} 条链路中断",
   "moment_prev": "上一个事件",
   "moment_next": "下一个事件",
   "moment_collapse": "收起直方图",
@@ -780,5 +779,5 @@
   "moment_slider_label": "时间点",
   "moment_down_label": "曾经中断的邻接",
   "moment_restart": "Watcher 重启:新快照 {name}",
-  "moment_chart_note": "事件直方图位于图上方的“时刻”栏中"
+  "moment_select_span": "用鼠标选择时间段以放大"
 }

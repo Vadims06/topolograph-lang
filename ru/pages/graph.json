@@ -181,7 +181,7 @@
   "layout_save_failed": "Не удалось сохранить раскладку",
   "tab_events": "События",
   "events_button": "События",
-  "events_button_count": "События: {count} · {range}",
+  "events_button_count": "События: {count}",
   "state_at": "Состояние на {at}",
   "event_card_title": "Событие",
   "back_to_live": "К live",
@@ -808,10 +808,6 @@
   "moment_label": "Момент",
   "moment_live": "Сейчас",
   "moment_snapshot": "снимок {name}",
-  "moment_links_down_one": "{count} связь недоступна",
-  "moment_links_down_few": "{count} связи недоступны",
-  "moment_links_down_many": "{count} связей недоступны",
-  "moment_links_down_other": "{count} связи недоступны",
   "moment_prev": "Предыдущее событие",
   "moment_next": "Следующее событие",
   "moment_collapse": "Свернуть гистограмму",
@@ -819,5 +815,5 @@
   "moment_slider_label": "Момент времени",
   "moment_down_label": "Соседства, которые были down",
   "moment_restart": "Перезапуск watcher: новый снимок {name}",
-  "moment_chart_note": "Гистограмма событий находится в полосе «Момент» над графом"
+  "moment_select_span": "Выделить отрезок мышью и приблизить"
 }

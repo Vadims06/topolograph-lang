@@ -151,6 +151,7 @@
   "events_updated": "updated {time}",
   "zoom_hint": "drag over a span to zoom in",
   "zoom_out": "Zoom out",
+  "zoom_in": "Zoom in",
   "zoom_reset": "Reset zoom",
   "column.category": "Category",
   "column.at": "Time",

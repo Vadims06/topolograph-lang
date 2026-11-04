@@ -152,6 +152,7 @@
   "events_updated": "atualizado {time}",
   "zoom_hint": "arraste sobre um intervalo para ampliar",
   "zoom_out": "Zoom out",
+  "zoom_in": "Aproximar",
   "zoom_reset": "Repor zoom",
   "column.category": "Categoria",
   "column.at": "Hora",
