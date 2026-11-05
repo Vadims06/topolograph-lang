@@ -6,8 +6,8 @@
     "og_title": "Topolograph - визуализация топологии OSPF, OSPFv3 и IS-IS",
     "og_description": "Анализируйте топологию OSPF и IS-IS по снимкам LSDB или live-потокам watcher. Запускайте сценарии отказов, проверяйте резервные пути, мониторьте изменения IGP и автоматизируйте проверки топологии через API, Python SDK, MCP Server и AI-агентов."
   },
-  "public_docs_support_heading": "Техническая поддержка",
-  "public_docs_support_body": "помощь с установкой и настройкой",
+  "public_docs_support_heading": "Вопросы и обратная связь",
+  "public_docs_support_body": "установка, настройка, работа с системой",
   "public_docs_support_email": "admin@topolograph.com",
   "public_docs_support_telegram": "Telegram @topolograph",
   "landing_link_mcp": "MCP-сервер",
