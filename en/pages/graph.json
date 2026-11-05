@@ -779,5 +779,5 @@
   "moment_slider_label": "Moment in time",
   "moment_down_label": "Adjacencies that were down",
   "moment_restart": "Watcher restart: new snapshot {name}",
-  "moment_select_span": "Select a span with the mouse to zoom in"
+  "moment_select_span": "Select a span with the mouse to zoom in; Shift+drag does the same"
 }
