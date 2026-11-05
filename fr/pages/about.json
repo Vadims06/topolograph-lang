@@ -146,7 +146,7 @@
   "lp_dep_zone_site": "Votre réseau",
   "lp_dep_zone_host": "topolograph.com",
   "lp_dep_channel": "HTTPS sortant depuis l'hôte du watcher.",
-  "lp_ed_sub": "Community : analyse hors ligne d'instantanés, gratuite et dans votre propre infrastructure. Advanced : watchers et historique des événements sur topolograph.com, gratuits, événements conservés 14 jours.",
+  "lp_ed_sub": "Community : analyse hors ligne d'instantanés, gratuite et dans votre propre infrastructure. Advanced : watchers et historique des événements sur topolograph.com, gratuits ; les événements sont conservés pendant une durée limitée.",
   "lp_ed_note_reupload": "Le rechargement de la LSDB via l'API est aussi disponible dans Community, mais il s'agit d'instantanés à la demande, pas d'un flux d'événements du watcher.",
   "lp_ed0_name": "Chargement LSDB, graphe, calcul de chemins, scénarios de panne",
   "lp_ed0_c": "✅",
@@ -162,5 +162,5 @@
   "lp_ed3_e": "ajoutés depuis l'interface et installés en une seule commande",
   "lp_ed4_name": "Historique des événements réseau",
   "lp_ed4_c": "❌ (graphe de démonstration uniquement)",
-  "lp_ed4_e": "événements conservés 14 jours"
+  "lp_ed4_e": "événements conservés pendant une durée limitée"
 }

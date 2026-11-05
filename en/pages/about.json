@@ -146,7 +146,7 @@
   "lp_dep_zone_site": "Your network",
   "lp_dep_zone_host": "topolograph.com",
   "lp_dep_channel": "Outbound HTTPS from the watcher host.",
-  "lp_ed_sub": "Community: offline analysis of snapshots, free and in your own infrastructure. Advanced: watchers and event history on topolograph.com, free, events kept 14 days.",
+  "lp_ed_sub": "Community: offline analysis of snapshots, free and in your own infrastructure. Advanced: watchers and event history on topolograph.com, free; events are kept for a limited time.",
   "lp_ed_note_reupload": "Re-uploading the LSDB through the API is also available in Community, but these are snapshots on demand, not a stream of watcher events.",
   "lp_ed0_name": "LSDB upload, graph, path calculation, failure scenarios",
   "lp_ed0_c": "✅",
@@ -162,5 +162,5 @@
   "lp_ed3_e": "added from the UI and installed with one command",
   "lp_ed4_name": "Network event history",
   "lp_ed4_c": "❌ (demo graph only)",
-  "lp_ed4_e": "events are kept 14 days"
+  "lp_ed4_e": "events are kept for a limited time"
 }

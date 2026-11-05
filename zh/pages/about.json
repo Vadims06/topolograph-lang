@@ -146,7 +146,7 @@
   "lp_dep_zone_site": "您的网络",
   "lp_dep_zone_host": "topolograph.com",
   "lp_dep_channel": "来自 watcher 主机的出站 HTTPS。",
-  "lp_ed_sub": "Community：快照的离线分析，免费，部署在自己的基础设施中。Advanced：topolograph.com 上的 watcher 与事件历史，免费，事件保留 14 天。",
+  "lp_ed_sub": "Community：快照的离线分析，免费，部署在自己的基础设施中。Advanced：topolograph.com 上的 watcher 与事件历史，免费；事件仅保留一段有限时间。",
   "lp_ed_note_reupload": "Community 版同样可以通过 API 重新上传 LSDB，但这只是按需获取的快照，而不是 watcher 事件流。",
   "lp_ed0_name": "LSDB 上传、图、路径计算、故障场景",
   "lp_ed0_c": "✅",
@@ -162,5 +162,5 @@
   "lp_ed3_e": "通过界面添加，一条命令即可安装",
   "lp_ed4_name": "网络事件历史",
   "lp_ed4_c": "❌（仅演示图）",
-  "lp_ed4_e": "事件保留 14 天"
+  "lp_ed4_e": "事件仅保留一段有限时间"
 }
