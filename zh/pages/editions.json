@@ -1,5 +1,5 @@
 {
-  "ed_heading": "Community 与 Online",
+  "ed_heading": "Self-hosted 与 Online",
   "ed_col_feature": "功能",
   "ed_who_community_title": "适合工程师",
   "ed_who_community_text": "一个晚上了解自己的网络:上传 LSDB,查看路径和故障。",
@@ -7,5 +7,5 @@
   "ed_who_enterprise_title": "适合持续监控",
   "ed_who_enterprise_text": "在 topolograph.com 上免费使用 watcher 和事件历史，覆盖您的所有域。事件仅保留一段有限时间。",
   "ed_who_enterprise_btn": "在 topolograph.com 试用",
-  "ed_col_community": "Community (本地)"
+  "ed_col_community": "Self-hosted (topolograph-docker)"
 }

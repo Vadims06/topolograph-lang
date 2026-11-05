@@ -1,5 +1,5 @@
 {
-  "ed_heading": "Community et Online",
+  "ed_heading": "Self-hosted et Online",
   "ed_col_feature": "Fonctionnalité",
   "ed_who_community_title": "Pour l'ingénieur",
   "ed_who_community_text": "Comprendre son réseau en une soirée : importez un LSDB et regardez les chemins et les pannes.",
@@ -7,5 +7,5 @@
   "ed_who_enterprise_title": "Pour une supervision continue",
   "ed_who_enterprise_text": "Watchers et historique des événements de vos domaines, gratuits sur topolograph.com. Les événements sont conservés pendant une durée limitée.",
   "ed_who_enterprise_btn": "Essayer sur topolograph.com",
-  "ed_col_community": "Community (local)"
+  "ed_col_community": "Self-hosted (topolograph-docker)"
 }
