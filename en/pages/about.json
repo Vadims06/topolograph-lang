@@ -162,5 +162,7 @@
   "lp_ed3_e": "added from the UI and installed with one command",
   "lp_ed4_name": "Network event history",
   "lp_ed4_c": "❌ (demo graph only)",
-  "lp_ed4_e": "events are kept for a limited time"
+  "lp_ed4_e": "events are kept for a limited time",
+  "lp_dep_self_net": "Network (LSDB snapshot)",
+  "lp_dep_self_app": "Topolograph (self-hosted)"
 }

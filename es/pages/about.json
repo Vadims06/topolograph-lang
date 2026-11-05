@@ -162,5 +162,7 @@
   "lp_ed3_e": "se añaden desde la interfaz y se instalan con un solo comando",
   "lp_ed4_name": "Historial de eventos de red",
   "lp_ed4_c": "❌ (solo grafo de demostración)",
-  "lp_ed4_e": "los eventos se conservan durante un tiempo limitado"
+  "lp_ed4_e": "los eventos se conservan durante un tiempo limitado",
+  "lp_dep_self_net": "Red (instantánea LSDB)",
+  "lp_dep_self_app": "Topolograph (autoalojado)"
 }

@@ -162,5 +162,7 @@
   "lp_ed3_e": "通过界面添加，一条命令即可安装",
   "lp_ed4_name": "网络事件历史",
   "lp_ed4_c": "❌（仅演示图）",
-  "lp_ed4_e": "事件仅保留一段有限时间"
+  "lp_ed4_e": "事件仅保留一段有限时间",
+  "lp_dep_self_net": "网络（LSDB 快照）",
+  "lp_dep_self_app": "Topolograph（自行部署）"
 }
