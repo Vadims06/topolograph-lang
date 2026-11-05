@@ -70,7 +70,7 @@
   "upload_commands": "Commandes LSDB",
   "watcher_text": "L'assistant watcher : type, mode de session, commandes du routeur et docker compose.",
   "watcher_button": "Connecter un watcher",
-  "watcher_enterprise": "Les watchers font partie d'Advanced sur topolograph.com.",
+  "watcher_enterprise": "Les watchers sont disponibles sur topolograph.com (Online).",
   "watcher_editions": "Comparer les éditions",
   "commands_filter": "Constructeur ou protocole",
   "commands_filter_label": "Filtrer les commandes",
