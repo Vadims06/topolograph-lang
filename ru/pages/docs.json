@@ -70,7 +70,7 @@
   "upload_commands": "Команды LSDB",
   "watcher_text": "Мастер подключения watcher: тип, режим сессии, команды для роутера и docker compose.",
   "watcher_button": "Подключить watcher",
-  "watcher_enterprise": "Watcher входит в редакцию Enterprise.",
+  "watcher_enterprise": "Watcher входит в Advanced на topolograph.com.",
   "watcher_editions": "Сравнить редакции",
   "commands_filter": "Вендор или протокол",
   "commands_filter_label": "Фильтр команд",

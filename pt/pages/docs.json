@@ -70,7 +70,7 @@
   "upload_commands": "Comandos de LSDB",
   "watcher_text": "O assistente de watcher: tipo, modo de sessão, comandos do roteador e docker compose.",
   "watcher_button": "Conectar um watcher",
-  "watcher_enterprise": "Os watchers fazem parte da edição Enterprise.",
+  "watcher_enterprise": "Os watchers fazem parte do Advanced no topolograph.com.",
   "watcher_editions": "Comparar edições",
   "commands_filter": "Fabricante ou protocolo",
   "commands_filter_label": "Filtrar comandos",
