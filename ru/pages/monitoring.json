@@ -56,7 +56,7 @@
   "skipped_events_other": "{count} события watcher не удалось применить",
   "older_snapshots_left_out": "В периоде больше перезапусков watcher, чем читает один просмотр; не показаны перезапуски, которые закончились раньше всех. Их показывает период, который заканчивается раньше.",
   "trial_active_title": "Watcher-ы на topolograph.com бесплатны",
-  "trial_active_text": "События и графы от ваших watcher-ов хранятся 14 дней; доступ сохраняется, пока активны вы или ваши watcher-ы.",
+  "trial_active_text": "События и графы от ваших watcher-ов хранятся 14 дней; доступ сохраняется, пока активны вы или ваши watcher-ы. После перерыва дольше 14 дней watcher-ы добавляются заново.",
   "trial_email_not_verified_title": "Нужна подтверждённая почта",
   "trial_email_not_verified_text": "Бесплатным watcher-ам нужен адрес почты, подтверждённый провайдером: вход через Google, GitHub или Yandex.",
   "trial_via_google": "Войти через Google",

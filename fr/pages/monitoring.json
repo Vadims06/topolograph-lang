@@ -52,7 +52,7 @@
   "skipped_events_other": "{count} événements du watcher n'ont pas pu être appliqués",
   "older_snapshots_left_out": "La période contient plus de redémarrages du watcher qu'une vue n'en lit ; ceux qui se sont terminés en premier sont omis. Une période qui se termine plus tôt les affiche.",
   "trial_active_title": "Les watchers sur topolograph.com sont gratuits",
-  "trial_active_text": "Les événements et graphes de vos watchers sont conservés 14 jours ; l’accès reste ouvert tant que vous ou vos watchers êtes actifs.",
+  "trial_active_text": "Les événements et graphes de vos watchers sont conservés 14 jours ; l’accès reste ouvert tant que vous ou vos watchers êtes actifs. Après une pause de plus de 14 jours, les watchers sont à ajouter de nouveau.",
   "trial_email_not_verified_title": "Adresse e-mail vérifiée requise",
   "trial_email_not_verified_text": "Les watchers gratuits exigent une adresse e-mail vérifiée par le fournisseur : connexion avec Google, GitHub ou Yandex.",
   "trial_via_google": "Se connecter avec Google",
