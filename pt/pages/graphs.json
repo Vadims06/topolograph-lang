@@ -187,7 +187,7 @@
   "wizard_watcher_rotate_code_unknown": "Sem resposta do servidor, então o código pode já ter sido substituído e o mostrado antes não vale mais. Peça um novo código para ter um que possa copiar.",
   "wizard_watcher_lab_code_expires": "O código funciona uma única vez, dentro de 10 minutos (até {time}).",
   "wizard_watcher_trial_lab_only": "No topolograph.com, os watchers são instalados apenas com a instalação de laboratório de um comando.",
-  "wizard_watcher_lab_runs_trial": "Depois o watcher funciona enquanto você ou seus watchers tiverem estado ativos nos últimos 14 dias.",
+  "wizard_watcher_lab_runs_trial": "Depois o watcher funciona enquanto você ou seus watchers continuarem ativos.",
   "wizard_watcher_lab_runs": "Depois o watcher funciona com o token salvo no host.",
   "wizard_watcher_lab_restart": "Para reiniciá-lo mais tarde, execute isto no mesmo host; ele reutiliza o token salvo lá:",
   "wizard_watcher_service_summary": "Executar como serviço (opcional)",

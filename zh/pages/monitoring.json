@@ -52,7 +52,7 @@
   "skipped_events_other": "有 {count} 个 watcher 事件无法应用",
   "older_snapshots_left_out": "该时段内 watcher 重启次数超过一次查看可读取的数量，最早结束的部分未显示。选择更早结束的时段即可看到。",
   "trial_active_title": "topolograph.com 上的 watcher 免费",
-  "trial_active_text": "其数据保留 14 天。只要您或您的 watcher 保持活跃，访问权限就会保留。",
+  "trial_active_text": "来自您的 watcher 的事件和图保留 14 天；只要您或您的 watcher 保持活跃，访问权限就会保留。",
   "trial_email_not_verified_title": "需要已验证的邮箱",
   "trial_email_not_verified_text": "免费 watcher 需要由服务商验证过的邮箱，请使用 Google、GitHub 或 Yandex 登录。",
   "trial_via_google": "使用 Google 登录",

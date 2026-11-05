@@ -187,7 +187,7 @@
   "wizard_watcher_rotate_code_unknown": "Pas de réponse du serveur : le code a peut-être déjà été remplacé et celui affiché avant ne fonctionne plus. Demandez un nouveau code pour en obtenir un à copier.",
   "wizard_watcher_lab_code_expires": "Le code ne sert qu’une fois, dans les 10 minutes (jusqu’à {time}).",
   "wizard_watcher_trial_lab_only": "Sur topolograph.com, les watchers s’installent uniquement avec l’installation labo en une commande.",
-  "wizard_watcher_lab_runs_trial": "Le watcher fonctionne ensuite tant que vous ou vos watchers avez été actifs au cours des 14 derniers jours.",
+  "wizard_watcher_lab_runs_trial": "Le watcher fonctionne ensuite tant que vous ou vos watchers restez actifs.",
   "wizard_watcher_lab_runs": "Le watcher fonctionne ensuite avec le jeton enregistré sur l’hôte.",
   "wizard_watcher_lab_restart": "Pour le redémarrer plus tard, exécutez ceci sur le même hôte ; la commande réutilise le jeton qui y est enregistré :",
   "wizard_watcher_service_summary": "Exécuter comme service (facultatif)",

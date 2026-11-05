@@ -187,7 +187,7 @@
   "wizard_watcher_rotate_code_unknown": "服务器没有响应，安装码可能已被替换，之前显示的已失效。请再申请一个新安装码以便复制。",
   "wizard_watcher_lab_code_expires": "安装码只能使用一次，须在 10 分钟内（至 {time}）使用。",
   "wizard_watcher_trial_lab_only": "在 topolograph.com 上，watcher 仅支持一条命令的实验环境安装。",
-  "wizard_watcher_lab_runs_trial": "启动后，只要您或您的 watcher 在最近 14 天内保持活跃，watcher 就会一直运行。",
+  "wizard_watcher_lab_runs_trial": "启动后，只要您或您的 watcher 保持活跃，watcher 就会一直运行。",
   "wizard_watcher_lab_runs": "启动后 watcher 使用保存在主机上的令牌运行。",
   "wizard_watcher_lab_restart": "之后如需重启，请在同一主机上运行下面的命令，它会使用保存在那里的令牌：",
   "wizard_watcher_service_summary": "作为服务运行（可选）",

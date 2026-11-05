@@ -187,7 +187,7 @@
   "wizard_watcher_rotate_code_unknown": "Сервер не ответил, поэтому код мог быть заменён, и показанный ранее уже не действует. Новый код можно запросить повторно, чтобы получить копируемый.",
   "wizard_watcher_lab_code_expires": "Код срабатывает один раз в течение 10 минут (до {time}).",
   "wizard_watcher_trial_lab_only": "На topolograph.com watcher устанавливаются только одной командой (лаборатория).",
-  "wizard_watcher_lab_runs_trial": "После запуска watcher работает, пока вы или ваши watcher были активны в последние 14 дней.",
+  "wizard_watcher_lab_runs_trial": "После запуска watcher работает, пока активны вы или ваши watcher.",
   "wizard_watcher_lab_runs": "После запуска watcher работает на токене, сохранённом на хосте.",
   "wizard_watcher_lab_restart": "Для перезапуска позже на том же хосте выполняется команда, которая использует сохранённый там токен:",
   "wizard_watcher_service_summary": "Запуск как службы (по желанию)",
