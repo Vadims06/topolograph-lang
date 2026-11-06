@@ -65,5 +65,7 @@
   "trial_code_wrong": "Code incorrect ou expiré",
   "trial_code_too_many": "Trop de codes, réessayez plus tard",
   "trial_code_no_mail": "Ce serveur n’envoie pas d’e-mails",
-  "trial_code_failed": "L’e-mail n’a pas pu être envoyé, réessayez plus tard"
+  "trial_code_failed": "L’e-mail n’a pas pu être envoyé, réessayez plus tard",
+  "email_code_subject": "Code de vérification Topolograph",
+  "email_code_body": "Votre code Topolograph : {code}\nIl est valable {minutes} minutes."
 }

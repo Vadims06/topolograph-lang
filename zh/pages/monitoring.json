@@ -65,5 +65,7 @@
   "trial_code_wrong": "验证码错误或已过期",
   "trial_code_too_many": "验证码请求过多，请稍后再试",
   "trial_code_no_mail": "此服务器不发送邮件",
-  "trial_code_failed": "邮件发送失败，请稍后再试"
+  "trial_code_failed": "邮件发送失败，请稍后再试",
+  "email_code_subject": "Topolograph 邮箱验证码",
+  "email_code_body": "您的 Topolograph 验证码：{code}\n有效期 {minutes} 分钟。"
 }

@@ -69,5 +69,7 @@
   "trial_code_wrong": "Код неверный или устарел",
   "trial_code_too_many": "Слишком много кодов, следующий можно запросить позже",
   "trial_code_no_mail": "Этот сервер не отправляет письма",
-  "trial_code_failed": "Письмо не отправлено, повтор возможен позже"
+  "trial_code_failed": "Письмо не отправлено, повтор возможен позже",
+  "email_code_subject": "Код подтверждения почты Topolograph",
+  "email_code_body": "Ваш код Topolograph: {code}\nКод действует {minutes} минут."
 }

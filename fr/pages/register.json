@@ -2,7 +2,7 @@
   "heading": "Inscription",
   "email_label": "E-mail",
   "email_placeholder": "E-mail",
-  "email_help": "En réalité, nous ne vérifions pas l'adresse indiquée, mais il est préférable d'utiliser une adresse existante au cas où vous oublieriez une adresse fictive.",
+  "email_help": "Utilisez une adresse que vous pouvez consulter : c’est votre identifiant, et les watchers gratuits sur topolograph.com exigent sa confirmation par un code envoyé à cette adresse.",
   "valid_feedback": "Ravi de vous rencontrer !",
   "invalid_feedback": "Veuillez indiquer une adresse e-mail.",
   "password_label": "Mot de passe",

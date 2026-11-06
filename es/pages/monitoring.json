@@ -65,5 +65,7 @@
   "trial_code_wrong": "Código incorrecto o caducado",
   "trial_code_too_many": "Demasiados códigos, inténtalo más tarde",
   "trial_code_no_mail": "Este servidor no envía correo",
-  "trial_code_failed": "No se pudo enviar el correo, inténtalo más tarde"
+  "trial_code_failed": "No se pudo enviar el correo, inténtalo más tarde",
+  "email_code_subject": "Código de correo de Topolograph",
+  "email_code_body": "Tu código de Topolograph: {code}\nEs válido durante {minutes} minutos."
 }
