@@ -71,7 +71,7 @@
   "watcher_text": "The watcher wizard: type, session mode, router commands and docker compose.",
   "watcher_button": "Connect a watcher",
   "watcher_enterprise": "Watchers are available on topolograph.com (Online).",
-  "watcher_editions": "Compare editions",
+  "watcher_editions": "Self-hosted and Online",
   "commands_filter": "Vendor or protocol",
   "commands_filter_label": "Filter commands",
   "commands_none": "No vendor or protocol matches.",

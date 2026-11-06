@@ -71,7 +71,7 @@
   "watcher_text": "El asistente de watcher: tipo, modo de sesión, comandos del router y docker compose.",
   "watcher_button": "Conectar un watcher",
   "watcher_enterprise": "Los watchers están disponibles en topolograph.com (Online).",
-  "watcher_editions": "Comparar ediciones",
+  "watcher_editions": "Self-hosted y Online",
   "commands_filter": "Fabricante o protocolo",
   "commands_filter_label": "Filtrar comandos",
   "commands_none": "Ningún fabricante ni protocolo coincide.",
