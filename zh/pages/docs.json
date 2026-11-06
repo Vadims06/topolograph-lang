@@ -71,7 +71,7 @@
   "watcher_text": "watcher 向导：类型、会话模式、路由器命令和 docker compose。",
   "watcher_button": "连接 watcher",
   "watcher_enterprise": "Watcher 可在 topolograph.com（Online）上使用。",
-  "watcher_editions": "比较版本",
+  "watcher_editions": "Self-hosted 与 Online",
   "commands_filter": "厂商或协议",
   "commands_filter_label": "筛选命令",
   "commands_none": "没有匹配的厂商或协议。",

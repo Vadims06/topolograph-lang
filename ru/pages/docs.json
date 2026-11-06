@@ -71,7 +71,7 @@
   "watcher_text": "Мастер подключения watcher: тип, режим сессии, команды для роутера и docker compose.",
   "watcher_button": "Подключить watcher",
   "watcher_enterprise": "Watcher доступен на topolograph.com (Online).",
-  "watcher_editions": "Сравнить редакции",
+  "watcher_editions": "Self-hosted и Online",
   "commands_filter": "Вендор или протокол",
   "commands_filter_label": "Фильтр команд",
   "commands_none": "Нет подходящих вендоров или протоколов.",
