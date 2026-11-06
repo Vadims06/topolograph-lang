@@ -178,7 +178,7 @@
   "kind_filter_igp": "IGP",
   "kind_filter_te": "TE",
   "event_kind_filter": "Types d'événements",
-  "history_enterprise_note": "L'historique des événements et la supervision sont disponibles sur topolograph.com.",
+  "history_online_note": "L'historique des événements et la supervision sont disponibles sur {link}.",
   "agent_title": "Agent IA Topolograph",
   "agent_open": "Interroger l'agent sur le réseau",
   "agent_mon_button": "Agent IA : expliquer les événements",

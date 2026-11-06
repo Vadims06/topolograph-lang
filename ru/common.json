@@ -178,7 +178,7 @@
   "events_lanes_note": "Отрезок соседства - от down до up (сколько связь лежала), как на текущем таймлайне; метрики и сети - отметки времени.",
   "events_routers_note": "Дорожка - роутер, который обнаружил событие (event_detected_by); цвет - категория.",
   "range_last_4h": "Последние 4 часа",
-  "history_enterprise_note": "История событий и мониторинг доступны на topolograph.com.",
+  "history_online_note": "История событий и мониторинг доступны на {link}.",
   "agent_title": "AI-агент Topolograph",
   "agent_open": "Спросить агента о сети",
   "agent_mon_button": "AI-агент: объяснить события",
