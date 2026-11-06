@@ -58,8 +58,18 @@
   "trial_active_title": "Watcher-ы на topolograph.com бесплатны",
   "trial_active_text": "События и графы от ваших watcher-ов хранятся 14 дней; доступ сохраняется, пока активны вы или ваши watcher-ы. После перерыва дольше 14 дней watcher-ы добавляются заново.",
   "trial_email_not_verified_title": "Нужна подтверждённая почта",
-  "trial_email_not_verified_text": "Бесплатным watcher-ам нужен адрес почты, подтверждённый провайдером: вход через Google, GitHub или Yandex.",
+  "trial_email_not_verified_text": "Бесплатным watcher-ам нужна подтверждённая почта: код приходит на неё письмом, либо вход через Google, GitHub или Yandex.",
   "trial_via_google": "Войти через Google",
   "trial_via_github": "Войти через GitHub",
-  "trial_via_yandex": "Войти через Яндекс"
+  "trial_via_yandex": "Войти через Яндекс",
+  "trial_code_send": "Прислать код на почту",
+  "trial_code_resend": "Прислать новый код",
+  "trial_code_label": "Код из письма",
+  "trial_code_confirm": "Подтвердить",
+  "trial_code_wrong": "Код неверный или устарел",
+  "trial_code_too_many": "Слишком много кодов, следующий можно запросить позже",
+  "trial_code_no_mail": "Этот сервер не отправляет письма",
+  "trial_code_failed": "Письмо не отправлено, повтор возможен позже",
+  "email_code_subject": "Код подтверждения почты Topolograph",
+  "email_code_body": "Ваш код Topolograph: {code}\nКод действует {minutes} минут."
 }

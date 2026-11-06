@@ -54,8 +54,18 @@
   "trial_active_title": "Watchers on topolograph.com are free",
   "trial_active_text": "Events and graphs from your watchers are kept 14 days; access stays while you or your watchers are active. After a pause of more than 14 days, add your watchers again.",
   "trial_email_not_verified_title": "Verified email needed",
-  "trial_email_not_verified_text": "Free watchers need an email verified by the provider. Sign in with Google, GitHub or Yandex.",
+  "trial_email_not_verified_text": "Free watchers need a verified email. Get a code by email or sign in with Google, GitHub or Yandex.",
   "trial_via_google": "Sign in with Google",
   "trial_via_github": "Sign in with GitHub",
-  "trial_via_yandex": "Sign in with Yandex"
+  "trial_via_yandex": "Sign in with Yandex",
+  "trial_code_send": "Email me a code",
+  "trial_code_resend": "Send a new code",
+  "trial_code_label": "Code from the email",
+  "trial_code_confirm": "Confirm",
+  "trial_code_wrong": "Wrong or expired code",
+  "trial_code_too_many": "Too many codes, try again later",
+  "trial_code_no_mail": "This server does not send email",
+  "trial_code_failed": "The email could not be sent, try again later",
+  "email_code_subject": "Topolograph email code",
+  "email_code_body": "Your Topolograph code: {code}\nIt is valid for {minutes} minutes."
 }

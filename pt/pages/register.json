@@ -2,7 +2,7 @@
   "heading": "Cadastro",
   "email_label": "E-mail",
   "email_placeholder": "E-mail",
-  "email_help": "Na verdade, não verificamos o e-mail informado, mas na prática é melhor usar um e-mail existente, caso você esqueça um endereço inventado.",
+  "email_help": "Use um endereço que você consiga abrir: ele é o seu login, e os watchers gratuitos no topolograph.com exigem a confirmação com um código enviado a ele.",
   "valid_feedback": "Prazer em conhecê-lo!",
   "invalid_feedback": "Por favor, informe um e-mail.",
   "password_label": "Senha",

@@ -54,8 +54,18 @@
   "trial_active_title": "topolograph.com 上的 watcher 免费",
   "trial_active_text": "来自您的 watcher 的事件和图保留 14 天；只要您或您的 watcher 保持活跃，访问权限就会保留。中断超过 14 天后，需要重新添加 watcher。",
   "trial_email_not_verified_title": "需要已验证的邮箱",
-  "trial_email_not_verified_text": "免费 watcher 需要由服务商验证过的邮箱，请使用 Google、GitHub 或 Yandex 登录。",
+  "trial_email_not_verified_text": "免费 watcher 需要已验证的邮箱。可通过邮件获取验证码，或使用 Google、GitHub、Yandex 登录。",
   "trial_via_google": "使用 Google 登录",
   "trial_via_github": "使用 GitHub 登录",
-  "trial_via_yandex": "使用 Yandex 登录"
+  "trial_via_yandex": "使用 Yandex 登录",
+  "trial_code_send": "通过邮件发送验证码",
+  "trial_code_resend": "发送新验证码",
+  "trial_code_label": "邮件中的验证码",
+  "trial_code_confirm": "确认",
+  "trial_code_wrong": "验证码错误或已过期",
+  "trial_code_too_many": "验证码请求过多，请稍后再试",
+  "trial_code_no_mail": "此服务器不发送邮件",
+  "trial_code_failed": "邮件发送失败，请稍后再试",
+  "email_code_subject": "Topolograph 邮箱验证码",
+  "email_code_body": "您的 Topolograph 验证码：{code}\n有效期 {minutes} 分钟。"
 }

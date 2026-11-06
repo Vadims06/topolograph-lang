@@ -2,7 +2,7 @@
   "heading": "注册",
   "email_label": "电子邮箱",
   "email_placeholder": "电子邮箱",
-  "email_help": "实际上我们不会验证所填邮箱，但建议使用真实邮箱，以免忘记虚构的地址。",
+  "email_help": "请使用您能收信的邮箱：它是您的登录名，topolograph.com 上的免费 watcher 需要用发送到该邮箱的验证码进行确认。",
   "valid_feedback": "很高兴认识你！",
   "invalid_feedback": "请填写电子邮箱。",
   "password_label": "密码",
