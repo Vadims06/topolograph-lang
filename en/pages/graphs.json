@@ -173,6 +173,7 @@
   "wizard_watcher_lab_command_unavailable": "The install command is unavailable: the watcher catalog did not load, or the server has no verified bundle for this watcher type.",
   "wizard_watcher_lab_req_linux_sudo": "Linux x86_64 host with sudo",
   "wizard_watcher_lab_req_iproute": "iproute2 installed (ip, and tc when the announcement filter is on)",
+  "wizard_watcher_lab_req_ip": "iproute2 installed (ip)",
   "wizard_watcher_lab_req_gre": "GRE mode: the host firewall allows GRE packets (IP protocol 47) from the router",
   "wizard_watcher_lab_req_macvlan_segment": "The parent interface is in the router's L2 segment (access port or VLAN)",
   "wizard_watcher_lab_req_macvlan_mac": "The switch or hypervisor accepts the watcher's extra MAC address (on VMware: promiscuous mode or forged transmits)",
@@ -184,7 +185,7 @@
   "wizard_watcher_code": "Install code",
   "wizard_watcher_code_warning": "The code is shown once, is valid for 10 minutes and works a single time. Copy it now; the command below already contains it.",
   "wizard_watcher_rotate_code": "New code",
-  "wizard_watcher_rotate_code_confirm": "The current code stops working at once, and a running watcher keeps its own token.",
+  "wizard_watcher_rotate_code_confirm": "The current code stops working at once. A running watcher loses its token too and stops; it starts again only with the command that holds the new code.",
   "wizard_watcher_rotate_code_unknown": "No answer from the server, so the code may already have been replaced and the one shown before no longer works. Ask for a new code to get one you can copy.",
   "wizard_watcher_lab_code_expires": "The code works once, within 10 minutes (until {time}).",
   "wizard_watcher_trial_lab_only": "On topolograph.com, watchers are installed with the one-command lab install only.",
@@ -192,6 +193,7 @@
   "wizard_watcher_lab_runs": "The watcher then runs on the token saved on the host.",
   "wizard_watcher_lab_restart": "To restart it later, run this on the same host; it reuses the token saved there:",
   "wizard_watcher_service_summary": "Run as a service (optional)",
-  "wizard_watcher_service_intro": "Topolograph does not create the service. To run the watcher under systemd, save this unit as {path}, replacing <install dir> with the folder where the bundle was unpacked. A BMP unit also has User=<user>: replace it with the account that ran the install, because the saved token is in that account's home folder. A watcher whose token ended exits normally, so systemd does not restart it.",
+  "wizard_watcher_service_intro": "Topolograph does not create the service. To run the watcher under systemd, save this unit as {path}, replacing <install dir> with the folder where the bundle was unpacked. A watcher whose token ended exits normally, so systemd does not restart it.",
+  "wizard_watcher_service_user": "This unit has User=<user>: replace it with the account that ran the install, because the saved token is in that account's home folder.",
   "wizard_watcher_service_enable": "Then load and start it:"
 }

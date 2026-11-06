@@ -173,6 +173,7 @@
   "wizard_watcher_lab_command_unavailable": "La commande d'installation est indisponible : le catalogue des watchers n'a pas été chargé, ou le serveur n'a pas de paquet vérifiable pour ce type de watcher.",
   "wizard_watcher_lab_req_linux_sudo": "Hôte Linux x86_64 avec sudo",
   "wizard_watcher_lab_req_iproute": "iproute2 installé (ip, et tc lorsque le filtre d'annonces est activé)",
+  "wizard_watcher_lab_req_ip": "iproute2 installé (ip)",
   "wizard_watcher_lab_req_gre": "Mode GRE : le pare-feu de l'hôte autorise les paquets GRE (protocole IP 47) du routeur",
   "wizard_watcher_lab_req_macvlan_segment": "L'interface parente est dans le segment L2 du routeur (port d'accès ou VLAN)",
   "wizard_watcher_lab_req_macvlan_mac": "Le commutateur ou l'hyperviseur accepte l'adresse MAC supplémentaire du watcher (sur VMware : promiscuous mode ou forged transmits)",
@@ -184,7 +185,7 @@
   "wizard_watcher_code": "Code d’installation",
   "wizard_watcher_code_warning": "Le code est affiché une seule fois, valable 10 minutes et utilisable une seule fois. Copiez-le maintenant ; la commande ci-dessous le contient déjà.",
   "wizard_watcher_rotate_code": "Nouveau code",
-  "wizard_watcher_rotate_code_confirm": "Le code actuel cesse de fonctionner aussitôt ; un watcher en cours garde son propre jeton.",
+  "wizard_watcher_rotate_code_confirm": "Le code actuel cesse de fonctionner aussitôt. Un watcher en cours perd aussi son jeton et s'arrête ; il ne redémarre qu'avec la commande qui contient le nouveau code.",
   "wizard_watcher_rotate_code_unknown": "Pas de réponse du serveur : le code a peut-être déjà été remplacé et celui affiché avant ne fonctionne plus. Demandez un nouveau code pour en obtenir un à copier.",
   "wizard_watcher_lab_code_expires": "Le code ne sert qu’une fois, dans les 10 minutes (jusqu’à {time}).",
   "wizard_watcher_trial_lab_only": "Sur topolograph.com, les watchers s’installent uniquement avec l’installation labo en une commande.",
@@ -192,6 +193,7 @@
   "wizard_watcher_lab_runs": "Le watcher fonctionne ensuite avec le jeton enregistré sur l’hôte.",
   "wizard_watcher_lab_restart": "Pour le redémarrer plus tard, exécutez ceci sur le même hôte ; la commande réutilise le jeton qui y est enregistré :",
   "wizard_watcher_service_summary": "Exécuter comme service (facultatif)",
-  "wizard_watcher_service_intro": "Topolograph ne crée pas le service. Pour lancer le watcher sous systemd, enregistrez cette unité sous {path} en remplaçant <install dir> par le dossier où le bundle a été décompressé. L'unité BMP contient aussi User=<user> : remplacez-le par le compte qui a fait l'installation, car le jeton enregistré se trouve dans son dossier personnel. Un watcher dont le jeton est terminé s'arrête normalement, donc systemd ne le relance pas.",
+  "wizard_watcher_service_intro": "Topolograph ne crée pas le service. Pour lancer le watcher sous systemd, enregistrez cette unité sous {path} en remplaçant <install dir> par le dossier où le bundle a été décompressé. Un watcher dont le jeton est terminé s'arrête normalement, donc systemd ne le relance pas.",
+  "wizard_watcher_service_user": "Cette unité contient User=<user> : remplacez-le par le compte qui a fait l'installation, car le jeton enregistré se trouve dans son dossier personnel.",
   "wizard_watcher_service_enable": "Chargez-la ensuite et démarrez-la :"
 }

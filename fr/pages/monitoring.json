@@ -43,6 +43,7 @@
   "last_event_node": "Flag du routeur",
   "col_actions": "Actions",
   "delete_watcher": "Supprimer",
+  "new_install_command": "Nouvelle commande d'installation",
   "delete_watcher_confirm": "Supprimer le watcher {name} avec ses graphes et ses événements ? Son jeton cesse de fonctionner, arrêtez-le donc aussi sur son hôte.",
   "delete_watcher_with_data": "Supprimer le watcher et ses graphes",
   "watcher_deleted": "Watcher supprimé",

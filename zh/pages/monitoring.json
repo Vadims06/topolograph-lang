@@ -43,6 +43,7 @@
   "last_event_node": "路由器标志",
   "col_actions": "操作",
   "delete_watcher": "删除",
+  "new_install_command": "新的安装命令",
   "delete_watcher_confirm": "删除 watcher {name} 及其图和事件？其令牌将失效，因此也请在其主机上停止它。",
   "delete_watcher_with_data": "删除 watcher 及其图",
   "watcher_deleted": "Watcher 已删除",
