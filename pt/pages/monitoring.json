@@ -43,6 +43,7 @@
   "last_event_node": "Flag do roteador",
   "col_actions": "Ações",
   "delete_watcher": "Excluir",
+  "new_install_command": "Novo comando de instalação",
   "delete_watcher_confirm": "Excluir o watcher {name} com seus grafos e eventos? Seu token deixa de funcionar, então pare-o também no host dele.",
   "delete_watcher_with_data": "Excluir o watcher e seus grafos",
   "watcher_deleted": "Watcher excluído",

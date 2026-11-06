@@ -43,6 +43,7 @@
   "last_event_node": "Флаг роутера",
   "col_actions": "Действия",
   "delete_watcher": "Удалить",
+  "new_install_command": "Новая команда установки",
   "delete_watcher_confirm": "Удалить watcher {name} вместе с его графами и событиями? Его токен перестанет работать, поэтому его нужно остановить и на хосте.",
   "delete_watcher_with_data": "Удалить watcher и его графы",
   "watcher_deleted": "Watcher удалён",

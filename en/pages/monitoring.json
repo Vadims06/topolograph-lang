@@ -43,6 +43,7 @@
   "last_event_node": "Router flag",
   "col_actions": "Actions",
   "delete_watcher": "Delete",
+  "new_install_command": "New install command",
   "delete_watcher_confirm": "Delete watcher {name} with its graphs and events? Its token stops working, so stop it on its host too.",
   "delete_watcher_with_data": "Delete watcher and its graphs",
   "watcher_deleted": "Watcher deleted",
