@@ -54,8 +54,16 @@
   "trial_active_title": "Os watchers no topolograph.com são gratuitos",
   "trial_active_text": "Os eventos e grafos dos seus watchers ficam guardados por 14 dias; o acesso continua enquanto você ou seus watchers estiverem ativos. Depois de uma pausa de mais de 14 dias, os watchers são adicionados de novo.",
   "trial_email_not_verified_title": "É preciso um e-mail verificado",
-  "trial_email_not_verified_text": "Os watchers gratuitos exigem um e-mail verificado pelo provedor: entre com Google, GitHub ou Yandex.",
+  "trial_email_not_verified_text": "Watchers gratuitos precisam de um e-mail verificado. Receba um código por e-mail ou entre com Google, GitHub ou Yandex.",
   "trial_via_google": "Entrar com Google",
   "trial_via_github": "Entrar com GitHub",
-  "trial_via_yandex": "Entrar com Yandex"
+  "trial_via_yandex": "Entrar com Yandex",
+  "trial_code_send": "Enviar um código por e-mail",
+  "trial_code_resend": "Enviar um novo código",
+  "trial_code_label": "Código do e-mail",
+  "trial_code_confirm": "Confirmar",
+  "trial_code_wrong": "Código incorreto ou expirado",
+  "trial_code_too_many": "Códigos demais, tente mais tarde",
+  "trial_code_no_mail": "Este servidor não envia e-mail",
+  "trial_code_failed": "Não foi possível enviar o e-mail, tente mais tarde"
 }
