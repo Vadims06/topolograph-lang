@@ -12,5 +12,8 @@
   "error_login_taken": "该邮箱已注册。请直接登录。",
   "error_invalid_form": "请输入邮箱和密码。",
   "have_account": "已有账户？请登录",
-  "error_session_unavailable": "注册表单加载失败，请刷新页面重试。"
+  "error_session_unavailable": "注册表单加载失败，请刷新页面重试。",
+  "code_heading": "确认邮箱",
+  "code_sent": "验证码已发送至 {email}。",
+  "code_later": "暂时跳过"
 }

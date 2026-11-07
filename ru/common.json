@@ -262,5 +262,13 @@
   "agent_q_graph_failures_1": "Что будет при отказе узла R5?",
   "agent_q_graph_lsp_1": "Какие LSP проходят через R5?",
   "agent_q_graph_evpn_1": "На каких VTEP объявлен VNI 10010?",
-  "agent_q_v2_graph_1": "Проверь соседство R1 ↔ R2 на устройствах"
+  "agent_q_v2_graph_1": "Проверь соседство R1 ↔ R2 на устройствах",
+  "email_code_send": "Прислать код на почту",
+  "email_code_resend": "Прислать новый код",
+  "email_code_label": "Код из письма",
+  "email_code_confirm": "Подтвердить",
+  "email_code_wrong": "Код неверный или устарел",
+  "email_code_too_many": "Слишком много кодов, следующий можно запросить позже",
+  "email_code_no_mail": "Этот сервер не отправляет письма",
+  "email_code_failed": "Письмо не отправлено, повтор возможен позже"
 }

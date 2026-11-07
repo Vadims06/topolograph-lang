@@ -260,5 +260,13 @@
   "agent_q_graph_failures_1": "如果节点 R5 发生故障会怎样？",
   "agent_q_graph_lsp_1": "哪些 LSP 经过 R5？",
   "agent_q_graph_evpn_1": "VNI 10010 在哪些 VTEP 上发布？",
-  "agent_q_v2_graph_1": "在设备上检查 R1 ↔ R2 的邻接关系"
+  "agent_q_v2_graph_1": "在设备上检查 R1 ↔ R2 的邻接关系",
+  "email_code_send": "通过邮件发送验证码",
+  "email_code_resend": "发送新验证码",
+  "email_code_label": "邮件中的验证码",
+  "email_code_confirm": "确认",
+  "email_code_wrong": "验证码错误或已过期",
+  "email_code_too_many": "验证码请求过多，请稍后再试",
+  "email_code_no_mail": "此服务器不发送邮件",
+  "email_code_failed": "邮件发送失败，请稍后再试"
 }
