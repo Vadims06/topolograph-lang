@@ -178,7 +178,7 @@
   "kind_filter_igp": "IGP",
   "kind_filter_te": "TE",
   "event_kind_filter": "事件类型",
-  "history_enterprise_note": "事件历史和监控功能在 topolograph.com上提供。",
+  "history_online_note": "事件历史和监控功能在 {link} 上提供。",
   "agent_title": "Topolograph AI 助手",
   "agent_open": "向助手询问网络情况",
   "agent_mon_button": "AI 助手：解释事件",
