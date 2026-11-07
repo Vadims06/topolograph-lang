@@ -12,5 +12,8 @@
   "error_login_taken": "Este correo ya está registrado. Inicie sesión.",
   "error_invalid_form": "Introduzca un correo y una contraseña.",
   "have_account": "¿Ya tiene una cuenta? Inicie sesión",
-  "error_session_unavailable": "No se pudo cargar el formulario de registro. Recargue la página para intentarlo de nuevo."
+  "error_session_unavailable": "No se pudo cargar el formulario de registro. Recargue la página para intentarlo de nuevo.",
+  "code_heading": "Confirma tu correo",
+  "code_sent": "Hemos enviado un código a {email}.",
+  "code_later": "Omitir por ahora"
 }

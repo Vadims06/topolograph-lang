@@ -12,5 +12,8 @@
   "error_login_taken": "Cet e-mail est déjà enregistré. Connectez-vous plutôt.",
   "error_invalid_form": "Saisissez un e-mail et un mot de passe.",
   "have_account": "Vous avez déjà un compte ? Se connecter",
-  "error_session_unavailable": "Le formulaire d'inscription n'a pas pu se charger. Rechargez la page pour réessayer."
+  "error_session_unavailable": "Le formulaire d'inscription n'a pas pu se charger. Rechargez la page pour réessayer.",
+  "code_heading": "Confirmez votre e-mail",
+  "code_sent": "Nous avons envoyé un code à {email}.",
+  "code_later": "Ignorer pour l’instant"
 }

@@ -259,5 +259,13 @@
   "agent_q_graph_failures_1": "What happens if node R5 fails?",
   "agent_q_graph_lsp_1": "Which LSPs pass through R5?",
   "agent_q_graph_evpn_1": "On which VTEPs is VNI 10010 advertised?",
-  "agent_q_v2_graph_1": "Check the adjacency R1 ↔ R2 on the devices"
+  "agent_q_v2_graph_1": "Check the adjacency R1 ↔ R2 on the devices",
+  "email_code_send": "Email me a code",
+  "email_code_resend": "Send a new code",
+  "email_code_label": "Code from the email",
+  "email_code_confirm": "Confirm",
+  "email_code_wrong": "Wrong or expired code",
+  "email_code_too_many": "Too many codes, try again later",
+  "email_code_no_mail": "This server does not send email",
+  "email_code_failed": "The email could not be sent, try again later"
 }

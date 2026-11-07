@@ -260,5 +260,13 @@
   "agent_q_graph_failures_1": "O que acontece se o nó R5 falhar?",
   "agent_q_graph_lsp_1": "Quais LSPs passam por R5?",
   "agent_q_graph_evpn_1": "Em quais VTEPs o VNI 10010 é anunciado?",
-  "agent_q_v2_graph_1": "Verifique a adjacência R1 ↔ R2 nos dispositivos"
+  "agent_q_v2_graph_1": "Verifique a adjacência R1 ↔ R2 nos dispositivos",
+  "email_code_send": "Enviar um código por e-mail",
+  "email_code_resend": "Enviar um novo código",
+  "email_code_label": "Código do e-mail",
+  "email_code_confirm": "Confirmar",
+  "email_code_wrong": "Código incorreto ou expirado",
+  "email_code_too_many": "Códigos demais, tente mais tarde",
+  "email_code_no_mail": "Este servidor não envia e-mail",
+  "email_code_failed": "Não foi possível enviar o e-mail, tente mais tarde"
 }
