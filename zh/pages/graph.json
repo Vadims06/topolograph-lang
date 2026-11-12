@@ -505,6 +505,7 @@
   "cspf_level_both": "两者",
   "cspf_list_hint": "以逗号分隔",
   "paths_reason_srlg": "排除 SRLG 接受以逗号分隔的整数。",
+  "paths_reason_same": "起点和终点是同一台路由器。",
   "paths_back": "← 返回路径",
   "copy_graph_time": "复制 graph_time",
   "graph_time_copied": "已复制 graph_time",

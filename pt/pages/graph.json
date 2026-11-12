@@ -505,6 +505,7 @@
   "cspf_level_both": "Ambos",
   "cspf_list_hint": "separados por vírgula",
   "paths_reason_srlg": "Excluir SRLG aceita números inteiros separados por vírgulas.",
+  "paths_reason_same": "De e Para indicam o mesmo roteador.",
   "paths_back": "← Ao caminho",
   "copy_graph_time": "Copiar graph_time",
   "graph_time_copied": "graph_time copiado",

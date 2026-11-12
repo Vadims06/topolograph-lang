@@ -509,6 +509,7 @@
   "cspf_level_both": "Оба",
   "cspf_list_hint": "через запятую",
   "paths_reason_srlg": "Исключаемые SRLG - целые числа через запятую.",
+  "paths_reason_same": "В полях «Откуда» и «Куда» указан один и тот же роутер.",
   "paths_back": "← К пути",
   "copy_graph_time": "Копировать graph_time",
   "graph_time_copied": "graph_time скопирован",
