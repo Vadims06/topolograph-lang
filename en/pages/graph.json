@@ -505,6 +505,7 @@
   "cspf_level_both": "Both",
   "cspf_list_hint": "comma-separated",
   "paths_reason_srlg": "Exclude SRLG takes whole numbers separated by commas.",
+  "paths_reason_same": "From and To name the same router.",
   "paths_back": "← To the path",
   "copy_graph_time": "Copy graph_time",
   "graph_time_copied": "graph_time copied",

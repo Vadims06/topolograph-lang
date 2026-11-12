@@ -505,6 +505,7 @@
   "cspf_level_both": "Les deux",
   "cspf_list_hint": "séparés par des virgules",
   "paths_reason_srlg": "Exclure SRLG accepte des nombres entiers séparés par des virgules.",
+  "paths_reason_same": "De et Vers désignent le même routeur.",
   "paths_back": "← Vers le chemin",
   "copy_graph_time": "Copier graph_time",
   "graph_time_copied": "graph_time copié",
