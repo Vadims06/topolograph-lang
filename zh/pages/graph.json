@@ -780,5 +780,13 @@
   "moment_slider_label": "时间点",
   "moment_down_label": "曾经中断的邻接",
   "moment_restart": "Watcher 重启:新快照 {name}",
-  "moment_select_span": "用鼠标选择时间段以放大；按住 Shift 拖动也可以"
+  "moment_select_span": "用鼠标选择时间段以放大；按住 Shift 拖动也可以",
+  "graph_notice_built": "图由 {count} 份 LSDB 构建:",
+  "graph_notice_partial": "图由 {total} 份 LSDB 中的 {built} 份构建:",
+  "graph_notice_dropped": "未解析:",
+  "graph_notice_dropped_line": "LSDB {number} · {vendor}/{protocol} · {file}: {reason}",
+  "graph_notice_retry": "修正后重新上传",
+  "graph_notice_close": "关闭提示",
+  "graph_notice_routers_one": "{count} 台路由器",
+  "graph_notice_routers_other": "{count} 台路由器"
 }

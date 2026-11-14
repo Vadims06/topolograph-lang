@@ -816,5 +816,15 @@
   "moment_slider_label": "Момент времени",
   "moment_down_label": "Соседства, которые были down",
   "moment_restart": "Перезапуск watcher: новый снимок {name}",
-  "moment_select_span": "Выделить отрезок мышью и приблизить; то же делает перетаскивание с Shift"
+  "moment_select_span": "Выделить отрезок мышью и приблизить; то же делает перетаскивание с Shift",
+  "graph_notice_built": "Граф построен из {count} LSDB:",
+  "graph_notice_partial": "Граф построен из {built} из {total} LSDB:",
+  "graph_notice_dropped": "Не разобрано:",
+  "graph_notice_dropped_line": "LSDB {number} · {vendor}/{protocol} · {file}: {reason}",
+  "graph_notice_retry": "Исправить и загрузить заново",
+  "graph_notice_close": "Скрыть уведомление",
+  "graph_notice_routers_one": "{count} роутер",
+  "graph_notice_routers_other": "{count} роутеров",
+  "graph_notice_routers_few": "{count} роутера",
+  "graph_notice_routers_many": "{count} роутеров"
 }
