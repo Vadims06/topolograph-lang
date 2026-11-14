@@ -230,7 +230,7 @@
   "wizard_sum_lines": "Lines",
   "wizard_sum_size": "Size",
   "wizard_sum_dropped": "not parsed, will not enter the graph",
-  "wizard_mb": "MB",
+  "wizard_over_limit": "Together the LSDB are over {limit} MB per upload, so they are not parsed. Remove an LSDB to build the graph.",
   "wizard_sum_total": "Total {count} LSDB, {size} MB of {limit} MB per upload.",
   "wizard_sum_merge": "Routers with the same Router ID from different LSDB become one node, for example an ABR between area 0 and area 1. An LSDB that gives nothing does not enter the graph.",
   "wizard_build": "Build graph from {count} LSDB",

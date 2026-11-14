@@ -232,7 +232,7 @@
   "wizard_sum_lines": "Строк",
   "wizard_sum_size": "Размер",
   "wizard_sum_dropped": "не разобрана, в граф не войдёт",
-  "wizard_mb": "МБ",
+  "wizard_over_limit": "Вместе LSDB больше {limit} МБ на одну загрузку, поэтому они не разбираются. Граф строится после удаления одной из LSDB.",
   "wizard_sum_total": "Всего {count} LSDB, {size} МБ из {limit} МБ на одну загрузку.",
   "wizard_sum_merge": "Роутеры с одинаковым Router ID из разных LSDB становятся одним узлом, например ABR между area 0 и area 1. LSDB, из которой ничего не разобрано, в граф не входит.",
   "wizard_build": "Построить граф из {count} LSDB",

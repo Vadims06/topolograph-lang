@@ -230,7 +230,7 @@
   "wizard_sum_lines": "行数",
   "wizard_sum_size": "大小",
   "wizard_sum_dropped": "未解析,不会进入图",
-  "wizard_mb": "MB",
+  "wizard_over_limit": "这些 LSDB 合计超过每次上传 {limit} MB，因此未解析。移除一个 LSDB 后即可构建图。",
   "wizard_sum_total": "共 {count} 份 LSDB,{size} MB,单次上传上限 {limit} MB。",
   "wizard_sum_merge": "不同 LSDB 中 Router ID 相同的路由器合并为一个节点,例如 area 0 与 area 1 之间的 ABR。未解析出任何内容的 LSDB 不会进入图。",
   "wizard_build": "用 {count} 份 LSDB 构建图",

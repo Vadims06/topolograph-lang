@@ -230,7 +230,7 @@
   "wizard_sum_lines": "Lignes",
   "wizard_sum_size": "Taille",
   "wizard_sum_dropped": "non analysée, n'entrera pas dans le graphe",
-  "wizard_mb": "Mo",
+  "wizard_over_limit": "Ensemble, les LSDB dépassent {limit} Mo par envoi : elles ne sont pas analysées. Retirez une LSDB pour construire le graphe.",
   "wizard_sum_total": "Total : {count} LSDB, {size} Mo sur {limit} Mo par envoi.",
   "wizard_sum_merge": "Les routeurs ayant le même Router ID dans des LSDB différentes deviennent un seul nœud, par exemple un ABR entre l'area 0 et l'area 1. Une LSDB qui ne donne rien n'entre pas dans le graphe.",
   "wizard_build": "Construire le graphe à partir de {count} LSDB",
