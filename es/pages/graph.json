@@ -780,5 +780,13 @@
   "moment_slider_label": "Momento en el tiempo",
   "moment_down_label": "Adyacencias que estuvieron caídas",
   "moment_restart": "Reinicio del watcher: nueva instantánea {name}",
-  "moment_select_span": "Selecciona un intervalo con el ratón para acercar; Mayús+arrastrar hace lo mismo"
+  "moment_select_span": "Selecciona un intervalo con el ratón para acercar; Mayús+arrastrar hace lo mismo",
+  "graph_notice_built": "Grafo construido con {count} LSDB:",
+  "graph_notice_partial": "Grafo construido con {built} de {total} LSDB:",
+  "graph_notice_dropped": "No analizadas:",
+  "graph_notice_dropped_line": "LSDB {number} · {vendor}/{protocol} · {file}: {reason}",
+  "graph_notice_retry": "Corregir y cargar de nuevo",
+  "graph_notice_close": "Cerrar aviso",
+  "graph_notice_routers_one": "{count} router",
+  "graph_notice_routers_other": "{count} routers"
 }

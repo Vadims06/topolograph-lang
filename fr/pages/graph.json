@@ -780,5 +780,13 @@
   "moment_slider_label": "Instant dans le temps",
   "moment_down_label": "Adjacences qui étaient hors service",
   "moment_restart": "Redémarrage du watcher : nouvel instantané {name}",
-  "moment_select_span": "Sélectionner une plage à la souris pour zoomer ; Maj+glisser fait de même"
+  "moment_select_span": "Sélectionner une plage à la souris pour zoomer ; Maj+glisser fait de même",
+  "graph_notice_built": "Graphe construit à partir de {count} LSDB :",
+  "graph_notice_partial": "Graphe construit à partir de {built} LSDB sur {total} :",
+  "graph_notice_dropped": "Non analysées :",
+  "graph_notice_dropped_line": "LSDB {number} · {vendor}/{protocol} · {file}: {reason}",
+  "graph_notice_retry": "Corriger et envoyer à nouveau",
+  "graph_notice_close": "Fermer l'avis",
+  "graph_notice_routers_one": "{count} routeur",
+  "graph_notice_routers_other": "{count} routeurs"
 }
