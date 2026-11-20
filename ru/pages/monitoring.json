@@ -56,8 +56,6 @@
   "skipped_events_many": "{count} событий watcher не удалось применить",
   "skipped_events_other": "{count} события watcher не удалось применить",
   "older_snapshots_left_out": "В периоде больше перезапусков watcher, чем читает один просмотр; не показаны перезапуски, которые закончились раньше всех. Их показывает период, который заканчивается раньше.",
-  "watchers_access_available_title": "Watcher-ы доступны",
-  "watchers_access_available_text": "Первый добавленный watcher открывает доступ к watcher-ам на год.",
   "watchers_access_active_title": "Доступ к watcher-ам до {date}.",
   "watchers_access_active_soon_text": "Продление сохраняет работу watcher-ов.",
   "watchers_access_ended_title": "Доступ к watcher-ам закончился {date}. Watcher-ы остановлены; их графы и события удаляются {deletion_date}.",

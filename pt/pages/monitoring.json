@@ -52,8 +52,6 @@
   "skipped_events_one": "{count} evento do watcher não pôde ser aplicado",
   "skipped_events_other": "{count} eventos do watcher não puderam ser aplicados",
   "older_snapshots_left_out": "O período contém mais reinícios do watcher do que uma visualização lê; ficam de fora os que terminaram primeiro. Um período que termina antes os mostra.",
-  "watchers_access_available_title": "Os watchers estão disponíveis",
-  "watchers_access_available_text": "Adicionar seu primeiro watcher abre um ano de acesso aos watchers.",
   "watchers_access_active_title": "Acesso aos watchers até {date}.",
   "watchers_access_active_soon_text": "Renove-o para manter seus watchers em funcionamento.",
   "watchers_access_ended_title": "O acesso aos watchers terminou em {date}. Os watchers foram parados; seus grafos e eventos são excluídos em {deletion_date}.",
