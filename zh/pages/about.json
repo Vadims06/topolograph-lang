@@ -175,5 +175,18 @@
   "lp_ed4_c": "❌（仅演示图）",
   "lp_ed4_e": "事件仅保留一段有限时间",
   "lp_dep_self_net": "网络（LSDB 快照）",
-  "lp_dep_self_app": "Topolograph（自行部署）"
+  "lp_dep_self_app": "Topolograph（自行部署）",
+  "lp_skill_title": "适用于 Claude Code 和 Codex CLI 的 Skill",
+  "lp_skill_lead": "Claude Code 或 Codex 可直接在终端中回答有关您网络的问题：MCP 服务器为智能体提供 Topolograph 的拓扑图、路径和事件，skill 则说明何时以及如何请求这些数据。",
+  "lp_skill_connect": "连接 MCP 服务器",
+  "lp_skill_oauth_note": "首次请求时，智能体会在浏览器中打开 Topolograph 登录页。访问权限为只读；它会出现在 API 令牌中，可在那里撤销。",
+  "lp_skill_token_h": "使用 API 令牌（CI、自托管）",
+  "lp_skill_signin": "登录并创建令牌",
+  "lp_skill_create": "创建令牌",
+  "lp_skill_token_done": "令牌已创建",
+  "lp_skill_token_once": "令牌仅显示一次，请立即复制。只读（agent:read），有效期 1 年；在 API 令牌中名为“Claude Code / Codex”，可在那里撤销。",
+  "lp_skill_copy": "复制",
+  "lp_skill_copied": "已复制",
+  "lp_skill_copy_failed": "无法复制",
+  "lp_skill_token_desc": "Skill 和 MCP 服务器，只读"
 }

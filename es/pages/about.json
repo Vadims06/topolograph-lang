@@ -175,5 +175,18 @@
   "lp_ed4_c": "❌ (solo grafo de demostración)",
   "lp_ed4_e": "los eventos se conservan durante un tiempo limitado",
   "lp_dep_self_net": "Red (instantánea LSDB)",
-  "lp_dep_self_app": "Topolograph (autoalojado)"
+  "lp_dep_self_app": "Topolograph (autoalojado)",
+  "lp_skill_title": "Skill para Claude Code y Codex CLI",
+  "lp_skill_lead": "Claude Code o Codex responden preguntas sobre su red directamente en el terminal: el servidor MCP da al agente los grafos, rutas y eventos de Topolograph, y el skill indica cuándo y cómo pedirlos.",
+  "lp_skill_connect": "Conectar el servidor MCP",
+  "lp_skill_oauth_note": "En la primera solicitud, el agente abre en el navegador el inicio de sesión de Topolograph. El acceso es de solo lectura; aparece en los tokens de API, donde se puede revocar.",
+  "lp_skill_token_h": "Con un token de API (CI, autoalojado)",
+  "lp_skill_signin": "Iniciar sesión y crear un token",
+  "lp_skill_create": "Crear token",
+  "lp_skill_token_done": "Token creado",
+  "lp_skill_token_once": "El token se muestra una sola vez: cópielo ahora. Solo lectura (agent:read), válido durante 1 año; figura en los tokens de API como «Claude Code / Codex» y se revoca allí.",
+  "lp_skill_copy": "Copiar",
+  "lp_skill_copied": "Copiado",
+  "lp_skill_copy_failed": "No se pudo copiar",
+  "lp_skill_token_desc": "Skill y servidor MCP, solo lectura"
 }
