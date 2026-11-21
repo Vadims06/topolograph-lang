@@ -212,6 +212,7 @@
   "agent_who": "Агент Topolograph",
   "agent_pending": "Агент отвечает…",
   "agent_busy": "Агент занят, повторите через минуту",
+  "agent_fallback": "Основная модель не ответила, этот ответ подготовила резервная модель.",
   "agent_error": "Агент не ответил, повторите вопрос",
   "agent_question_event": "Объясни событие {time} {event} {object}",
   "agent_tools_one": "MCP: {count} вызов",
