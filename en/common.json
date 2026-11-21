@@ -211,6 +211,7 @@
   "agent_who": "Topolograph agent",
   "agent_pending": "The agent is answering…",
   "agent_busy": "The agent is busy, try again in a minute",
+  "agent_fallback": "The main model did not answer, so a backup model prepared this answer.",
   "agent_error": "The agent did not answer, try asking again",
   "agent_question_event": "Explain the event {time} {event} {object}",
   "agent_tools_one": "MCP: {count} call",

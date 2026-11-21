@@ -212,6 +212,7 @@
   "agent_who": "Topolograph 助手",
   "agent_pending": "助手正在回答…",
   "agent_busy": "助手繁忙，请一分钟后重试",
+  "agent_fallback": "主模型未响应，此回答由备用模型生成。",
   "agent_error": "助手未能回答，请重新提问",
   "agent_question_event": "请解释事件 {time} {event} {object}",
   "agent_tools_one": "MCP：{count} 次调用",

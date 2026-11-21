@@ -212,6 +212,7 @@
   "agent_who": "Agente de Topolograph",
   "agent_pending": "El agente está respondiendo…",
   "agent_busy": "El agente está ocupado, inténtelo de nuevo en un minuto",
+  "agent_fallback": "El modelo principal no respondió, así que esta respuesta la preparó un modelo de respaldo.",
   "agent_error": "El agente no respondió, vuelva a preguntar",
   "agent_question_event": "Explica el evento {time} {event} {object}",
   "agent_tools_one": "MCP: {count} llamada",
