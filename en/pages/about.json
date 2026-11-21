@@ -175,5 +175,18 @@
   "lp_ed4_c": "❌ (demo graph only)",
   "lp_ed4_e": "events are kept for a limited time",
   "lp_dep_self_net": "Network (LSDB snapshot)",
-  "lp_dep_self_app": "Topolograph (self-hosted)"
+  "lp_dep_self_app": "Topolograph (self-hosted)",
+  "lp_skill_title": "Skill for Claude Code and Codex CLI",
+  "lp_skill_lead": "Claude Code or Codex answers questions about your network right in the terminal: the MCP server gives the agent Topolograph graphs, paths and events, and the skill tells it when and how to ask for them.",
+  "lp_skill_connect": "Connect the MCP server",
+  "lp_skill_oauth_note": "When connecting or on the first request the agent opens the Topolograph sign-in in the browser. Access is read-only; it appears in API tokens, where it can be revoked.",
+  "lp_skill_token_h": "With an API token (CI, self-hosted)",
+  "lp_skill_signin": "Sign in to create a token",
+  "lp_skill_create": "Create token",
+  "lp_skill_token_done": "Token created",
+  "lp_skill_token_once": "The token is shown once - copy it now. Read-only (agent:read), valid for 1 year; listed in API tokens as \"Claude Code / Codex\" and revoked there.",
+  "lp_skill_copy": "Copy",
+  "lp_skill_copied": "Copied",
+  "lp_skill_copy_failed": "Unable to copy",
+  "lp_skill_token_desc": "Skill and MCP server, read-only"
 }
