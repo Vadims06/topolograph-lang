@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "title": "MCP sign-in - Topolograph"
+  },
+  "heading": "Access for {client}",
+  "body": "{client} asks for read-only access to the graphs of {login}: topologies, routes and events. It cannot change or upload anything.",
+  "where_listed": "The access appears in Access → API tokens as \"{client} (sign-in)\" for 30 days, where it can be revoked.",
+  "deny": "Deny",
+  "allow": "Allow",
+  "invalid_title": "Sign-in link is not valid",
+  "invalid_text": "The sign-in address is outdated or was changed. Start the sign-in again from the terminal: codex mcp login topolograph for Codex or /mcp in Claude Code.",
+  "loading": "Loading…",
+  "error_failed": "The sign-in request could not be loaded. Reload the page to try again.",
+  "error_decision": "The decision was not sent. Try again."
+}

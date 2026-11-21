@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "title": "MCP 登录 - Topolograph"
+  },
+  "heading": "{client} 的访问请求",
+  "body": "{client} 请求以只读方式访问账户 {login} 的图：拓扑、路由和事件。它无法更改或上传任何内容。",
+  "where_listed": "该访问将以“{client} (sign-in)”的名称显示在“访问”→“API 令牌”中，有效期 30 天，可在那里撤销。",
+  "deny": "拒绝",
+  "allow": "允许",
+  "invalid_title": "登录链接无效",
+  "invalid_text": "登录地址已过期或已被更改。请在终端中重新开始登录：Codex 使用 codex mcp login topolograph，Claude Code 使用 /mcp。",
+  "loading": "加载中…",
+  "error_failed": "无法加载登录请求。请重新加载页面后再试。",
+  "error_decision": "决定未能发送。请重试。"
+}
