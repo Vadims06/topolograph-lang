@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "title": "Connexion MCP - Topolograph"
+  },
+  "heading": "Accès pour {client}",
+  "body": "{client} demande un accès en lecture seule aux graphes de {login} : topologies, routes et événements. Il ne pourra rien modifier ni téléverser.",
+  "where_listed": "L'accès apparaît dans Accès → Jetons d'API sous le nom « {client} (sign-in) » pendant 30 jours, et peut y être révoqué.",
+  "deny": "Refuser",
+  "allow": "Autoriser",
+  "invalid_title": "Le lien de connexion n'est pas valide",
+  "invalid_text": "L'adresse de connexion est périmée ou a été modifiée. La connexion doit être relancée depuis le terminal : codex mcp login topolograph pour Codex ou /mcp dans Claude Code.",
+  "loading": "Chargement…",
+  "error_failed": "La demande de connexion n'a pas pu être chargée. Rechargez la page pour réessayer.",
+  "error_decision": "La décision n'a pas été envoyée. Réessayez."
+}

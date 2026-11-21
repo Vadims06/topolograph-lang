@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "title": "Inicio de sesión MCP - Topolograph"
+  },
+  "heading": "Acceso para {client}",
+  "body": "{client} solicita acceso de solo lectura a los grafos de {login}: topologías, rutas y eventos. No podrá cambiar ni cargar nada.",
+  "where_listed": "El acceso aparece en Acceso → Tokens de API como \"{client} (sign-in)\" durante 30 días, y allí se puede revocar.",
+  "deny": "Rechazar",
+  "allow": "Permitir",
+  "invalid_title": "El enlace de inicio de sesión no es válido",
+  "invalid_text": "La dirección de inicio de sesión está desactualizada o fue modificada. Hay que iniciar sesión de nuevo desde el terminal: codex mcp login topolograph para Codex o /mcp en Claude Code.",
+  "loading": "Cargando…",
+  "error_failed": "No se pudo cargar la solicitud de inicio de sesión. Recargue la página para intentarlo de nuevo.",
+  "error_decision": "No se envió la decisión. Inténtelo de nuevo."
+}

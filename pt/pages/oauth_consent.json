@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "title": "Login MCP - Topolograph"
+  },
+  "heading": "Acesso para {client}",
+  "body": "{client} solicita acesso somente leitura aos grafos de {login}: topologias, rotas e eventos. Ele não poderá alterar nem carregar nada.",
+  "where_listed": "O acesso aparece em Acesso → Tokens de API como \"{client} (sign-in)\" por 30 dias, e ali pode ser revogado.",
+  "deny": "Recusar",
+  "allow": "Permitir",
+  "invalid_title": "O link de login não é válido",
+  "invalid_text": "O endereço de login está desatualizado ou foi alterado. O login deve ser iniciado de novo pelo terminal: codex mcp login topolograph para o Codex ou /mcp no Claude Code.",
+  "loading": "Carregando…",
+  "error_failed": "Não foi possível carregar a solicitação de login. Recarregue a página para tentar de novo.",
+  "error_decision": "A decisão não foi enviada. Tente de novo."
+}
