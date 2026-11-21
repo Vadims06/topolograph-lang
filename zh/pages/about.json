@@ -179,7 +179,7 @@
   "lp_skill_title": "适用于 Claude Code 和 Codex CLI 的 Skill",
   "lp_skill_lead": "Claude Code 或 Codex 可直接在终端中回答有关您网络的问题：MCP 服务器为智能体提供 Topolograph 的拓扑图、路径和事件，skill 则说明何时以及如何请求这些数据。",
   "lp_skill_connect": "连接 MCP 服务器",
-  "lp_skill_oauth_note": "首次请求时，智能体会在浏览器中打开 Topolograph 登录页。访问权限为只读；它会出现在 API 令牌中，可在那里撤销。",
+  "lp_skill_oauth_note": "连接时或首次请求时，智能体会在浏览器中打开 Topolograph 登录页。访问权限为只读；它会出现在 API 令牌中，可在那里撤销。",
   "lp_skill_token_h": "使用 API 令牌（CI、自托管）",
   "lp_skill_signin": "登录并创建令牌",
   "lp_skill_create": "创建令牌",

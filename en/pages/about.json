@@ -179,7 +179,7 @@
   "lp_skill_title": "Skill for Claude Code and Codex CLI",
   "lp_skill_lead": "Claude Code or Codex answers questions about your network right in the terminal: the MCP server gives the agent Topolograph graphs, paths and events, and the skill tells it when and how to ask for them.",
   "lp_skill_connect": "Connect the MCP server",
-  "lp_skill_oauth_note": "On the first request the agent opens the Topolograph sign-in in the browser. Access is read-only; it appears in API tokens, where it can be revoked.",
+  "lp_skill_oauth_note": "When connecting or on the first request the agent opens the Topolograph sign-in in the browser. Access is read-only; it appears in API tokens, where it can be revoked.",
   "lp_skill_token_h": "With an API token (CI, self-hosted)",
   "lp_skill_signin": "Sign in to create a token",
   "lp_skill_create": "Create token",
