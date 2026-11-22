@@ -226,5 +226,7 @@
   "alr_forecast_week_few": "Pelos eventos dos últimos {span}: cerca de {count} mensagens por dia, {week} por semana",
   "alr_forecast_week_many": "Pelos eventos dos últimos {span}: cerca de {count} mensagens por dia, {week} por semana",
   "alr_forecast_week_other": "Pelos eventos dos últimos {span}: cerca de {count} mensagens por dia, {week} por semana",
-  "alr_forecast_none": "Não houve tais eventos nos últimos {span}"
+  "alr_forecast_none": "Não houve tais eventos nos últimos {span}",
+  "alr_refusal_channel_limit": "Limite de canais atingido",
+  "alr_refusal_rule_limit": "Limite de regras atingido"
 }

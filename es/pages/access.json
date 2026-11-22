@@ -226,5 +226,7 @@
   "alr_forecast_week_few": "Según los eventos de los últimos {span}: unos {count} mensajes al día, {week} a la semana",
   "alr_forecast_week_many": "Según los eventos de los últimos {span}: unos {count} mensajes al día, {week} a la semana",
   "alr_forecast_week_other": "Según los eventos de los últimos {span}: unos {count} mensajes al día, {week} a la semana",
-  "alr_forecast_none": "No hubo tales eventos en los últimos {span}"
+  "alr_forecast_none": "No hubo tales eventos en los últimos {span}",
+  "alr_refusal_channel_limit": "Se alcanzó el límite de canales",
+  "alr_refusal_rule_limit": "Se alcanzó el límite de reglas"
 }

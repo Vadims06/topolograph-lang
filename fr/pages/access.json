@@ -226,5 +226,7 @@
   "alr_forecast_week_few": "D’après les événements sur {span} : environ {count} messages par jour, {week} par semaine",
   "alr_forecast_week_many": "D’après les événements sur {span} : environ {count} messages par jour, {week} par semaine",
   "alr_forecast_week_other": "D’après les événements sur {span} : environ {count} messages par jour, {week} par semaine",
-  "alr_forecast_none": "Aucun événement de ce type sur {span}"
+  "alr_forecast_none": "Aucun événement de ce type sur {span}",
+  "alr_refusal_channel_limit": "Limite de canaux atteinte",
+  "alr_refusal_rule_limit": "Limite de règles atteinte"
 }

@@ -226,5 +226,7 @@
   "alr_forecast_week_few": "По событиям за последние {span}: около {count} сообщений в день, {week} в неделю",
   "alr_forecast_week_many": "По событиям за последние {span}: около {count} сообщений в день, {week} в неделю",
   "alr_forecast_week_other": "По событиям за последние {span}: около {count} сообщений в день, {week} в неделю",
-  "alr_forecast_none": "За последние {span} таких событий не было"
+  "alr_forecast_none": "За последние {span} таких событий не было",
+  "alr_refusal_channel_limit": "Достигнут предел числа каналов",
+  "alr_refusal_rule_limit": "Достигнут предел числа правил"
 }

@@ -226,5 +226,7 @@
   "alr_forecast_week_few": "From events over the last {span}: about {count} messages per day, {week} per week",
   "alr_forecast_week_many": "From events over the last {span}: about {count} messages per day, {week} per week",
   "alr_forecast_week_other": "From events over the last {span}: about {count} messages per day, {week} per week",
-  "alr_forecast_none": "No such events in the last {span}"
+  "alr_forecast_none": "No such events in the last {span}",
+  "alr_refusal_channel_limit": "Channel limit reached",
+  "alr_refusal_rule_limit": "Rule limit reached"
 }

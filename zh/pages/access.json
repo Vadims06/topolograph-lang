@@ -226,5 +226,7 @@
   "alr_forecast_week_few": "根据最近 {span} 的事件：约每天 {count} 条消息，每周 {week} 条",
   "alr_forecast_week_many": "根据最近 {span} 的事件：约每天 {count} 条消息，每周 {week} 条",
   "alr_forecast_week_other": "根据最近 {span} 的事件：约每天 {count} 条消息，每周 {week} 条",
-  "alr_forecast_none": "最近 {span} 内没有此类事件"
+  "alr_forecast_none": "最近 {span} 内没有此类事件",
+  "alr_refusal_channel_limit": "已达到渠道数量上限",
+  "alr_refusal_rule_limit": "已达到规则数量上限"
 }
