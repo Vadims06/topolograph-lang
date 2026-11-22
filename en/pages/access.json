@@ -200,8 +200,6 @@
   "alr_err_https": "An https:// address is required",
   "alr_err_internal": "Internal addresses are not reachable from topolograph.com",
   "alr_err_secret": "The signing secret must be at least 32 characters",
-  "alr_delivered": "delivered",
-  "alr_failed": "error",
   "alr_failure_http_status": "The address answered with code {code}",
   "alr_failure_timeout": "The address did not answer within 5 s",
   "alr_failure_not_found": "The address was not found",

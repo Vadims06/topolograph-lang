@@ -200,8 +200,6 @@
   "alr_err_https": "É necessário um endereço https://",
   "alr_err_internal": "Endereços internos não são acessíveis a partir de topolograph.com",
   "alr_err_secret": "O segredo de assinatura deve ter pelo menos 32 caracteres",
-  "alr_delivered": "entregue",
-  "alr_failed": "erro",
   "alr_failure_http_status": "O endereço respondeu com o código {code}",
   "alr_failure_timeout": "O endereço não respondeu em 5 s",
   "alr_failure_not_found": "O endereço não foi encontrado",

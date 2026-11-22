@@ -200,8 +200,6 @@
   "alr_err_https": "Нужен адрес https://",
   "alr_err_internal": "Внутренние адреса недоступны для topolograph.com",
   "alr_err_secret": "Секрет подписи - не короче 32 символов",
-  "alr_delivered": "доставлено",
-  "alr_failed": "ошибка",
   "alr_failure_http_status": "Адрес ответил кодом {code}",
   "alr_failure_timeout": "Адрес не ответил за 5 с",
   "alr_failure_not_found": "Адрес не найден",
@@ -227,6 +225,6 @@
   "alr_forecast_week_many": "По событиям за последние {span}: около {count} сообщений в день, {week} в неделю",
   "alr_forecast_week_other": "По событиям за последние {span}: около {count} сообщений в день, {week} в неделю",
   "alr_forecast_none": "За последние {span} таких событий не было",
-  "alr_refusal_channel_limit": "Достигнут предел числа каналов",
-  "alr_refusal_rule_limit": "Достигнут предел числа правил"
+  "alr_refusal_channel_limit": "Достигнут предел количества каналов",
+  "alr_refusal_rule_limit": "Достигнут предел количества правил"
 }

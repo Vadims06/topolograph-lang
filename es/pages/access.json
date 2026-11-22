@@ -200,8 +200,6 @@
   "alr_err_https": "Se requiere una dirección https://",
   "alr_err_internal": "Las direcciones internas no son accesibles desde topolograph.com",
   "alr_err_secret": "El secreto de firma debe tener al menos 32 caracteres",
-  "alr_delivered": "entregado",
-  "alr_failed": "error",
   "alr_failure_http_status": "La dirección respondió con el código {code}",
   "alr_failure_timeout": "La dirección no respondió en 5 s",
   "alr_failure_not_found": "No se encontró la dirección",

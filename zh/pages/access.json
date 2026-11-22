@@ -200,8 +200,6 @@
   "alr_err_https": "需要 https:// 地址",
   "alr_err_internal": "topolograph.com 无法访问内部地址",
   "alr_err_secret": "签名密钥至少 32 个字符",
-  "alr_delivered": "已送达",
-  "alr_failed": "错误",
   "alr_failure_http_status": "地址返回了状态码 {code}",
   "alr_failure_timeout": "地址在 5 秒内没有响应",
   "alr_failure_not_found": "找不到该地址",
