@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "title": "Accès",
+    "title": "Paramètres",
     "description": "Jetons d'API, réseaux autorisés pour la connexion à l'API par mot de passe et graphes partagés."
   },
-  "title": "Accès",
+  "title": "Paramètres",
   "tab_tokens": "Jetons d'API",
   "tab_ips": "IP autorisées",
   "tab_sharing": "Partage",

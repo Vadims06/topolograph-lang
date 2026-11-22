@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "title": "Access",
+    "title": "Settings",
     "description": "API tokens, networks allowed for API password sign-in and graph sharing."
   },
-  "title": "Access",
+  "title": "Settings",
   "tab_tokens": "API tokens",
   "tab_ips": "Allowed IPs",
   "tab_sharing": "Sharing",

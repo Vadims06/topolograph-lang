@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "title": "访问",
+    "title": "设置",
     "description": "API 令牌、允许使用密码登录 API 的网络以及图共享。"
   },
-  "title": "访问",
+  "title": "设置",
   "tab_tokens": "API 令牌",
   "tab_ips": "允许的 IP",
   "tab_sharing": "共享",

@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "title": "Acesso",
+    "title": "Configurações",
     "description": "Tokens de API, redes permitidas para login da API com senha e grafos compartilhados."
   },
-  "title": "Acesso",
+  "title": "Configurações",
   "tab_tokens": "Tokens de API",
   "tab_ips": "IPs permitidos",
   "tab_sharing": "Compartilhamento",
