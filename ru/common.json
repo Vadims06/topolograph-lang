@@ -105,6 +105,7 @@
   "card_attr_max_rsrv_link_bw": "Макс. резервируемая полоса",
   "card_attr_unreserved_bw": "Нерезерв. полоса {priority}",
   "card_attr_srlg": "Группа общего риска (SRLG)",
+  "card_attr_srv6_end_x": "End.X",
   "event_kind_up": "Up",
   "event_open": "Открыть граф на этот момент",
   "event_still_down": "остаётся down до конца периода",

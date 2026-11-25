@@ -104,6 +104,7 @@
   "card_attr_max_rsrv_link_bw": "BP max réservable",
   "card_attr_unreserved_bw": "BP non réservée {priority}",
   "card_attr_srlg": "SRLG",
+  "card_attr_srv6_end_x": "End.X",
   "event_kind_up": "Up",
   "event_open": "Ouvrir le graphe à ce moment",
   "event_still_down": "toujours Down à la fin de la période",
