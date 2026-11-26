@@ -104,6 +104,7 @@
   "card_attr_max_rsrv_link_bw": "最大可预留带宽",
   "card_attr_unreserved_bw": "未预留带宽 {priority}",
   "card_attr_srlg": "共享风险链路组 (SRLG)",
+  "card_attr_srv6_end_x": "End.X",
   "event_kind_up": "恢复",
   "event_open": "打开此时刻的图",
   "event_still_down": "在所选时段结束时仍处于断开状态",

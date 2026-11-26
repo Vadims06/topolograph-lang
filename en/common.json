@@ -103,6 +103,7 @@
   "card_attr_max_rsrv_link_bw": "Max reservable BW",
   "card_attr_unreserved_bw": "Unreserved BW {priority}",
   "card_attr_srlg": "SRLG",
+  "card_attr_srv6_end_x": "End.X",
   "event_kind_up": "Up",
   "event_open": "Open the graph at this time",
   "event_still_down": "still down at the end of the period",
