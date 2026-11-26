@@ -176,6 +176,7 @@
   "search_attr_vrf": "VRF",
   "search_attr_esi": "ESI",
   "search_attr_mac": "MAC",
+  "search_attr_sid": "SID",
   "coming_soon": "Скоро появится",
   "layout_mode_physics": "Раскладка: physics, роутеры двигаются сами. Нажмите, чтобы сменить",
   "layout_mode_manual": "Раскладка: вручную, роутеры остаются там, куда вы их перетащили. Нажмите, чтобы сменить",
