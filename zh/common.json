@@ -263,6 +263,7 @@
   "agent_q_graph_topology_3": "R1 到 R9 的路径是什么？",
   "agent_q_graph_events_1": "所选时间段内发生了什么变化？",
   "agent_q_graph_failures_1": "如果节点 R5 发生故障会怎样？",
+  "agent_q_graph_failures_2": "如果把 R4-R5 链路的开销设为 1，会有什么变化？",
   "agent_q_graph_lsp_1": "哪些 LSP 经过 R5？",
   "agent_q_graph_evpn_1": "VNI 10010 在哪些 VTEP 上发布？",
   "agent_q_v2_graph_1": "在设备上检查 R1 ↔ R2 的邻接关系",
