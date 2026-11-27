@@ -262,6 +262,7 @@
   "agent_q_graph_topology_3": "What is the path from R1 to R9?",
   "agent_q_graph_events_1": "What changed in the selected period?",
   "agent_q_graph_failures_1": "What happens if node R5 fails?",
+  "agent_q_graph_failures_2": "What changes if the cost of the R4-R5 link is set to 1?",
   "agent_q_graph_lsp_1": "Which LSPs pass through R5?",
   "agent_q_graph_evpn_1": "On which VTEPs is VNI 10010 advertised?",
   "agent_q_v2_graph_1": "Check the adjacency R1 ↔ R2 on the devices",
